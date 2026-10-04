@@ -4,7 +4,7 @@
 
 **Created**: 2026-08-09
 
-**Status**: Draft
+**Status**: Implemented
 
 **Input**: User description: "Construir uma aplicação web que possa ser hospedada no github.io para ensinar sobre otimização combinatória utilizando o jogo katamino. Na aplicação o usuário poderá jogar manualmente todos os 500 desafios do jogo manualmente ou utilizar algoritmos para resolver automaticamente. A resolução deve ser feita passo a passo de forma visual para que o usuário possa ver como o computador resolve o problema."
 
