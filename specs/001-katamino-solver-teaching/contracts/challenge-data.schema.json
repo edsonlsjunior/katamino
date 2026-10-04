@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://katamino.local/contracts/challenge-data.schema.json",
+  "title": "Katamino Challenge Dataset",
+  "description": "Contract for the static, build-time-generated dataset of the 500 Katamino challenges bundled with the app (FR-001, FR-002). Produced by scripts/generate-challenges and consumed read-only at runtime.",
+  "type": "object",
+  "required": ["version", "challenges"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": 1,
+      "description": "Bump on any breaking change to challenge shape; consumers must reject unknown versions rather than guess."
+    },
+    "challenges": {
+      "type": "array",
+      "minItems": 500,
+      "maxItems": 500,
+      "items": { "$ref": "#/$defs/challenge" }
+    }
+  },
+  "$defs": {
+    "challenge": {
+      "type": "object",
+      "required": ["id", "boardRows", "boardCols", "requiredPieces", "difficulty"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500,
+          "description": "Stable, unique identifier. Order of the array is not significant; id is the addressable key."
+        },
+        "boardRows": {
+          "const": 5,
+          "description": "Fixed per research.md §9 (matches the physical Katamino tray height)."
+        },
+        "boardCols": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 12,
+          "description": "Equals requiredPieces.length. Starts at 3, not 2: no pair of distinct pentominoes tiles a 5x2 rectangle (verified empirically by the generator)."
+        },
+        "requiredPieces": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 12,
+          "items": {
+            "type": "string",
+            "enum": ["F", "I", "L", "N", "P", "T", "U", "V", "W", "X", "Y", "Z"]
+          },
+          "description": "Exact multiset of pentomino piece types required to fill the board; duplicates within a challenge are not allowed (each of the 12 pieces exists once in a physical Katamino set)."
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Ordinal indicator for browsing/sorting only (Challenge.difficulty); not used by solvers or win-condition checks."
+        }
+      }
+    }
+  },
+  "x-invariants": [
+    "requiredPieces.length === boardCols",
+    "requiredPieces.length * 5 === boardRows * boardCols",
+    "requiredPieces has no duplicate piece types within one challenge",
+    "every challenge is solvable by both solving strategies (verified by scripts/generate-challenges as an automated test, covering FR-014 / SC-002)",
+    "all 500 ids are present and unique"
+  ]
+}

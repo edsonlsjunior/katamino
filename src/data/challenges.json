@@ -1,0 +1,7755 @@
+{
+  "version": 1,
+  "challenges": [
+    {
+      "id": 1,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 2,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 3,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 4,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 5,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 6,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 7,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 8,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 9,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 10,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 11,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 12,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 13,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 14,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 15,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 16,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 17,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 18,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 19,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 20,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 21,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 22,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 23,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 24,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 25,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 26,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 27,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 28,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 29,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 30,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 31,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 32,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 33,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 34,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 35,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 36,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 37,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 38,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 39,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 40,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 41,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 42,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 43,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 44,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 45,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 46,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 47,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 48,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 49,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 50,
+      "boardRows": 5,
+      "boardCols": 3,
+      "requiredPieces": [
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": 51,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "P",
+        "T",
+        "V",
+        "W"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 52,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 53,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 54,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "N",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 55,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 56,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "W",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 57,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 58,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 59,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 60,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 61,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 62,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 63,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 64,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 65,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 66,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 67,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 68,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 69,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 70,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 71,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 72,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 73,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 74,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 75,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "N",
+        "V",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 76,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 77,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "P",
+        "T",
+        "V",
+        "W"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 78,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 79,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 80,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "N",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 81,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 82,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "W",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 83,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 84,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 85,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 86,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 87,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 88,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 89,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 90,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 91,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 92,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 93,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 94,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 95,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 96,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 97,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 98,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 99,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 100,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 4
+    },
+    {
+      "id": 101,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 102,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 103,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 104,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 105,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "U",
+        "X"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 106,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "P",
+        "T",
+        "V",
+        "W"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 107,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 108,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 109,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 110,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "W"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 111,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 112,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 113,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "P",
+        "T",
+        "U",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 114,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 115,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 116,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 117,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 118,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "V",
+        "W"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 119,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "U",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 120,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 121,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "N",
+        "P",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 122,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 123,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "U",
+        "V",
+        "W"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 124,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 125,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 126,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 127,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "N",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 128,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "N",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 129,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 130,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 131,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 132,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 133,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "T",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 134,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "V",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 135,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U",
+        "W"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 136,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 137,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "V"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 138,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U",
+        "X"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 139,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 140,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "P",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 141,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "V"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 142,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 143,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 144,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "N",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 145,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 146,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 147,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 148,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 149,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 150,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "U",
+        "X"
+      ],
+      "difficulty": 5
+    },
+    {
+      "id": 151,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 152,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 153,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 154,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 155,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 156,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U",
+        "X",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 157,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "V",
+        "W"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 158,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 159,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "T",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 160,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 161,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 162,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "N",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 163,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "W"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 164,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 165,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 166,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 167,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 168,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "X",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 169,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 170,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "T",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 171,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "X"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 172,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 173,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 174,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 175,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 176,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 177,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "N",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 178,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "N",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 179,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 180,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "W"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 181,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 182,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 183,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 184,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 185,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 186,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 187,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 188,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 189,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 190,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 191,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 192,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 193,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 194,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 195,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 196,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 197,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "W",
+        "Y"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 198,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 199,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 200,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W"
+      ],
+      "difficulty": 6
+    },
+    {
+      "id": 201,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 202,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 203,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 204,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 205,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 206,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 207,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 208,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 209,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 210,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 211,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 212,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 213,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 214,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 215,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 216,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 217,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 218,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 219,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 220,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 221,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 222,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 223,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 224,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 225,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 226,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 227,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 228,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 229,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 230,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "U",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 231,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 232,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 233,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 234,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 235,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "U",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 236,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 237,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 238,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 239,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 240,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "N",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 241,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 242,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "N",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 243,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 244,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 245,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 246,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "T",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 247,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 248,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 249,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "Y"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 250,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "V",
+        "Z"
+      ],
+      "difficulty": 7
+    },
+    {
+      "id": 251,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 252,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 253,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 254,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 255,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 256,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 257,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 258,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 259,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 260,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 261,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 262,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 263,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 264,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 265,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 266,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 267,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 268,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 269,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 270,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 271,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 272,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 273,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 274,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 275,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 276,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 277,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 278,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 279,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 280,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 281,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 282,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 283,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 284,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 285,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 286,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 287,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 288,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 289,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 290,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 291,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 292,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 293,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 294,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 295,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 296,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 297,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 298,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 299,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 300,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 8
+    },
+    {
+      "id": 301,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "X",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 302,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 303,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 304,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 305,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 306,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 307,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 308,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 309,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 310,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 311,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 312,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 313,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 314,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 315,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 316,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 317,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 318,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 319,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 320,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 321,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 322,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 323,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 324,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 325,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 326,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 327,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 328,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 329,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 330,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 331,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 332,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 333,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 334,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 335,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 336,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 337,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 338,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 339,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 340,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 341,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 342,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 343,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 344,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 345,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 346,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 347,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 348,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 349,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 350,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 9
+    },
+    {
+      "id": 351,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 352,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 353,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 354,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 355,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 356,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 357,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 358,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 359,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 360,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 361,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 362,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 363,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 364,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 365,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 366,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 367,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 368,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 369,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 370,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 371,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 372,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 373,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 374,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 375,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 376,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 377,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 378,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 379,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 380,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 381,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 382,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 383,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 384,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 385,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 386,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 387,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 388,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 389,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 390,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 391,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 392,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 393,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 394,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 395,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 396,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 397,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 398,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 399,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 400,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 10
+    },
+    {
+      "id": 401,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 402,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 403,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 404,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 405,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 406,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 407,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 408,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 409,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 410,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 411,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 412,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 413,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 414,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 415,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 416,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 417,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 418,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 419,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 420,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 421,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 422,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 423,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 424,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 425,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 426,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 427,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 428,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 429,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 430,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 431,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 432,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 433,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 434,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 435,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 436,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 437,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 438,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 439,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 440,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 441,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 442,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 443,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 444,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 445,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 446,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 447,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 448,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 449,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 450,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 11
+    },
+    {
+      "id": 451,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 452,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 453,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 454,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 455,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 456,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 457,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 458,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 459,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 460,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 461,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 462,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 463,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 464,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 465,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 466,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 467,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 468,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 469,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 470,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 471,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 472,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 473,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 474,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 475,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 476,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 477,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 478,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 479,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 480,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 481,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 482,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 483,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 484,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 485,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 486,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 487,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 488,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 489,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 490,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 491,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 492,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 493,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 494,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 495,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 496,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 497,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 498,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 499,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    },
+    {
+      "id": 500,
+      "boardRows": 5,
+      "boardCols": 12,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "difficulty": 12
+    }
+  ]
+}

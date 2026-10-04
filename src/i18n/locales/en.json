@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Katamino — Combinatorial Optimization Playground"
+  },
+  "nav": {
+    "challenges": "Challenges",
+    "manualPlay": "Play",
+    "autoSolve": "Watch the solver"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "pt": "Português"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong.",
+    "back": "Back to challenges"
+  },
+  "challenges": {
+    "difficulty": "Difficulty {{difficulty}}",
+    "completed": "Completed"
+  },
+  "pieceTray": {
+    "label": "Available pieces",
+    "rotate": "Rotate",
+    "flip": "Flip"
+  },
+  "manualPlay": {
+    "solved": "Solved! Every piece fits — well done.",
+    "invalid": "That piece can't go there.",
+    "reset": "Reset"
+  },
+  "playback": {
+    "label": "Playback controls",
+    "rewind": "Restart",
+    "stepBack": "Step back",
+    "pause": "Pause",
+    "play": "Play",
+    "stepForward": "Step forward",
+    "speed": "Speed"
+  },
+  "solver": {
+    "start": "Watch the solver",
+    "computing": "Working it out…",
+    "error": "The solver ran into a problem: {{message}}",
+    "complete": "Solved! Every piece fits.",
+    "stepCounter": "Step {{current}} of {{total}}"
+  },
+  "strategy": {
+    "label": "Solving strategy",
+    "backtracking": {
+      "name": "Try, undo, try again",
+      "description": "Tries a piece in the next open spot; if that leads nowhere, undoes it and tries something else. It explores options in a fixed order, so it doesn't know in advance which choices are risky."
+    },
+    "constraintGuided": {
+      "name": "Smart search",
+      "description": "Before guessing, it looks for the spot on the board with the fewest possible pieces that could fit — and fills that one first. Tackling the most constrained spot early avoids a lot of dead ends."
+    }
+  },
+  "metrics": {
+    "step": "Step",
+    "backtracks": "Backtracks so far"
+  },
+  "comparison": {
+    "title": "Compare the last two runs",
+    "strategy": "Strategy"
+  }
+}

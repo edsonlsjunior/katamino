@@ -1,0 +1,40 @@
+.challenge-group h2 {
+  font-size: 0.95rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.5rem;
+}
+
+.challenge-card {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.challenge-card--completed {
+  border-color: #59a14f;
+  background: color-mix(in srgb, #59a14f 12%, transparent);
+}
+
+.challenge-card__id {
+  font-weight: 600;
+}
+
+.challenge-card__actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.challenge-card__actions button {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}

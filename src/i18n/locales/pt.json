@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Katamino — Playground de Otimização Combinatória"
+  },
+  "nav": {
+    "challenges": "Desafios",
+    "manualPlay": "Jogar",
+    "autoSolve": "Ver o solucionador"
+  },
+  "language": {
+    "label": "Idioma",
+    "en": "English",
+    "pt": "Português"
+  },
+  "common": {
+    "loading": "Carregando…",
+    "error": "Algo deu errado.",
+    "back": "Voltar aos desafios"
+  },
+  "challenges": {
+    "difficulty": "Dificuldade {{difficulty}}",
+    "completed": "Concluído"
+  },
+  "pieceTray": {
+    "label": "Peças disponíveis",
+    "rotate": "Girar",
+    "flip": "Espelhar"
+  },
+  "manualPlay": {
+    "solved": "Resolvido! Todas as peças encaixam — muito bem.",
+    "invalid": "Essa peça não pode ir aí.",
+    "reset": "Reiniciar"
+  },
+  "playback": {
+    "label": "Controles de reprodução",
+    "rewind": "Reiniciar",
+    "stepBack": "Passo anterior",
+    "pause": "Pausar",
+    "play": "Reproduzir",
+    "stepForward": "Próximo passo",
+    "speed": "Velocidade"
+  },
+  "solver": {
+    "start": "Ver o solucionador",
+    "computing": "Calculando…",
+    "error": "O solucionador encontrou um problema: {{message}}",
+    "complete": "Resolvido! Todas as peças encaixam.",
+    "stepCounter": "Passo {{current}} de {{total}}"
+  },
+  "strategy": {
+    "label": "Estratégia de resolução",
+    "backtracking": {
+      "name": "Tentar, desfazer, tentar de novo",
+      "description": "Tenta uma peça na próxima posição livre; se isso não levar a nada, desfaz e tenta outra coisa. Explora as opções em uma ordem fixa, então não sabe de antemão quais escolhas são arriscadas."
+    },
+    "constraintGuided": {
+      "name": "Busca inteligente",
+      "description": "Antes de arriscar, procura a posição do tabuleiro com o menor número de peças possíveis que caberiam ali — e preenche essa primeiro. Atacar a posição mais restrita cedo evita muitos becos sem saída."
+    }
+  },
+  "metrics": {
+    "step": "Passo",
+    "backtracks": "Retrocessos até agora"
+  },
+  "comparison": {
+    "title": "Compare as duas últimas execuções",
+    "strategy": "Estratégia"
+  }
+}

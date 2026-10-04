@@ -1,0 +1,32 @@
+.board {
+  display: grid;
+  gap: 2px;
+  width: fit-content;
+  background: #999;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.board-cell {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: #f2f2f2;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-cell[data-occupied='true'] {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 480px) {
+  .board-cell {
+    width: 2rem;
+    height: 2rem;
+  }
+}
