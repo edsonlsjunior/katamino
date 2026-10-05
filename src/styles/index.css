@@ -2,12 +2,7 @@
 
 :root {
   color-scheme: light dark;
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
-
-body {
-  background: var(--color-surface);
-  color: var(--color-text);
+  font-family: var(--font-family);
 }
 
 * {
@@ -16,21 +11,65 @@ body {
 
 body {
   margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family);
 }
 
 button {
   font: inherit;
   cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
   transition: border-color var(--transition-fast), background-color var(--transition-fast),
-    transform var(--transition-fast);
+    color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+button:not(:disabled):hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
 }
 
 button:disabled {
   cursor: default;
+  opacity: 0.55;
 }
 
 button:not(:disabled):active {
   transform: translateY(1px);
+}
+
+select {
+  font: inherit;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.btn-primary,
+[data-testid='start-solve'] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:not(:disabled):hover,
+[data-testid='start-solve']:not(:disabled):hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 :focus-visible {
@@ -40,4 +79,5 @@ button:not(:disabled):active {
 
 [role='alert'] {
   color: var(--color-danger);
+  font-weight: 600;
 }

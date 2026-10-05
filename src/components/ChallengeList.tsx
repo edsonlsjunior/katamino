@@ -54,9 +54,13 @@ function TierSection({ tier, challenges, onPlay, onWatchSolver }: TierSectionPro
                   id: challenge.id,
                 })}
               </span>
-              {completed && <span aria-label={t('challenges.completed', 'Completed')}>✓</span>}
+              {completed && (
+                <span className="challenge-card__badge" aria-label={t('challenges.completed', 'Completed')}>
+                  ✓
+                </span>
+              )}
               <div className="challenge-card__actions">
-                <button type="button" onClick={() => onPlay(challenge.id)}>
+                <button type="button" className="btn-primary" onClick={() => onPlay(challenge.id)}>
                   {t('nav.manualPlay')}
                 </button>
                 {onWatchSolver && (

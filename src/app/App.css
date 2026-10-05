@@ -9,19 +9,50 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--color-border-strong);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  box-shadow: var(--shadow-header);
   flex-wrap: wrap;
 }
 
 .app-header h1 {
   font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: 0.01em;
   margin: 0;
+}
+
+.app-header [role='group'] {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.app-header button {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--color-header-text-muted);
+}
+
+.app-header button:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-header-text);
+}
+
+.app-header button[aria-pressed='true'] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: 600;
 }
 
 main {
   flex: 1;
-  padding: var(--space-4);
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space-5);
 }
 
 .manual-play-page {

@@ -42,11 +42,11 @@ export function PlaybackControls({
         {t('playback.stepBack', 'Step back')}
       </button>
       {isPlaying ? (
-        <button type="button" onClick={onPause}>
+        <button type="button" className="btn-primary" onClick={onPause}>
           {t('playback.pause', 'Pause')}
         </button>
       ) : (
-        <button type="button" onClick={onPlay} disabled={!canPlay}>
+        <button type="button" className="btn-primary" onClick={onPlay} disabled={!canPlay}>
           {t('playback.play', 'Play')}
         </button>
       )}
