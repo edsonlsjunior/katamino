@@ -8,8 +8,8 @@
   "additionalProperties": false,
   "properties": {
     "version": {
-      "const": 1,
-      "description": "Bump on any breaking change to challenge shape; consumers must reject unknown versions rather than guess."
+      "const": 2,
+      "description": "Bump on any breaking change to challenge shape; consumers must reject unknown versions rather than guess. v2 added tier/line (manual-style grouping)."
     },
     "challenges": {
       "type": "array",
@@ -21,7 +21,7 @@
   "$defs": {
     "challenge": {
       "type": "object",
-      "required": ["id", "boardRows", "boardCols", "requiredPieces", "difficulty"],
+      "required": ["id", "boardRows", "boardCols", "requiredPieces", "tier", "line", "difficulty"],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -50,10 +50,18 @@
           },
           "description": "Exact multiset of pentomino piece types required to fill the board; duplicates within a challenge are not allowed (each of the 12 pieces exists once in a physical Katamino set)."
         },
+        "tier": {
+          "enum": ["small-slam", "slam", "grand-slam", "super-slam", "challenge", "bonus"],
+          "description": "Manual-inspired grouping used for browsing (ChallengeList). 'bonus' holds the 12-piece (boardCols=12) challenges, which have no equivalent tier in the physical manual (its widest column is PENTA 11)."
+        },
+        "line": {
+          "type": "string",
+          "description": "Manual-style row label within the tier, e.g. 'A'..'G' (small-slam), 'A'..'N'/'O'..'V'/'♠'/'♥'/'♦'/'♣' (slam), 'A'..'L' (grand-slam/super-slam), 'N°1'..'N°25' (challenge). Empty string for the bonus tier, which has no line concept."
+        },
         "difficulty": {
           "type": "integer",
           "minimum": 1,
-          "description": "Ordinal indicator for browsing/sorting only (Challenge.difficulty); not used by solvers or win-condition checks."
+          "description": "Legacy alias of boardCols, kept for sort-only use; not used by solvers or win-condition checks. Superseded by tier/line for browsing/grouping."
         }
       }
     }
@@ -63,6 +71,10 @@
     "requiredPieces.length * 5 === boardRows * boardCols",
     "requiredPieces has no duplicate piece types within one challenge",
     "every challenge is solvable by both solving strategies (verified by scripts/generate-challenges as an automated test, covering FR-014 / SC-002)",
-    "all 500 ids are present and unique"
+    "all 500 ids are present and unique",
+    "difficulty === boardCols for every challenge",
+    "per-tier counts: small-slam=42, slam=118, grand-slam=96, super-slam=96, challenge=100, bonus=48",
+    "per-boardCols counts: 3=7, 4=19, 5=45, 6=61, 7=86, 8=86, 9=75, 10=49, 11=24, 12=48",
+    "line is unique within each (tier, boardCols) pair; bonus tier uses line=''"
   ]
 }

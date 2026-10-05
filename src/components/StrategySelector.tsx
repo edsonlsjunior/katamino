@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { SOLVING_STRATEGIES, type SolvingStrategyId } from '../domain/types';
+import './StrategySelector.css';
 
 interface StrategySelectorProps {
   selected: SolvingStrategyId;

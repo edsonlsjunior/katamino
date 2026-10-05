@@ -81,7 +81,13 @@ export function AutoSolvePage({ challengeId }: AutoSolvePageProps) {
               total: known,
             })}
           </p>
-          <Board board={board} pieces={pieces} onCellClick={() => undefined} />
+          <Board
+            board={board}
+            pieces={pieces}
+            selectedPiece={null}
+            onCellClick={() => undefined}
+            onCellRightClick={() => undefined}
+          />
           <PlaybackControls
             status={status}
             speed={speed}

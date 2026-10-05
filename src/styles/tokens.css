@@ -1,0 +1,51 @@
+/*
+ * Design tokens. Values below are the exact hex/px the app already used ad hoc
+ * across App.css/Board.css/PieceTray.css/ChallengeList.css before this file
+ * existed — centralizing them here, not re-coloring the app.
+ */
+:root {
+  /* Color */
+  --color-surface: #ffffff;
+  --color-surface-raised: #fafafa;
+  --color-border: #cccccc;
+  --color-border-strong: #dddddd;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555555;
+  --color-success: #59a14f;
+  --color-success-bg: color-mix(in srgb, var(--color-success) 18%, transparent);
+  --color-danger: #b00020;
+  --color-accent: #3366cc;
+  --color-focus-ring: var(--color-accent);
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* Font */
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 10px rgb(0 0 0 / 0.16);
+
+  /* Motion */
+  --transition-fast: 120ms ease;
+  --transition-snap: 80ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-snap: 0ms;
+  }
+}

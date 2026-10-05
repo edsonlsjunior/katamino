@@ -1,0 +1,5 @@
+[data-testid='solver-computing'],
+[data-testid='solver-error'],
+[data-testid='solver-complete'] {
+  font-size: var(--font-size-base);
+}

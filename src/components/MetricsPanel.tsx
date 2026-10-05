@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { SolvingStrategyId } from '../domain/types';
+import './MetricsPanel.css';
 
 interface MetricsPanelProps {
   strategyId: SolvingStrategyId;

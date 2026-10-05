@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "challenges": [
     {
       "id": 1,
@@ -10,54 +10,92 @@
         "U",
         "Y"
       ],
+      "tier": "small-slam",
+      "line": "A",
       "difficulty": 3
     },
     {
       "id": 2,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
-        "N",
+        "L",
         "P",
-        "U"
+        "T",
+        "V"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "A",
+      "difficulty": 4
     },
     {
       "id": 3,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
         "L",
         "P",
-        "V"
+        "T",
+        "U",
+        "X"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "A",
+      "difficulty": 5
     },
     {
       "id": 4,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
+        "I",
+        "N",
         "P",
         "U",
-        "V"
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "A",
+      "difficulty": 6
     },
     {
       "id": 5,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "L",
-        "N",
-        "V"
+        "P",
+        "U",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "A",
+      "difficulty": 7
     },
     {
       "id": 6,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "X",
+        "Y"
+      ],
+      "tier": "small-slam",
+      "line": "A",
+      "difficulty": 8
+    },
+    {
+      "id": 7,
       "boardRows": 5,
       "boardCols": 3,
       "requiredPieces": [
@@ -65,73 +103,89 @@
         "T",
         "Y"
       ],
-      "difficulty": 3
-    },
-    {
-      "id": 7,
-      "boardRows": 5,
-      "boardCols": 3,
-      "requiredPieces": [
-        "F",
-        "P",
-        "U"
-      ],
+      "tier": "small-slam",
+      "line": "B",
       "difficulty": 3
     },
     {
       "id": 8,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
+        "L",
         "P",
-        "U",
+        "V",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "B",
+      "difficulty": 4
     },
     {
       "id": 9,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
-        "N",
-        "P",
-        "U"
+        "F",
+        "I",
+        "L",
+        "U",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "B",
+      "difficulty": 5
     },
     {
       "id": 10,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
-        "L",
+        "F",
+        "I",
         "P",
-        "V"
+        "U",
+        "V",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "B",
+      "difficulty": 6
     },
     {
       "id": 11,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
-        "P",
-        "U",
-        "V"
+        "F",
+        "I",
+        "N",
+        "T",
+        "V",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "B",
+      "difficulty": 7
     },
     {
       "id": 12,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
+        "I",
         "L",
-        "N",
-        "V"
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "B",
+      "difficulty": 8
     },
     {
       "id": 13,
@@ -139,131 +193,185 @@
       "boardCols": 3,
       "requiredPieces": [
         "L",
-        "T",
-        "Y"
+        "N",
+        "V"
       ],
+      "tier": "small-slam",
+      "line": "C",
       "difficulty": 3
     },
     {
       "id": 14,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
-        "F",
+        "L",
         "P",
-        "U"
+        "W",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "C",
+      "difficulty": 4
     },
     {
       "id": 15,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
+        "I",
+        "L",
         "P",
-        "U",
+        "W",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "C",
+      "difficulty": 5
     },
     {
       "id": 16,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
+        "L",
         "N",
-        "P",
-        "U"
+        "U",
+        "W",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "C",
+      "difficulty": 6
     },
     {
       "id": 17,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "L",
+        "N",
         "P",
+        "T",
+        "U",
         "V"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "C",
+      "difficulty": 7
     },
     {
       "id": 18,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
+        "I",
+        "L",
+        "N",
         "P",
         "U",
-        "V"
+        "V",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "C",
+      "difficulty": 8
     },
     {
       "id": 19,
       "boardRows": 5,
       "boardCols": 3,
       "requiredPieces": [
-        "L",
-        "N",
-        "V"
+        "F",
+        "P",
+        "U"
       ],
+      "tier": "small-slam",
+      "line": "D",
       "difficulty": 3
     },
     {
       "id": 20,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
-        "L",
-        "T",
-        "Y"
-      ],
-      "difficulty": 3
-    },
-    {
-      "id": 21,
-      "boardRows": 5,
-      "boardCols": 3,
-      "requiredPieces": [
-        "F",
-        "P",
-        "U"
-      ],
-      "difficulty": 3
-    },
-    {
-      "id": 22,
-      "boardRows": 5,
-      "boardCols": 3,
-      "requiredPieces": [
-        "P",
-        "U",
-        "Y"
-      ],
-      "difficulty": 3
-    },
-    {
-      "id": 23,
-      "boardRows": 5,
-      "boardCols": 3,
-      "requiredPieces": [
-        "N",
-        "P",
-        "U"
-      ],
-      "difficulty": 3
-    },
-    {
-      "id": 24,
-      "boardRows": 5,
-      "boardCols": 3,
-      "requiredPieces": [
+        "I",
         "L",
         "P",
         "V"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "D",
+      "difficulty": 4
+    },
+    {
+      "id": 21,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "T",
+        "V"
+      ],
+      "tier": "small-slam",
+      "line": "D",
+      "difficulty": 5
+    },
+    {
+      "id": 22,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "tier": "small-slam",
+      "line": "D",
+      "difficulty": 6
+    },
+    {
+      "id": 23,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "U",
+        "X",
+        "Y"
+      ],
+      "tier": "small-slam",
+      "line": "D",
+      "difficulty": 7
+    },
+    {
+      "id": 24,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "tier": "small-slam",
+      "line": "D",
+      "difficulty": 8
     },
     {
       "id": 25,
@@ -274,62 +382,89 @@
         "U",
         "V"
       ],
+      "tier": "small-slam",
+      "line": "E",
       "difficulty": 3
     },
     {
       "id": 26,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
         "L",
-        "N",
-        "V"
+        "P",
+        "V",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "E",
+      "difficulty": 4
     },
     {
       "id": 27,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
         "L",
-        "T",
+        "N",
+        "P",
+        "W",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "E",
+      "difficulty": 5
     },
     {
       "id": 28,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
-        "P",
-        "U"
+        "I",
+        "L",
+        "U",
+        "V",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "E",
+      "difficulty": 6
     },
     {
       "id": 29,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
+        "L",
         "P",
-        "U",
+        "T",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "E",
+      "difficulty": 7
     },
     {
       "id": 30,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
-        "N",
+        "F",
+        "I",
         "P",
-        "U"
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "E",
+      "difficulty": 8
     },
     {
       "id": 31,
@@ -340,62 +475,89 @@
         "P",
         "V"
       ],
+      "tier": "small-slam",
+      "line": "F",
       "difficulty": 3
     },
     {
       "id": 32,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
         "P",
-        "U",
-        "V"
+        "T",
+        "V",
+        "W"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "F",
+      "difficulty": 4
     },
     {
       "id": 33,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
         "L",
-        "N",
-        "V"
+        "P",
+        "V",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "F",
+      "difficulty": 5
     },
     {
       "id": 34,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
+        "I",
         "L",
+        "N",
+        "P",
         "T",
-        "Y"
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "F",
+      "difficulty": 6
     },
     {
       "id": 35,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "P",
-        "U"
+        "I",
+        "L",
+        "N",
+        "U",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "F",
+      "difficulty": 7
     },
     {
       "id": 36,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
+        "N",
         "P",
+        "T",
         "U",
+        "W",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "F",
+      "difficulty": 8
     },
     {
       "id": 37,
@@ -406,1403 +568,1741 @@
         "P",
         "U"
       ],
+      "tier": "small-slam",
+      "line": "G",
       "difficulty": 3
     },
     {
       "id": 38,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 4,
       "requiredPieces": [
+        "F",
         "L",
-        "P",
+        "U",
         "V"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "G",
+      "difficulty": 4
     },
     {
       "id": 39,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
+        "L",
         "P",
+        "T",
         "U",
-        "V"
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "G",
+      "difficulty": 5
     },
     {
       "id": 40,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
-        "L",
-        "N",
-        "V"
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "G",
+      "difficulty": 6
     },
     {
       "id": 41,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "F",
+        "I",
+        "P",
         "T",
+        "U",
+        "X",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "G",
+      "difficulty": 7
     },
     {
       "id": 42,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
+        "L",
         "P",
-        "U"
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "small-slam",
+      "line": "G",
+      "difficulty": 8
     },
     {
       "id": 43,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
+        "L",
+        "N",
         "P",
-        "U",
-        "Y"
+        "T",
+        "W"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "A",
+      "difficulty": 5
     },
     {
       "id": 44,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
+        "L",
         "N",
         "P",
-        "U"
+        "U",
+        "V",
+        "X"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "A",
+      "difficulty": 6
     },
     {
       "id": 45,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "F",
+        "I",
+        "N",
         "P",
-        "V"
+        "U",
+        "V",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "A",
+      "difficulty": 7
     },
     {
       "id": 46,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 8,
       "requiredPieces": [
-        "P",
+        "F",
+        "L",
+        "N",
+        "T",
         "U",
-        "V"
+        "V",
+        "W",
+        "Y"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "A",
+      "difficulty": 8
     },
     {
       "id": 47,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "N",
-        "V"
+        "P",
+        "T",
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "A",
+      "difficulty": 9
     },
     {
       "id": 48,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 5,
       "requiredPieces": [
         "L",
-        "T",
+        "N",
+        "P",
+        "V",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "B",
+      "difficulty": 5
     },
     {
       "id": 49,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
+        "I",
+        "L",
+        "N",
         "P",
-        "U"
+        "V"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "B",
+      "difficulty": 6
     },
     {
       "id": 50,
       "boardRows": 5,
-      "boardCols": 3,
+      "boardCols": 7,
       "requiredPieces": [
-        "P",
+        "F",
+        "I",
+        "N",
         "U",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 3
+      "tier": "slam",
+      "line": "B",
+      "difficulty": 7
     },
     {
       "id": 51,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
+        "N",
         "P",
         "T",
         "V",
-        "W"
+        "W",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "B",
+      "difficulty": 8
     },
     {
       "id": 52,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
-        "L",
+        "I",
+        "P",
+        "T",
         "U",
-        "V"
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "B",
+      "difficulty": 9
     },
     {
       "id": 53,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
+        "F",
         "L",
+        "P",
         "U",
-        "V",
-        "Y"
+        "W"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "C",
+      "difficulty": 5
     },
     {
       "id": 54,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
+        "I",
         "N",
         "T",
+        "U",
         "V",
-        "Y"
+        "W"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "C",
+      "difficulty": 6
     },
     {
       "id": 55,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "I",
         "L",
         "N",
         "P",
-        "U"
+        "T",
+        "V",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "C",
+      "difficulty": 7
     },
     {
       "id": 56,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "I",
         "L",
-        "P",
-        "W",
+        "N",
+        "T",
+        "U",
+        "V",
+        "X",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "C",
+      "difficulty": 8
     },
     {
       "id": 57,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
+        "L",
         "N",
         "P",
         "U",
+        "W",
+        "X",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "C",
+      "difficulty": 9
     },
     {
       "id": 58,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
-        "I",
+        "F",
+        "N",
         "P",
         "U",
-        "Y"
+        "V"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "D",
+      "difficulty": 5
     },
     {
       "id": 59,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
-        "I",
         "L",
+        "P",
         "T",
-        "Y"
+        "U",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "D",
+      "difficulty": 6
     },
     {
       "id": 60,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "I",
         "L",
         "P",
-        "V",
-        "Y"
+        "U",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "D",
+      "difficulty": 7
     },
     {
       "id": 61,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
         "I",
+        "L",
         "N",
         "P",
-        "U"
+        "U",
+        "X",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "D",
+      "difficulty": 8
     },
     {
       "id": 62,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
         "L",
+        "N",
         "P",
         "T",
-        "V"
+        "U",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "D",
+      "difficulty": 9
     },
     {
       "id": 63,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "L",
+        "N",
         "P",
-        "U"
+        "U",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "E",
+      "difficulty": 5
     },
     {
       "id": 64,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
+        "I",
         "L",
         "P",
         "T",
+        "W",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "E",
+      "difficulty": 6
     },
     {
       "id": 65,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "I",
         "L",
         "P",
+        "T",
         "V",
-        "Z"
+        "W",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "E",
+      "difficulty": 7
     },
     {
       "id": 66,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
         "I",
         "L",
         "N",
-        "V"
+        "P",
+        "T",
+        "U",
+        "V",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "E",
+      "difficulty": 8
     },
     {
       "id": 67,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
+        "N",
         "P",
+        "T",
         "U",
-        "V",
+        "W",
+        "Y",
         "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "E",
+      "difficulty": 9
     },
     {
       "id": 68,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
         "I",
         "L",
         "P",
-        "V"
+        "T",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "F",
+      "difficulty": 5
     },
     {
       "id": 69,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "L",
+        "N",
+        "P",
         "T",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "F",
+      "difficulty": 6
     },
     {
       "id": 70,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "I",
-        "P",
-        "U",
-        "V"
+        "N",
+        "T",
+        "V",
+        "W",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "F",
+      "difficulty": 7
     },
     {
       "id": 71,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "P",
+        "U",
+        "V",
         "Y",
         "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "F",
+      "difficulty": 8
     },
     {
       "id": 72,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
+        "L",
         "P",
-        "U"
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "F",
+      "difficulty": 9
     },
     {
       "id": 73,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
         "F",
+        "I",
+        "L",
         "P",
-        "U",
-        "Y"
+        "U"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "G",
+      "difficulty": 5
     },
     {
       "id": 74,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
-        "L",
+        "F",
+        "I",
+        "N",
         "P",
-        "U",
-        "Y"
+        "V",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "G",
+      "difficulty": 6
     },
     {
       "id": 75,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
-        "V",
-        "Z"
+        "P",
+        "T",
+        "V"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "G",
+      "difficulty": 7
     },
     {
       "id": 76,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
+        "I",
         "L",
+        "N",
+        "P",
+        "T",
         "U",
-        "Y"
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "G",
+      "difficulty": 8
     },
     {
       "id": 77,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "N",
         "P",
         "T",
+        "U",
         "V",
-        "W"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "G",
+      "difficulty": 9
     },
     {
       "id": 78,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "L",
+        "N",
         "U",
-        "V"
+        "W",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "H",
+      "difficulty": 5
     },
     {
       "id": 79,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
-        "L",
-        "U",
+        "F",
+        "P",
+        "T",
         "V",
+        "W",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "H",
+      "difficulty": 6
     },
     {
       "id": 80,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
-        "N",
+        "F",
+        "I",
+        "L",
         "T",
+        "U",
         "V",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "H",
+      "difficulty": 7
     },
     {
       "id": 81,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
-        "P",
-        "U"
+        "T",
+        "U",
+        "V",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "H",
+      "difficulty": 8
     },
     {
       "id": 82,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "P",
+        "T",
+        "U",
         "W",
-        "Y"
+        "X",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "H",
+      "difficulty": 9
     },
     {
       "id": 83,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
         "N",
         "P",
-        "U",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "I",
+      "difficulty": 5
     },
     {
       "id": 84,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
         "I",
         "P",
         "U",
-        "Y"
+        "V",
+        "W"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "I",
+      "difficulty": 6
     },
     {
       "id": 85,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "T",
-        "Y"
+        "U",
+        "V",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "I",
+      "difficulty": 7
     },
     {
       "id": 86,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "P",
+        "N",
+        "U",
         "V",
+        "X",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "I",
+      "difficulty": 8
     },
     {
       "id": 87,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
         "I",
+        "L",
         "N",
         "P",
-        "U"
+        "T",
+        "V",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "I",
+      "difficulty": 9
     },
     {
       "id": 88,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
-        "L",
+        "I",
+        "N",
         "P",
-        "T",
-        "V"
+        "U",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "J",
+      "difficulty": 5
     },
     {
       "id": 89,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
-        "L",
+        "I",
+        "N",
         "P",
-        "U"
+        "T",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "J",
+      "difficulty": 6
     },
     {
       "id": 90,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "L",
         "P",
         "T",
-        "Y"
+        "V",
+        "W",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "J",
+      "difficulty": 7
     },
     {
       "id": 91,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
+        "N",
         "P",
-        "V",
-        "Z"
+        "U",
+        "X",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "J",
+      "difficulty": 8
     },
     {
       "id": 92,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "N",
-        "V"
+        "P",
+        "U",
+        "V",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "J",
+      "difficulty": 9
     },
     {
       "id": 93,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
+        "F",
+        "L",
         "P",
         "U",
-        "V",
-        "Z"
+        "X"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "K",
+      "difficulty": 5
     },
     {
       "id": 94,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "P",
-        "V"
+        "W",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "K",
+      "difficulty": 6
     },
     {
       "id": 95,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
-        "L",
-        "T",
-        "Y"
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "Y",
+        "Z"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "K",
+      "difficulty": 7
     },
     {
       "id": 96,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 8,
       "requiredPieces": [
         "I",
+        "N",
         "P",
         "U",
-        "V"
+        "V",
+        "W",
+        "X",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "K",
+      "difficulty": 8
     },
     {
       "id": 97,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
+        "N",
         "P",
-        "Y",
-        "Z"
+        "T",
+        "W",
+        "X",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "K",
+      "difficulty": 9
     },
     {
       "id": 98,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "I",
+        "L",
         "P",
-        "U"
+        "U",
+        "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "L",
+      "difficulty": 5
     },
     {
       "id": 99,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
+        "I",
+        "N",
         "P",
+        "T",
         "U",
         "Y"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "L",
+      "difficulty": 6
     },
     {
       "id": 100,
       "boardRows": 5,
-      "boardCols": 4,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "P",
         "U",
-        "Y"
+        "V",
+        "W"
       ],
-      "difficulty": 4
+      "tier": "slam",
+      "line": "L",
+      "difficulty": 7
     },
     {
       "id": 101,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
         "L",
-        "U",
+        "N",
+        "P",
+        "T",
         "V",
-        "Y",
-        "Z"
+        "W",
+        "X"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "L",
+      "difficulty": 8
     },
     {
       "id": 102,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
         "I",
-        "P",
+        "L",
         "U",
         "V",
+        "W",
+        "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "L",
+      "difficulty": 9
     },
     {
       "id": 103,
       "boardRows": 5,
       "boardCols": 5,
       "requiredPieces": [
-        "N",
+        "L",
         "P",
-        "U",
-        "Y",
-        "Z"
+        "T",
+        "W",
+        "Y"
       ],
+      "tier": "slam",
+      "line": "M",
       "difficulty": 5
     },
     {
       "id": 104,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
+        "N",
         "P",
-        "V",
-        "Y"
+        "U",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "M",
+      "difficulty": 6
     },
     {
       "id": 105,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "I",
+        "N",
         "P",
-        "T",
-        "U",
-        "X"
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "M",
+      "difficulty": 7
     },
     {
       "id": 106,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
         "I",
+        "L",
         "P",
         "T",
         "V",
-        "W"
+        "X",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "M",
+      "difficulty": 8
     },
     {
       "id": 107,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 9,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
+        "N",
+        "P",
+        "T",
         "U",
         "V",
+        "W",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "M",
+      "difficulty": 9
     },
     {
       "id": 108,
       "boardRows": 5,
       "boardCols": 5,
       "requiredPieces": [
-        "L",
         "N",
         "P",
         "U",
-        "Z"
+        "V",
+        "Y"
       ],
+      "tier": "slam",
+      "line": "N",
       "difficulty": 5
     },
     {
       "id": 109,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "P",
-        "V",
+        "U",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "N",
+      "difficulty": 6
     },
     {
       "id": 110,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "F",
         "N",
-        "P",
         "T",
-        "W"
+        "U",
+        "V",
+        "W",
+        "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "N",
+      "difficulty": 7
     },
     {
       "id": 111,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "N",
+        "L",
         "P",
-        "U",
-        "V"
+        "T",
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "N",
+      "difficulty": 8
     },
     {
       "id": 112,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 9,
       "requiredPieces": [
         "I",
+        "L",
         "N",
         "P",
+        "T",
         "U",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "N",
+      "difficulty": 9
     },
     {
       "id": 113,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
+        "I",
         "P",
         "T",
-        "U",
-        "Y"
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "O",
+      "difficulty": 6
     },
     {
       "id": 114,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
         "I",
         "L",
         "P",
-        "U",
+        "T",
+        "V",
+        "X",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "O",
+      "difficulty": 7
     },
     {
       "id": 115,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
         "I",
         "L",
-        "N",
         "P",
-        "U"
+        "T",
+        "W",
+        "X",
+        "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "O",
+      "difficulty": 8
     },
     {
       "id": 116,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
+        "I",
         "L",
-        "P",
-        "V",
-        "Y",
-        "Z"
+        "T",
+        "U",
+        "X",
+        "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "P",
+      "difficulty": 6
     },
     {
       "id": 117,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "L",
+        "I",
+        "N",
+        "P",
         "U",
-        "Y",
+        "V",
         "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "P",
+      "difficulty": 7
     },
     {
       "id": 118,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "P",
+        "T",
         "V",
-        "W"
+        "W",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "P",
+      "difficulty": 8
     },
     {
       "id": 119,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
         "L",
-        "P",
         "T",
-        "U",
+        "V",
+        "Y",
         "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "Q",
+      "difficulty": 6
     },
     {
       "id": 120,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
-        "I",
+        "L",
+        "N",
         "P",
+        "T",
         "U",
+        "W",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "Q",
+      "difficulty": 7
     },
     {
       "id": 121,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
-        "N",
+        "I",
         "P",
+        "T",
+        "U",
         "V",
         "W",
+        "X",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "Q",
+      "difficulty": 8
     },
     {
       "id": 122,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
         "L",
         "N",
+        "P",
+        "T",
         "U",
-        "V",
-        "Z"
+        "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "R",
+      "difficulty": 6
     },
     {
       "id": 123,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "L",
+        "N",
         "P",
         "U",
-        "V",
-        "W"
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "R",
+      "difficulty": 7
     },
     {
       "id": 124,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "P",
+        "U",
+        "V",
         "W",
-        "Y"
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "R",
+      "difficulty": 8
     },
     {
       "id": 125,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
         "L",
         "P",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "S",
+      "difficulty": 6
     },
     {
       "id": 126,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
+        "N",
         "P",
+        "U",
         "V",
-        "Z"
+        "W"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "S",
+      "difficulty": 7
     },
     {
       "id": 127,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
+        "I",
+        "L",
         "N",
-        "T",
-        "V",
+        "P",
+        "U",
+        "W",
+        "X",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "S",
+      "difficulty": 8
     },
     {
       "id": 128,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
         "I",
-        "N",
-        "T",
-        "V",
-        "Y"
+        "L",
+        "U",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "T",
+      "difficulty": 6
     },
     {
       "id": 129,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
+        "I",
         "L",
-        "N",
         "P",
+        "T",
+        "V",
         "W",
-        "Y"
+        "X"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "T",
+      "difficulty": 7
     },
     {
       "id": 130,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
-        "N",
+        "F",
+        "L",
         "P",
+        "T",
         "U",
-        "V",
-        "Y"
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "T",
+      "difficulty": 8
     },
     {
       "id": 131,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "P",
-        "U"
+        "N",
+        "U",
+        "W",
+        "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "U",
+      "difficulty": 6
     },
     {
       "id": 132,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
         "P",
         "T",
+        "U",
+        "X",
         "Y"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "U",
+      "difficulty": 7
     },
     {
       "id": 133,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "I",
         "L",
+        "N",
+        "P",
         "T",
-        "Y"
+        "U",
+        "V",
+        "W"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "U",
+      "difficulty": 8
     },
     {
       "id": 134,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
         "N",
+        "T",
         "V",
         "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "V",
+      "difficulty": 6
     },
     {
       "id": 135,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
+        "I",
         "L",
-        "P",
-        "U",
-        "W"
+        "N",
+        "T",
+        "V",
+        "X"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "V",
+      "difficulty": 7
     },
     {
       "id": 136,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "P",
-        "Y",
-        "Z"
+        "U",
+        "V",
+        "W",
+        "X"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "V",
+      "difficulty": 8
     },
     {
       "id": 137,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
         "I",
         "L",
+        "P",
         "U",
-        "V"
+        "X"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "W",
+      "difficulty": 6
     },
     {
       "id": 138,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
+        "I",
         "L",
-        "P",
-        "U",
-        "X"
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "W",
+      "difficulty": 7
     },
     {
       "id": 139,
       "boardRows": 5,
-      "boardCols": 5,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "T",
+        "N",
+        "P",
         "V",
         "W",
-        "Y"
+        "Z"
       ],
-      "difficulty": 5
+      "tier": "slam",
+      "line": "W",
+      "difficulty": 8
     },
     {
       "id": 140,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "P",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 141,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "T",
-        "V"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 142,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "L",
-        "P",
-        "T",
-        "W",
-        "Y"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 143,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "L",
-        "N",
-        "P",
-        "V",
-        "Y"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 144,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "L",
-        "N",
-        "U",
-        "W",
-        "Y"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 145,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "U",
-        "Y"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 146,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "L",
-        "U",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 147,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "I",
-        "P",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 148,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "N",
-        "P",
-        "U",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 149,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "F",
-        "L",
-        "P",
-        "V",
-        "Y"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 150,
-      "boardRows": 5,
-      "boardCols": 5,
-      "requiredPieces": [
-        "L",
-        "P",
-        "T",
-        "U",
-        "X"
-      ],
-      "difficulty": 5
-    },
-    {
-      "id": 151,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
@@ -1813,49 +2313,248 @@
         "V",
         "Z"
       ],
+      "tier": "slam",
+      "line": "X",
       "difficulty": 6
+    },
+    {
+      "id": 141,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "X",
+      "difficulty": 7
+    },
+    {
+      "id": 142,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "W",
+        "Y"
+      ],
+      "tier": "slam",
+      "line": "X",
+      "difficulty": 8
+    },
+    {
+      "id": 143,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "V",
+        "Y"
+      ],
+      "tier": "slam",
+      "line": "Y",
+      "difficulty": 6
+    },
+    {
+      "id": 144,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "Y",
+      "difficulty": 7
+    },
+    {
+      "id": 145,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "Y",
+      "difficulty": 8
+    },
+    {
+      "id": 146,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y"
+      ],
+      "tier": "slam",
+      "line": "Z",
+      "difficulty": 6
+    },
+    {
+      "id": 147,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "Z",
+      "difficulty": 7
+    },
+    {
+      "id": 148,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "Z",
+      "difficulty": 8
+    },
+    {
+      "id": 149,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "P",
+        "T",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "♠",
+      "difficulty": 6
+    },
+    {
+      "id": 150,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "♠",
+      "difficulty": 7
+    },
+    {
+      "id": 151,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "V",
+        "X",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "♠",
+      "difficulty": 8
     },
     {
       "id": 152,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "I",
+        "L",
+        "N",
         "P",
-        "V",
+        "T",
         "W",
-        "Y"
+        "Z"
       ],
+      "tier": "slam",
+      "line": "♥",
       "difficulty": 6
     },
     {
       "id": 153,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
         "I",
         "L",
         "N",
         "P",
         "T",
-        "V"
+        "U",
+        "W"
       ],
-      "difficulty": 6
+      "tier": "slam",
+      "line": "♥",
+      "difficulty": 7
     },
     {
       "id": 154,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "L",
-        "N",
+        "I",
         "P",
         "U",
-        "V"
+        "V",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "slam",
+      "line": "♥",
+      "difficulty": 8
     },
     {
       "id": 155,
@@ -1863,111 +2562,130 @@
       "boardCols": 6,
       "requiredPieces": [
         "F",
-        "I",
+        "L",
         "P",
-        "U",
-        "Y",
-        "Z"
+        "T",
+        "W",
+        "Y"
       ],
+      "tier": "slam",
+      "line": "♦",
       "difficulty": 6
     },
     {
       "id": 156,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "L",
         "P",
-        "U",
+        "T",
+        "V",
         "X",
         "Y"
       ],
-      "difficulty": 6
+      "tier": "slam",
+      "line": "♦",
+      "difficulty": 7
     },
     {
       "id": 157,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "P",
+        "N",
+        "U",
         "V",
-        "W"
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "slam",
+      "line": "♦",
+      "difficulty": 8
     },
     {
       "id": 158,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "P",
-        "U",
+        "I",
+        "L",
+        "T",
         "V",
-        "X",
+        "W",
         "Y"
       ],
+      "tier": "slam",
+      "line": "♣",
       "difficulty": 6
     },
     {
       "id": 159,
       "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "F",
-        "I",
-        "T",
-        "U",
-        "V",
-        "Y"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 160,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 161,
-      "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "L",
-        "N",
-        "P",
-        "V",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 162,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "N",
-        "T",
         "U",
+        "V",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "slam",
+      "line": "♣",
+      "difficulty": 7
+    },
+    {
+      "id": 160,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "tier": "slam",
+      "line": "♣",
+      "difficulty": 8
+    },
+    {
+      "id": 161,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "P",
+        "U",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 4
+    },
+    {
+      "id": 162,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 5
     },
     {
       "id": 163,
@@ -1976,110 +2694,138 @@
       "requiredPieces": [
         "F",
         "I",
-        "L",
-        "P",
-        "U",
-        "W"
+        "N",
+        "T",
+        "V",
+        "Y"
       ],
+      "tier": "grand-slam",
+      "line": "A",
       "difficulty": 6
     },
     {
       "id": 164,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "F",
         "N",
         "P",
-        "T",
+        "U",
+        "V",
         "Y",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 7
     },
     {
       "id": 165,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "P",
-        "T",
+        "U",
         "V",
+        "W",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 8
     },
     {
       "id": 166,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
+        "L",
+        "N",
         "P",
-        "T",
         "U",
+        "V",
+        "X",
         "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 9
     },
     {
       "id": 167,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
+        "P",
         "T",
-        "U",
-        "V",
+        "W",
+        "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 10
     },
     {
       "id": 168,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 11,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
         "P",
-        "U",
-        "X",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 169,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
+        "T",
         "U",
         "V",
-        "X"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 170,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "I",
-        "L",
-        "T",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "A",
+      "difficulty": 11
+    },
+    {
+      "id": 169,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "N",
+        "T",
+        "V",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 4
+    },
+    {
+      "id": 170,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U"
+      ],
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 5
     },
     {
       "id": 171,
@@ -2090,461 +2836,572 @@
         "N",
         "P",
         "T",
-        "U",
-        "X"
+        "Y",
+        "Z"
       ],
+      "tier": "grand-slam",
+      "line": "B",
       "difficulty": 6
     },
     {
       "id": 172,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
-        "L",
+        "I",
         "N",
-        "P",
-        "T",
-        "W"
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 7
     },
     {
       "id": 173,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "P",
-        "U",
+        "T",
+        "V",
+        "W",
         "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 8
     },
     {
       "id": 174,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
-        "I",
-        "N",
+        "L",
+        "P",
         "U",
         "V",
-        "Y"
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 9
     },
     {
       "id": 175,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 10,
       "requiredPieces": [
         "I",
         "L",
         "N",
-        "T",
-        "U",
-        "Y"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 176,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "F",
         "P",
         "T",
         "U",
         "W",
-        "Y"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 10
+    },
+    {
+      "id": 176,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "B",
+      "difficulty": 11
     },
     {
       "id": 177,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 4,
       "requiredPieces": [
-        "N",
+        "L",
         "P",
-        "T",
         "U",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 4
     },
     {
       "id": 178,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 5,
       "requiredPieces": [
-        "I",
-        "N",
-        "U",
+        "F",
+        "L",
+        "P",
         "V",
-        "Y",
-        "Z"
+        "W"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 5
     },
     {
       "id": 179,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
+        "N",
         "P",
-        "V",
+        "U",
+        "X",
         "Y"
       ],
+      "tier": "grand-slam",
+      "line": "C",
       "difficulty": 6
     },
     {
       "id": 180,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
         "I",
-        "L",
         "P",
+        "T",
         "U",
         "V",
-        "W"
+        "Y",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 7
     },
     {
       "id": 181,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "L",
         "N",
         "P",
         "T",
-        "U"
+        "U",
+        "V",
+        "X",
+        "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 8
     },
     {
       "id": 182,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
+        "N",
         "P",
+        "T",
         "U",
-        "W",
-        "Y"
+        "V",
+        "X",
+        "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 9
     },
     {
       "id": 183,
       "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "F",
-        "L",
-        "U",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 184,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "L",
-        "P",
-        "U",
-        "V",
-        "W",
-        "Y"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 185,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "L",
-        "P",
-        "T",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 186,
-      "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
         "L",
+        "N",
+        "P",
+        "T",
         "U",
+        "V",
+        "X",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 10
+    },
+    {
+      "id": 184,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "C",
+      "difficulty": 11
+    },
+    {
+      "id": 185,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "L",
+        "T",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 4
+    },
+    {
+      "id": 186,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "P",
+        "T",
+        "U",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 5
     },
     {
       "id": 187,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
-        "I",
-        "N",
+        "L",
         "P",
         "T",
+        "U",
         "V",
-        "Z"
+        "Y"
       ],
+      "tier": "grand-slam",
+      "line": "D",
       "difficulty": 6
     },
     {
       "id": 188,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
         "I",
         "L",
-        "N",
         "P",
         "U",
+        "V",
+        "W",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 7
     },
     {
       "id": 189,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
         "L",
-        "P",
-        "T",
-        "U",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 190,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 191,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "F",
         "N",
         "P",
         "U",
         "V",
+        "W",
+        "X",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 8
+    },
+    {
+      "id": 190,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 9
+    },
+    {
+      "id": 191,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 10
     },
     {
       "id": 192,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 11,
       "requiredPieces": [
+        "F",
         "I",
         "L",
+        "N",
         "P",
         "T",
+        "U",
         "V",
+        "W",
+        "X",
         "Z"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "D",
+      "difficulty": 11
     },
     {
       "id": 193,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 4,
       "requiredPieces": [
         "F",
         "L",
         "P",
-        "T",
-        "W",
-        "Y"
+        "U"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 4
     },
     {
       "id": 194,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 5,
       "requiredPieces": [
-        "L",
+        "I",
+        "P",
         "T",
         "V",
-        "W",
-        "Y",
-        "Z"
+        "W"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 5
     },
     {
       "id": 195,
       "boardRows": 5,
       "boardCols": 6,
       "requiredPieces": [
-        "F",
         "L",
-        "P",
-        "W",
-        "Y",
+        "N",
+        "T",
+        "U",
+        "V",
         "Z"
       ],
+      "tier": "grand-slam",
+      "line": "E",
       "difficulty": 6
     },
     {
       "id": 196,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "I",
-        "L",
+        "N",
+        "P",
         "T",
         "V",
-        "W",
         "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 7
     },
     {
       "id": 197,
       "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "P",
+        "N",
+        "T",
+        "U",
+        "V",
         "W",
         "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 8
     },
     {
       "id": 198,
       "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "L",
-        "N",
-        "P",
-        "U",
-        "V",
-        "X"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 199,
-      "boardRows": 5,
-      "boardCols": 6,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
-        "P",
-        "T"
-      ],
-      "difficulty": 6
-    },
-    {
-      "id": 200,
-      "boardRows": 5,
-      "boardCols": 6,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
         "P",
         "T",
-        "W"
+        "U",
+        "V",
+        "X",
+        "Y"
       ],
-      "difficulty": 6
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 9
     },
     {
-      "id": 201,
+      "id": 199,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "P",
         "T",
         "U",
         "W",
-        "Y"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 10
     },
     {
-      "id": 202,
+      "id": 200,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
-        "L",
-        "N",
-        "P",
-        "U",
-        "Y"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 203,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
         "N",
         "P",
         "T",
         "U",
+        "V",
+        "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "E",
+      "difficulty": 11
+    },
+    {
+      "id": 201,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "U"
+      ],
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 4
+    },
+    {
+      "id": 202,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 5
+    },
+    {
+      "id": 203,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "T",
+        "U",
+        "X"
+      ],
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 6
     },
     {
       "id": 204,
@@ -2557,474 +3414,554 @@
         "T",
         "U",
         "V",
-        "X"
+        "W"
       ],
+      "tier": "grand-slam",
+      "line": "F",
       "difficulty": 7
     },
     {
       "id": 205,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "I",
+        "L",
         "N",
-        "P",
-        "V",
-        "Y",
-        "Z"
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 8
     },
     {
       "id": 206,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
+        "I",
+        "L",
         "N",
         "P",
         "T",
-        "V",
         "W",
-        "Y"
+        "X",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 9
     },
     {
       "id": 207,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
         "I",
         "L",
+        "N",
         "P",
+        "T",
         "U",
         "V",
-        "X",
+        "W",
+        "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 10
     },
     {
       "id": 208,
       "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
-        "P",
-        "T",
-        "W",
-        "Y"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 209,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "I",
-        "P",
-        "T",
-        "U",
-        "V",
-        "W",
-        "Y"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 210,
-      "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "P",
+        "N",
         "T",
         "U",
-        "V"
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "F",
+      "difficulty": 11
+    },
+    {
+      "id": 209,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "U"
+      ],
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 4
+    },
+    {
+      "id": 210,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "T",
+        "V",
+        "W",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 5
     },
     {
       "id": 211,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 6,
       "requiredPieces": [
         "L",
         "N",
         "P",
-        "T",
+        "U",
         "V",
-        "W",
-        "Z"
+        "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 6
     },
     {
       "id": 212,
       "boardRows": 5,
       "boardCols": 7,
       "requiredPieces": [
-        "L",
+        "F",
         "N",
-        "T",
+        "P",
         "U",
         "V",
         "W",
-        "X"
+        "Y"
       ],
+      "tier": "grand-slam",
+      "line": "G",
       "difficulty": 7
     },
     {
       "id": 213,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
-        "N",
-        "P",
-        "T",
+        "F",
+        "L",
         "U",
         "V",
-        "Y"
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 8
     },
     {
       "id": 214,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
-        "U",
+        "P",
+        "T",
         "V",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 9
     },
     {
       "id": 215,
       "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 216,
-      "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "N",
         "P",
         "U",
         "V",
-        "W"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 217,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 218,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "U",
         "W",
         "X",
         "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 10
     },
     {
-      "id": 219,
+      "id": 216,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
-        "V",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "G",
+      "difficulty": 11
+    },
+    {
+      "id": 217,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "V"
+      ],
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 4
+    },
+    {
+      "id": 218,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "L",
+        "P",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 5
+    },
+    {
+      "id": 219,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X"
+      ],
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 6
     },
     {
       "id": 220,
       "boardRows": 5,
       "boardCols": 7,
       "requiredPieces": [
+        "F",
         "I",
         "L",
-        "N",
-        "T",
+        "P",
         "U",
         "V",
         "Z"
       ],
+      "tier": "grand-slam",
+      "line": "H",
       "difficulty": 7
     },
     {
       "id": 221,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
-        "P",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 222,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "V",
-        "W",
-        "Z"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 223,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "P",
-        "U",
-        "W"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 224,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "I",
         "N",
         "P",
         "T",
-        "V",
-        "Y"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 225,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "L",
-        "N",
-        "P",
         "U",
         "V",
         "X",
         "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 8
+    },
+    {
+      "id": 222,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 9
+    },
+    {
+      "id": 223,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 10
+    },
+    {
+      "id": 224,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "H",
+      "difficulty": 11
+    },
+    {
+      "id": 225,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "U"
+      ],
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 4
     },
     {
       "id": 226,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "L",
-        "N",
         "P",
+        "U",
         "V",
-        "W",
-        "Y"
+        "W"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 5
     },
     {
       "id": 227,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "I",
-        "P",
+        "N",
         "T",
-        "V",
+        "U",
+        "W",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 6
     },
     {
       "id": 228,
       "boardRows": 5,
       "boardCols": 7,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
         "N",
         "P",
-        "T",
         "U",
-        "Z"
+        "V",
+        "X"
       ],
+      "tier": "grand-slam",
+      "line": "I",
       "difficulty": 7
     },
     {
       "id": 229,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
         "L",
         "P",
         "T",
-        "U",
         "V",
-        "Y"
+        "W",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 8
     },
     {
       "id": 230,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
+        "N",
         "P",
+        "T",
         "U",
+        "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 9
     },
     {
       "id": 231,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
-        "L",
+        "I",
+        "N",
         "P",
         "T",
         "U",
         "V",
-        "X"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 232,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "T",
-        "V",
-        "W",
-        "Z"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 233,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "L",
-        "P",
-        "T",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 234,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 7
-    },
-    {
-      "id": 235,
-      "boardRows": 5,
-      "boardCols": 7,
-      "requiredPieces": [
-        "L",
-        "P",
-        "T",
-        "U",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 10
+    },
+    {
+      "id": 232,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "I",
+      "difficulty": 11
+    },
+    {
+      "id": 233,
+      "boardRows": 5,
+      "boardCols": 4,
+      "requiredPieces": [
+        "L",
+        "U",
+        "V",
+        "Y"
+      ],
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 4
+    },
+    {
+      "id": 234,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "Y",
+        "Z"
+      ],
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 5
+    },
+    {
+      "id": 235,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "V",
+        "W"
+      ],
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 6
     },
     {
       "id": 236,
@@ -3033,255 +3970,295 @@
       "requiredPieces": [
         "F",
         "I",
-        "L",
+        "N",
+        "P",
         "U",
-        "V",
         "Y",
         "Z"
       ],
+      "tier": "grand-slam",
+      "line": "J",
       "difficulty": 7
     },
     {
       "id": 237,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "N",
         "P",
         "T",
         "U",
-        "V",
+        "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 8
     },
     {
       "id": 238,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 9,
       "requiredPieces": [
         "L",
-        "N",
         "P",
+        "T",
         "U",
         "V",
+        "W",
         "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 9
     },
     {
       "id": 239,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
+        "I",
         "N",
         "P",
         "T",
         "U",
         "V",
-        "X"
+        "W",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 10
     },
     {
       "id": 240,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 11,
       "requiredPieces": [
         "I",
+        "L",
         "N",
+        "P",
+        "T",
         "U",
         "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "J",
+      "difficulty": 11
     },
     {
       "id": 241,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 4,
       "requiredPieces": [
-        "I",
-        "L",
-        "N",
         "P",
-        "T",
+        "U",
         "V",
-        "W"
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 4
     },
     {
       "id": 242,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 5,
       "requiredPieces": [
         "I",
-        "N",
-        "T",
+        "L",
+        "U",
         "V",
-        "W",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 5
     },
     {
       "id": 243,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 6,
       "requiredPieces": [
-        "L",
-        "N",
+        "I",
         "P",
         "T",
-        "U",
+        "V",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 6
     },
     {
       "id": 244,
       "boardRows": 5,
       "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
-        "N",
         "P",
-        "U",
+        "T",
         "V",
+        "W",
+        "Y",
         "Z"
       ],
+      "tier": "grand-slam",
+      "line": "K",
       "difficulty": 7
     },
     {
       "id": 245,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 8,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "N",
-        "P",
         "T",
         "U",
-        "V",
+        "W",
+        "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 8
     },
     {
       "id": 246,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "N",
-        "T",
+        "P",
         "V",
+        "W",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 9
     },
     {
       "id": 247,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "N",
         "P",
         "T",
         "V",
         "W",
-        "Y"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 10
     },
     {
       "id": 248,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
-        "I",
         "L",
+        "N",
+        "P",
+        "T",
+        "U",
         "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "K",
+      "difficulty": 11
     },
     {
       "id": 249,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 4,
       "requiredPieces": [
-        "F",
-        "I",
-        "N",
+        "L",
         "P",
-        "U",
-        "V",
-        "Y"
+        "Y",
+        "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 4
     },
     {
       "id": 250,
       "boardRows": 5,
-      "boardCols": 7,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
-        "T",
+        "U",
         "V",
         "Z"
       ],
-      "difficulty": 7
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 5
     },
     {
       "id": 251,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "T",
         "U",
-        "X",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 6
     },
     {
       "id": 252,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 7,
       "requiredPieces": [
-        "I",
+        "L",
         "N",
         "P",
-        "T",
         "U",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 7
     },
     {
       "id": 253,
@@ -3291,109 +4268,123 @@
         "F",
         "I",
         "L",
-        "N",
-        "P",
         "T",
-        "V",
-        "Y"
+        "U",
+        "X",
+        "Y",
+        "Z"
       ],
+      "tier": "grand-slam",
+      "line": "L",
       "difficulty": 8
     },
     {
       "id": 254,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
+        "N",
+        "P",
         "T",
         "U",
         "W",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 8
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 9
     },
     {
       "id": 255,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
-        "V"
+        "V",
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 8
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 10
     },
     {
       "id": 256,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
-        "P",
-        "T",
-        "U",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 257,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
         "L",
         "N",
         "P",
         "T",
         "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "grand-slam",
+      "line": "L",
+      "difficulty": 11
     },
     {
-      "id": 258,
+      "id": 257,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
-        "I",
-        "L",
         "P",
-        "T",
-        "U",
-        "X",
-        "Y"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 259,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "U",
         "V",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 5
+    },
+    {
+      "id": 258,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "T",
+        "U",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 6
+    },
+    {
+      "id": 259,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 7
     },
     {
       "id": 260,
@@ -3401,6 +4392,25 @@
       "boardCols": 8,
       "requiredPieces": [
         "F",
+        "I",
+        "N",
+        "P",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 8
+    },
+    {
+      "id": 261,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
         "P",
@@ -3409,103 +4419,98 @@
         "Y",
         "Z"
       ],
-      "difficulty": 8
-    },
-    {
-      "id": 261,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "P",
-        "T",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 9
     },
     {
       "id": 262,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 10
+    },
+    {
+      "id": 263,
+      "boardRows": 5,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "A",
+      "difficulty": 11
+    },
+    {
+      "id": 264,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "V",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 5
+    },
+    {
+      "id": 265,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 6
+    },
+    {
+      "id": 266,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "L",
         "P",
         "T",
         "U",
         "V",
         "W"
       ],
-      "difficulty": 8
-    },
-    {
-      "id": 263,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "L",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 264,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "T",
-        "V",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 265,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "I",
-        "L",
-        "P",
-        "T",
-        "U",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 266,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "P",
-        "V",
-        "W",
-        "X"
-      ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 7
     },
     {
       "id": 267,
@@ -3516,67 +4521,22 @@
         "I",
         "L",
         "N",
+        "T",
         "U",
         "V",
-        "W",
         "Y"
       ],
+      "tier": "super-slam",
+      "line": "B",
       "difficulty": 8
     },
     {
       "id": 268,
       "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
-        "P",
-        "U",
-        "V",
-        "W",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 269,
-      "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
-        "L",
-        "P",
-        "T",
-        "U",
-        "V",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 270,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "P",
-        "V",
-        "W",
-        "Y"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 271,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
         "N",
         "P",
         "T",
@@ -3585,15 +4545,40 @@
         "X",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 9
     },
     {
-      "id": 272,
+      "id": 269,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 10
+    },
+    {
+      "id": 270,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
         "U",
         "V",
         "W",
@@ -3601,23 +4586,57 @@
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "B",
+      "difficulty": 11
+    },
+    {
+      "id": 271,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "F",
+        "L",
+        "P",
+        "V",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 5
+    },
+    {
+      "id": 272,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "N",
+        "U",
+        "V",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 6
     },
     {
       "id": 273,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "L",
         "N",
         "P",
         "T",
         "U",
-        "W",
+        "V",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 7
     },
     {
       "id": 274,
@@ -3630,460 +4649,516 @@
         "N",
         "P",
         "T",
-        "U",
+        "X",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "C",
       "difficulty": 8
     },
     {
       "id": 275,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "P",
-        "T",
+        "N",
+        "U",
+        "V",
+        "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 9
     },
     {
       "id": 276,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
         "V",
         "W",
-        "X"
+        "Y",
+        "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 10
     },
     {
       "id": 277,
       "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "P",
-        "T",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 278,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "U",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 279,
-      "boardRows": 5,
-      "boardCols": 8,
-      "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "U",
-        "V",
-        "W",
-        "X"
-      ],
-      "difficulty": 8
-    },
-    {
-      "id": 280,
-      "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
         "L",
+        "N",
         "P",
         "T",
         "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "C",
+      "difficulty": 11
+    },
+    {
+      "id": 278,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "V",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 5
+    },
+    {
+      "id": 279,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "U",
+        "V",
+        "X"
+      ],
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 6
+    },
+    {
+      "id": 280,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "V",
         "W",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 7
     },
     {
       "id": 281,
       "boardRows": 5,
       "boardCols": 8,
       "requiredPieces": [
-        "I",
         "L",
         "N",
         "P",
         "T",
-        "W",
-        "Y",
+        "U",
+        "V",
+        "X",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "D",
       "difficulty": 8
     },
     {
       "id": 282,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "T",
         "U",
+        "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 9
     },
     {
       "id": 283,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "N",
+        "P",
         "T",
         "U",
         "V",
         "W",
-        "Y"
+        "X"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 10
     },
     {
       "id": 284,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 11,
       "requiredPieces": [
+        "F",
+        "I",
         "L",
         "N",
         "P",
         "T",
         "U",
         "V",
-        "Y",
+        "W",
+        "X",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "D",
+      "difficulty": 11
     },
     {
       "id": 285,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 5,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "T",
         "U",
-        "V",
-        "W",
-        "Y"
+        "V"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 5
     },
     {
       "id": 286,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
-        "I",
         "L",
-        "N",
         "P",
         "U",
         "W",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 6
     },
     {
       "id": 287,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
-        "N",
+        "L",
         "P",
         "U",
         "V",
         "W",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 7
     },
     {
       "id": 288,
       "boardRows": 5,
       "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
+        "L",
         "N",
         "P",
-        "V",
+        "T",
+        "U",
         "W",
-        "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "super-slam",
+      "line": "E",
       "difficulty": 8
     },
     {
       "id": 289,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "I",
         "L",
-        "P",
         "T",
         "U",
         "V",
+        "W",
         "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 9
     },
     {
       "id": 290,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
+        "L",
+        "N",
         "P",
         "T",
         "U",
-        "V",
         "W",
-        "Y"
+        "X",
+        "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 10
     },
     {
       "id": 291,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 11,
       "requiredPieces": [
+        "F",
         "I",
-        "L",
         "N",
         "P",
+        "T",
         "U",
+        "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "E",
+      "difficulty": 11
     },
     {
       "id": 292,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 5,
       "requiredPieces": [
-        "I",
-        "N",
-        "P",
-        "T",
+        "L",
         "U",
         "V",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 5
     },
     {
       "id": 293,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
         "I",
-        "N",
         "P",
-        "T",
         "U",
         "V",
-        "X"
+        "Y",
+        "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 6
     },
     {
       "id": 294,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "P",
-        "T",
-        "U",
+        "V",
         "W",
-        "X"
+        "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 7
     },
     {
       "id": 295,
       "boardRows": 5,
       "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
         "U",
         "V",
         "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "super-slam",
+      "line": "F",
       "difficulty": 8
     },
     {
       "id": 296,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
         "P",
+        "T",
+        "U",
         "V",
-        "W",
-        "X",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 9
     },
     {
       "id": 297,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 10,
       "requiredPieces": [
+        "I",
         "L",
         "N",
         "P",
+        "T",
         "V",
         "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 10
     },
     {
       "id": 298,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 11,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "N",
-        "P",
+        "T",
         "U",
         "V",
         "W",
-        "Y"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "F",
+      "difficulty": 11
     },
     {
       "id": 299,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 5,
       "requiredPieces": [
         "F",
-        "N",
-        "P",
+        "L",
         "U",
-        "V",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 5
     },
     {
       "id": 300,
       "boardRows": 5,
-      "boardCols": 8,
+      "boardCols": 6,
       "requiredPieces": [
+        "F",
         "I",
-        "L",
-        "N",
-        "P",
-        "V",
+        "T",
+        "U",
         "W",
-        "X",
         "Y"
       ],
-      "difficulty": 8
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 6
     },
     {
       "id": 301,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
-        "T",
         "U",
         "X",
-        "Z"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 7
     },
     {
       "id": 302,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
         "L",
-        "N",
-        "P",
         "T",
+        "U",
         "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 8
     },
     {
       "id": 303,
@@ -4094,257 +5169,274 @@
         "L",
         "N",
         "P",
+        "T",
         "U",
-        "V",
+        "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
+      "tier": "super-slam",
+      "line": "G",
       "difficulty": 9
     },
     {
       "id": 304,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
-        "P",
         "T",
-        "V",
-        "W",
-        "Y"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 305,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "T",
-        "U",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 306,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 307,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
-        "P",
         "U",
         "V",
         "W",
         "X",
-        "Y"
+        "Y",
+        "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 10
+    },
+    {
+      "id": 305,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "G",
+      "difficulty": 11
+    },
+    {
+      "id": 306,
+      "boardRows": 5,
+      "boardCols": 5,
+      "requiredPieces": [
+        "N",
+        "P",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 5
+    },
+    {
+      "id": 307,
+      "boardRows": 5,
+      "boardCols": 6,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
+        "V",
+        "W"
+      ],
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 6
     },
     {
       "id": 308,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
-        "I",
+        "L",
         "N",
         "P",
-        "T",
         "U",
         "V",
-        "W",
-        "Y"
+        "X",
+        "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 7
     },
     {
       "id": 309,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "N",
-        "P",
         "T",
         "U",
         "V",
-        "W",
-        "Z"
+        "X",
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 8
     },
     {
       "id": 310,
       "boardRows": 5,
       "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "P",
         "T",
+        "U",
         "V",
         "W",
-        "Y",
-        "Z"
+        "X",
+        "Y"
       ],
+      "tier": "super-slam",
+      "line": "H",
       "difficulty": 9
     },
     {
       "id": 311,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
+        "L",
         "N",
         "P",
-        "V",
+        "T",
+        "U",
         "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 10
     },
     {
       "id": 312,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
         "P",
+        "T",
         "U",
+        "V",
         "W",
         "X",
         "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "H",
+      "difficulty": 11
     },
     {
       "id": 313,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 5,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
-        "P",
-        "U",
-        "V",
-        "W",
+        "T",
         "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 5
     },
     {
       "id": 314,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "L",
-        "N",
-        "T",
-        "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 315,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "T",
-        "U",
-        "V",
-        "W",
-        "Z"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 316,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
         "I",
         "N",
         "P",
         "U",
         "V",
+        "Z"
+      ],
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 6
+    },
+    {
+      "id": 315,
+      "boardRows": 5,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
         "W",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 7
+    },
+    {
+      "id": 316,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "U",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 8
     },
     {
       "id": 317,
       "boardRows": 5,
       "boardCols": 9,
       "requiredPieces": [
-        "I",
         "L",
         "N",
         "P",
         "U",
         "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "I",
       "difficulty": 9
     },
     {
       "id": 318,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
         "L",
         "N",
         "P",
@@ -4355,92 +5447,96 @@
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 10
     },
     {
       "id": 319,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
+        "T",
         "U",
+        "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "I",
+      "difficulty": 11
     },
     {
       "id": 320,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "I",
         "N",
-        "P",
         "T",
-        "U",
         "V",
-        "W",
-        "X"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 5
     },
     {
       "id": 321,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 6,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "P",
         "T",
-        "U",
-        "V",
-        "X",
+        "W",
+        "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 6
     },
     {
       "id": 322,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "L",
         "N",
         "P",
         "T",
         "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 7
     },
     {
       "id": 323,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 8,
       "requiredPieces": [
         "I",
         "L",
-        "T",
+        "P",
         "U",
         "V",
         "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 8
     },
     {
       "id": 324,
@@ -4448,42 +5544,49 @@
       "boardCols": 9,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
+        "P",
         "T",
-        "U",
+        "V",
         "W",
-        "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "super-slam",
+      "line": "J",
       "difficulty": 9
     },
     {
       "id": 325,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
-        "I",
+        "L",
         "N",
         "P",
         "T",
         "U",
         "V",
+        "W",
         "X",
         "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 10
     },
     {
       "id": 326,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 11,
       "requiredPieces": [
         "I",
         "L",
         "N",
+        "P",
+        "T",
         "U",
         "V",
         "W",
@@ -4491,114 +5594,119 @@
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "J",
+      "difficulty": 11
     },
     {
       "id": 327,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 5,
       "requiredPieces": [
-        "F",
         "I",
-        "L",
-        "T",
+        "P",
         "U",
-        "W",
-        "X",
-        "Y",
+        "V",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 5
     },
     {
       "id": 328,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
-        "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
+        "P",
+        "T",
+        "W"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 6
     },
     {
       "id": 329,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 7,
       "requiredPieces": [
+        "I",
         "L",
         "N",
         "P",
         "T",
         "U",
-        "V",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 7
     },
     {
       "id": 330,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
         "N",
         "P",
+        "T",
         "U",
         "V",
-        "X",
+        "W",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 8
     },
     {
       "id": 331,
       "boardRows": 5,
       "boardCols": 9,
       "requiredPieces": [
-        "L",
+        "F",
+        "I",
         "N",
-        "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
+        "Y",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "K",
       "difficulty": 9
     },
     {
       "id": 332,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
         "P",
-        "T",
-        "U",
+        "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 10
     },
     {
       "id": 333,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 11,
       "requiredPieces": [
         "F",
         "L",
@@ -4606,79 +5714,81 @@
         "P",
         "T",
         "U",
+        "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "K",
+      "difficulty": 11
     },
     {
       "id": 334,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 5,
       "requiredPieces": [
-        "I",
-        "L",
+        "F",
         "N",
-        "P",
         "T",
         "V",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 5
     },
     {
       "id": 335,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 6,
       "requiredPieces": [
         "F",
         "I",
-        "L",
-        "N",
-        "P",
         "T",
         "U",
-        "W",
-        "Y"
+        "V",
+        "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 6
     },
     {
       "id": 336,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "I",
-        "L",
         "N",
-        "T",
+        "P",
         "U",
-        "V",
         "W",
-        "X",
         "Y"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 7
     },
     {
       "id": 337,
       "boardRows": 5,
-      "boardCols": 9,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
-        "N",
+        "F",
+        "L",
         "P",
-        "T",
         "U",
         "V",
+        "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 8
     },
     {
       "id": 338,
@@ -4688,48 +5798,57 @@
         "F",
         "L",
         "N",
+        "P",
+        "T",
         "U",
+        "V",
+        "X",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 9
+    },
+    {
+      "id": 339,
+      "boardRows": 5,
+      "boardCols": 10,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
+        "Y"
+      ],
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 10
+    },
+    {
+      "id": 340,
+      "boardRows": 5,
+      "boardCols": 11,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
         "V",
         "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 9
-    },
-    {
-      "id": 339,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "P",
-        "T",
-        "U",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 9
-    },
-    {
-      "id": 340,
-      "boardRows": 5,
-      "boardCols": 9,
-      "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "T",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 9
+      "tier": "super-slam",
+      "line": "L",
+      "difficulty": 11
     },
     {
       "id": 341,
@@ -4739,13 +5858,15 @@
         "F",
         "I",
         "L",
+        "N",
         "P",
         "T",
         "U",
-        "V",
-        "W",
+        "X",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "A2",
       "difficulty": 9
     },
     {
@@ -4753,16 +5874,18 @@
       "boardRows": 5,
       "boardCols": 9,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
+        "P",
         "T",
-        "U",
         "V",
+        "W",
         "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "super-slam",
+      "line": "B2",
       "difficulty": 9
     },
     {
@@ -4771,8 +5894,8 @@
       "boardCols": 9,
       "requiredPieces": [
         "F",
-        "L",
-        "N",
+        "I",
+        "P",
         "T",
         "U",
         "V",
@@ -4780,6 +5903,8 @@
         "X",
         "Y"
       ],
+      "tier": "super-slam",
+      "line": "C2",
       "difficulty": 9
     },
     {
@@ -4791,12 +5916,14 @@
         "L",
         "N",
         "P",
+        "T",
         "U",
         "V",
-        "W",
-        "Y",
+        "X",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "D2",
       "difficulty": 9
     },
     {
@@ -4805,15 +5932,17 @@
       "boardCols": 9,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
         "P",
         "T",
         "V",
         "W",
-        "X",
         "Y"
       ],
+      "tier": "super-slam",
+      "line": "E2",
       "difficulty": 9
     },
     {
@@ -4823,14 +5952,16 @@
       "requiredPieces": [
         "F",
         "I",
-        "L",
+        "N",
         "P",
+        "T",
         "U",
         "V",
-        "X",
-        "Y",
-        "Z"
+        "W",
+        "Y"
       ],
+      "tier": "super-slam",
+      "line": "F2",
       "difficulty": 9
     },
     {
@@ -4844,10 +5975,12 @@
         "N",
         "P",
         "V",
-        "W",
+        "X",
         "Y",
         "Z"
       ],
+      "tier": "super-slam",
+      "line": "G2",
       "difficulty": 9
     },
     {
@@ -4855,16 +5988,18 @@
       "boardRows": 5,
       "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "P",
+        "N",
         "T",
+        "U",
         "V",
         "W",
         "X",
-        "Y"
+        "Z"
       ],
+      "tier": "super-slam",
+      "line": "H2",
       "difficulty": 9
     },
     {
@@ -4875,13 +6010,15 @@
         "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
-        "V",
+        "U",
         "W",
-        "X"
+        "X",
+        "Y"
       ],
+      "tier": "super-slam",
+      "line": "I2",
       "difficulty": 9
     },
     {
@@ -4891,20 +6028,22 @@
       "requiredPieces": [
         "F",
         "I",
-        "L",
         "N",
-        "P",
+        "T",
+        "U",
         "V",
         "W",
         "X",
-        "Z"
+        "Y"
       ],
+      "tier": "super-slam",
+      "line": "J2",
       "difficulty": 9
     },
     {
       "id": 351,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
@@ -4912,53 +6051,72 @@
         "N",
         "P",
         "T",
-        "U",
-        "V",
-        "W",
-        "Y"
+        "X",
+        "Y",
+        "Z"
       ],
-      "difficulty": 10
+      "tier": "super-slam",
+      "line": "K2",
+      "difficulty": 9
     },
     {
       "id": 352,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
         "P",
+        "T",
         "U",
-        "V",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "super-slam",
+      "line": "L2",
+      "difficulty": 9
     },
     {
       "id": 353,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
-        "T",
+        "P",
         "U",
-        "V",
-        "W",
-        "X",
-        "Y"
+        "Y",
+        "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°1",
+      "difficulty": 7
     },
     {
       "id": 354,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "Y",
+        "Z"
+      ],
+      "tier": "challenge",
+      "line": "N°1",
+      "difficulty": 8
+    },
+    {
+      "id": 355,
+      "boardRows": 5,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
@@ -4966,102 +6124,87 @@
         "N",
         "P",
         "T",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 355,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "N",
-        "T",
         "U",
         "V",
-        "W",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°1",
+      "difficulty": 9
     },
     {
       "id": 356,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
         "L",
+        "N",
         "P",
         "T",
         "U",
         "V",
-        "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
+      "tier": "challenge",
+      "line": "N°1",
       "difficulty": 10
     },
     {
       "id": 357,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "N",
         "P",
-        "T",
-        "U",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°2",
+      "difficulty": 7
     },
     {
       "id": 358,
       "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "L",
-        "N",
-        "P",
-        "T",
-        "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 359,
-      "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
-        "P",
         "T",
         "U",
         "V",
-        "Y",
+        "W",
+        "X"
+      ],
+      "tier": "challenge",
+      "line": "N°2",
+      "difficulty": 8
+    },
+    {
+      "id": 359,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "L",
+        "N",
+        "P",
+        "T",
+        "V",
+        "W",
+        "X",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°2",
+      "difficulty": 9
     },
     {
       "id": 360,
@@ -5069,60 +6212,60 @@
       "boardCols": 10,
       "requiredPieces": [
         "F",
-        "L",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 361,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
         "P",
         "T",
-        "U",
+        "V",
         "W",
-        "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "challenge",
+      "line": "N°2",
       "difficulty": 10
     },
     {
-      "id": 362,
+      "id": 361,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
         "N",
         "P",
         "T",
+        "V",
+        "W"
+      ],
+      "tier": "challenge",
+      "line": "N°3",
+      "difficulty": 7
+    },
+    {
+      "id": 362,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
         "U",
         "V",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°3",
+      "difficulty": 8
     },
     {
       "id": 363,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
@@ -5130,10 +6273,12 @@
         "T",
         "V",
         "W",
-        "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°3",
+      "difficulty": 9
     },
     {
       "id": 364,
@@ -5151,12 +6296,14 @@
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°3",
       "difficulty": 10
     },
     {
       "id": 365,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "I",
@@ -5164,120 +6311,122 @@
         "N",
         "P",
         "T",
-        "U",
-        "V",
-        "W",
-        "X"
+        "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°4",
+      "difficulty": 7
     },
     {
       "id": 366,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 367,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
         "T",
         "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "challenge",
+      "line": "N°4",
+      "difficulty": 8
+    },
+    {
+      "id": 367,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "L",
+        "P",
+        "U",
         "V",
         "W",
         "X",
+        "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°4",
+      "difficulty": 9
     },
     {
       "id": 368,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
         "P",
         "T",
+        "U",
         "V",
         "W",
         "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "challenge",
+      "line": "N°4",
       "difficulty": 10
     },
     {
       "id": 369,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
         "P",
-        "U",
         "V",
-        "W",
-        "X",
         "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°5",
+      "difficulty": 7
     },
     {
       "id": 370,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
-        "L",
-        "P",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 371,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
         "N",
         "P",
-        "U",
+        "T",
         "V",
         "W",
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°5",
+      "difficulty": 8
+    },
+    {
+      "id": 371,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "I",
+        "N",
+        "P",
+        "T",
+        "U",
+        "V",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "challenge",
+      "line": "N°5",
+      "difficulty": 9
     },
     {
       "id": 372,
@@ -5286,206 +6435,191 @@
       "requiredPieces": [
         "F",
         "I",
-        "L",
         "N",
-        "P",
         "T",
+        "U",
         "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°5",
       "difficulty": 10
     },
     {
       "id": 373,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
         "P",
         "T",
-        "V",
-        "X",
-        "Y",
-        "Z"
+        "W",
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°6",
+      "difficulty": 7
     },
     {
       "id": 374,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
         "N",
-        "P",
-        "T",
         "U",
         "V",
         "W",
         "X",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°6",
+      "difficulty": 8
     },
     {
       "id": 375,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
-        "P",
+        "L",
+        "N",
         "T",
         "U",
-        "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°6",
+      "difficulty": 9
     },
     {
       "id": 376,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
         "L",
-        "N",
-        "P",
         "T",
+        "U",
         "V",
         "W",
         "X",
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°6",
       "difficulty": 10
     },
     {
       "id": 377,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
         "P",
-        "T",
         "U",
-        "V",
-        "X",
-        "Z"
+        "W",
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°7",
+      "difficulty": 7
     },
     {
       "id": 378,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
+        "L",
         "N",
         "P",
         "T",
-        "U",
+        "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°7",
+      "difficulty": 8
     },
     {
       "id": 379,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
+        "N",
         "P",
+        "T",
         "U",
         "V",
-        "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°7",
+      "difficulty": 9
     },
     {
       "id": 380,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
-        "L",
         "N",
         "P",
         "T",
-        "U",
         "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°7",
       "difficulty": 10
     },
     {
       "id": 381,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
+        "P",
         "T",
         "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°8",
+      "difficulty": 7
     },
     {
       "id": 382,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "N",
-        "P",
-        "U",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 383,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "P",
         "T",
         "U",
         "V",
@@ -5493,14 +6627,35 @@
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°8",
+      "difficulty": 8
+    },
+    {
+      "id": 383,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "L",
+        "N",
+        "P",
+        "T",
+        "U",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "tier": "challenge",
+      "line": "N°8",
+      "difficulty": 9
     },
     {
       "id": 384,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
-        "L",
+        "I",
         "N",
         "P",
         "T",
@@ -5511,133 +6666,137 @@
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°8",
       "difficulty": 10
     },
     {
       "id": 385,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
-        "L",
         "N",
         "P",
         "T",
         "U",
-        "V",
         "W",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°9",
+      "difficulty": 7
     },
     {
       "id": 386,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
-        "V",
-        "X",
-        "Y"
+        "W",
+        "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°9",
+      "difficulty": 8
     },
     {
       "id": 387,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
-        "L",
+        "I",
         "N",
-        "P",
+        "T",
         "U",
         "V",
-        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°9",
+      "difficulty": 9
     },
     {
       "id": 388,
       "boardRows": 5,
       "boardCols": 10,
       "requiredPieces": [
-        "I",
+        "F",
         "L",
         "N",
         "P",
         "T",
-        "U",
         "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°9",
       "difficulty": 10
     },
     {
       "id": 389,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "N",
+        "P",
         "T",
         "U",
-        "V",
-        "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°10",
+      "difficulty": 7
     },
     {
       "id": 390,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
+        "L",
         "N",
         "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
         "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°10",
+      "difficulty": 8
     },
     {
       "id": 391,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 9,
       "requiredPieces": [
+        "F",
         "I",
         "L",
-        "N",
         "P",
+        "T",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°10",
+      "difficulty": 9
     },
     {
       "id": 392,
@@ -5645,44 +6804,8 @@
       "boardCols": 10,
       "requiredPieces": [
         "F",
-        "L",
-        "N",
-        "P",
-        "T",
-        "U",
-        "V",
-        "W",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 393,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
         "I",
         "L",
-        "N",
-        "P",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 394,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "I",
-        "L",
-        "N",
         "P",
         "T",
         "U",
@@ -5691,25 +6814,63 @@
         "X",
         "Y"
       ],
+      "tier": "challenge",
+      "line": "N°10",
       "difficulty": 10
     },
     {
-      "id": 395,
+      "id": 393,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
+      "requiredPieces": [
+        "I",
+        "L",
+        "N",
+        "P",
+        "T",
+        "W",
+        "Y"
+      ],
+      "tier": "challenge",
+      "line": "N°11",
+      "difficulty": 7
+    },
+    {
+      "id": 394,
+      "boardRows": 5,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "L",
-        "N",
         "P",
         "T",
         "V",
         "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°11",
+      "difficulty": 8
+    },
+    {
+      "id": 395,
+      "boardRows": 5,
+      "boardCols": 9,
+      "requiredPieces": [
+        "F",
+        "I",
+        "L",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X"
+      ],
+      "tier": "challenge",
+      "line": "N°11",
+      "difficulty": 9
     },
     {
       "id": 396,
@@ -5717,71 +6878,73 @@
       "boardCols": 10,
       "requiredPieces": [
         "F",
-        "I",
+        "L",
         "N",
         "P",
         "T",
-        "V",
+        "U",
         "W",
         "X",
         "Y",
         "Z"
       ],
+      "tier": "challenge",
+      "line": "N°11",
       "difficulty": 10
     },
     {
       "id": 397,
       "boardRows": 5,
-      "boardCols": 10,
+      "boardCols": 7,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "Y",
+        "Z"
+      ],
+      "tier": "challenge",
+      "line": "N°12",
+      "difficulty": 7
+    },
+    {
+      "id": 398,
+      "boardRows": 5,
+      "boardCols": 8,
+      "requiredPieces": [
+        "F",
+        "I",
+        "P",
+        "T",
+        "U",
+        "V",
+        "W",
+        "Y"
+      ],
+      "tier": "challenge",
+      "line": "N°12",
+      "difficulty": 8
+    },
+    {
+      "id": 399,
+      "boardRows": 5,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "P",
-        "T",
-        "U",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
-    },
-    {
-      "id": 398,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "L",
-        "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 10
-    },
-    {
-      "id": 399,
-      "boardRows": 5,
-      "boardCols": 10,
-      "requiredPieces": [
-        "F",
-        "I",
-        "L",
-        "P",
-        "T",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
-      "difficulty": 10
+      "tier": "challenge",
+      "line": "N°12",
+      "difficulty": 9
     },
     {
       "id": 400,
@@ -5796,72 +6959,71 @@
         "U",
         "V",
         "W",
-        "X",
-        "Y"
+        "Y",
+        "Z"
       ],
+      "tier": "challenge",
+      "line": "N°12",
       "difficulty": 10
     },
     {
       "id": 401,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z"
+        "U",
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°13",
+      "difficulty": 7
     },
     {
       "id": 402,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
-        "T",
         "U",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°13",
+      "difficulty": 8
     },
     {
       "id": 403,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
         "U",
         "V",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°13",
+      "difficulty": 9
     },
     {
       "id": 404,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
@@ -5870,80 +7032,77 @@
         "P",
         "U",
         "V",
-        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°13",
+      "difficulty": 10
     },
     {
       "id": 405,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
+        "N",
         "P",
-        "T",
         "U",
         "V",
-        "W",
-        "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°14",
+      "difficulty": 7
     },
     {
       "id": 406,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°14",
+      "difficulty": 8
     },
     {
       "id": 407,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
-        "T",
         "U",
-        "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°14",
+      "difficulty": 9
     },
     {
       "id": 408,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "N",
-        "P",
-        "T",
         "U",
         "V",
         "W",
@@ -5951,69 +7110,68 @@
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°14",
+      "difficulty": 10
     },
     {
       "id": 409,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
         "V",
-        "W",
-        "X",
         "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°15",
+      "difficulty": 7
     },
     {
       "id": 410,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
-        "P",
         "T",
+        "U",
         "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°15",
+      "difficulty": 8
     },
     {
       "id": 411,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
         "U",
+        "V",
         "W",
-        "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°15",
+      "difficulty": 9
     },
     {
       "id": 412,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
@@ -6023,227 +7181,222 @@
         "T",
         "U",
         "V",
-        "X",
-        "Y",
-        "Z"
+        "W",
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°15",
+      "difficulty": 10
     },
     {
       "id": 413,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
         "P",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°16",
+      "difficulty": 7
     },
     {
       "id": 414,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "P",
+        "N",
         "T",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°16",
+      "difficulty": 8
     },
     {
       "id": 415,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
+        "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
-        "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°16",
+      "difficulty": 9
     },
     {
       "id": 416,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
         "P",
-        "T",
         "U",
         "V",
         "W",
-        "Y",
+        "X",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°16",
+      "difficulty": 10
     },
     {
       "id": 417,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
-        "I",
-        "L",
+        "F",
         "N",
         "P",
         "T",
-        "U",
         "V",
-        "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°17",
+      "difficulty": 7
     },
     {
       "id": 418,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
         "P",
         "T",
-        "U",
         "V",
-        "W",
         "X",
         "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°17",
+      "difficulty": 8
     },
     {
       "id": 419,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
-        "V",
+        "U",
         "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°17",
+      "difficulty": 9
     },
     {
       "id": 420,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
         "U",
+        "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°17",
+      "difficulty": 10
     },
     {
       "id": 421,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
-        "V",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°18",
+      "difficulty": 7
     },
     {
       "id": 422,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
-        "L",
         "N",
         "P",
+        "T",
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°18",
+      "difficulty": 8
     },
     {
       "id": 423,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°18",
+      "difficulty": 9
     },
     {
       "id": 424,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
         "P",
@@ -6251,37 +7404,34 @@
         "U",
         "V",
         "W",
-        "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°18",
+      "difficulty": 10
     },
     {
       "id": 425,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
-        "N",
         "P",
         "T",
-        "U",
-        "V",
         "W",
-        "Y",
-        "Z"
+        "X",
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°19",
+      "difficulty": 7
     },
     {
       "id": 426,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "I",
         "L",
         "N",
         "P",
@@ -6289,19 +7439,17 @@
         "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°19",
+      "difficulty": 8
     },
     {
       "id": 427,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
-        "I",
         "L",
         "N",
         "P",
@@ -6310,14 +7458,16 @@
         "V",
         "W",
         "X",
-        "Y"
+        "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°19",
+      "difficulty": 9
     },
     {
       "id": 428,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
@@ -6326,152 +7476,147 @@
         "P",
         "T",
         "V",
-        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°19",
+      "difficulty": 10
     },
     {
       "id": 429,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
-        "N",
-        "P",
         "T",
-        "U",
+        "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°20",
+      "difficulty": 7
     },
     {
       "id": 430,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
-        "U",
         "V",
+        "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°20",
+      "difficulty": 8
     },
     {
       "id": 431,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
         "U",
         "V",
         "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°20",
+      "difficulty": 9
     },
     {
       "id": 432,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
-        "I",
         "L",
+        "N",
         "P",
         "T",
         "U",
         "V",
         "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°20",
+      "difficulty": 10
     },
     {
       "id": 433,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
+        "I",
         "L",
         "N",
         "P",
-        "T",
-        "U",
         "V",
-        "W",
-        "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°21",
+      "difficulty": 7
     },
     {
       "id": 434,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
-        "P",
         "T",
         "U",
         "V",
         "W",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°21",
+      "difficulty": 8
     },
     {
       "id": 435,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "I",
         "L",
         "N",
         "P",
-        "T",
         "U",
         "V",
         "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°21",
+      "difficulty": 9
     },
     {
       "id": 436,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
@@ -6481,54 +7626,52 @@
         "V",
         "W",
         "X",
-        "Y"
+        "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°21",
+      "difficulty": 10
     },
     {
       "id": 437,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
-        "P",
         "T",
-        "V",
-        "W",
-        "X",
+        "U",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°22",
+      "difficulty": 7
     },
     {
       "id": 438,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
         "P",
-        "T",
         "U",
-        "W",
-        "X",
-        "Y",
+        "V",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°22",
+      "difficulty": 8
     },
     {
       "id": 439,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
@@ -6536,16 +7679,17 @@
         "T",
         "U",
         "V",
-        "X",
-        "Y",
+        "W",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°22",
+      "difficulty": 9
     },
     {
       "id": 440,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
@@ -6553,232 +7697,223 @@
         "N",
         "P",
         "U",
-        "V",
         "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°22",
+      "difficulty": 10
     },
     {
       "id": 441,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
         "L",
-        "P",
-        "T",
+        "N",
         "U",
         "V",
-        "W",
         "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°23",
+      "difficulty": 7
     },
     {
       "id": 442,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
+        "I",
         "L",
-        "N",
         "P",
-        "T",
-        "U",
         "V",
         "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°23",
+      "difficulty": 8
     },
     {
       "id": 443,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
         "P",
-        "T",
-        "U",
         "V",
         "W",
+        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°23",
+      "difficulty": 9
     },
     {
       "id": 444,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
+        "F",
         "I",
         "L",
         "N",
         "P",
         "T",
-        "U",
         "V",
         "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°23",
+      "difficulty": 10
     },
     {
       "id": 445,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
-        "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
         "U",
         "V",
-        "W",
-        "X",
         "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°24",
+      "difficulty": 7
     },
     {
       "id": 446,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
         "F",
-        "I",
         "L",
-        "N",
         "P",
         "T",
+        "U",
         "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "X"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°24",
+      "difficulty": 8
     },
     {
       "id": 447,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
         "I",
         "L",
-        "N",
         "P",
         "T",
         "U",
-        "W",
-        "X",
+        "V",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°24",
+      "difficulty": 9
     },
     {
       "id": 448,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
         "I",
         "L",
         "N",
-        "P",
         "T",
-        "U",
         "V",
+        "W",
         "X",
         "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°24",
+      "difficulty": 10
     },
     {
       "id": 449,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 7,
       "requiredPieces": [
         "F",
-        "I",
         "L",
         "N",
         "P",
         "U",
-        "V",
-        "W",
         "X",
-        "Y",
         "Z"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°25",
+      "difficulty": 7
     },
     {
       "id": 450,
       "boardRows": 5,
-      "boardCols": 11,
+      "boardCols": 8,
       "requiredPieces": [
-        "F",
         "I",
         "L",
+        "N",
         "P",
         "T",
         "U",
-        "V",
         "W",
-        "X",
-        "Y",
-        "Z"
+        "Y"
       ],
-      "difficulty": 11
+      "tier": "challenge",
+      "line": "N°25",
+      "difficulty": 8
     },
     {
       "id": 451,
       "boardRows": 5,
-      "boardCols": 12,
+      "boardCols": 9,
       "requiredPieces": [
         "F",
-        "I",
-        "L",
         "N",
         "P",
         "T",
         "U",
         "V",
         "W",
-        "X",
         "Y",
         "Z"
       ],
-      "difficulty": 12
+      "tier": "challenge",
+      "line": "N°25",
+      "difficulty": 9
     },
     {
       "id": 452,
       "boardRows": 5,
-      "boardCols": 12,
+      "boardCols": 10,
       "requiredPieces": [
         "F",
-        "I",
-        "L",
         "N",
         "P",
         "T",
@@ -6789,7 +7924,9 @@
         "Y",
         "Z"
       ],
-      "difficulty": 12
+      "tier": "challenge",
+      "line": "N°25",
+      "difficulty": 10
     },
     {
       "id": 453,
@@ -6809,6 +7946,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6829,6 +7968,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6849,6 +7990,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6869,6 +8012,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6889,6 +8034,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6909,6 +8056,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6929,6 +8078,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6949,6 +8100,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6969,6 +8122,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -6989,6 +8144,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7009,6 +8166,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7029,6 +8188,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7049,6 +8210,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7069,6 +8232,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7089,6 +8254,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7109,6 +8276,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7129,6 +8298,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7149,6 +8320,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7169,6 +8342,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7189,6 +8364,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7209,6 +8386,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7229,6 +8408,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7249,6 +8430,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7269,6 +8452,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7289,6 +8474,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7309,6 +8496,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7329,6 +8518,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7349,6 +8540,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7369,6 +8562,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7389,6 +8584,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7409,6 +8606,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7429,6 +8628,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7449,6 +8650,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7469,6 +8672,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7489,6 +8694,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7509,6 +8716,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7529,6 +8738,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7549,6 +8760,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7569,6 +8782,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7589,6 +8804,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7609,6 +8826,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7629,6 +8848,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7649,6 +8870,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7669,6 +8892,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7689,6 +8914,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7709,6 +8936,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7729,6 +8958,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     },
     {
@@ -7749,6 +8980,8 @@
         "Y",
         "Z"
       ],
+      "tier": "bonus",
+      "line": "",
       "difficulty": 12
     }
   ]

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { RunSummary } from '../state/playback';
+import './ComparisonPanel.css';
 
 interface ComparisonPanelProps {
   runs: readonly RunSummary[];

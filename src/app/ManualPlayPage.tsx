@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Board } from '../components/Board';
 import { PieceTray } from '../components/PieceTray';
@@ -23,11 +23,17 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const selectedInstanceId = useManualAttemptStore((s) => s.selectedInstanceId);
   const isSolved = useManualAttemptStore((s) => s.isSolved);
   const selectPiece = useManualAttemptStore((s) => s.selectPiece);
+  const deselect = useManualAttemptStore((s) => s.deselect);
   const rotateSelected = useManualAttemptStore((s) => s.rotateSelected);
   const flipSelected = useManualAttemptStore((s) => s.flipSelected);
   const placeSelectedAt = useManualAttemptStore((s) => s.placeSelectedAt);
   const removePiece = useManualAttemptStore((s) => s.removePiece);
   const reset = useManualAttemptStore((s) => s.reset);
+
+  const selectedPiece = useMemo(
+    () => pieces.find((p) => p.instanceId === selectedInstanceId) ?? null,
+    [pieces, selectedInstanceId],
+  );
 
   const [showInvalid, setShowInvalid] = useState(false);
   const invalidTimeout = useRef<ReturnType<typeof setTimeout>>();
@@ -38,6 +44,22 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   }, [challengeId, loadChallenge]);
 
   useEffect(() => () => clearTimeout(invalidTimeout.current), []);
+
+  // Keyboard accelerators, additive to the always-present Rotate button and
+  // on-screen controls (research.md §3/§12): "R" rotates the selected piece,
+  // "Escape" puts it back down. Neither is the only way to do either action.
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (!selectedInstanceId) return;
+      if (event.key === 'r' || event.key === 'R') {
+        rotateSelected();
+      } else if (event.key === 'Escape') {
+        deselect();
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedInstanceId, rotateSelected, deselect]);
 
   function flashInvalid() {
     setShowInvalid(true);
@@ -62,6 +84,11 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     }
   }
 
+  function handleCellRightClick(_row: number, _col: number) {
+    if (!selectedInstanceId) return;
+    rotateSelected();
+  }
+
   return (
     <div className="manual-play-page">
       <button type="button" onClick={goToChallenges}>
@@ -69,11 +96,18 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
       </button>
 
       <div className="manual-play-page__layout">
-        <Board board={board} pieces={pieces} onCellClick={handleCellClick} />
+        <Board
+          board={board}
+          pieces={pieces}
+          selectedPiece={selectedPiece}
+          onCellClick={handleCellClick}
+          onCellRightClick={handleCellRightClick}
+        />
         <PieceTray
           pieces={pieces}
           selectedInstanceId={selectedInstanceId}
           onSelect={selectPiece}
+          onDeselect={deselect}
           onRotate={rotateSelected}
           onFlip={flipSelected}
         />

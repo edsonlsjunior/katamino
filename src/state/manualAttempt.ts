@@ -17,6 +17,7 @@ interface ManualAttemptState {
   isSolved: boolean;
   loadChallenge: (challenge: Challenge) => void;
   selectPiece: (instanceId: string) => void;
+  deselect: () => void;
   rotateSelected: () => void;
   flipSelected: () => void;
   placeSelectedAt: (row: number, col: number) => boolean;
@@ -58,6 +59,10 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     const piece = get().pieces.find((p) => p.instanceId === instanceId);
     if (!piece || piece.position !== null) return;
     set({ selectedInstanceId: instanceId });
+  },
+
+  deselect: () => {
+    set({ selectedInstanceId: null });
   },
 
   rotateSelected: () => {

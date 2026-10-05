@@ -10,6 +10,8 @@ const challenge: Challenge = {
   boardRows: 5,
   boardCols: 3,
   requiredPieces: ['P', 'U', 'Y'],
+  tier: 'small-slam',
+  line: 'A',
   difficulty: 3,
 };
 

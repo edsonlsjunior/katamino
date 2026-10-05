@@ -19,12 +19,27 @@
   },
   "challenges": {
     "difficulty": "Dificuldade {{difficulty}}",
-    "completed": "Concluído"
+    "completed": "Concluído",
+    "cardLabel": "{{line}} · PENTA {{boardCols}} · #{{id}}",
+    "tier": {
+      "smallSlam": "Small Slam",
+      "slam": "The Slam",
+      "grandSlam": "Grand Slam",
+      "superSlam": "Super Slam",
+      "challenge": "Challenge",
+      "bonus": "Bônus (12 peças)"
+    },
+    "pagination": {
+      "prev": "Anterior",
+      "next": "Próxima",
+      "pageIndicator": "Página {{current}} de {{total}}"
+    }
   },
   "pieceTray": {
     "label": "Peças disponíveis",
     "rotate": "Girar",
-    "flip": "Espelhar"
+    "flip": "Espelhar",
+    "rotateHint": "Clique com o botão direito ou pressione R para girar"
   },
   "manualPlay": {
     "solved": "Resolvido! Todas as peças encaixam — muito bem.",

@@ -9,11 +9,17 @@ import type { PieceTypeId } from './pentomino';
 export type { PieceTypeId, PieceType, Cell } from './pentomino';
 export type { Board, CellValue } from './board';
 
+export type ChallengeTier = 'small-slam' | 'slam' | 'grand-slam' | 'super-slam' | 'challenge' | 'bonus';
+
 export interface Challenge {
   id: number;
   boardRows: 5;
   boardCols: number;
   requiredPieces: PieceTypeId[];
+  tier: ChallengeTier;
+  /** Manual-style row label within the tier (e.g. 'A', 'N°12'); '' for the bonus tier. */
+  line: string;
+  /** Legacy alias of boardCols, kept for sort-only use; tier/line now drive grouping. */
   difficulty: number;
 }
 

@@ -9,6 +9,8 @@ const challenge: Challenge = {
   boardRows: 5,
   boardCols: 1,
   requiredPieces: ['I'],
+  tier: 'bonus',
+  line: '',
   difficulty: 1,
 };
 
@@ -67,5 +69,17 @@ describe('manual attempt store', () => {
     const state = useManualAttemptStore.getState();
     expect(state.pieces.every((p) => p.position === null)).toBe(true);
     expect(state.isSolved).toBe(false);
+  });
+
+  it('deselect puts the selected piece back down without placing it', () => {
+    const { pieces } = useManualAttemptStore.getState();
+    useManualAttemptStore.getState().selectPiece(pieces[0].instanceId);
+    expect(useManualAttemptStore.getState().selectedInstanceId).toBe(pieces[0].instanceId);
+
+    useManualAttemptStore.getState().deselect();
+
+    const state = useManualAttemptStore.getState();
+    expect(state.selectedInstanceId).toBeNull();
+    expect(state.pieces[0].position).toBeNull();
   });
 });

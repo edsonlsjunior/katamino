@@ -30,12 +30,16 @@ interface PieceType {
 One of the 500 puzzles (FR-001, FR-002).
 
 ```ts
+type ChallengeTier = 'small-slam' | 'slam' | 'grand-slam' | 'super-slam' | 'challenge' | 'bonus';
+
 interface Challenge {
   id: number;                    // 1..500, stable identifier
   boardRows: 5;                  // fixed, per research.md §9
   boardCols: number;             // 3..12, equals requiredPieces.length
   requiredPieces: PieceTypeId[]; // exact multiset of pieces needed to fill the board
-  difficulty: number;            // ordinal indicator (derived from boardCols / piece mix), for browsing/sorting only
+  tier: ChallengeTier;           // manual-inspired grouping for browsing (ChallengeList)
+  line: string;                  // manual-style row label within the tier; '' for bonus
+  difficulty: number;            // legacy alias of boardCols (= boardCols); sort-only, superseded by tier/line for grouping
 }
 ```
 
@@ -44,10 +48,34 @@ interface Challenge {
 - **Validation rules**: `requiredPieces.length === boardCols`; the multiset's total area
   (`requiredPieces.length * 5`) MUST equal `boardRows * boardCols`; every challenge MUST
   be solvable by both solving strategies (verified by the build-time script in
-  research.md §9, covering FR-014/SC-002).
+  research.md §9, covering FR-014/SC-002); `difficulty === boardCols` for every challenge.
 - Completion status is **not** stored on the Challenge record itself — it lives in the
   separate `Progress` persistence entity (below) so challenge data can stay static,
   immutable, bundled JSON.
+
+### Challenge tiers
+
+The physical Katamino manual organizes its 500 "PENTA" puzzles into 5 named tiers, each a
+grid of lettered "Lines" (reusing ♠♥♦♣ once the alphabet is exhausted) crossed with the
+board width ("PENTA N", 3-11). This app's generated dataset mirrors that structure for
+browsing, with one addition (`bonus`) for board-width 12 content that has no equivalent in
+the physical game (its widest column is PENTA 11):
+
+| Tier | Lines | PENTA (boardCols) range | Count |
+|---|---|---|---|
+| `small-slam` | A-G | 3-8 | 42 |
+| `slam` | A-N @ 5-9, O-V/♠/♥/♦/♣ @ 6-8 | 5-9 | 118 |
+| `grand-slam` | A-L | 4-11 | 96 |
+| `super-slam` | A-L @ 5-11, + bonus PENTA-9-only column | 5-11 | 96 |
+| `challenge` | N°1-N°25 | 7-10 | 100 |
+| `bonus` | (none — `line` is `''`) | 12 only | 48 |
+
+Total: 500. The `challenge` tier's count (100, not the manual's 160) and the `bonus`
+tier's count (48, not a full 50) are a deliberate reconciliation so the grand total stays
+exactly 500 once the unofficial `bonus` tier is included — the dataset is synthetic
+(seeded-random, solvability-verified), not a literal transcription of the manual's
+puzzles, so tier *counts* following the manual closely matters more than an exact digit
+match on the two flexible tiers.
 
 ## Board
 

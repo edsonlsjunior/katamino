@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { PlaybackStatus } from '../domain/types';
+import './SolverStatus.css';
 
 interface SolverStatusProps {
   status: PlaybackStatus;

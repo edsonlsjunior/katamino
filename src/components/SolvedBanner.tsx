@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import './SolvedBanner.css';
 
 export function SolvedBanner() {
   const { t } = useTranslation();
