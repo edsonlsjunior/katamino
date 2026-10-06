@@ -45,6 +45,7 @@ interface ManualAttemptState {
   cancelHold: () => void;
   rotateSelected: () => void;
   flipSelected: (axis?: FlipAxis) => void;
+  setSelectedOrientation: (orientationIndex: number) => void;
   placeSelectedAt: (row: number, col: number) => boolean;
   dropSelectedAt: (x: number, y: number) => void;
   reset: () => void;
@@ -184,6 +185,14 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
           ? { ...p, orientationIndex: flipOrientation(p.typeId, p.orientationIndex, axis) }
           : p,
       ),
+    });
+  },
+
+  setSelectedOrientation: (orientationIndex) => {
+    const { selectedInstanceId, pieces } = get();
+    if (!selectedInstanceId) return;
+    set({
+      pieces: pieces.map((p) => (p.instanceId === selectedInstanceId ? { ...p, orientationIndex } : p)),
     });
   },
 

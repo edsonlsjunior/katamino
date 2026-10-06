@@ -13,7 +13,8 @@ import { PieceShape, PieceTray, type PieceTrayPosition } from '../components/Pie
 import { PieceControls } from '../components/PieceControls';
 import { SolvedBanner } from '../components/SolvedBanner';
 import { getChallengeById } from '../data/loadChallenges';
-import { cellsAt, PIECE_TYPES } from '../domain/pentomino';
+import { isInBounds, isOverlapping } from '../domain/board';
+import { cellsAt, flipOrientation, PIECE_TYPES } from '../domain/pentomino';
 import { useManualAttemptStore } from '../state/manualAttempt';
 import { useNavigationStore } from '../state/navigation';
 import type { PieceInstance } from '../domain/types';
@@ -129,15 +130,25 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     setBoardOrigin((prev) => (prev && prev.x === x && prev.y === y ? prev : { x, y }));
   }, [plan]);
 
-  // The held piece follows the pointer everywhere, centered on it.
+  // The held piece follows the pointer everywhere, centered on it — except
+  // while the button is pressed: a press-and-drag is the mirror gesture, so
+  // the piece stays put where the press started and catches up on release.
   const [pointer, setPointer] = useState<Point | null>(null);
   useEffect(() => {
     if (!selectedInstanceId) return;
     function handlePointerMove(event: PointerEvent) {
+      if (event.buttons & 1) return;
       setPointer({ x: event.clientX, y: event.clientY });
     }
+    function handlePointerUp(event: PointerEvent) {
+      if (event.button === 0) setPointer({ x: event.clientX, y: event.clientY });
+    }
     window.addEventListener('pointermove', handlePointerMove);
-    return () => window.removeEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
   }, [selectedInstanceId]);
 
   // With the pointer over the board the piece snaps to the grid (nudged to
@@ -180,7 +191,12 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const ghost = useMemo(() => {
     if (!heldPiece || target?.kind !== 'board') return null;
     const cells = cellsAt(heldPiece.typeId, heldPiece.orientationIndex, [target.row, target.col]);
-    return { cells, valid: cells.every(([r, c]) => board.cells[r][c] === null) };
+    // Right after a rotate/flip, `target` is still the one computed for the
+    // previous orientation (it is refreshed in the layout effect above), so
+    // near the board's edge the new shape may not fit there: no ghost for
+    // that one render rather than reading cells outside the board.
+    if (!isInBounds(board, cells)) return null;
+    return { cells, valid: !isOverlapping(board, cells) };
   }, [heldPiece, target, board]);
 
   const nextChallenge = useMemo(() => getChallengeById(challengeId + 1), [challengeId]);
@@ -226,12 +242,21 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     return () => window.removeEventListener('contextmenu', handleContextMenu);
   }, []);
 
-  // Press-and-drag mirrors the piece along the dragged direction: sideways
-  // swaps its left and right, up/down swaps its top and bottom. Starting the
-  // drag on a piece that isn't in hand picks it up first. One flip per drag,
-  // and the click that ends the drag is swallowed so it doesn't drop the piece.
+  // Press-and-drag mirrors the piece, and keeps doing so for as long as the
+  // button is down: the piece always shows the orientation it had when the
+  // press started, mirrored along wherever the pointer currently is relative
+  // to that point — sideways swaps left and right, up/down swaps top and
+  // bottom, back near the start undoes it. Starting the drag on a piece that
+  // isn't in hand picks it up first, and the click that ends a drag is
+  // swallowed so it doesn't drop the piece.
   useEffect(() => {
-    let drag: { x: number; y: number; pieceId: string | null } | null = null;
+    let drag: {
+      x: number;
+      y: number;
+      pieceId: string | null;
+      /** Orientation when the drag began; null until it passes the threshold. */
+      baseOrientation: number | null;
+    } | null = null;
     let swallowClick = false;
 
     function handlePointerDown(event: PointerEvent) {
@@ -239,24 +264,48 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
       if (event.button !== 0) return;
       const pieceId =
         (event.target as Element | null)?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id') ?? null;
-      drag = { x: event.clientX, y: event.clientY, pieceId };
+      drag = { x: event.clientX, y: event.clientY, pieceId, baseOrientation: null };
     }
     function handlePointerMove(event: PointerEvent) {
       if (!drag) return;
+      // The release can be missed (e.g. outside the window): not a drag anymore.
+      if (!(event.buttons & 1)) {
+        drag = null;
+        return;
+      }
       const dx = event.clientX - drag.x;
       const dy = event.clientY - drag.y;
-      if (Math.max(Math.abs(dx), Math.abs(dy)) < DRAG_THRESHOLD_PX) return;
-      const { pieceId } = drag;
-      drag = null;
+      const beyondThreshold = Math.max(Math.abs(dx), Math.abs(dy)) >= DRAG_THRESHOLD_PX;
 
-      const store = useManualAttemptStore.getState();
-      if (!store.selectedInstanceId) {
-        if (!pieceId) return;
-        setPointer({ x: event.clientX, y: event.clientY });
-        store.pickUp(pieceId);
+      if (drag.baseOrientation === null) {
+        if (!beyondThreshold) return;
+        const store = useManualAttemptStore.getState();
+        if (!store.selectedInstanceId) {
+          if (!drag.pieceId) {
+            drag = null;
+            return;
+          }
+          // Held where it was grabbed until the button is released.
+          setPointer({ x: drag.x, y: drag.y });
+          store.pickUp(drag.pieceId);
+        }
+        const { pieces, selectedInstanceId } = useManualAttemptStore.getState();
+        const held = pieces.find((p) => p.instanceId === selectedInstanceId);
+        if (!held) {
+          drag = null;
+          return;
+        }
+        drag.baseOrientation = held.orientationIndex;
+        swallowClick = true;
       }
-      useManualAttemptStore.getState().flipSelected(Math.abs(dx) >= Math.abs(dy) ? 'horizontal' : 'vertical');
-      swallowClick = true;
+
+      const { pieces, selectedInstanceId, setSelectedOrientation } = useManualAttemptStore.getState();
+      const held = pieces.find((p) => p.instanceId === selectedInstanceId);
+      if (!held) return;
+      const wanted = beyondThreshold
+        ? flipOrientation(held.typeId, drag.baseOrientation, Math.abs(dx) >= Math.abs(dy) ? 'horizontal' : 'vertical')
+        : drag.baseOrientation;
+      if (wanted !== held.orientationIndex) setSelectedOrientation(wanted);
     }
     function handlePointerEnd() {
       drag = null;
