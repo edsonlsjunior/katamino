@@ -9,14 +9,27 @@ import './App.css';
 export function App() {
   const { t } = useTranslation();
   const screen = useNavigationStore((s) => s.screen);
+  const goToChallenges = useNavigationStore((s) => s.goToChallenges);
 
   return (
     <div className="app">
       <header className="app-header">
-        <h1>{t('app.title')}</h1>
+        <div className="app-header__start">
+          {screen !== 'challenges' && (
+            <button
+              type="button"
+              className="app-header__back"
+              onClick={goToChallenges}
+              aria-label={t('common.back')}
+            >
+              ← {t('common.back')}
+            </button>
+          )}
+          <h1>{t('app.title')}</h1>
+        </div>
         <LanguageSwitcher />
       </header>
-      <main>
+      <main className={screen === 'manual' ? 'main--fill' : undefined}>
         <Screen name={screen} />
       </main>
     </div>

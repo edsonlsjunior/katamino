@@ -3,13 +3,17 @@ import { PIECE_TYPES } from '../domain/pentomino';
 import type { PieceInstance } from '../domain/types';
 import './PieceTray.css';
 
+export type PieceTrayPosition = 'top' | 'right' | 'bottom' | 'left';
+
 interface PieceTrayProps {
   pieces: readonly PieceInstance[];
   selectedInstanceId: string | null;
   onSelect: (instanceId: string) => void;
   onDeselect: () => void;
   onRotate: () => void;
-  onFlip: () => void;
+  /** Which ring around the board this group renders in — only affects
+   * layout direction (row vs. column wrap) and the listbox's aria-label. */
+  position: PieceTrayPosition;
 }
 
 function PiecePreview({ instance }: { instance: PieceInstance }) {
@@ -40,53 +44,49 @@ function PiecePreview({ instance }: { instance: PieceInstance }) {
   );
 }
 
-export function PieceTray({
-  pieces,
-  selectedInstanceId,
-  onSelect,
-  onDeselect,
-  onRotate,
-  onFlip,
-}: PieceTrayProps) {
+const POSITION_LABEL_KEYS: Record<PieceTrayPosition, string> = {
+  top: 'pieceTray.position.top',
+  right: 'pieceTray.position.right',
+  bottom: 'pieceTray.position.bottom',
+  left: 'pieceTray.position.left',
+};
+
+export function PieceTray({ pieces, selectedInstanceId, onSelect, onDeselect, onRotate, position }: PieceTrayProps) {
   const { t } = useTranslation();
   const unplaced = pieces.filter((p) => p.position === null);
+  const isVertical = position === 'left' || position === 'right';
+
+  if (unplaced.length === 0) return null;
 
   return (
-    <div className="piece-tray">
-      <div className="piece-tray__list" role="listbox" aria-label={t('pieceTray.label', 'Available pieces')}>
-        {unplaced.map((piece) => {
-          const isSelected = piece.instanceId === selectedInstanceId;
-          return (
-            <button
-              key={piece.instanceId}
-              type="button"
-              data-testid={`tray-piece-${piece.instanceId}`}
-              data-selected={isSelected}
-              role="option"
-              aria-selected={isSelected}
-              className={`piece-tray__item${isSelected ? ' piece-tray__item--selected' : ''}`}
-              onClick={() => (isSelected ? onDeselect() : onSelect(piece.instanceId))}
-              onContextMenu={(event) => {
-                event.preventDefault();
-                onSelect(piece.instanceId);
-                onRotate();
-              }}
-            >
-              <PiecePreview instance={piece} />
-              <span>{piece.typeId}</span>
-            </button>
-          );
-        })}
-      </div>
-      <div className="piece-tray__controls">
-        <button type="button" onClick={onRotate} disabled={!selectedInstanceId}>
-          {t('pieceTray.rotate', 'Rotate')}
-        </button>
-        <button type="button" onClick={onFlip} disabled={!selectedInstanceId}>
-          {t('pieceTray.flip', 'Flip')}
-        </button>
-      </div>
-      <p className="piece-tray__hint">{t('pieceTray.rotateHint', 'Right-click or press R to rotate')}</p>
+    <div
+      className={`piece-tray__list${isVertical ? ' piece-tray__list--column' : ''}`}
+      role="listbox"
+      aria-label={`${t('pieceTray.label', 'Available pieces')} — ${t(POSITION_LABEL_KEYS[position])}`}
+    >
+      {unplaced.map((piece) => {
+        const isSelected = piece.instanceId === selectedInstanceId;
+        return (
+          <button
+            key={piece.instanceId}
+            type="button"
+            data-testid={`tray-piece-${piece.instanceId}`}
+            data-selected={isSelected}
+            role="option"
+            aria-selected={isSelected}
+            className={`piece-tray__item${isSelected ? ' piece-tray__item--selected' : ''}`}
+            onClick={() => (isSelected ? onDeselect() : onSelect(piece.instanceId))}
+            onContextMenu={(event) => {
+              event.preventDefault();
+              onSelect(piece.instanceId);
+              onRotate();
+            }}
+          >
+            <PiecePreview instance={piece} />
+            <span>{piece.typeId}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

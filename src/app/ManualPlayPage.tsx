@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Board } from '../components/Board';
-import { PieceTray } from '../components/PieceTray';
+import { PieceTray, type PieceTrayPosition } from '../components/PieceTray';
+import { PieceControls } from '../components/PieceControls';
 import { SolvedBanner } from '../components/SolvedBanner';
 import { getChallengeById } from '../data/loadChallenges';
 import { useManualAttemptStore } from '../state/manualAttempt';
 import { useNavigationStore } from '../state/navigation';
+import type { PieceInstance } from '../domain/types';
 
 const INVALID_FEEDBACK_MS = 1500;
+const RING_ORDER: readonly PieceTrayPosition[] = ['top', 'right', 'bottom', 'left'];
 
 interface ManualPlayPageProps {
   challengeId: number;
@@ -15,7 +18,8 @@ interface ManualPlayPageProps {
 
 export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const { t } = useTranslation();
-  const goToChallenges = useNavigationStore((s) => s.goToChallenges);
+  const goToAutoSolve = useNavigationStore((s) => s.goToAutoSolve);
+  const goToManualPlay = useNavigationStore((s) => s.goToManualPlay);
 
   const loadChallenge = useManualAttemptStore((s) => s.loadChallenge);
   const board = useManualAttemptStore((s) => s.board);
@@ -35,8 +39,23 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     [pieces, selectedInstanceId],
   );
 
+  // Pieces are split into 4 rings around the board by index (stable across
+  // the whole attempt, since `pieces` keeps its original order — only
+  // `position`/`orientationIndex` mutate per-piece). Each ring then filters
+  // down to its own unplaced pieces at render time.
+  const ringGroups = useMemo(() => {
+    const groups: Record<PieceTrayPosition, PieceInstance[]> = { top: [], right: [], bottom: [], left: [] };
+    pieces.forEach((piece, index) => {
+      groups[RING_ORDER[index % 4]].push(piece);
+    });
+    return groups;
+  }, [pieces]);
+
+  const nextChallenge = useMemo(() => getChallengeById(challengeId + 1), [challengeId]);
+
   const [showInvalid, setShowInvalid] = useState(false);
   const invalidTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const fitAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const challenge = getChallengeById(challengeId);
@@ -91,26 +110,13 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
 
   return (
     <div className="manual-play-page">
-      <button type="button" onClick={goToChallenges}>
-        {t('common.back')}
-      </button>
-
-      <div className="manual-play-page__layout">
-        <Board
-          board={board}
-          pieces={pieces}
-          selectedPiece={selectedPiece}
-          onCellClick={handleCellClick}
-          onCellRightClick={handleCellRightClick}
-        />
-        <PieceTray
-          pieces={pieces}
-          selectedInstanceId={selectedInstanceId}
-          onSelect={selectPiece}
-          onDeselect={deselect}
-          onRotate={rotateSelected}
-          onFlip={flipSelected}
-        />
+      <div className="manual-play-page__toolbar">
+        <button type="button" onClick={() => goToAutoSolve(challengeId)}>
+          {t('nav.autoSolve')}
+        </button>
+        <button type="button" onClick={reset}>
+          {t('manualPlay.reset', 'Reset')}
+        </button>
       </div>
 
       {showInvalid && (
@@ -119,11 +125,77 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
         </p>
       )}
 
-      {isSolved && <SolvedBanner />}
+      {isSolved && (
+        <div className="manual-play-page__solved-row">
+          <SolvedBanner />
+          {nextChallenge && (
+            <button type="button" className="btn-primary" onClick={() => goToManualPlay(nextChallenge.id)}>
+              {t('manualPlay.next', 'Next challenge')}
+            </button>
+          )}
+        </div>
+      )}
 
-      <button type="button" onClick={reset}>
-        {t('manualPlay.reset', 'Reset')}
-      </button>
+      <div className="board-arena">
+        <div className="board-arena__top">
+          <PieceTray
+            pieces={ringGroups.top}
+            position="top"
+            selectedInstanceId={selectedInstanceId}
+            onSelect={selectPiece}
+            onDeselect={deselect}
+            onRotate={rotateSelected}
+          />
+        </div>
+        <div className="board-arena__board-shell">
+          <div className="board-arena__fit" ref={fitAreaRef}>
+            {/* Side rings are anchored to the board's own edges, so they stay
+                next to it however narrow the board is. */}
+            <div className="board-arena__anchor">
+              <div className="board-arena__left">
+                <PieceTray
+                  pieces={ringGroups.left}
+                  position="left"
+                  selectedInstanceId={selectedInstanceId}
+                  onSelect={selectPiece}
+                  onDeselect={deselect}
+                  onRotate={rotateSelected}
+                />
+              </div>
+              <Board
+                board={board}
+                pieces={pieces}
+                selectedPiece={selectedPiece}
+                onCellClick={handleCellClick}
+                onCellRightClick={handleCellRightClick}
+                fitTo={fitAreaRef}
+              />
+              <div className="board-arena__right">
+                <PieceTray
+                  pieces={ringGroups.right}
+                  position="right"
+                  selectedInstanceId={selectedInstanceId}
+                  onSelect={selectPiece}
+                  onDeselect={deselect}
+                  onRotate={rotateSelected}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="board-arena__bottom">
+          <PieceTray
+            pieces={ringGroups.bottom}
+            position="bottom"
+            selectedInstanceId={selectedInstanceId}
+            onSelect={selectPiece}
+            onDeselect={deselect}
+            onRotate={rotateSelected}
+          />
+        </div>
+      </div>
+
+      <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={flipSelected} />
     </div>
   );
 }

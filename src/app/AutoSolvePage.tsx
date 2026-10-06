@@ -8,7 +8,6 @@ import { MetricsPanel } from '../components/MetricsPanel';
 import { ComparisonPanel } from '../components/ComparisonPanel';
 import { getChallengeById } from '../data/loadChallenges';
 import { usePlaybackStore } from '../state/playback';
-import { useNavigationStore } from '../state/navigation';
 import type { SolvingStrategyId } from '../domain/types';
 
 interface AutoSolvePageProps {
@@ -17,7 +16,6 @@ interface AutoSolvePageProps {
 
 export function AutoSolvePage({ challengeId }: AutoSolvePageProps) {
   const { t } = useTranslation();
-  const goToChallenges = useNavigationStore((s) => s.goToChallenges);
   const [selectedStrategy, setSelectedStrategy] = useState<SolvingStrategyId>('backtracking');
 
   const status = usePlaybackStore((s) => s.status);
@@ -59,10 +57,6 @@ export function AutoSolvePage({ challengeId }: AutoSolvePageProps) {
 
   return (
     <div className="auto-solve-page">
-      <button type="button" onClick={goToChallenges}>
-        {t('common.back')}
-      </button>
-
       <StrategySelector selected={selectedStrategy} onChange={setSelectedStrategy} disabled={isBusy} />
 
       {!isBusy && (

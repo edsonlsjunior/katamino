@@ -39,12 +39,19 @@
     "label": "Available pieces",
     "rotate": "Rotate",
     "flip": "Flip",
-    "rotateHint": "Right-click or press R to rotate"
+    "rotateHint": "Right-click or press R to rotate",
+    "position": {
+      "top": "above the board",
+      "right": "right of the board",
+      "bottom": "below the board",
+      "left": "left of the board"
+    }
   },
   "manualPlay": {
     "solved": "Solved! Every piece fits — well done.",
     "invalid": "That piece can't go there.",
-    "reset": "Reset"
+    "reset": "Reset",
+    "next": "Next challenge"
   },
   "playback": {
     "label": "Playback controls",
