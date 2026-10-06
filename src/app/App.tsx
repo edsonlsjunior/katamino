@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigationStore, type Screen as ScreenName } from '../state/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -10,6 +11,16 @@ export function App() {
   const { t } = useTranslation();
   const screen = useNavigationStore((s) => s.screen);
   const goToChallenges = useNavigationStore((s) => s.goToChallenges);
+
+  // Right-click is a game control (rotate), so the browser's context menu is
+  // turned off everywhere in the app, not just over the board.
+  useEffect(() => {
+    function suppressContextMenu(event: MouseEvent) {
+      event.preventDefault();
+    }
+    document.addEventListener('contextmenu', suppressContextMenu);
+    return () => document.removeEventListener('contextmenu', suppressContextMenu);
+  }, []);
 
   return (
     <div className="app">

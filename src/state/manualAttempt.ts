@@ -5,23 +5,47 @@ import {
   rotateOrientation,
   type PieceTypeId,
 } from '../domain/pentomino';
-import { canPlace, createEmptyBoard, isFull, placeCells, removeInstance, type Board } from '../domain/board';
+import { createEmptyBoard, isInBounds, stackPlacements, type Board } from '../domain/board';
 import type { Challenge, PieceInstance } from '../domain/types';
 import { markChallengeCompleted } from './persistence';
+
+/** Where a loose piece was left outside the board: the top-left of its
+ * bounding box, in (fractional) cell units relative to the board's top-left
+ * cell — so it scales with the board instead of being tied to pixels. */
+export interface FreePosition {
+  x: number;
+  y: number;
+}
+
+interface HeldOrigin {
+  orientationIndex: number;
+  position: PieceInstance['position'];
+  free: FreePosition | null;
+}
 
 interface ManualAttemptState {
   challengeId: number | null;
   pieces: PieceInstance[];
+  /** What the board shows: on an overlapped cell, the last piece put there. */
   board: Board;
+  /** "row,col" keys of the cells holding more than one piece. */
+  conflictKeys: string[];
+  /** Pieces left loose outside the board; a piece that is neither here nor
+   * placed sits in its starting slot. */
+  freePositions: Record<string, FreePosition>;
+  /** Pieces on the board or loose, oldest drop first (stacking order). */
+  stack: string[];
+  /** The piece currently held (following the pointer), if any. */
   selectedInstanceId: string | null;
+  heldOrigin: HeldOrigin | null;
   isSolved: boolean;
   loadChallenge: (challenge: Challenge) => void;
-  selectPiece: (instanceId: string) => void;
-  deselect: () => void;
+  pickUp: (instanceId: string) => void;
+  cancelHold: () => void;
   rotateSelected: () => void;
   flipSelected: () => void;
   placeSelectedAt: (row: number, col: number) => boolean;
-  removePiece: (instanceId: string) => void;
+  dropSelectedAt: (x: number, y: number) => void;
   reset: () => void;
 }
 
@@ -38,11 +62,43 @@ function initialPieces(requiredPieces: readonly PieceTypeId[]): PieceInstance[] 
   }));
 }
 
+/**
+ * Board contents, overlaps and the win condition, derived from the pieces.
+ * Solved means every piece is on the board with no overlap: pieces are only
+ * ever placed in-bounds and their total area equals the board's, so that is
+ * the same as the board being exactly covered (FR-005).
+ */
+function settle(pieces: readonly PieceInstance[], stack: readonly string[], rows: number, cols: number) {
+  const byId = new Map(pieces.map((p) => [p.instanceId, p]));
+  const placements = stack.flatMap((id) => {
+    const piece = byId.get(id);
+    if (!piece?.position) return [];
+    const cells = cellsAt(piece.typeId, piece.orientationIndex, [piece.position.row, piece.position.col]);
+    return [{ instanceId: id, cells }];
+  });
+  const { board, conflicts } = stackPlacements(rows, cols, placements);
+  return {
+    board,
+    conflictKeys: conflicts.map(([r, c]) => `${r},${c}`),
+    isSolved: pieces.length > 0 && conflicts.length === 0 && pieces.every((p) => p.position !== null),
+  };
+}
+
+function without<T>(record: Record<string, T>, key: string): Record<string, T> {
+  const next = { ...record };
+  delete next[key];
+  return next;
+}
+
 export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
   challengeId: null,
   pieces: [],
   board: createEmptyBoard(5, 0),
+  conflictKeys: [],
+  freePositions: {},
+  stack: [],
   selectedInstanceId: null,
+  heldOrigin: null,
   isSolved: false,
 
   loadChallenge: (challenge) => {
@@ -50,19 +106,60 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
       challengeId: challenge.id,
       pieces: initialPieces(challenge.requiredPieces),
       board: createEmptyBoard(challenge.boardRows, challenge.boardCols),
+      conflictKeys: [],
+      freePositions: {},
+      stack: [],
       selectedInstanceId: null,
+      heldOrigin: null,
       isSolved: false,
     });
   },
 
-  selectPiece: (instanceId) => {
-    const piece = get().pieces.find((p) => p.instanceId === instanceId);
-    if (!piece || piece.position !== null) return;
-    set({ selectedInstanceId: instanceId });
+  // Lifts a piece from wherever it is (starting slot, loose, or on the board).
+  pickUp: (instanceId) => {
+    const { selectedInstanceId, pieces, freePositions, stack, board } = get();
+    if (selectedInstanceId) return;
+    const piece = pieces.find((p) => p.instanceId === instanceId);
+    if (!piece) return;
+
+    const nextPieces = pieces.map((p) => (p.instanceId === instanceId ? { ...p, position: null } : p));
+    const nextStack = stack.filter((id) => id !== instanceId);
+    set({
+      pieces: nextPieces,
+      stack: nextStack,
+      freePositions: without(freePositions, instanceId),
+      selectedInstanceId: instanceId,
+      heldOrigin: {
+        orientationIndex: piece.orientationIndex,
+        position: piece.position,
+        free: freePositions[instanceId] ?? null,
+      },
+      ...settle(nextPieces, nextStack, board.rows, board.cols),
+    });
   },
 
-  deselect: () => {
-    set({ selectedInstanceId: null });
+  // Puts the held piece back exactly where (and how) it was picked up from.
+  cancelHold: () => {
+    const { selectedInstanceId, heldOrigin, pieces, freePositions, stack, board } = get();
+    if (!selectedInstanceId || !heldOrigin) return;
+
+    const nextPieces = pieces.map((p) =>
+      p.instanceId === selectedInstanceId
+        ? { ...p, orientationIndex: heldOrigin.orientationIndex, position: heldOrigin.position }
+        : p,
+    );
+    const wasOut = heldOrigin.position !== null || heldOrigin.free !== null;
+    const nextStack = wasOut ? [...stack, selectedInstanceId] : stack;
+    set({
+      pieces: nextPieces,
+      stack: nextStack,
+      freePositions: heldOrigin.free
+        ? { ...freePositions, [selectedInstanceId]: heldOrigin.free }
+        : freePositions,
+      selectedInstanceId: null,
+      heldOrigin: null,
+      ...settle(nextPieces, nextStack, board.rows, board.cols),
+    });
   },
 
   rotateSelected: () => {
@@ -89,43 +186,38 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     });
   },
 
+  // Puts the held piece on the board with its top-left at (row, col). Overlapping
+  // other pieces is allowed (and flagged in `conflictKeys`); only a placement
+  // that sticks out of the board is refused.
   placeSelectedAt: (row, col) => {
-    const { selectedInstanceId, pieces, board, challengeId } = get();
+    const { selectedInstanceId, pieces, board, stack, challengeId } = get();
     if (!selectedInstanceId) return false;
     const piece = pieces.find((p) => p.instanceId === selectedInstanceId);
-    if (!piece || piece.position !== null) return false;
+    if (!piece) return false;
+    if (!isInBounds(board, cellsAt(piece.typeId, piece.orientationIndex, [row, col]))) return false;
 
-    const cells = cellsAt(piece.typeId, piece.orientationIndex, [row, col]);
-    if (!canPlace(board, cells)) return false;
-
-    const nextBoard = placeCells(board, piece.instanceId, cells);
     const nextPieces = pieces.map((p) =>
       p.instanceId === piece.instanceId ? { ...p, position: { row, col } } : p,
     );
-    const solved = isFull(nextBoard);
+    const nextStack = [...stack, piece.instanceId];
+    const settled = settle(nextPieces, nextStack, board.rows, board.cols);
+    set({ pieces: nextPieces, stack: nextStack, selectedInstanceId: null, heldOrigin: null, ...settled });
 
-    set({
-      board: nextBoard,
-      pieces: nextPieces,
-      selectedInstanceId: null,
-      isSolved: solved,
-    });
-
-    if (solved && challengeId !== null) {
+    if (settled.isSolved && challengeId !== null) {
       markChallengeCompleted(challengeId);
     }
     return true;
   },
 
-  removePiece: (instanceId) => {
-    const { pieces, board } = get();
-    const piece = pieces.find((p) => p.instanceId === instanceId);
-    if (!piece || piece.position === null) return;
-
+  // Leaves the held piece loose outside the board.
+  dropSelectedAt: (x, y) => {
+    const { selectedInstanceId, freePositions, stack } = get();
+    if (!selectedInstanceId) return;
     set({
-      board: removeInstance(board, instanceId),
-      pieces: pieces.map((p) => (p.instanceId === instanceId ? { ...p, position: null } : p)),
-      isSolved: false,
+      freePositions: { ...freePositions, [selectedInstanceId]: { x, y } },
+      stack: [...stack, selectedInstanceId],
+      selectedInstanceId: null,
+      heldOrigin: null,
     });
   },
 
@@ -134,7 +226,11 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     set({
       board: createEmptyBoard(board.rows, board.cols),
       pieces: pieces.map((p) => ({ ...p, orientationIndex: 0, position: null })),
+      conflictKeys: [],
+      freePositions: {},
+      stack: [],
       selectedInstanceId: null,
+      heldOrigin: null,
       isSolved: false,
     });
   },

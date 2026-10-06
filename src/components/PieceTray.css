@@ -1,52 +1,58 @@
+/* Sizes here are driven by --cell / --cell-gap / --slot-gap, set on the
+   board arena so the loose pieces match the board's cells exactly. */
 .piece-tray__list {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--slot-gap);
+  align-items: center;
   justify-content: center;
 }
 
 .piece-tray__list--column {
   flex-direction: column;
-  flex-wrap: nowrap;
 }
 
-@media (max-width: 720px) {
-  .piece-tray__list--column {
-    flex-direction: row;
-  }
+/* Square slot big enough for the piece in any orientation. */
+.piece-tray__slot {
+  flex-shrink: 0;
+  width: calc(var(--cell) * var(--span) + (var(--span) - 1) * var(--cell-gap));
+  height: calc(var(--cell) * var(--span) + (var(--span) - 1) * var(--cell-gap));
 }
 
+/* The piece is still a <button> for keyboard/screen-reader use, but shows
+   only the piece itself — no button chrome. */
 .piece-tray__item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
-  padding: 0.4rem;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
 }
 
 .piece-tray__item:not(:disabled):hover {
-  border-color: var(--color-border-strong);
+  background: none;
 }
 
-.piece-tray__item--selected {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-}
-
-.piece-preview {
+.piece-shape {
   display: grid;
-  gap: 1px;
-  width: 2.25rem;
-  height: 2.25rem;
+  grid-auto-rows: var(--cell);
+  gap: var(--cell-gap);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+  transition: filter var(--transition-fast), transform var(--transition-fast);
 }
 
-.piece-preview__cell {
-  border-radius: 1px;
+.piece-shape__cell {
+  border-radius: 2px;
+}
+
+.piece-tray__item:hover .piece-shape {
+  transform: scale(1.04);
+}
+
+/* Faded copy left in the slot while the piece itself is in hand. */
+.piece-tray__item--held .piece-shape {
+  opacity: 0.25;
+  transform: none;
+  filter: none;
 }

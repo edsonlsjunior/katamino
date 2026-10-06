@@ -49,9 +49,9 @@
   },
   "manualPlay": {
     "solved": "Solved! Every piece fits — well done.",
-    "invalid": "That piece can't go there.",
     "reset": "Reset",
-    "next": "Next challenge"
+    "next": "Next challenge",
+    "overlap": "Pieces overlap — move the ones marked in red to continue."
   },
   "playback": {
     "label": "Playback controls",

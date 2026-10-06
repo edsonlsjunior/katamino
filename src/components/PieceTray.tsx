@@ -1,3 +1,4 @@
+import type { CSSProperties, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PIECE_TYPES } from '../domain/pentomino';
 import type { PieceInstance } from '../domain/types';
@@ -6,40 +7,35 @@ import './PieceTray.css';
 export type PieceTrayPosition = 'top' | 'right' | 'bottom' | 'left';
 
 interface PieceTrayProps {
+  /** Every piece whose starting slot is in this ring. */
   pieces: readonly PieceInstance[];
-  selectedInstanceId: string | null;
-  onSelect: (instanceId: string) => void;
-  onDeselect: () => void;
-  onRotate: () => void;
+  /** Whether a piece has left its slot (on the board or loose elsewhere). */
+  isAway: (piece: PieceInstance) => boolean;
+  heldInstanceId: string | null;
+  onPick: (instanceId: string, event: MouseEvent<HTMLElement>) => void;
   /** Which ring around the board this group renders in — only affects
-   * layout direction (row vs. column wrap) and the listbox's aria-label. */
+   * layout direction (row vs. column) and the listbox's aria-label. */
   position: PieceTrayPosition;
+  /** Side of the square slot (in cells) reserved for a given piece. */
+  slotSpan: (piece: PieceInstance) => number;
 }
 
-function PiecePreview({ instance }: { instance: PieceInstance }) {
+/** The piece itself, drawn cell by cell at the board's cell size (`--cell`,
+ * inherited from the arena). */
+export function PieceShape({ instance }: { instance: PieceInstance }) {
   const orientation = PIECE_TYPES[instance.typeId].orientations[instance.orientationIndex];
-  const rows = Math.max(...orientation.map(([r]) => r)) + 1;
   const cols = Math.max(...orientation.map(([, c]) => c)) + 1;
-  const occupied = new Set(orientation.map(([r, c]) => `${r},${c}`));
   const color = PIECE_TYPES[instance.typeId].color;
 
   return (
-    <div
-      className="piece-preview"
-      style={{ gridTemplateColumns: `repeat(${cols}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr)` }}
-    >
-      {Array.from({ length: rows * cols }, (_, i) => {
-        const r = Math.floor(i / cols);
-        const c = i % cols;
-        const filled = occupied.has(`${r},${c}`);
-        return (
-          <span
-            key={i}
-            className="piece-preview__cell"
-            style={{ backgroundColor: filled ? color : 'transparent' }}
-          />
-        );
-      })}
+    <div className="piece-shape" style={{ gridTemplateColumns: `repeat(${cols}, var(--cell))` }}>
+      {orientation.map(([r, c]) => (
+        <span
+          key={`${r},${c}`}
+          className="piece-shape__cell"
+          style={{ gridRow: r + 1, gridColumn: c + 1, backgroundColor: color }}
+        />
+      ))}
     </div>
   );
 }
@@ -51,12 +47,11 @@ const POSITION_LABEL_KEYS: Record<PieceTrayPosition, string> = {
   left: 'pieceTray.position.left',
 };
 
-export function PieceTray({ pieces, selectedInstanceId, onSelect, onDeselect, onRotate, position }: PieceTrayProps) {
+export function PieceTray({ pieces, isAway, heldInstanceId, onPick, position, slotSpan }: PieceTrayProps) {
   const { t } = useTranslation();
-  const unplaced = pieces.filter((p) => p.position === null);
   const isVertical = position === 'left' || position === 'right';
 
-  if (unplaced.length === 0) return null;
+  if (pieces.length === 0) return null;
 
   return (
     <div
@@ -64,26 +59,30 @@ export function PieceTray({ pieces, selectedInstanceId, onSelect, onDeselect, on
       role="listbox"
       aria-label={`${t('pieceTray.label', 'Available pieces')} — ${t(POSITION_LABEL_KEYS[position])}`}
     >
-      {unplaced.map((piece) => {
-        const isSelected = piece.instanceId === selectedInstanceId;
+      {pieces.map((piece) => {
+        const slotStyle = { '--span': slotSpan(piece) } as CSSProperties;
+        // A piece that left keeps its (empty) slot so the others don't shift around.
+        if (isAway(piece)) {
+          return <span key={piece.instanceId} className="piece-tray__slot" style={slotStyle} aria-hidden="true" />;
+        }
+        // While held, the piece itself follows the pointer; its slot shows a
+        // faded copy marking where Escape would put it back.
+        const isHeld = piece.instanceId === heldInstanceId;
         return (
           <button
             key={piece.instanceId}
             type="button"
             data-testid={`tray-piece-${piece.instanceId}`}
-            data-selected={isSelected}
+            data-piece-id={piece.instanceId}
+            data-selected={isHeld}
             role="option"
-            aria-selected={isSelected}
-            className={`piece-tray__item${isSelected ? ' piece-tray__item--selected' : ''}`}
-            onClick={() => (isSelected ? onDeselect() : onSelect(piece.instanceId))}
-            onContextMenu={(event) => {
-              event.preventDefault();
-              onSelect(piece.instanceId);
-              onRotate();
-            }}
+            aria-selected={isHeld}
+            aria-label={piece.typeId}
+            className={`piece-tray__slot piece-tray__item${isHeld ? ' piece-tray__item--held' : ''}`}
+            style={slotStyle}
+            onClick={(event) => onPick(piece.instanceId, event)}
           >
-            <PiecePreview instance={piece} />
-            <span>{piece.typeId}</span>
+            <PieceShape instance={piece} />
           </button>
         );
       })}

@@ -49,9 +49,9 @@
   },
   "manualPlay": {
     "solved": "Resolvido! Todas as peças encaixam — muito bem.",
-    "invalid": "Essa peça não pode ir aí.",
     "reset": "Reiniciar",
-    "next": "Próximo desafio"
+    "next": "Próximo desafio",
+    "overlap": "Há peças sobrepostas — mova as marcadas em vermelho para continuar."
   },
   "playback": {
     "label": "Controles de reprodução",

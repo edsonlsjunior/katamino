@@ -61,3 +61,37 @@ export function removeInstance(board: Board, instanceId: string): Board {
 export function isFull(board: Board): boolean {
   return board.cells.every((row) => row.every((value) => value !== null));
 }
+
+export interface Placement {
+  instanceId: string;
+  cells: readonly Cell[];
+}
+
+/**
+ * Lays placements on an empty board in order, tolerating overlap (manual play
+ * lets the player put pieces on top of each other and fix it afterwards). An
+ * overlapped cell shows the last piece placed on it and is reported in
+ * `conflicts`. Every placement must still be in-bounds.
+ */
+export function stackPlacements(
+  rows: number,
+  cols: number,
+  placements: readonly Placement[],
+): { board: Board; conflicts: Cell[] } {
+  const board = createEmptyBoard(rows, cols);
+  const conflictKeys = new Set<string>();
+  const conflicts: Cell[] = [];
+  for (const { instanceId, cells } of placements) {
+    if (!isInBounds(board, cells)) {
+      throw new Error(`Cannot place piece "${instanceId}": out of bounds`);
+    }
+    for (const [r, c] of cells) {
+      if (board.cells[r][c] !== null && !conflictKeys.has(`${r},${c}`)) {
+        conflictKeys.add(`${r},${c}`);
+        conflicts.push([r, c]);
+      }
+      board.cells[r][c] = instanceId;
+    }
+  }
+  return { board, conflicts };
+}

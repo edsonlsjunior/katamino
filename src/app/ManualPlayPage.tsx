@@ -1,19 +1,75 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type MouseEvent as ReactMouseEvent,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Board } from '../components/Board';
-import { PieceTray, type PieceTrayPosition } from '../components/PieceTray';
+import { PieceShape, PieceTray, type PieceTrayPosition } from '../components/PieceTray';
 import { PieceControls } from '../components/PieceControls';
 import { SolvedBanner } from '../components/SolvedBanner';
 import { getChallengeById } from '../data/loadChallenges';
+import { cellsAt, PIECE_TYPES } from '../domain/pentomino';
 import { useManualAttemptStore } from '../state/manualAttempt';
 import { useNavigationStore } from '../state/navigation';
 import type { PieceInstance } from '../domain/types';
+import { BOARD_PADDING_PX, CELL_GAP_PX, planArena, pieceSpan } from './arenaLayout';
 
-const INVALID_FEEDBACK_MS = 1500;
-const RING_ORDER: readonly PieceTrayPosition[] = ['top', 'right', 'bottom', 'left'];
+const FALLBACK_CELL_PX = 40;
 
 interface ManualPlayPageProps {
   challengeId: number;
+}
+
+interface Point {
+  x: number;
+  y: number;
+}
+
+/** Where the held piece would go if dropped at a given pointer position. */
+type DropTarget =
+  | { kind: 'board'; row: number; col: number }
+  | { kind: 'free'; x: number; y: number }
+  | { kind: 'none' };
+
+function slotSpan(piece: PieceInstance) {
+  return pieceSpan(piece.typeId);
+}
+
+/** Bounding box of the piece's current orientation, in cells. */
+function pieceDims(piece: PieceInstance) {
+  const cells = PIECE_TYPES[piece.typeId].orientations[piece.orientationIndex];
+  return {
+    w: Math.max(...cells.map(([, c]) => c)) + 1,
+    h: Math.max(...cells.map(([r]) => r)) + 1,
+  };
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), Math.max(min, max));
+}
+
+function useElementSize(ref: React.RefObject<HTMLElement>) {
+  const [size, setSize] = useState<{ width: number; height: number } | null>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    function update() {
+      const { width, height } = el!.getBoundingClientRect();
+      setSize((prev) => (prev && prev.width === width && prev.height === height ? prev : { width, height }));
+    }
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [ref]);
+
+  return size;
 }
 
 export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
@@ -24,89 +80,207 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const loadChallenge = useManualAttemptStore((s) => s.loadChallenge);
   const board = useManualAttemptStore((s) => s.board);
   const pieces = useManualAttemptStore((s) => s.pieces);
+  const conflictKeys = useManualAttemptStore((s) => s.conflictKeys);
+  const freePositions = useManualAttemptStore((s) => s.freePositions);
+  const stack = useManualAttemptStore((s) => s.stack);
   const selectedInstanceId = useManualAttemptStore((s) => s.selectedInstanceId);
   const isSolved = useManualAttemptStore((s) => s.isSolved);
-  const selectPiece = useManualAttemptStore((s) => s.selectPiece);
-  const deselect = useManualAttemptStore((s) => s.deselect);
+  const pickUp = useManualAttemptStore((s) => s.pickUp);
+  const cancelHold = useManualAttemptStore((s) => s.cancelHold);
   const rotateSelected = useManualAttemptStore((s) => s.rotateSelected);
   const flipSelected = useManualAttemptStore((s) => s.flipSelected);
   const placeSelectedAt = useManualAttemptStore((s) => s.placeSelectedAt);
-  const removePiece = useManualAttemptStore((s) => s.removePiece);
+  const dropSelectedAt = useManualAttemptStore((s) => s.dropSelectedAt);
   const reset = useManualAttemptStore((s) => s.reset);
 
-  const selectedPiece = useMemo(
+  const heldPiece = useMemo(
     () => pieces.find((p) => p.instanceId === selectedInstanceId) ?? null,
     [pieces, selectedInstanceId],
   );
+  const conflictSet = useMemo(() => new Set(conflictKeys), [conflictKeys]);
 
-  // Pieces are split into 4 rings around the board by index (stable across
-  // the whole attempt, since `pieces` keeps its original order — only
-  // `position`/`orientationIndex` mutate per-piece). Each ring then filters
-  // down to its own unplaced pieces at render time.
-  const ringGroups = useMemo(() => {
-    const groups: Record<PieceTrayPosition, PieceInstance[]> = { top: [], right: [], bottom: [], left: [] };
-    pieces.forEach((piece, index) => {
-      groups[RING_ORDER[index % 4]].push(piece);
-    });
-    return groups;
-  }, [pieces]);
+  // Which ring each piece starts in (and the cell size) depends only on the
+  // arena size and the challenge's piece types, so nothing moves or resizes
+  // as pieces are rotated or placed.
+  const arenaRef = useRef<HTMLDivElement>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const arenaSize = useElementSize(arenaRef);
+  const plan = useMemo(
+    () => (arenaSize ? planArena(arenaSize.width, arenaSize.height, board.cols, board.rows, pieces) : null),
+    [arenaSize, board.cols, board.rows, pieces],
+  );
+  const cellSize = plan?.layout.cellSize ?? FALLBACK_CELL_PX;
+  const pitch = cellSize + CELL_GAP_PX;
+  const spanPx = (cells: number) => cells * cellSize + (cells - 1) * CELL_GAP_PX;
+
+  // Top-left of the board's first cell inside the arena: the origin loose
+  // pieces' positions are relative to.
+  const [boardOrigin, setBoardOrigin] = useState<Point | null>(null);
+  useLayoutEffect(() => {
+    const arena = arenaRef.current;
+    const boardEl = boardRef.current;
+    if (!arena || !boardEl) return;
+    const a = arena.getBoundingClientRect();
+    const b = boardEl.getBoundingClientRect();
+    const x = b.left - a.left + BOARD_PADDING_PX;
+    const y = b.top - a.top + BOARD_PADDING_PX;
+    setBoardOrigin((prev) => (prev && prev.x === x && prev.y === y ? prev : { x, y }));
+  }, [plan]);
+
+  // The held piece follows the pointer everywhere, centered on it.
+  const [pointer, setPointer] = useState<Point | null>(null);
+  useEffect(() => {
+    if (!selectedInstanceId) return;
+    function handlePointerMove(event: PointerEvent) {
+      setPointer({ x: event.clientX, y: event.clientY });
+    }
+    window.addEventListener('pointermove', handlePointerMove);
+    return () => window.removeEventListener('pointermove', handlePointerMove);
+  }, [selectedInstanceId]);
+
+  // With the pointer over the board the piece snaps to the grid (nudged to
+  // stay inside); anywhere else it is left loose exactly where it is.
+  function dropTargetAt(point: Point, piece: PieceInstance): DropTarget {
+    const arena = arenaRef.current?.getBoundingClientRect();
+    const boardRect = boardRef.current?.getBoundingClientRect();
+    if (!arena || !boardRect) return { kind: 'none' };
+
+    const { w, h } = pieceDims(piece);
+    const left = point.x - spanPx(w) / 2;
+    const top = point.y - spanPx(h) / 2;
+    const originX = boardRect.left + BOARD_PADDING_PX;
+    const originY = boardRect.top + BOARD_PADDING_PX;
+
+    const overBoard =
+      point.x >= boardRect.left && point.x <= boardRect.right && point.y >= boardRect.top && point.y <= boardRect.bottom;
+    if (overBoard) {
+      if (w > board.cols || h > board.rows) return { kind: 'none' };
+      return {
+        kind: 'board',
+        row: clamp(Math.round((top - originY) / pitch), 0, board.rows - h),
+        col: clamp(Math.round((left - originX) / pitch), 0, board.cols - w),
+      };
+    }
+    return {
+      kind: 'free',
+      x: (clamp(left, arena.left, arena.right - spanPx(w)) - originX) / pitch,
+      y: (clamp(top, arena.top, arena.bottom - spanPx(h)) - originY) / pitch,
+    };
+  }
+
+  const [target, setTarget] = useState<DropTarget | null>(null);
+  useLayoutEffect(() => {
+    setTarget(heldPiece && pointer ? dropTargetAt(pointer, heldPiece) : null);
+    // dropTargetAt only reads layout that changes together with these deps.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [heldPiece, pointer, cellSize, board.cols, board.rows]);
+
+  const ghost = useMemo(() => {
+    if (!heldPiece || target?.kind !== 'board') return null;
+    const cells = cellsAt(heldPiece.typeId, heldPiece.orientationIndex, [target.row, target.col]);
+    return { cells, valid: cells.every(([r, c]) => board.cells[r][c] === null) };
+  }, [heldPiece, target, board]);
 
   const nextChallenge = useMemo(() => getChallengeById(challengeId + 1), [challengeId]);
-
-  const [showInvalid, setShowInvalid] = useState(false);
-  const invalidTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const fitAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const challenge = getChallengeById(challengeId);
     if (challenge) loadChallenge(challenge);
   }, [challengeId, loadChallenge]);
 
-  useEffect(() => () => clearTimeout(invalidTimeout.current), []);
-
   // Keyboard accelerators, additive to the always-present Rotate button and
-  // on-screen controls (research.md §3/§12): "R" rotates the selected piece,
-  // "Escape" puts it back down. Neither is the only way to do either action.
+  // on-screen controls (research.md §3/§12): "R" rotates the held piece,
+  // "Escape" puts it back where it was picked up from.
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (!selectedInstanceId) return;
       if (event.key === 'r' || event.key === 'R') {
         rotateSelected();
       } else if (event.key === 'Escape') {
-        deselect();
+        cancelHold();
       }
     }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedInstanceId, rotateSelected, deselect]);
+  }, [selectedInstanceId, rotateSelected, cancelHold]);
 
-  function flashInvalid() {
-    setShowInvalid(true);
-    clearTimeout(invalidTimeout.current);
-    invalidTimeout.current = setTimeout(() => setShowInvalid(false), INVALID_FEEDBACK_MS);
+  // Right-click anywhere rotates the held piece; on a loose piece with
+  // nothing held, it picks that piece up first. (The browser's own context
+  // menu is suppressed app-wide, see App.tsx.)
+  useEffect(() => {
+    function handleContextMenu(event: MouseEvent) {
+      const store = useManualAttemptStore.getState();
+      if (!store.selectedInstanceId) {
+        const id = (event.target as Element | null)?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id');
+        if (!id) return;
+        setPointer({ x: event.clientX, y: event.clientY });
+        store.pickUp(id);
+      }
+      useManualAttemptStore.getState().rotateSelected();
+    }
+    window.addEventListener('contextmenu', handleContextMenu);
+    return () => window.removeEventListener('contextmenu', handleContextMenu);
+  }, []);
+
+  function pick(instanceId: string, event: ReactMouseEvent<HTMLElement>) {
+    // With a piece already in hand this click is a drop — let it reach the arena.
+    if (selectedInstanceId) return;
+    event.stopPropagation();
+    if (event.detail === 0) {
+      // Keyboard activation has no pointer position: hold it over the element.
+      const rect = event.currentTarget.getBoundingClientRect();
+      setPointer({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    } else {
+      setPointer({ x: event.clientX, y: event.clientY });
+    }
+    pickUp(instanceId);
   }
 
-  function handleCellClick(row: number, col: number) {
-    // A piece selected from the tray always attempts a placement first — including
-    // onto an occupied cell, so overlap is rejected with feedback (FR-004) rather
-    // than silently removing the piece already there.
-    if (selectedInstanceId) {
-      const placed = placeSelectedAt(row, col);
-      if (!placed) flashInvalid();
-      else setShowInvalid(false);
+  function handleArenaClick(event: ReactMouseEvent<HTMLDivElement>) {
+    if (!heldPiece || event.detail === 0) return;
+    const drop = dropTargetAt({ x: event.clientX, y: event.clientY }, heldPiece);
+    if (drop.kind === 'board') placeSelectedAt(drop.row, drop.col);
+    else if (drop.kind === 'free') dropSelectedAt(drop.x, drop.y);
+  }
+
+  function handleCellClick(row: number, col: number, event: ReactMouseEvent<HTMLButtonElement>) {
+    if (heldPiece) {
+      // Mouse drops are resolved from the pointer position by the arena;
+      // keyboard activation of a cell places the piece with its corner there.
+      if (event.detail !== 0) return;
+      event.stopPropagation();
+      const { w, h } = pieceDims(heldPiece);
+      if (w > board.cols || h > board.rows) return;
+      placeSelectedAt(clamp(row, 0, board.rows - h), clamp(col, 0, board.cols - w));
       return;
     }
     const occupant = board.cells[row]?.[col];
-    if (occupant) {
-      removePiece(occupant);
-      setShowInvalid(false);
-    }
+    if (occupant) pick(occupant, event);
   }
 
-  function handleCellRightClick(_row: number, _col: number) {
-    if (!selectedInstanceId) return;
-    rotateSelected();
+  function isAway(piece: PieceInstance) {
+    return piece.position !== null || freePositions[piece.instanceId] !== undefined;
   }
+
+  function renderRing(position: PieceTrayPosition, span: number) {
+    // Opposite rings reserve the same thickness (even when one is empty) so
+    // the board stays centered.
+    if (!plan || span === 0) return null;
+    return (
+      <div className={`board-arena__ring board-arena__${position}`} style={{ '--span': span } as CSSProperties}>
+        <PieceTray
+          pieces={plan.rings[position]}
+          position={position}
+          slotSpan={slotSpan}
+          isAway={isAway}
+          heldInstanceId={selectedInstanceId}
+          onPick={pick}
+        />
+      </div>
+    );
+  }
+
+  const heldDims = heldPiece ? pieceDims(heldPiece) : null;
 
   return (
     <div className="manual-play-page">
@@ -117,85 +291,85 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
         <button type="button" onClick={reset}>
           {t('manualPlay.reset', 'Reset')}
         </button>
-      </div>
 
-      {showInvalid && (
-        <p data-testid="invalid-feedback" role="alert">
-          {t('manualPlay.invalid', "That piece can't go there.")}
-        </p>
-      )}
-
-      {isSolved && (
-        <div className="manual-play-page__solved-row">
-          <SolvedBanner />
-          {nextChallenge && (
-            <button type="button" className="btn-primary" onClick={() => goToManualPlay(nextChallenge.id)}>
-              {t('manualPlay.next', 'Next challenge')}
-            </button>
+        <div className="manual-play-page__status">
+          {conflictKeys.length > 0 && (
+            <p data-testid="invalid-feedback" role="alert" className="manual-play-page__warning">
+              {t('manualPlay.overlap', 'Pieces overlap — move the ones marked in red to continue.')}
+            </p>
+          )}
+          {isSolved && (
+            <>
+              <SolvedBanner />
+              {nextChallenge && (
+                <button type="button" className="btn-primary" onClick={() => goToManualPlay(nextChallenge.id)}>
+                  {t('manualPlay.next', 'Next challenge')}
+                </button>
+              )}
+            </>
           )}
         </div>
-      )}
 
-      <div className="board-arena">
-        <div className="board-arena__top">
-          <PieceTray
-            pieces={ringGroups.top}
-            position="top"
-            selectedInstanceId={selectedInstanceId}
-            onSelect={selectPiece}
-            onDeselect={deselect}
-            onRotate={rotateSelected}
-          />
-        </div>
-        <div className="board-arena__board-shell">
-          <div className="board-arena__fit" ref={fitAreaRef}>
-            {/* Side rings are anchored to the board's own edges, so they stay
-                next to it however narrow the board is. */}
-            <div className="board-arena__anchor">
-              <div className="board-arena__left">
-                <PieceTray
-                  pieces={ringGroups.left}
-                  position="left"
-                  selectedInstanceId={selectedInstanceId}
-                  onSelect={selectPiece}
-                  onDeselect={deselect}
-                  onRotate={rotateSelected}
-                />
-              </div>
+        <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={flipSelected} />
+      </div>
+
+      <div
+        className={`board-arena${heldPiece ? ' board-arena--holding' : ''}`}
+        ref={arenaRef}
+        style={{ '--cell': `${cellSize}px` } as CSSProperties}
+        onClick={handleArenaClick}
+      >
+        {plan && (
+          <>
+            {renderRing('top', plan.layout.bandSpan)}
+            {renderRing('left', plan.layout.sideSpan)}
+            <div className="board-arena__board" ref={boardRef}>
               <Board
                 board={board}
                 pieces={pieces}
-                selectedPiece={selectedPiece}
                 onCellClick={handleCellClick}
-                onCellRightClick={handleCellRightClick}
-                fitTo={fitAreaRef}
+                ghost={ghost}
+                conflictKeys={conflictSet}
+                cellSize={cellSize}
               />
-              <div className="board-arena__right">
-                <PieceTray
-                  pieces={ringGroups.right}
-                  position="right"
-                  selectedInstanceId={selectedInstanceId}
-                  onSelect={selectPiece}
-                  onDeselect={deselect}
-                  onRotate={rotateSelected}
-                />
-              </div>
             </div>
-          </div>
-        </div>
-        <div className="board-arena__bottom">
-          <PieceTray
-            pieces={ringGroups.bottom}
-            position="bottom"
-            selectedInstanceId={selectedInstanceId}
-            onSelect={selectPiece}
-            onDeselect={deselect}
-            onRotate={rotateSelected}
-          />
-        </div>
-      </div>
+            {renderRing('right', plan.layout.sideSpan)}
+            {renderRing('bottom', plan.layout.bandSpan)}
+          </>
+        )}
 
-      <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={flipSelected} />
+        {/* Pieces left loose outside the board, in the order they were dropped. */}
+        {boardOrigin &&
+          stack.map((instanceId) => {
+            const free = freePositions[instanceId];
+            const piece = pieces.find((p) => p.instanceId === instanceId);
+            if (!free || !piece) return null;
+            return (
+              <button
+                key={instanceId}
+                type="button"
+                data-testid={`free-piece-${instanceId}`}
+                data-piece-id={instanceId}
+                aria-label={piece.typeId}
+                className="piece-tray__item board-arena__loose"
+                style={{ left: boardOrigin.x + free.x * pitch, top: boardOrigin.y + free.y * pitch }}
+                onClick={(event) => pick(instanceId, event)}
+              >
+                <PieceShape instance={piece} />
+              </button>
+            );
+          })}
+
+        {heldPiece && heldDims && pointer && (
+          <div
+            className="board-arena__held"
+            data-testid="held-piece"
+            style={{ left: pointer.x - spanPx(heldDims.w) / 2, top: pointer.y - spanPx(heldDims.h) / 2 }}
+          >
+            <PieceShape instance={heldPiece} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
