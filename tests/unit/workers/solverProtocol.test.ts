@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { runSolve } from '../../../src/workers/solverEngine';
+import type { CriterionId } from '../../../src/solvers/criteria';
 import type { Challenge } from '../../../src/domain/types';
 
 const challenge: Challenge = {
@@ -12,53 +13,52 @@ const challenge: Challenge = {
   difficulty: 3,
 };
 
-function collect(challenge: Challenge, strategyId: 'backtracking' | 'constraint-guided') {
-  return [
-    ...runSolve({ type: 'solve', requestId: 'req-1', challenge, strategyId }),
-  ];
+function collect(c: Challenge, criteria: CriterionId[], maxSteps?: number) {
+  return [...runSolve({ type: 'solve', requestId: 'req-1', challenge: c, criteria, maxSteps })];
 }
 
 describe('solver worker protocol (solverEngine.runSolve)', () => {
   it('starts with a "started" event carrying the request id', () => {
-    const events = collect(challenge, 'backtracking');
+    const events = collect(challenge, []);
     expect(events[0]).toEqual({ type: 'started', requestId: 'req-1' });
   });
 
   it('emits "step" events in strictly increasing index order', () => {
-    const events = collect(challenge, 'backtracking');
+    const events = collect(challenge, []);
     const steps = events.filter((e) => e.type === 'step').map((e) => (e as { step: { index: number } }).step.index);
     steps.forEach((index, i) => expect(index).toBe(i));
   });
 
   it('ends with exactly one "done" event whose totalSteps matches the number of step events', () => {
-    const events = collect(challenge, 'backtracking');
+    const events = collect(challenge, []);
     const doneEvents = events.filter((e) => e.type === 'done');
     expect(doneEvents).toHaveLength(1);
     const stepCount = events.filter((e) => e.type === 'step').length;
-    expect((doneEvents[0] as { totalSteps: number }).totalSteps).toBe(stepCount);
+    expect(doneEvents[0]).toMatchObject({ totalSteps: stepCount, outcome: 'solved' });
     expect(events[events.length - 1].type).toBe('done');
   });
 
   it('is deterministic across runs for the same request', () => {
-    expect(collect(challenge, 'backtracking')).toEqual(collect(challenge, 'backtracking'));
+    expect(collect(challenge, ['dead-regions'])).toEqual(collect(challenge, ['dead-regions']));
   });
 
-  it('also runs the constraint-guided strategy end to end (started -> steps -> done)', () => {
-    const events = collect(challenge, 'constraint-guided');
+  it('runs with criteria end to end (started -> steps -> done) and reports their cut counts', () => {
+    const events = collect(challenge, ['most-constrained-cell', 'dead-regions']);
     expect(events[0]).toEqual({ type: 'started', requestId: 'req-1' });
-    expect(events[events.length - 1].type).toBe('done');
     expect(events.some((e) => e.type === 'step')).toBe(true);
+    const done = events[events.length - 1];
+    expect(done.type).toBe('done');
+    expect((done as { pruneCounts: object }).pruneCounts).toHaveProperty('dead-regions');
   });
 
-  it('yields an "error" event for an unknown strategy id', () => {
-    const events = [
-      ...runSolve({
-        type: 'solve',
-        requestId: 'req-1',
-        challenge,
-        strategyId: 'not-a-real-strategy' as unknown as 'backtracking',
-      }),
-    ];
+  it('reports a step limit as a "done" with outcome "limit", not as an error', () => {
+    const events = collect(challenge, [], 2);
+    const done = events[events.length - 1];
+    expect(done).toMatchObject({ type: 'done', outcome: 'limit', solvedAtStepIndex: -1 });
+  });
+
+  it('yields an "error" event for an unknown criterion', () => {
+    const events = collect(challenge, ['not-a-real-criterion' as unknown as CriterionId]);
     expect(events).toHaveLength(1);
     expect(events[0].type).toBe('error');
   });

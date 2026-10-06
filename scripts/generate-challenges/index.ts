@@ -18,7 +18,7 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { PIECE_TYPE_IDS, type PieceTypeId } from '../../src/domain/pentomino';
-import { solveConstraintGuided } from '../../src/solvers/constraintGuided';
+import { solve } from '../../src/solvers/configurableSolver';
 import { combinations } from './combinations';
 import { mulberry32, shuffle } from './rng';
 
@@ -134,7 +134,7 @@ function isTileable(k: number, combo: readonly PieceTypeId[]): boolean {
     line: '',
     difficulty: k,
   };
-  const gen = solveConstraintGuided(probe);
+  const gen = solve(probe, ['most-constrained-cell'], { maxSteps: Infinity });
   let step = gen.next();
   while (!step.done) step = gen.next();
   return step.value.solvedAtStepIndex !== -1;

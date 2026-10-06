@@ -51,7 +51,10 @@
     "solved": "Solved! Every piece fits — well done.",
     "reset": "Reset",
     "next": "Next challenge",
-    "overlap": "Pieces overlap — move the ones marked in red to continue."
+    "overlap": "Pieces overlap — move the ones marked in red to continue.",
+    "navLabel": "Challenge navigation",
+    "previous": "Previous challenge",
+    "following": "Following challenge"
   },
   "playback": {
     "label": "Playback controls",
@@ -60,32 +63,73 @@
     "pause": "Pause",
     "play": "Play",
     "stepForward": "Step forward",
-    "speed": "Speed"
+    "speed": "Speed",
+    "skipToEnd": "Jump to the end"
   },
   "solver": {
-    "start": "Watch the solver",
+    "title": "Solver",
+    "start": "Solve",
+    "restart": "Solve again",
+    "close": "Close the solver",
+    "backToPlay": "← Back to playing",
+    "baseOnly": "Plain search only",
     "computing": "Working it out…",
     "error": "The solver ran into a problem: {{message}}",
     "complete": "Solved! Every piece fits.",
-    "stepCounter": "Step {{current}} of {{total}}"
-  },
-  "strategy": {
-    "label": "Solving strategy",
-    "backtracking": {
-      "name": "Try, undo, try again",
-      "description": "Tries a piece in the next open spot; if that leads nowhere, undoes it and tries something else. It explores options in a fixed order, so it doesn't know in advance which choices are risky."
-    },
-    "constraintGuided": {
-      "name": "Smart search",
-      "description": "Before guessing, it looks for the spot on the board with the fewest possible pieces that could fit — and fills that one first. Tackling the most constrained spot early avoids a lot of dead ends."
+    "limit": "Gave up after {{steps}} steps without finding a solution. Add more criteria and try again.",
+    "exhausted": "Tried everything: no solution.",
+    "stepCounter": "Step {{current}} of {{total}}",
+    "arrangements": {
+      "label": "Possible combinations",
+      "hint_one": "Every way of putting the {{count}} piece on the board, in any position and orientation, without checking for overlaps. This is the haystack the solver searches.",
+      "hint_other": "Every way of putting the {{count}} pieces on the board, in any position and orientation, without checking for overlaps. This is the haystack the solver searches."
     }
   },
   "metrics": {
-    "step": "Step",
+    "step": "Steps shown",
     "backtracks": "Backtracks so far"
   },
   "comparison": {
-    "title": "Compare the last two runs",
-    "strategy": "Strategy"
+    "title": "Runs on this challenge",
+    "strategy": "Criteria",
+    "steps": "Steps",
+    "backtracks": "Backtracks"
+  },
+  "criteria": {
+    "label": "Strategy criteria",
+    "expand": "Explain \"{{name}}\"",
+    "collapse": "Hide the explanation of \"{{name}}\"",
+    "cuts_one": "{{count}} cut",
+    "cuts_other": "{{count}} cuts",
+    "base": {
+      "name": "Try, undo, try again",
+      "summary": "Always on: the search everything else builds on.",
+      "details": "Takes the next empty square, tries a piece there and moves on. When it gets stuck, it removes the last piece and tries the next option. On its own it finds a solution eventually, but it only notices a mistake when nothing fits anymore."
+    },
+    "scarcePiecesFirst": {
+      "name": "Stiffest pieces first",
+      "summary": "Tries the pieces with the fewest orientations before the flexible ones.",
+      "details": "Pieces like I and X can only be placed in one or two ways; pieces like F and L in eight. Placing the stiff ones while the board is still open avoids discovering late that they no longer fit anywhere."
+    },
+    "mostConstrainedCell": {
+      "name": "Hardest square first",
+      "summary": "Fills the empty square with the fewest possible placements.",
+      "details": "Instead of following reading order, it counts for every empty square how many placements could cover it, and works on the one with the fewest. A square with a single option is a forced move; one with none shows the dead end immediately."
+    },
+    "deadRegions": {
+      "name": "Rule out impossible holes",
+      "summary": "Backs off when an empty area’s size is not a multiple of 5.",
+      "details": "Every piece covers exactly 5 squares. If a placement walls off an empty area of 3, 7 or 11 squares, no combination of pieces can fill it exactly — so that placement is undone right away instead of being explored."
+    },
+    "strandedCells": {
+      "name": "No square left without a way out",
+      "summary": "Backs off when some empty square can no longer be covered by any remaining piece.",
+      "details": "After each placement it checks every empty square: is there still a remaining piece that fits over it? If one square has no candidate left, filling the rest is pointless, and the placement is undone."
+    },
+    "strandedPieces": {
+      "name": "Every piece still fits",
+      "summary": "Backs off when a remaining piece no longer fits anywhere.",
+      "details": "After each placement it checks every piece not yet used: is there still room for it somewhere on the board? If one of them fits nowhere, the board can never be completed from here."
+    }
   }
 }

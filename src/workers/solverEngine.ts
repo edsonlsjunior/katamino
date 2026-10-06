@@ -1,26 +1,19 @@
 /**
  * Pure dispatch logic shared by the real Web Worker entry point (solver.worker.ts)
- * and by unit tests: given a SolveRequest, runs the chosen strategy and yields the
- * SolveResponse stream described in contracts/solver-worker-protocol.md. Kept free
- * of any `self`/`postMessage` so it's testable without spinning up a real worker.
+ * and by unit tests: given a SolveRequest, runs the solver with the requested
+ * criteria and yields the SolveResponse stream described in
+ * contracts/solver-worker-protocol.md. Kept free of any `self`/`postMessage` so
+ * it's testable without spinning up a real worker.
  */
-import { solveBacktracking } from '../solvers/backtracking';
-import { solveConstraintGuided } from '../solvers/constraintGuided';
-import type { Challenge, SolveStep, SolvingStrategyId } from '../domain/types';
+import { solve } from '../solvers/configurableSolver';
+import { isCriterionId } from '../solvers/criteria';
 import type { SolveRequest, SolveResponse } from './protocol';
 
-type SolverGenerator = Generator<SolveStep, { backtrackCount: number; solvedAtStepIndex: number }, void>;
-
-const STRATEGIES: Record<SolvingStrategyId, (challenge: Challenge) => SolverGenerator> = {
-  backtracking: solveBacktracking,
-  'constraint-guided': solveConstraintGuided,
-};
-
 export function* runSolve(request: SolveRequest): Generator<SolveResponse, void, void> {
-  const { requestId, challenge, strategyId } = request;
-  const run = STRATEGIES[strategyId];
-  if (!run) {
-    yield { type: 'error', requestId, message: `Unknown solving strategy: ${strategyId}` };
+  const { requestId, challenge, criteria, maxSteps } = request;
+  const unknown = criteria.find((id) => !isCriterionId(id));
+  if (unknown !== undefined) {
+    yield { type: 'error', requestId, message: `Unknown solving criterion: ${unknown}` };
     return;
   }
 
@@ -28,15 +21,14 @@ export function* runSolve(request: SolveRequest): Generator<SolveResponse, void,
 
   try {
     let totalSteps = 0;
-    const gen = run(challenge);
+    const gen = solve(challenge, criteria, maxSteps === undefined ? undefined : { maxSteps });
     let result = gen.next();
     while (!result.done) {
       totalSteps++;
       yield { type: 'step', requestId, step: result.value };
       result = gen.next();
     }
-    const { backtrackCount, solvedAtStepIndex } = result.value;
-    yield { type: 'done', requestId, totalSteps, backtrackCount, solvedAtStepIndex };
+    yield { type: 'done', requestId, totalSteps, ...result.value };
   } catch (error) {
     yield {
       type: 'error',

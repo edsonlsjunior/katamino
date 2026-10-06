@@ -51,7 +51,10 @@
     "solved": "Resolvido! Todas as peças encaixam — muito bem.",
     "reset": "Reiniciar",
     "next": "Próximo desafio",
-    "overlap": "Há peças sobrepostas — mova as marcadas em vermelho para continuar."
+    "overlap": "Há peças sobrepostas — mova as marcadas em vermelho para continuar.",
+    "navLabel": "Navegação entre desafios",
+    "previous": "Desafio anterior",
+    "following": "Desafio seguinte"
   },
   "playback": {
     "label": "Controles de reprodução",
@@ -60,32 +63,73 @@
     "pause": "Pausar",
     "play": "Reproduzir",
     "stepForward": "Próximo passo",
-    "speed": "Velocidade"
+    "speed": "Velocidade",
+    "skipToEnd": "Ir para o fim"
   },
   "solver": {
-    "start": "Ver o solucionador",
+    "title": "Solucionador",
+    "start": "Resolver",
+    "restart": "Resolver de novo",
+    "close": "Fechar o solucionador",
+    "backToPlay": "← Voltar a jogar",
+    "baseOnly": "Só a busca simples",
     "computing": "Calculando…",
     "error": "O solucionador encontrou um problema: {{message}}",
     "complete": "Resolvido! Todas as peças encaixam.",
-    "stepCounter": "Passo {{current}} de {{total}}"
-  },
-  "strategy": {
-    "label": "Estratégia de resolução",
-    "backtracking": {
-      "name": "Tentar, desfazer, tentar de novo",
-      "description": "Tenta uma peça na próxima posição livre; se isso não levar a nada, desfaz e tenta outra coisa. Explora as opções em uma ordem fixa, então não sabe de antemão quais escolhas são arriscadas."
-    },
-    "constraintGuided": {
-      "name": "Busca inteligente",
-      "description": "Antes de arriscar, procura a posição do tabuleiro com o menor número de peças possíveis que caberiam ali — e preenche essa primeiro. Atacar a posição mais restrita cedo evita muitos becos sem saída."
+    "limit": "Desistiu depois de {{steps}} passos sem achar uma solução. Adicione mais critérios e tente de novo.",
+    "exhausted": "Tentou tudo: não há solução.",
+    "stepCounter": "Passo {{current}} de {{total}}",
+    "arrangements": {
+      "label": "Combinações possíveis",
+      "hint_one": "Todas as formas de colocar a {{count}} peça no tabuleiro, em qualquer posição e orientação, sem checar sobreposição. É o palheiro em que o solucionador procura.",
+      "hint_other": "Todas as formas de colocar as {{count}} peças no tabuleiro, em qualquer posição e orientação, sem checar sobreposição. É o palheiro em que o solucionador procura."
     }
   },
   "metrics": {
-    "step": "Passo",
-    "backtracks": "Retrocessos até agora"
+    "step": "Passos mostrados",
+    "backtracks": "Recuos até agora"
   },
   "comparison": {
-    "title": "Compare as duas últimas execuções",
-    "strategy": "Estratégia"
+    "title": "Execuções neste desafio",
+    "strategy": "Critérios",
+    "steps": "Passos",
+    "backtracks": "Recuos"
+  },
+  "criteria": {
+    "label": "Critérios da estratégia",
+    "expand": "Explicar \"{{name}}\"",
+    "collapse": "Ocultar a explicação de \"{{name}}\"",
+    "cuts_one": "{{count}} corte",
+    "cuts_other": "{{count}} cortes",
+    "base": {
+      "name": "Tentar, desfazer, tentar de novo",
+      "summary": "Sempre ligado: a busca sobre a qual todo o resto se apoia.",
+      "details": "Pega a próxima casa vazia, tenta uma peça ali e segue em frente. Quando trava, tira a última peça e tenta a opção seguinte. Sozinha ela acaba achando uma solução, mas só percebe um erro quando nada mais encaixa."
+    },
+    "scarcePiecesFirst": {
+      "name": "Peças mais rígidas primeiro",
+      "summary": "Tenta as peças com menos orientações antes das flexíveis.",
+      "details": "Peças como I e X só podem ser colocadas de um ou dois jeitos; peças como F e L, de oito. Colocar as rígidas enquanto o tabuleiro ainda está aberto evita descobrir tarde demais que elas não cabem em lugar nenhum."
+    },
+    "mostConstrainedCell": {
+      "name": "Casa mais difícil primeiro",
+      "summary": "Preenche a casa vazia com o menor número de encaixes possíveis.",
+      "details": "Em vez de seguir a ordem de leitura, conta, para cada casa vazia, quantos encaixes poderiam cobri-la, e trabalha na que tem menos. Uma casa com uma única opção é uma jogada forçada; uma com nenhuma revela o beco sem saída na hora."
+    },
+    "deadRegions": {
+      "name": "Descartar buracos impossíveis",
+      "summary": "Recua quando uma área vazia tem tamanho que não é múltiplo de 5.",
+      "details": "Toda peça cobre exatamente 5 casas. Se um encaixe isola uma área vazia de 3, 7 ou 11 casas, nenhuma combinação de peças consegue preenchê-la exatamente — então o encaixe é desfeito na hora, em vez de ser explorado."
+    },
+    "strandedCells": {
+      "name": "Nenhuma casa sem saída",
+      "summary": "Recua quando alguma casa vazia não pode mais ser coberta por nenhuma peça restante.",
+      "details": "Depois de cada encaixe, confere todas as casas vazias: ainda existe alguma peça restante que caiba sobre ela? Se uma casa ficou sem candidata, preencher o resto é inútil, e o encaixe é desfeito."
+    },
+    "strandedPieces": {
+      "name": "Toda peça ainda cabe",
+      "summary": "Recua quando alguma peça restante não cabe mais em lugar nenhum.",
+      "details": "Depois de cada encaixe, confere todas as peças ainda não usadas: ainda há espaço para ela em algum lugar do tabuleiro? Se uma delas não cabe em lugar nenhum, o tabuleiro nunca será completado a partir dali."
+    }
   }
 }

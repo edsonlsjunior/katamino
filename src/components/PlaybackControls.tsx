@@ -12,10 +12,12 @@ interface PlaybackControlsProps {
   onStepForward: () => void;
   onStepBackward: () => void;
   onRewind: () => void;
+  /** Jumps to the last step the solver has produced so far. */
+  onSkipToEnd: () => void;
   onSpeedChange: (speed: number) => void;
 }
 
-const SPEED_OPTIONS = [1, 2, 3, 5, 10, 25];
+const SPEED_OPTIONS = [1, 2, 3, 5, 10, 25, 100, 1000];
 
 export function PlaybackControls({
   status,
@@ -27,6 +29,7 @@ export function PlaybackControls({
   onStepForward,
   onStepBackward,
   onRewind,
+  onSkipToEnd,
   onSpeedChange,
 }: PlaybackControlsProps) {
   const { t } = useTranslation();
@@ -52,6 +55,9 @@ export function PlaybackControls({
       )}
       <button type="button" onClick={onStepForward} disabled={!canStepForward}>
         {t('playback.stepForward', 'Step forward')}
+      </button>
+      <button type="button" onClick={onSkipToEnd} disabled={!canStepForward}>
+        {t('playback.skipToEnd', 'Jump to the end')}
       </button>
       <label>
         {t('playback.speed', 'Speed')}

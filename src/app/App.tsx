@@ -4,7 +4,6 @@ import { useNavigationStore, type Screen as ScreenName } from '../state/navigati
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ChallengeList } from '../components/ChallengeList';
 import { ManualPlayPage } from './ManualPlayPage';
-import { AutoSolvePage } from './AutoSolvePage';
 import './App.css';
 
 export function App() {
@@ -51,20 +50,14 @@ function Screen({ name }: { name: ScreenName }) {
   const { t } = useTranslation();
   const challengeId = useNavigationStore((s) => s.challengeId);
   const goToManualPlay = useNavigationStore((s) => s.goToManualPlay);
-  const goToAutoSolve = useNavigationStore((s) => s.goToAutoSolve);
+  const goToSolver = useNavigationStore((s) => s.goToSolver);
 
   switch (name) {
     case 'challenges':
-      return <ChallengeList onPlay={goToManualPlay} onWatchSolver={goToAutoSolve} />;
+      return <ChallengeList onPlay={goToManualPlay} onWatchSolver={goToSolver} />;
     case 'manual':
       return challengeId !== null ? (
         <ManualPlayPage challengeId={challengeId} />
-      ) : (
-        <p>{t('common.loading')}</p>
-      );
-    case 'auto':
-      return challengeId !== null ? (
-        <AutoSolvePage challengeId={challengeId} />
       ) : (
         <p>{t('common.loading')}</p>
       );

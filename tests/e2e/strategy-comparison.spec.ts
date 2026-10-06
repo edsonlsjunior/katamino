@@ -1,34 +1,80 @@
 import { test, expect } from '@playwright/test';
 
 // Covers quickstart.md Scenario 3 / User Story 3 acceptance scenarios.
-test.describe('Strategy comparison', () => {
-  test('running two strategies on the same challenge shows distinguishable metrics and a comparison', async ({
-    page,
-  }) => {
+test.describe('Strategy criteria', () => {
+  test('the strategy is a list of criteria that can be ticked and expanded', async ({ page }) => {
     await page.goto('/');
     await page
       .getByTestId('challenge-card-1')
       .getByRole('button', { name: /watch the solver/i })
       .click();
 
-    // Run 1: backtracking (default selection).
+    // The plain search is always there and can't be switched off.
+    const base = page.getByTestId('criterion-base');
+    await expect(base.getByRole('checkbox')).toBeChecked();
+    await expect(base.getByRole('checkbox')).toBeDisabled();
+
+    // Each criterion is independent of the others.
+    const cells = page.getByTestId('criterion-stranded-cells');
+    const regions = page.getByTestId('criterion-dead-regions');
+    await expect(cells.getByRole('checkbox')).not.toBeChecked();
+    await expect(regions.getByRole('checkbox')).toBeChecked();
+    await cells.getByRole('checkbox').check();
+    await expect(cells.getByRole('checkbox')).toBeChecked();
+    await expect(regions.getByRole('checkbox')).toBeChecked();
+
+    // ...and expands into an explanation of what it does.
+    await expect(cells.getByText(/has no candidate left/i)).toHaveCount(0);
+    await cells.getByRole('button', { name: /explain/i }).click();
+    await expect(cells.getByText(/has no candidate left/i)).toBeVisible();
+    await cells.getByRole('button', { name: /hide the explanation/i }).click();
+    await expect(cells.getByText(/has no candidate left/i)).toHaveCount(0);
+  });
+
+  test('the panel says how many combinations the challenge has', async ({ page }) => {
+    await page.goto('/');
+    await page
+      .getByTestId('challenge-card-1')
+      .getByRole('button', { name: /watch the solver/i })
+      .click();
+    // Challenge #1: P, U and Y on a 5x3 board.
+    await expect(page.getByTestId('arrangements')).toHaveText('12,800');
+  });
+
+  test('running two sets of criteria on the same challenge shows distinguishable metrics and a comparison', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    // Challenge #353 (7 pieces): without hardest-square-first it takes far more steps.
+    await page
+      .getByTestId('challenge-card-353')
+      .getByRole('button', { name: /watch the solver/i })
+      .click();
     await page.getByTestId('start-solve').click();
+    await page.getByLabel(/speed/i).selectOption('1000');
+
+    // Run 1: the default criteria.
     await expect(page.getByTestId('solver-complete')).toBeVisible({ timeout: 30_000 });
     await expect(page.getByTestId('metrics-panel')).toBeVisible();
     const firstStepText = await page.getByTestId('metrics-step').textContent();
 
-    // Run 2: constraint-guided, on the same challenge.
-    await page.getByRole('radio').nth(1).check();
+    // Run 2: the same challenge without hardest-square-first.
+    await page.getByTestId('criterion-most-constrained-cell').getByRole('checkbox').uncheck();
     await page.getByTestId('start-solve').click();
     await expect(page.getByTestId('solver-complete')).toBeVisible({ timeout: 30_000 });
     const secondStepText = await page.getByTestId('metrics-step').textContent();
+    // A pruning criterion reports how many branches it cut.
+    await expect(page.getByTestId('criterion-cuts-dead-regions')).toHaveText(/^[1-9][\d,]* cuts?$/);
 
-    // The two runs are visibly different, and a side-by-side comparison is shown.
+    // The two runs are visibly different, and both are listed side by side (latest first).
     expect(secondStepText).not.toBe(firstStepText);
-    await expect(page.getByTestId('comparison-panel')).toBeVisible();
+    const runs = page.getByTestId('comparison-panel').locator('tbody tr');
+    await expect(runs).toHaveCount(2);
+    await expect(runs.first()).not.toContainText('Hardest square first');
+    await expect(runs.last()).toContainText('Hardest square first');
   });
 
-  test('switching language updates the strategy descriptions', async ({ page }) => {
+  test('switching language updates the criteria texts', async ({ page }) => {
     await page.goto('/');
     await page
       .getByTestId('challenge-card-1')
@@ -38,5 +84,6 @@ test.describe('Strategy comparison', () => {
     await expect(page.getByText('Try, undo, try again')).toBeVisible();
     await page.getByRole('button', { name: 'Português' }).click();
     await expect(page.getByText('Tentar, desfazer, tentar de novo')).toBeVisible();
+    await expect(page.getByText('Casa mais difícil primeiro')).toBeVisible();
   });
 });

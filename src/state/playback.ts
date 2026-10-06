@@ -1,166 +1,174 @@
 import { create } from 'zustand';
-import { createEmptyBoard, placeCells, removeInstance, type Board } from '../domain/board';
-import { cellsAt } from '../domain/pentomino';
-import type { Challenge, PieceInstance, PlaybackStatus, SolveStep, SolvingStrategyId } from '../domain/types';
-import type { SolveRequest, SolveResponse } from '../workers/protocol';
+import type { Board } from '../domain/board';
+import type { Challenge, PieceInstance, PlaybackStatus, SolveOutcome, SolveStep } from '../domain/types';
+import { CRITERION_IDS, DEFAULT_CRITERIA, criteriaKey, type CriterionId } from '../solvers/criteria';
+import type { SolveRequest, WorkerMessage, WorkerRequest } from '../workers/protocol';
 import SolverWorker from '../workers/solver.worker?worker';
+import { applyStep, emptyFrame, undoStep, type PlaybackFrame } from './playbackFrame';
 
 export interface RunSummary {
   challengeId: number;
-  strategyId: SolvingStrategyId;
+  criteria: CriterionId[];
   totalSteps: number;
   backtrackCount: number;
+  outcome: SolveOutcome;
 }
+
+const RUN_HISTORY_SIZE = 8;
 
 interface PlaybackState {
   challengeId: number | null;
-  strategyId: SolvingStrategyId | null;
+  /** The criteria of the run being shown; null before the first run. */
+  criteria: CriterionId[] | null;
   status: PlaybackStatus;
+  /** Steps received from the solver so far (all of them once `isSolving` is false). */
   steps: SolveStep[];
   currentStepIndex: number;
   speed: number;
+  /** True while the worker is still searching. */
+  isSolving: boolean;
+  /** Known only once the solver is done; 0 until then. */
   totalSteps: number;
   backtrackCount: number;
   solvedAtStepIndex: number;
+  outcome: SolveOutcome | null;
   errorMessage: string | null;
+  /** The position at `currentStepIndex`. */
   board: Board;
   pieces: PieceInstance[];
-  /** Most recent completed runs first, across challenges/strategies (FR-013, SC-003). */
+  backtracksSoFar: number;
+  prunesSoFar: Partial<Record<CriterionId, number>>;
+  /** Most recent completed runs first, across challenges (FR-013, SC-003). */
   runHistory: RunSummary[];
+  /** The criteria ticked for the next run. */
+  selectedCriteria: CriterionId[];
 
-  startSolve: (challenge: Challenge, strategyId: SolvingStrategyId) => void;
+  toggleCriterion: (id: CriterionId) => void;
+  startSolve: (challenge: Challenge, criteria: readonly CriterionId[]) => void;
   play: () => void;
   pause: () => void;
-  stepForward: () => void;
+  stepForward: (count?: number) => void;
   stepBackward: () => void;
   rewind: () => void;
   setSpeed: (stepsPerSecond: number) => void;
+  /** Abandons the current run and clears the playback (run history is kept). */
+  reset: () => void;
 }
 
 let worker: Worker | null = null;
 let currentRequestId: string | null = null;
+let requestCounter = 0;
 
 function getWorker(): Worker {
   if (!worker) worker = new SolverWorker();
   return worker;
 }
 
-/** Recomputes board + placed-piece list for rendering up to (and including) currentStepIndex. */
-function computeBoardAndPieces(
-  rows: number,
-  cols: number,
-  steps: readonly SolveStep[],
-  upToIndex: number,
-): { board: Board; pieces: PieceInstance[] } {
-  let board = createEmptyBoard(rows, cols);
-  const pieces = new Map<string, PieceInstance>();
-
-  for (let i = 0; i <= upToIndex && i < steps.length; i++) {
-    const step = steps[i];
-    if (step.kind === 'place') {
-      const cells = cellsAtStep(step);
-      board = placeCells(board, step.instanceId, cells);
-      pieces.set(step.instanceId, {
-        instanceId: step.instanceId,
-        typeId: step.typeId,
-        orientationIndex: step.orientationIndex,
-        position: step.position,
-      });
-    } else {
-      board = removeInstance(board, step.instanceId);
-      pieces.delete(step.instanceId);
-    }
-  }
-
-  return { board, pieces: [...pieces.values()] };
+function send(request: WorkerRequest) {
+  getWorker().postMessage(request);
 }
 
-function cellsAtStep(step: SolveStep) {
-  return cellsAt(step.typeId, step.orientationIndex, [step.position.row, step.position.col]);
+function frameOf(state: PlaybackState): PlaybackFrame {
+  return {
+    board: state.board,
+    pieces: state.pieces,
+    backtracks: state.backtracksSoFar,
+    prunes: state.prunesSoFar,
+  };
 }
 
-export const usePlaybackStore = create<PlaybackState>((set, get) => ({
+function frameFields(frame: PlaybackFrame) {
+  return {
+    board: frame.board,
+    pieces: frame.pieces,
+    backtracksSoFar: frame.backtracks,
+    prunesSoFar: frame.prunes,
+  };
+}
+
+const IDLE = {
   challengeId: null,
-  strategyId: null,
-  status: 'idle',
-  steps: [],
+  criteria: null,
+  status: 'idle' as PlaybackStatus,
+  steps: [] as SolveStep[],
   currentStepIndex: -1,
-  speed: 3,
+  isSolving: false,
   totalSteps: 0,
   backtrackCount: 0,
   solvedAtStepIndex: -1,
+  outcome: null,
   errorMessage: null,
-  board: createEmptyBoard(5, 0),
-  pieces: [],
-  runHistory: [],
+  ...frameFields(emptyFrame(5, 0)),
+};
 
-  startSolve: (challenge, strategyId) => {
-    const requestId = `${challenge.id}-${strategyId}-${Date.now()}`;
+export const usePlaybackStore = create<PlaybackState>((set, get) => ({
+  ...IDLE,
+  speed: 3,
+  runHistory: [],
+  selectedCriteria: [...DEFAULT_CRITERIA],
+
+  toggleCriterion: (id) => {
+    const current = new Set(get().selectedCriteria);
+    if (current.has(id)) current.delete(id);
+    else current.add(id);
+    set({ selectedCriteria: CRITERION_IDS.filter((c) => current.has(c)) });
+  },
+
+  startSolve: (challenge, criteria) => {
+    const requestId = `${challenge.id}-${criteriaKey(criteria)}-${++requestCounter}`;
     currentRequestId = requestId;
 
     set({
+      ...IDLE,
       challengeId: challenge.id,
-      strategyId,
+      criteria: [...criteria],
       status: 'computing',
-      steps: [],
-      currentStepIndex: -1,
-      totalSteps: 0,
-      backtrackCount: 0,
-      solvedAtStepIndex: -1,
-      errorMessage: null,
-      board: createEmptyBoard(challenge.boardRows, challenge.boardCols),
-      pieces: [],
+      isSolving: true,
+      ...frameFields(emptyFrame(challenge.boardRows, challenge.boardCols)),
     });
 
     const w = getWorker();
-    w.onmessage = (event: MessageEvent<SolveResponse>) => {
+    w.onmessage = (event: MessageEvent<WorkerMessage>) => {
       const message = event.data;
       if (message.requestId !== currentRequestId) return;
 
-      if (message.type === 'started') {
-        return;
-      }
-      if (message.type === 'step') {
-        const { steps, currentStepIndex, status } = get();
-        const nextSteps = [...steps, message.step];
-        const shouldAutoAdvance = status === 'computing' && currentStepIndex === steps.length - 1;
-        const nextIndex = shouldAutoAdvance ? currentStepIndex + 1 : currentStepIndex;
-        const { board, pieces } = computeBoardAndPieces(get().board.rows, get().board.cols, nextSteps, nextIndex);
+      if (message.type === 'steps') {
+        const { steps, status } = get();
         set({
-          steps: nextSteps,
-          currentStepIndex: nextIndex,
-          status: 'playing',
-          board,
-          pieces,
+          steps: steps.concat(message.steps),
+          // Playback starts as soon as there is something to show; the
+          // autoplay timer (see ManualPlayPage) advances from there.
+          status: status === 'computing' ? 'playing' : status,
         });
         return;
       }
       if (message.type === 'done') {
-        const { challengeId, strategyId: currentStrategyId, runHistory } = get();
+        const { challengeId, criteria: runCriteria, runHistory, currentStepIndex, steps, status } = get();
         const summary: RunSummary = {
           challengeId: challengeId!,
-          strategyId: currentStrategyId!,
+          criteria: runCriteria ?? [],
           totalSteps: message.totalSteps,
           backtrackCount: message.backtrackCount,
+          outcome: message.outcome,
         };
+        const atEnd = currentStepIndex >= steps.length - 1;
         set({
+          isSolving: false,
           totalSteps: message.totalSteps,
           backtrackCount: message.backtrackCount,
           solvedAtStepIndex: message.solvedAtStepIndex,
-          runHistory: [summary, ...runHistory].slice(0, 5),
+          outcome: message.outcome,
+          runHistory: [summary, ...runHistory].slice(0, RUN_HISTORY_SIZE),
+          status: atEnd ? 'complete' : status,
         });
-        const { currentStepIndex, steps } = get();
-        if (currentStepIndex >= steps.length - 1) {
-          set({ status: 'complete' });
-        }
         return;
       }
       if (message.type === 'error') {
-        set({ status: 'error', errorMessage: message.message });
+        set({ status: 'error', isSolving: false, errorMessage: message.message });
       }
     };
 
-    const request: SolveRequest = { type: 'solve', requestId, challenge, strategyId };
+    const request: SolveRequest = { type: 'solve', requestId, challenge, criteria: [...criteria] };
     w.postMessage(request);
   },
 
@@ -173,33 +181,47 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
     if (get().status === 'playing') set({ status: 'paused' });
   },
 
-  stepForward: () => {
-    const { steps, currentStepIndex, totalSteps, board } = get();
-    if (currentStepIndex >= steps.length - 1) return;
-    const nextIndex = currentStepIndex + 1;
-    const { board: nextBoard, pieces } = computeBoardAndPieces(board.rows, board.cols, steps, nextIndex);
-    const reachedEnd = totalSteps > 0 && nextIndex >= totalSteps - 1;
-    set({ currentStepIndex: nextIndex, board: nextBoard, pieces, status: reachedEnd ? 'complete' : get().status });
+  stepForward: (count = 1) => {
+    const state = get();
+    const { steps, isSolving } = state;
+    let index = state.currentStepIndex;
+    if (index >= steps.length - 1) return;
+
+    let frame = frameOf(state);
+    for (let i = 0; i < count && index < steps.length - 1; i++) {
+      frame = applyStep(frame, steps[++index]);
+    }
+    const reachedEnd = !isSolving && index >= steps.length - 1;
+    set({
+      currentStepIndex: index,
+      ...frameFields(frame),
+      status: reachedEnd ? 'complete' : state.status,
+    });
   },
 
   stepBackward: () => {
-    const { steps, currentStepIndex, board } = get();
+    const state = get();
+    const { steps, currentStepIndex } = state;
     if (currentStepIndex < 0) return;
-    const nextIndex = currentStepIndex - 1;
-    const { board: nextBoard, pieces } = computeBoardAndPieces(board.rows, board.cols, steps, nextIndex);
     set({
-      currentStepIndex: nextIndex,
-      board: nextBoard,
-      pieces,
-      status: get().status === 'complete' ? 'paused' : get().status,
+      currentStepIndex: currentStepIndex - 1,
+      ...frameFields(undoStep(frameOf(state), steps[currentStepIndex])),
+      status: state.status === 'complete' ? 'paused' : state.status,
     });
   },
 
   rewind: () => {
     const { board } = get();
-    const empty = createEmptyBoard(board.rows, board.cols);
-    set({ currentStepIndex: -1, board: empty, pieces: [], status: 'paused' });
+    set({ currentStepIndex: -1, ...frameFields(emptyFrame(board.rows, board.cols)), status: 'paused' });
   },
 
   setSpeed: (stepsPerSecond) => set({ speed: Math.max(0.5, stepsPerSecond) }),
+
+  reset: () => {
+    if (currentRequestId !== null) {
+      currentRequestId = null;
+      send({ type: 'cancel' });
+    }
+    set({ ...IDLE });
+  },
 }));

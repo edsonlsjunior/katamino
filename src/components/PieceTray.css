@@ -46,6 +46,6 @@
   border-radius: 2px;
 }
 
-.piece-tray__item:hover .piece-shape {
+.piece-tray__item:not(.piece-tray__item--static):hover .piece-shape {
   transform: scale(1.04);
 }

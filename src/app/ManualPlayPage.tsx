@@ -11,18 +11,24 @@ import { useTranslation } from 'react-i18next';
 import { Board } from '../components/Board';
 import { PieceShape, PieceTray, type PieceTrayPosition } from '../components/PieceTray';
 import { PieceControls } from '../components/PieceControls';
+import { PlaybackControls } from '../components/PlaybackControls';
+import { SolverPanel } from '../components/SolverPanel';
 import { SolvedBanner } from '../components/SolvedBanner';
 import { getChallengeById } from '../data/loadChallenges';
-import { isInBounds, isOverlapping } from '../domain/board';
+import { createEmptyBoard, isInBounds, isOverlapping } from '../domain/board';
 import { cellsAt, flipOrientation, PIECE_TYPES } from '../domain/pentomino';
 import { useManualAttemptStore } from '../state/manualAttempt';
 import { useNavigationStore } from '../state/navigation';
+import { isChallengeCompleted } from '../state/persistence';
+import { usePlaybackStore } from '../state/playback';
 import type { PieceInstance } from '../domain/types';
 import { BOARD_PADDING_PX, CELL_GAP_PX, planArena, pieceSpan } from './arenaLayout';
 
 const FALLBACK_CELL_PX = 40;
 /** How far the pointer must travel with the button down to count as a drag. */
 const DRAG_THRESHOLD_PX = 24;
+/** Autoplay never ticks faster than this; higher speeds advance several steps per tick. */
+const MIN_AUTOPLAY_TICK_MS = 16;
 
 interface ManualPlayPageProps {
   challengeId: number;
@@ -77,8 +83,14 @@ function useElementSize(ref: React.RefObject<HTMLElement>) {
 
 export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const { t } = useTranslation();
-  const goToAutoSolve = useNavigationStore((s) => s.goToAutoSolve);
   const goToManualPlay = useNavigationStore((s) => s.goToManualPlay);
+  const goToChallenge = useNavigationStore((s) => s.goToChallenge);
+  // Solver mode: same screen, but the board shows the solver's playback and
+  // the pieces can't be handled; the player's own attempt is kept underneath.
+  const solverOpen = useNavigationStore((s) => s.solverOpen);
+  const openSolver = useNavigationStore((s) => s.openSolver);
+  const closeSolver = useNavigationStore((s) => s.closeSolver);
+  const challenge = useMemo(() => getChallengeById(challengeId), [challengeId]);
 
   const loadChallenge = useManualAttemptStore((s) => s.loadChallenge);
   const board = useManualAttemptStore((s) => s.board);
@@ -95,6 +107,32 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const placeSelectedAt = useManualAttemptStore((s) => s.placeSelectedAt);
   const dropSelectedAt = useManualAttemptStore((s) => s.dropSelectedAt);
   const reset = useManualAttemptStore((s) => s.reset);
+
+  const playback = usePlaybackStore();
+  const resetPlayback = playback.reset;
+  const stepPlaybackForward = playback.stepForward;
+  const selectedCriteria = useMemo(() => new Set(playback.selectedCriteria), [playback.selectedCriteria]);
+  const challengeRuns = useMemo(
+    () => playback.runHistory.filter((run) => run.challengeId === challengeId),
+    [playback.runHistory, challengeId],
+  );
+
+  // Entering solver mode puts down whatever is in hand; leaving it (or
+  // switching challenge) abandons the run on screen.
+  useEffect(() => {
+    if (!solverOpen) return;
+    cancelHold();
+    return () => resetPlayback();
+  }, [solverOpen, challengeId, cancelHold, resetPlayback]);
+
+  // Autoplay: while playing, advance at the chosen speed.
+  useEffect(() => {
+    if (!solverOpen || playback.status !== 'playing') return;
+    const tickMs = Math.max(1000 / playback.speed, MIN_AUTOPLAY_TICK_MS);
+    const stepsPerTick = Math.max(1, Math.round((playback.speed * tickMs) / 1000));
+    const id = setInterval(() => stepPlaybackForward(stepsPerTick), tickMs);
+    return () => clearInterval(id);
+  }, [solverOpen, playback.status, playback.speed, stepPlaybackForward]);
 
   const heldPiece = useMemo(
     () => pieces.find((p) => p.instanceId === selectedInstanceId) ?? null,
@@ -199,7 +237,11 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     return { cells, valid: !isOverlapping(board, cells) };
   }, [heldPiece, target, board]);
 
+  // Challenge ids follow the order of the challenge list.
+  const previousChallenge = useMemo(() => getChallengeById(challengeId - 1), [challengeId]);
   const nextChallenge = useMemo(() => getChallengeById(challengeId + 1), [challengeId]);
+  // Completed now or in an earlier visit (progress is persisted when solved).
+  const isCompleted = useMemo(() => isSolved || isChallengeCompleted(challengeId), [isSolved, challengeId]);
 
   useEffect(() => {
     const challenge = getChallengeById(challengeId);
@@ -229,6 +271,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   // menu is suppressed app-wide, see App.tsx.)
   useEffect(() => {
     function handleContextMenu(event: MouseEvent) {
+      if (useNavigationStore.getState().solverOpen) return;
       const store = useManualAttemptStore.getState();
       if (!store.selectedInstanceId) {
         const id = (event.target as Element | null)?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id');
@@ -261,7 +304,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
 
     function handlePointerDown(event: PointerEvent) {
       swallowClick = false;
-      if (event.button !== 0) return;
+      if (event.button !== 0 || useNavigationStore.getState().solverOpen) return;
       const pieceId =
         (event.target as Element | null)?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id') ?? null;
       drag = { x: event.clientX, y: event.clientY, pieceId, baseOrientation: null };
@@ -353,6 +396,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   }
 
   function handleCellClick(row: number, col: number, event: ReactMouseEvent<HTMLButtonElement>) {
+    if (solverOpen) return;
     if (heldPiece) {
       // Mouse drops are resolved from the pointer position by the arena;
       // keyboard activation of a cell places the piece with its corner there.
@@ -375,42 +419,94 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     );
   }
 
+  // In solver mode the rings show the challenge's pieces as dealt, minus the
+  // ones the solver currently has on the board.
+  const solverPlacedTypes = useMemo(() => new Set(playback.pieces.map((p) => p.typeId)), [playback.pieces]);
+  const emptyBoard = useMemo(() => createEmptyBoard(board.rows, board.cols), [board.rows, board.cols]);
+  const solverBoard = playback.status === 'idle' ? emptyBoard : playback.board;
+
   function renderRing(position: PieceTrayPosition, span: number) {
     // Opposite rings reserve the same thickness (even when one is empty) so
     // the board stays centered.
     if (!plan || span === 0) return null;
     return (
       <div className={`board-arena__ring board-arena__${position}`} style={{ '--span': span } as CSSProperties}>
-        <PieceTray
-          pieces={plan.rings[position]}
-          position={position}
-          slotSpan={slotSpan}
-          isAway={isAway}
-          onPick={pick}
-        />
+        {solverOpen ? (
+          <PieceTray
+            pieces={plan.rings[position].map((piece) => ({ ...piece, orientationIndex: 0 }))}
+            position={position}
+            slotSpan={slotSpan}
+            isAway={(piece) => solverPlacedTypes.has(piece.typeId)}
+          />
+        ) : (
+          <PieceTray
+            pieces={plan.rings[position]}
+            position={position}
+            slotSpan={slotSpan}
+            isAway={isAway}
+            onPick={pick}
+          />
+        )}
       </div>
     );
   }
 
   const heldDims = heldPiece ? pieceDims(heldPiece) : null;
+  const stepsKnown = playback.isSolving ? playback.steps.length : playback.totalSteps;
 
   return (
     <div className="manual-play-page">
       <div className="manual-play-page__toolbar">
-        <button type="button" onClick={() => goToAutoSolve(challengeId)}>
-          {t('nav.autoSolve')}
-        </button>
-        <button type="button" onClick={reset}>
-          {t('manualPlay.reset', 'Reset')}
-        </button>
+        <nav className="challenge-nav" aria-label={t('manualPlay.navLabel')}>
+          <button
+            type="button"
+            aria-label={t('manualPlay.previous')}
+            disabled={!previousChallenge}
+            onClick={() => previousChallenge && goToChallenge(previousChallenge.id)}
+          >
+            ‹
+          </button>
+          <span className="challenge-nav__title" data-testid="challenge-title" data-completed={isCompleted}>
+            {challenge &&
+              t('challenges.cardLabel', { line: challenge.line, boardCols: challenge.boardCols, id: challenge.id })}
+            {isCompleted && (
+              <span className="challenge-nav__badge" data-testid="challenge-completed">
+                ✓ {t('challenges.completed', 'Completed')}
+              </span>
+            )}
+          </span>
+          <button
+            type="button"
+            aria-label={t('manualPlay.following')}
+            disabled={!nextChallenge}
+            onClick={() => nextChallenge && goToChallenge(nextChallenge.id)}
+          >
+            ›
+          </button>
+        </nav>
+
+        {solverOpen ? (
+          <button type="button" onClick={closeSolver} data-testid="close-solver">
+            {t('solver.backToPlay')}
+          </button>
+        ) : (
+          <>
+            <button type="button" onClick={openSolver}>
+              {t('nav.autoSolve')}
+            </button>
+            <button type="button" onClick={reset}>
+              {t('manualPlay.reset', 'Reset')}
+            </button>
+          </>
+        )}
 
         <div className="manual-play-page__status">
-          {conflictKeys.length > 0 && (
+          {!solverOpen && conflictKeys.length > 0 && (
             <p data-testid="invalid-feedback" role="alert" className="manual-play-page__warning">
               {t('manualPlay.overlap', 'Pieces overlap — move the ones marked in red to continue.')}
             </p>
           )}
-          {isSolved && (
+          {!solverOpen && isSolved && (
             <>
               <SolvedBanner />
               {nextChallenge && (
@@ -422,64 +518,123 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
           )}
         </div>
 
-        <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={() => flipSelected()} />
+        {!solverOpen && (
+          <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={() => flipSelected()} />
+        )}
       </div>
 
-      <div
-        className={`board-arena${heldPiece ? ' board-arena--holding' : ''}`}
-        ref={arenaRef}
-        style={{ '--cell': `${cellSize}px` } as CSSProperties}
-        onClick={handleArenaClick}
-      >
-        {plan && (
-          <>
-            {renderRing('top', plan.layout.bandSpan)}
-            {renderRing('left', plan.layout.sideSpan)}
-            <div className="board-arena__board" ref={boardRef}>
-              <Board
-                board={board}
-                pieces={pieces}
-                onCellClick={handleCellClick}
-                ghost={ghost}
-                conflictKeys={conflictSet}
-                cellSize={cellSize}
+      <div className="manual-play-page__body">
+        <div className="manual-play-page__stage">
+          <div
+            className={`board-arena${heldPiece ? ' board-arena--holding' : ''}`}
+            ref={arenaRef}
+            style={{ '--cell': `${cellSize}px` } as CSSProperties}
+            onClick={handleArenaClick}
+          >
+            {plan && (
+              <>
+                {renderRing('top', plan.layout.bandSpan)}
+                {renderRing('left', plan.layout.sideSpan)}
+                <div className="board-arena__board" ref={boardRef}>
+                  {solverOpen ? (
+                    <Board board={solverBoard} pieces={playback.pieces} cellSize={cellSize} />
+                  ) : (
+                    <Board
+                      board={board}
+                      pieces={pieces}
+                      onCellClick={handleCellClick}
+                      ghost={ghost}
+                      conflictKeys={conflictSet}
+                      cellSize={cellSize}
+                    />
+                  )}
+                </div>
+                {renderRing('right', plan.layout.sideSpan)}
+                {renderRing('bottom', plan.layout.bandSpan)}
+              </>
+            )}
+
+            {/* Pieces left loose outside the board, in the order they were dropped. */}
+            {!solverOpen &&
+              boardOrigin &&
+              stack.map((instanceId) => {
+                const free = freePositions[instanceId];
+                const piece = pieces.find((p) => p.instanceId === instanceId);
+                if (!free || !piece) return null;
+                return (
+                  <button
+                    key={instanceId}
+                    type="button"
+                    data-testid={`free-piece-${instanceId}`}
+                    data-piece-id={instanceId}
+                    aria-label={piece.typeId}
+                    className="piece-tray__item board-arena__loose"
+                    style={{ left: boardOrigin.x + free.x * pitch, top: boardOrigin.y + free.y * pitch }}
+                    onClick={(event) => pick(instanceId, event)}
+                  >
+                    <PieceShape instance={piece} />
+                  </button>
+                );
+              })}
+
+            {!solverOpen && heldPiece && heldDims && pointer && (
+              <div
+                className="board-arena__held"
+                data-testid="held-piece"
+                style={{ left: pointer.x - spanPx(heldDims.w) / 2, top: pointer.y - spanPx(heldDims.h) / 2 }}
+              >
+                <PieceShape instance={heldPiece} />
+              </div>
+            )}
+          </div>
+
+          {solverOpen && (
+            <div className="manual-play-page__playback">
+              <p data-testid="step-counter">
+                {t('solver.stepCounter', 'Step {{current}} of {{total}}', {
+                  current: Math.max(playback.currentStepIndex + 1, 0),
+                  total: playback.isSolving ? `${stepsKnown}…` : stepsKnown,
+                })}
+              </p>
+              <PlaybackControls
+                status={playback.status}
+                speed={playback.speed}
+                canStepBackward={playback.currentStepIndex >= 0}
+                canStepForward={playback.currentStepIndex < playback.steps.length - 1}
+                // Before the first run, Play starts one with the ticked criteria.
+                onPlay={
+                  playback.status === 'idle' && challenge
+                    ? () => playback.startSolve(challenge, playback.selectedCriteria)
+                    : playback.play
+                }
+                onPause={playback.pause}
+                onStepForward={() => playback.stepForward()}
+                onStepBackward={playback.stepBackward}
+                onRewind={playback.rewind}
+                onSkipToEnd={() => playback.stepForward(Number.MAX_SAFE_INTEGER)}
+                onSpeedChange={playback.setSpeed}
               />
             </div>
-            {renderRing('right', plan.layout.sideSpan)}
-            {renderRing('bottom', plan.layout.bandSpan)}
-          </>
-        )}
+          )}
+        </div>
 
-        {/* Pieces left loose outside the board, in the order they were dropped. */}
-        {boardOrigin &&
-          stack.map((instanceId) => {
-            const free = freePositions[instanceId];
-            const piece = pieces.find((p) => p.instanceId === instanceId);
-            if (!free || !piece) return null;
-            return (
-              <button
-                key={instanceId}
-                type="button"
-                data-testid={`free-piece-${instanceId}`}
-                data-piece-id={instanceId}
-                aria-label={piece.typeId}
-                className="piece-tray__item board-arena__loose"
-                style={{ left: boardOrigin.x + free.x * pitch, top: boardOrigin.y + free.y * pitch }}
-                onClick={(event) => pick(instanceId, event)}
-              >
-                <PieceShape instance={piece} />
-              </button>
-            );
-          })}
-
-        {heldPiece && heldDims && pointer && (
-          <div
-            className="board-arena__held"
-            data-testid="held-piece"
-            style={{ left: pointer.x - spanPx(heldDims.w) / 2, top: pointer.y - spanPx(heldDims.h) / 2 }}
-          >
-            <PieceShape instance={heldPiece} />
-          </div>
+        {solverOpen && challenge && (
+          <SolverPanel
+            challenge={challenge}
+            selectedCriteria={selectedCriteria}
+            onToggleCriterion={playback.toggleCriterion}
+            onStart={() => playback.startSolve(challenge, playback.selectedCriteria)}
+            onClose={closeSolver}
+            status={playback.status}
+            isSolving={playback.isSolving}
+            outcome={playback.outcome}
+            errorMessage={playback.errorMessage}
+            stepsShown={Math.max(playback.currentStepIndex + 1, 0)}
+            stepsKnown={stepsKnown}
+            backtracksSoFar={playback.backtracksSoFar}
+            prunesSoFar={playback.prunesSoFar}
+            runs={challengeRuns}
+          />
         )}
       </div>
     </div>

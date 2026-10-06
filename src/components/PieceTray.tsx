@@ -11,7 +11,8 @@ interface PieceTrayProps {
   pieces: readonly PieceInstance[];
   /** Whether a piece has left its slot (in hand, on the board or loose elsewhere). */
   isAway: (piece: PieceInstance) => boolean;
-  onPick: (instanceId: string, event: MouseEvent<HTMLElement>) => void;
+  /** Without it the pieces are only shown, not pickable (solver mode). */
+  onPick?: (instanceId: string, event: MouseEvent<HTMLElement>) => void;
   /** Which ring around the board this group renders in — only affects
    * layout direction (row vs. column) and the listbox's aria-label. */
   position: PieceTrayPosition;
@@ -55,7 +56,7 @@ export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceT
   return (
     <div
       className={`piece-tray__list${isVertical ? ' piece-tray__list--column' : ''}`}
-      role="listbox"
+      role={onPick ? 'listbox' : 'group'}
       aria-label={`${t('pieceTray.label', 'Available pieces')} — ${t(POSITION_LABEL_KEYS[position])}`}
     >
       {pieces.map((piece) => {
@@ -63,6 +64,20 @@ export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceT
         // A piece that left keeps its (empty) slot so the others don't shift around.
         if (isAway(piece)) {
           return <span key={piece.instanceId} className="piece-tray__slot" style={slotStyle} aria-hidden="true" />;
+        }
+        if (!onPick) {
+          return (
+            <span
+              key={piece.instanceId}
+              role="img"
+              aria-label={piece.typeId}
+              data-testid={`tray-piece-${piece.instanceId}`}
+              className="piece-tray__slot piece-tray__item piece-tray__item--static"
+              style={slotStyle}
+            >
+              <PieceShape instance={piece} />
+            </span>
+          );
         }
         return (
           <button

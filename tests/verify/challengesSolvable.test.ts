@@ -1,19 +1,20 @@
 import { describe, expect, it } from 'vitest';
 import { loadChallenges } from '../../src/data/loadChallenges';
-import { solveBacktracking } from '../../src/solvers/backtracking';
-import { solveConstraintGuided } from '../../src/solvers/constraintGuided';
-import type { Challenge, SolveStep } from '../../src/domain/types';
+import { solve } from '../../src/solvers/configurableSolver';
+import { CRITERION_IDS, DEFAULT_CRITERIA, type CriterionId } from '../../src/solvers/criteria';
+import type { Challenge } from '../../src/domain/types';
 
-function isSolvable(solve: (c: Challenge) => Generator<SolveStep, { solvedAtStepIndex: number }, void>, c: Challenge) {
-  const gen = solve(c);
+// With the solver's default step limit, i.e. what a player actually gets.
+function isSolvable(c: Challenge, criteria: readonly CriterionId[]) {
+  const gen = solve(c, criteria);
   let result = gen.next();
   while (!result.done) result = gen.next();
-  return result.value.solvedAtStepIndex !== -1;
+  return result.value.outcome === 'solved';
 }
 
-// Slow (both solvers x 500 challenges) — run via `npm run verify:challenges`, not
+// Slow (three strategies x 500 challenges) — run via `npm run verify:challenges`, not
 // the default fast test suite. Verifies FR-014 / SC-002.
-describe('all 500 challenges are solvable by both solving strategies', () => {
+describe('all 500 challenges are solvable within the step limit', () => {
   const challenges = loadChallenges();
 
   it('has exactly 500 challenges', () => {
@@ -51,17 +52,25 @@ describe('all 500 challenges are solvable by both solving strategies', () => {
   });
 
   it.each(challenges)(
-    'challenge #$id is solvable by backtracking',
+    'challenge #$id is solvable with the default criteria',
     (challenge) => {
-      expect(isSolvable(solveBacktracking, challenge)).toBe(true);
+      expect(isSolvable(challenge, DEFAULT_CRITERIA)).toBe(true);
     },
     15_000,
   );
 
   it.each(challenges)(
-    'challenge #$id is solvable by the constraint-guided strategy',
+    'challenge #$id is solvable with hardest-square-first alone',
     (challenge) => {
-      expect(isSolvable(solveConstraintGuided, challenge)).toBe(true);
+      expect(isSolvable(challenge, ['most-constrained-cell'])).toBe(true);
+    },
+    15_000,
+  );
+
+  it.each(challenges)(
+    'challenge #$id is solvable with every criterion on',
+    (challenge) => {
+      expect(isSolvable(challenge, CRITERION_IDS)).toBe(true);
     },
     15_000,
   );

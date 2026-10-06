@@ -31,7 +31,7 @@ npm run dev
 | `npm run format` | Format the codebase with Prettier |
 | `npm run test:unit` | Run unit + integration tests (Vitest) |
 | `npm run test:e2e` | Run end-to-end tests (Playwright) |
-| `npm run verify:challenges` | Verify all 500 challenges are solvable by both strategies |
+| `npm run verify:challenges` | Verify all 500 challenges are solvable within the solver's step limit |
 | `npm run generate:challenges` | Regenerate the 500-challenge dataset |
 
 ## Tech stack

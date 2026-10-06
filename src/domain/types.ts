@@ -5,6 +5,7 @@
  */
 
 import type { PieceTypeId } from './pentomino';
+import type { CriterionId } from '../solvers/criteria';
 
 export type { PieceTypeId, PieceType, Cell } from './pentomino';
 export type { Board, CellValue } from './board';
@@ -43,17 +44,11 @@ export interface ProgressStore {
   completed: Record<number, true>;
 }
 
-export type SolvingStrategyId = 'backtracking' | 'constraint-guided';
-
-export interface SolvingStrategy {
-  id: SolvingStrategyId;
-  descriptionKey: string;
-}
-
-export const SOLVING_STRATEGIES: readonly SolvingStrategy[] = [
-  { id: 'backtracking', descriptionKey: 'strategy.backtracking.description' },
-  { id: 'constraint-guided', descriptionKey: 'strategy.constraintGuided.description' },
-];
+/**
+ * How a solver run ended: it found a solution, tried everything without
+ * finding one, or hit its step limit first.
+ */
+export type SolveOutcome = 'solved' | 'exhausted' | 'limit';
 
 export interface SolveStep {
   index: number;
@@ -62,15 +57,20 @@ export interface SolveStep {
   typeId: PieceTypeId;
   orientationIndex: number;
   position: { row: number; col: number };
+  /** On a 'remove' step: the pruning criterion that ruled the placement out
+   * right away, when it wasn't undone by ordinary backtracking. */
+  prunedBy?: CriterionId;
 }
 
 export interface SolveRun {
   challengeId: number;
-  strategyId: SolvingStrategyId;
+  /** The criteria the strategy was built from (see solvers/criteria.ts). */
+  criteria: CriterionId[];
   steps: SolveStep[];
   totalSteps: number;
   backtrackCount: number;
   solvedAtStepIndex: number;
+  outcome: SolveOutcome;
 }
 
 export type PlaybackStatus = 'idle' | 'computing' | 'playing' | 'paused' | 'complete' | 'error';

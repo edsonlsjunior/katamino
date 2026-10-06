@@ -1,0 +1,128 @@
+.solver-panel {
+  width: 22rem;
+  max-width: 100%;
+  flex-shrink: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-md);
+}
+
+.solver-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.solver-panel__header h2 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.solver-panel__header button {
+  padding: var(--space-1) var(--space-2);
+}
+
+/* Header and footer (run status + the Solve button) stay in view; the
+   criteria and run history scroll between them. */
+.solver-panel__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.solver-panel__footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.solver-panel p {
+  margin: 0;
+}
+
+.solver-panel__space-label {
+  font-weight: 700;
+}
+
+.solver-panel__space-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+
+.solver-panel__hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.solver-panel__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.solver-panel__metrics dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.solver-panel__metrics dt {
+  font-weight: 600;
+}
+
+.solver-panel__metrics dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.solver-panel__runs {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.solver-panel__runs caption {
+  text-align: left;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: var(--space-1);
+}
+
+.solver-panel__runs th,
+.solver-panel__runs td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-1) var(--space-2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.solver-panel__runs td:not(:first-child),
+.solver-panel__runs th:not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .solver-panel {
+    width: 100%;
+    max-height: 45%;
+  }
+}

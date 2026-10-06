@@ -95,6 +95,37 @@ main {
   flex-shrink: 0;
 }
 
+/* Which challenge this is, whether it has been completed, and arrows to the
+   neighbouring ones (available whether or not this one is solved). */
+.challenge-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.challenge-nav button {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-lg);
+  line-height: 1.2;
+}
+
+.challenge-nav__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.challenge-nav__badge {
+  padding: 0.1rem var(--space-2);
+  border: 1px solid var(--color-success);
+  border-radius: 999px;
+  background: var(--color-success-bg);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
 /* Warnings and the solved state live inside the toolbar row, so showing
    them never changes the arena's height (which would resize the board). */
 .manual-play-page__status {
@@ -119,6 +150,44 @@ main {
 /* The board in the middle with a ring of loose, real-size pieces on each
    side. --cell is computed in JS (arenaLayout.ts) from this element's size;
    the px values below must match the constants there. */
+/* The stage (arena + playback bar) and, in solver mode, the solver panel
+   beside it. */
+.manual-play-page__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: var(--space-4);
+}
+
+.manual-play-page__stage {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.manual-play-page__playback {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.manual-play-page__playback p {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .manual-play-page__body {
+    flex-direction: column;
+  }
+}
+
 .board-arena {
   --cell-gap: 2px;
   --slot-gap: 12px;
@@ -206,11 +275,4 @@ main {
 .board-arena__right {
   grid-column: 3;
   margin-left: var(--ring-gap);
-}
-
-.auto-solve-page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  max-width: 40rem;
 }

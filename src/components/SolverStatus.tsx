@@ -1,14 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import type { PlaybackStatus } from '../domain/types';
+import type { PlaybackStatus, SolveOutcome } from '../domain/types';
 import './SolverStatus.css';
 
 interface SolverStatusProps {
   status: PlaybackStatus;
+  outcome: SolveOutcome | null;
   errorMessage: string | null;
+  totalSteps: number;
 }
 
-export function SolverStatus({ status, errorMessage }: SolverStatusProps) {
-  const { t } = useTranslation();
+export function SolverStatus({ status, outcome, errorMessage, totalSteps }: SolverStatusProps) {
+  const { t, i18n } = useTranslation();
 
   if (status === 'computing') {
     return (
@@ -25,6 +27,20 @@ export function SolverStatus({ status, errorMessage }: SolverStatusProps) {
     );
   }
   if (status === 'complete') {
+    if (outcome === 'limit') {
+      return (
+        <p data-testid="solver-limit" role="status">
+          {t('solver.limit', { steps: new Intl.NumberFormat(i18n.language).format(totalSteps) })}
+        </p>
+      );
+    }
+    if (outcome === 'exhausted') {
+      return (
+        <p data-testid="solver-exhausted" role="status">
+          {t('solver.exhausted')}
+        </p>
+      );
+    }
     return (
       <p data-testid="solver-complete" role="status">
         {t('solver.complete', 'Solved! Every piece fits.')}
