@@ -142,6 +142,11 @@ function mirror(cells: readonly Cell[]): Cell[] {
   return cells.map(([r, c]) => [r, -c] as Cell);
 }
 
+/** Mirror cells vertically: (r, c) -> (-r, c). */
+function mirrorVertically(cells: readonly Cell[]): Cell[] {
+  return cells.map(([r, c]) => [-r, c] as Cell);
+}
+
 /** Shift cells so the minimum row and column are both 0. */
 function normalize(cells: readonly Cell[]): Cell[] {
   const minRow = Math.min(...cells.map(([r]) => r));
@@ -204,20 +209,34 @@ export function cellsAt(
   return orientation.map(([r, c]) => [r + row, c + col] as Cell);
 }
 
-/** Next orientation in rotation order (FR-003 "rotate"), wrapping around. */
+/**
+ * The current orientation turned 90 degrees clockwise (FR-003 "rotate"). A
+ * true rotation: it never turns a piece into its mirror image (that is what
+ * flipOrientation is for), so four rotations always come back to the start.
+ */
 export function rotateOrientation(typeId: PieceTypeId, orientationIndex: number): number {
   const { orientations } = PIECE_TYPES[typeId];
-  return (orientationIndex + 1) % orientations.length;
+  const rotatedKey = cellsKey(normalize(rotate90(orientations[orientationIndex])));
+  const found = orientations.findIndex((o) => cellsKey(o) === rotatedKey);
+  return found === -1 ? orientationIndex : found;
 }
+
+/** 'horizontal' swaps left and right; 'vertical' swaps top and bottom. */
+export type FlipAxis = 'horizontal' | 'vertical';
 
 /**
  * The mirrored counterpart of the current orientation (FR-003 "flip"). For
  * pieces symmetric under mirroring (e.g. I, X), this is a no-op (returns the
  * same index), which matches how those pieces behave physically.
  */
-export function flipOrientation(typeId: PieceTypeId, orientationIndex: number): number {
+export function flipOrientation(
+  typeId: PieceTypeId,
+  orientationIndex: number,
+  axis: FlipAxis = 'horizontal',
+): number {
   const { orientations } = PIECE_TYPES[typeId];
-  const mirroredKey = cellsKey(normalize(mirror(orientations[orientationIndex])));
+  const flip = axis === 'vertical' ? mirrorVertically : mirror;
+  const mirroredKey = cellsKey(normalize(flip(orientations[orientationIndex])));
   const found = orientations.findIndex((o) => cellsKey(o) === mirroredKey);
   return found === -1 ? orientationIndex : found;
 }

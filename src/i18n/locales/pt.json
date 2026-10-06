@@ -39,7 +39,7 @@
     "label": "Peças disponíveis",
     "rotate": "Girar",
     "flip": "Espelhar",
-    "rotateHint": "Clique com o botão direito ou pressione R para girar",
+    "rotateHint": "Botão direito ou R: girar · E ou arrastar: espelhar",
     "position": {
       "top": "acima do tabuleiro",
       "right": "à direita do tabuleiro",

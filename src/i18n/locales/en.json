@@ -39,7 +39,7 @@
     "label": "Available pieces",
     "rotate": "Rotate",
     "flip": "Flip",
-    "rotateHint": "Right-click or press R to rotate",
+    "rotateHint": "Right-click or R: rotate · E or drag: flip",
     "position": {
       "top": "above the board",
       "right": "right of the board",

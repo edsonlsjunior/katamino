@@ -127,6 +127,9 @@ main {
   flex: 1;
   min-width: 0;
   min-height: 0;
+  /* Dragging is a game gesture (mirror), not text selection or scrolling. */
+  user-select: none;
+  touch-action: none;
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;

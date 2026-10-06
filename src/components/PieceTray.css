@@ -49,10 +49,3 @@
 .piece-tray__item:hover .piece-shape {
   transform: scale(1.04);
 }
-
-/* Faded copy left in the slot while the piece itself is in hand. */
-.piece-tray__item--held .piece-shape {
-  opacity: 0.25;
-  transform: none;
-  filter: none;
-}

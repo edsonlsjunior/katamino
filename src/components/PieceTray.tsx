@@ -9,9 +9,8 @@ export type PieceTrayPosition = 'top' | 'right' | 'bottom' | 'left';
 interface PieceTrayProps {
   /** Every piece whose starting slot is in this ring. */
   pieces: readonly PieceInstance[];
-  /** Whether a piece has left its slot (on the board or loose elsewhere). */
+  /** Whether a piece has left its slot (in hand, on the board or loose elsewhere). */
   isAway: (piece: PieceInstance) => boolean;
-  heldInstanceId: string | null;
   onPick: (instanceId: string, event: MouseEvent<HTMLElement>) => void;
   /** Which ring around the board this group renders in — only affects
    * layout direction (row vs. column) and the listbox's aria-label. */
@@ -47,7 +46,7 @@ const POSITION_LABEL_KEYS: Record<PieceTrayPosition, string> = {
   left: 'pieceTray.position.left',
 };
 
-export function PieceTray({ pieces, isAway, heldInstanceId, onPick, position, slotSpan }: PieceTrayProps) {
+export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceTrayProps) {
   const { t } = useTranslation();
   const isVertical = position === 'left' || position === 'right';
 
@@ -65,20 +64,16 @@ export function PieceTray({ pieces, isAway, heldInstanceId, onPick, position, sl
         if (isAway(piece)) {
           return <span key={piece.instanceId} className="piece-tray__slot" style={slotStyle} aria-hidden="true" />;
         }
-        // While held, the piece itself follows the pointer; its slot shows a
-        // faded copy marking where Escape would put it back.
-        const isHeld = piece.instanceId === heldInstanceId;
         return (
           <button
             key={piece.instanceId}
             type="button"
             data-testid={`tray-piece-${piece.instanceId}`}
             data-piece-id={piece.instanceId}
-            data-selected={isHeld}
             role="option"
-            aria-selected={isHeld}
+            aria-selected={false}
             aria-label={piece.typeId}
-            className={`piece-tray__slot piece-tray__item${isHeld ? ' piece-tray__item--held' : ''}`}
+            className="piece-tray__slot piece-tray__item"
             style={slotStyle}
             onClick={(event) => onPick(piece.instanceId, event)}
           >

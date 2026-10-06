@@ -20,6 +20,8 @@ import type { PieceInstance } from '../domain/types';
 import { BOARD_PADDING_PX, CELL_GAP_PX, planArena, pieceSpan } from './arenaLayout';
 
 const FALLBACK_CELL_PX = 40;
+/** How far the pointer must travel with the button down to count as a drag. */
+const DRAG_THRESHOLD_PX = 24;
 
 interface ManualPlayPageProps {
   challengeId: number;
@@ -188,21 +190,23 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     if (challenge) loadChallenge(challenge);
   }, [challengeId, loadChallenge]);
 
-  // Keyboard accelerators, additive to the always-present Rotate button and
-  // on-screen controls (research.md §3/§12): "R" rotates the held piece,
+  // Keyboard accelerators, additive to the always-present Rotate/Flip buttons
+  // (research.md §3/§12): "R" rotates the held piece, "E" mirrors it and
   // "Escape" puts it back where it was picked up from.
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (!selectedInstanceId) return;
       if (event.key === 'r' || event.key === 'R') {
         rotateSelected();
+      } else if (event.key === 'e' || event.key === 'E') {
+        flipSelected();
       } else if (event.key === 'Escape') {
         cancelHold();
       }
     }
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedInstanceId, rotateSelected, cancelHold]);
+  }, [selectedInstanceId, rotateSelected, flipSelected, cancelHold]);
 
   // Right-click anywhere rotates the held piece; on a loose piece with
   // nothing held, it picks that piece up first. (The browser's own context
@@ -220,6 +224,62 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     }
     window.addEventListener('contextmenu', handleContextMenu);
     return () => window.removeEventListener('contextmenu', handleContextMenu);
+  }, []);
+
+  // Press-and-drag mirrors the piece along the dragged direction: sideways
+  // swaps its left and right, up/down swaps its top and bottom. Starting the
+  // drag on a piece that isn't in hand picks it up first. One flip per drag,
+  // and the click that ends the drag is swallowed so it doesn't drop the piece.
+  useEffect(() => {
+    let drag: { x: number; y: number; pieceId: string | null } | null = null;
+    let swallowClick = false;
+
+    function handlePointerDown(event: PointerEvent) {
+      swallowClick = false;
+      if (event.button !== 0) return;
+      const pieceId =
+        (event.target as Element | null)?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id') ?? null;
+      drag = { x: event.clientX, y: event.clientY, pieceId };
+    }
+    function handlePointerMove(event: PointerEvent) {
+      if (!drag) return;
+      const dx = event.clientX - drag.x;
+      const dy = event.clientY - drag.y;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < DRAG_THRESHOLD_PX) return;
+      const { pieceId } = drag;
+      drag = null;
+
+      const store = useManualAttemptStore.getState();
+      if (!store.selectedInstanceId) {
+        if (!pieceId) return;
+        setPointer({ x: event.clientX, y: event.clientY });
+        store.pickUp(pieceId);
+      }
+      useManualAttemptStore.getState().flipSelected(Math.abs(dx) >= Math.abs(dy) ? 'horizontal' : 'vertical');
+      swallowClick = true;
+    }
+    function handlePointerEnd() {
+      drag = null;
+    }
+    function handleClickCapture(event: MouseEvent) {
+      if (!swallowClick) return;
+      swallowClick = false;
+      event.stopPropagation();
+      event.preventDefault();
+    }
+
+    window.addEventListener('pointerdown', handlePointerDown);
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerEnd);
+    window.addEventListener('pointercancel', handlePointerEnd);
+    window.addEventListener('click', handleClickCapture, true);
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerEnd);
+      window.removeEventListener('pointercancel', handlePointerEnd);
+      window.removeEventListener('click', handleClickCapture, true);
+    };
   }, []);
 
   function pick(instanceId: string, event: ReactMouseEvent<HTMLElement>) {
@@ -259,7 +319,11 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   }
 
   function isAway(piece: PieceInstance) {
-    return piece.position !== null || freePositions[piece.instanceId] !== undefined;
+    return (
+      piece.instanceId === selectedInstanceId ||
+      piece.position !== null ||
+      freePositions[piece.instanceId] !== undefined
+    );
   }
 
   function renderRing(position: PieceTrayPosition, span: number) {
@@ -273,7 +337,6 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
           position={position}
           slotSpan={slotSpan}
           isAway={isAway}
-          heldInstanceId={selectedInstanceId}
           onPick={pick}
         />
       </div>
@@ -310,7 +373,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
           )}
         </div>
 
-        <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={flipSelected} />
+        <PieceControls hasSelection={!!selectedInstanceId} onRotate={rotateSelected} onFlip={() => flipSelected()} />
       </div>
 
       <div

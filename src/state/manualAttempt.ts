@@ -3,6 +3,7 @@ import {
   cellsAt,
   flipOrientation,
   rotateOrientation,
+  type FlipAxis,
   type PieceTypeId,
 } from '../domain/pentomino';
 import { createEmptyBoard, isInBounds, stackPlacements, type Board } from '../domain/board';
@@ -43,7 +44,7 @@ interface ManualAttemptState {
   pickUp: (instanceId: string) => void;
   cancelHold: () => void;
   rotateSelected: () => void;
-  flipSelected: () => void;
+  flipSelected: (axis?: FlipAxis) => void;
   placeSelectedAt: (row: number, col: number) => boolean;
   dropSelectedAt: (x: number, y: number) => void;
   reset: () => void;
@@ -174,13 +175,13 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     });
   },
 
-  flipSelected: () => {
+  flipSelected: (axis = 'horizontal') => {
     const { selectedInstanceId, pieces } = get();
     if (!selectedInstanceId) return;
     set({
       pieces: pieces.map((p) =>
         p.instanceId === selectedInstanceId
-          ? { ...p, orientationIndex: flipOrientation(p.typeId, p.orientationIndex) }
+          ? { ...p, orientationIndex: flipOrientation(p.typeId, p.orientationIndex, axis) }
           : p,
       ),
     });

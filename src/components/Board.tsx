@@ -50,6 +50,7 @@ export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSiz
               data-testid={`board-cell-${row}-${col}`}
               data-occupied={cellValue !== null}
               data-conflict={isConflict}
+              data-piece-id={cellValue ?? undefined}
               className={`board-cell${isConflict ? ' board-cell--conflict' : ''}${ghostClass}`}
               style={{
                 ...sizeStyle,

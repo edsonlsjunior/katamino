@@ -62,16 +62,39 @@ describe('pentomino domain model', () => {
     }
   });
 
-  it('rotateOrientation cycles through every orientation and wraps around', () => {
+  it('rotateOrientation turns a piece 90° at a time and is back at the start after four turns', () => {
     let index = 0;
     const seen = new Set<number>();
-    const total = PIECE_TYPES.L.orientations.length;
-    for (let i = 0; i < total; i++) {
+    for (let i = 0; i < 4; i++) {
       seen.add(index);
       index = rotateOrientation('L', index);
     }
-    expect(seen.size).toBe(total);
-    expect(index).toBe(0); // wrapped back to the start
+    expect(seen.size).toBe(4); // L has no rotational symmetry
+    expect(index).toBe(0);
+  });
+
+  it('rotateOrientation never turns a piece into its mirror image', () => {
+    // Z has four orientations: two rotations of Z and two of its mirror image, S.
+    const mirrored = flipOrientation('Z', 0);
+    expect(mirrored).not.toBe(0);
+    const quarterTurn = rotateOrientation('Z', 0);
+    expect(quarterTurn).not.toBe(mirrored);
+    expect(rotateOrientation('Z', quarterTurn)).toBe(0); // a half turn of Z is Z again
+    expect(rotateOrientation('Z', mirrored)).not.toBe(0);
+  });
+
+  it('rotating and flipping together reach every orientation of every piece', () => {
+    for (const id of PIECE_TYPE_IDS) {
+      const reached = new Set<number>();
+      for (const start of [0, flipOrientation(id, 0)]) {
+        let index = start;
+        for (let i = 0; i < 4; i++) {
+          reached.add(index);
+          index = rotateOrientation(id, index);
+        }
+      }
+      expect(reached.size).toBe(PIECE_TYPES[id].orientations.length);
+    }
   });
 
   it('flipOrientation is a no-op for the fully symmetric X piece', () => {
@@ -82,6 +105,23 @@ describe('pentomino domain model', () => {
     const flipped = flipOrientation('F', 0);
     expect(flipped).toBeGreaterThanOrEqual(0);
     expect(flipped).toBeLessThan(PIECE_TYPES.F.orientations.length);
+  });
+
+  it('flipOrientation mirrors along the requested axis and is its own inverse', () => {
+    const cellsOf = (index: number) => PIECE_TYPES.P.orientations[index].map(([r, c]) => `${r},${c}`).sort();
+    const base = PIECE_TYPES.P.orientations[0];
+    const maxRow = Math.max(...base.map(([r]) => r));
+    const maxCol = Math.max(...base.map(([, c]) => c));
+
+    const horizontal = flipOrientation('P', 0, 'horizontal');
+    expect(cellsOf(horizontal)).toEqual(base.map(([r, c]) => `${r},${maxCol - c}`).sort());
+    expect(flipOrientation('P', 0)).toBe(horizontal); // horizontal is the default
+    expect(flipOrientation('P', horizontal, 'horizontal')).toBe(0);
+
+    const vertical = flipOrientation('P', 0, 'vertical');
+    expect(cellsOf(vertical)).toEqual(base.map(([r, c]) => `${maxRow - r},${c}`).sort());
+    expect(vertical).not.toBe(horizontal);
+    expect(flipOrientation('P', vertical, 'vertical')).toBe(0);
   });
 
   it('cellsAt translates an orientation to an absolute board position', () => {
