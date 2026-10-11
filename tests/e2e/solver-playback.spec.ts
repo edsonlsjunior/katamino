@@ -5,10 +5,8 @@ test.describe('Automatic solver playback', () => {
   test('start solving, see step-by-step playback, pause, step, resume, complete', async ({ page }) => {
     await page.goto('/');
 
-    await page
-      .getByTestId('challenge-card-1')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
 
     // Solver mode is the challenge screen itself, with the solver panel beside the board.
     await expect(page.getByTestId('board')).toBeVisible();
@@ -78,11 +76,9 @@ test.describe('Automatic solver playback', () => {
 
   test('a search that is too big stops at the step limit and says so', async ({ page }) => {
     await page.goto('/');
-    // The 12-piece bonus tier is on the last section; open the solver straight from its card.
-    await page
-      .getByTestId('challenge-card-453')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    // The 12-piece bonus tier is the last column.
+    await page.getByTestId('challenge-card-453').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
     await expect(page.getByTestId('solver-panel')).toBeVisible();
 
     // Plain search only: untick the two default criteria.

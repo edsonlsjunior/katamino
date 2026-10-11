@@ -26,3 +26,36 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
+
+/* Wide screens show the words; narrow ones only have room for the icons. */
+.playback-controls__icon {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .playback-controls {
+    gap: var(--space-1);
+    flex-wrap: nowrap;
+  }
+
+  .playback-controls button {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .playback-controls__icon {
+    display: inline;
+  }
+
+  .playback-controls__text,
+  .playback-controls label > :not(select) {
+    display: none;
+  }
+
+  .playback-controls label {
+    font-size: 0;
+  }
+
+  .playback-controls select {
+    font-size: 1rem;
+  }
+}

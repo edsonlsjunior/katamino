@@ -4,10 +4,8 @@ import { test, expect } from '@playwright/test';
 test.describe('Strategy criteria', () => {
   test('the strategy is a list of criteria that can be ticked and expanded', async ({ page }) => {
     await page.goto('/');
-    await page
-      .getByTestId('challenge-card-1')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
 
     // The plain search is always there and can't be switched off.
     const base = page.getByTestId('criterion-base');
@@ -33,10 +31,8 @@ test.describe('Strategy criteria', () => {
 
   test('the panel says how many combinations the challenge has', async ({ page }) => {
     await page.goto('/');
-    await page
-      .getByTestId('challenge-card-1')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
     // Challenge #1: P, U and Y on a 5x3 board.
     await expect(page.getByTestId('arrangements')).toHaveText('12,800');
   });
@@ -46,10 +42,8 @@ test.describe('Strategy criteria', () => {
   }) => {
     await page.goto('/');
     // Challenge #353 (7 pieces): without hardest-square-first it takes far more steps.
-    await page
-      .getByTestId('challenge-card-353')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-353').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
     await page.getByTestId('start-solve').click();
     await page.getByLabel(/speed/i).selectOption('1000');
 
@@ -58,7 +52,10 @@ test.describe('Strategy criteria', () => {
     await expect(page.getByTestId('metrics-panel')).toBeVisible();
     const firstStepText = await page.getByTestId('metrics-step').textContent();
 
-    // Run 2: the same challenge without hardest-square-first.
+    // Run 2: the same challenge without hardest-square-first. (On a narrow
+    // screen the panel folded itself away when the run started.)
+    const toggle = page.getByTestId('solver-panel-toggle');
+    if ((await toggle.isVisible()) && (await toggle.getAttribute('aria-expanded')) === 'false') await toggle.click();
     await page.getByTestId('criterion-most-constrained-cell').getByRole('checkbox').uncheck();
     await page.getByTestId('start-solve').click();
     await expect(page.getByTestId('solver-complete')).toBeVisible({ timeout: 30_000 });
@@ -76,10 +73,8 @@ test.describe('Strategy criteria', () => {
 
   test('switching language updates the criteria texts', async ({ page }) => {
     await page.goto('/');
-    await page
-      .getByTestId('challenge-card-1')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
 
     await expect(page.getByText('Try, undo, try again')).toBeVisible();
     await page.getByRole('button', { name: 'Português' }).click();

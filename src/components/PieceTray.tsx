@@ -18,12 +18,18 @@ interface PieceTrayProps {
   position: PieceTrayPosition;
   /** Side of the square slot (in cells) reserved for a given piece. */
   slotSpan: (piece: PieceInstance) => number;
+  /** Draw the pieces transposed, matching a transposed board. */
+  transposed?: boolean;
+  /** Close the gap a piece leaves behind instead of keeping its slot empty
+   * (a scrolling strip shouldn't make the player scroll past holes). */
+  collapseAway?: boolean;
 }
 
 /** The piece itself, drawn cell by cell at the board's cell size (`--cell`,
  * inherited from the arena). */
-export function PieceShape({ instance }: { instance: PieceInstance }) {
-  const orientation = PIECE_TYPES[instance.typeId].orientations[instance.orientationIndex];
+export function PieceShape({ instance, transposed = false }: { instance: PieceInstance; transposed?: boolean }) {
+  const modelCells = PIECE_TYPES[instance.typeId].orientations[instance.orientationIndex];
+  const orientation = transposed ? modelCells.map(([r, c]) => [c, r] as const) : modelCells;
   const cols = Math.max(...orientation.map(([, c]) => c)) + 1;
   const color = PIECE_TYPES[instance.typeId].color;
 
@@ -47,7 +53,15 @@ const POSITION_LABEL_KEYS: Record<PieceTrayPosition, string> = {
   left: 'pieceTray.position.left',
 };
 
-export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceTrayProps) {
+export function PieceTray({
+  pieces,
+  isAway,
+  onPick,
+  position,
+  slotSpan,
+  transposed = false,
+  collapseAway = false,
+}: PieceTrayProps) {
   const { t } = useTranslation();
   const isVertical = position === 'left' || position === 'right';
 
@@ -63,6 +77,7 @@ export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceT
         const slotStyle = { '--span': slotSpan(piece) } as CSSProperties;
         // A piece that left keeps its (empty) slot so the others don't shift around.
         if (isAway(piece)) {
+          if (collapseAway) return null;
           return <span key={piece.instanceId} className="piece-tray__slot" style={slotStyle} aria-hidden="true" />;
         }
         if (!onPick) {
@@ -75,7 +90,7 @@ export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceT
               className="piece-tray__slot piece-tray__item piece-tray__item--static"
               style={slotStyle}
             >
-              <PieceShape instance={piece} />
+              <PieceShape instance={piece} transposed={transposed} />
             </span>
           );
         }
@@ -92,7 +107,7 @@ export function PieceTray({ pieces, isAway, onPick, position, slotSpan }: PieceT
             style={slotStyle}
             onClick={(event) => onPick(piece.instanceId, event)}
           >
-            <PieceShape instance={piece} />
+            <PieceShape instance={piece} transposed={transposed} />
           </button>
         );
       })}

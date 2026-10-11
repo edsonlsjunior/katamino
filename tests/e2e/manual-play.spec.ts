@@ -49,9 +49,20 @@ test.describe('Manual play', () => {
     const held = page.getByTestId('held-piece');
     await expect(held).toBeVisible();
 
-    // An empty spot of the arena, well away from the board: its bottom-left corner.
+    // An empty spot of the arena: away from the board and, on narrow screens,
+    // from the strip of unplaced pieces (dropping there puts the piece back).
     const arena = (await page.locator('.board-arena').boundingBox())!;
-    const spot = { x: arena.x + arena.width * 0.12, y: arena.y + arena.height * 0.85 };
+    const boardBox = (await page.getByTestId('board').boundingBox())!;
+    const strip = page.getByTestId('piece-strip');
+    const stripBox = (await strip.count()) ? (await strip.boundingBox())! : null;
+    const inside = (box: { x: number; y: number; width: number; height: number } | null, x: number, y: number) =>
+      !!box && x >= box.x - 4 && x <= box.x + box.width + 4 && y >= box.y - 4 && y <= box.y + box.height + 4;
+    const fractions = [0.12, 0.88, 0.04, 0.96, 0.3, 0.7, 0.5];
+    const candidates = fractions.flatMap((fx) =>
+      [...fractions].reverse().map((fy) => ({ x: arena.x + arena.width * fx, y: arena.y + arena.height * fy })),
+    );
+    const spot = candidates.find((c) => !inside(boardBox, c.x, c.y) && !inside(stripBox, c.x, c.y))!;
+    expect(spot).toBeDefined();
     await page.mouse.move(spot.x, spot.y, { steps: 5 });
     const heldBox = (await held.boundingBox())!;
     expect(Math.abs(heldBox.x + heldBox.width / 2 - spot.x)).toBeLessThan(2);

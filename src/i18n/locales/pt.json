@@ -5,7 +5,8 @@
   "nav": {
     "challenges": "Desafios",
     "manualPlay": "Jogar",
-    "autoSolve": "Ver o solucionador"
+    "autoSolve": "Ver o solucionador",
+    "about": "Sobre"
   },
   "language": {
     "label": "Idioma",
@@ -29,10 +30,44 @@
       "challenge": "Challenge",
       "bonus": "Bônus (12 peças)"
     },
-    "pagination": {
-      "prev": "Anterior",
-      "next": "Próxima",
-      "pageIndicator": "Página {{current}} de {{total}}"
+    "play": "Jogar {{challenge}}",
+    "playCompleted": "Jogar {{challenge}} (concluído)",
+    "start": "Começar",
+    "continue": "Continuar de onde parei",
+    "hint": "Cada coluna é um desafio do livreto e cada linha, uma letra. Os números são o tamanho do tabuleiro (PENTA): clique em um para jogar.",
+    "progress": {
+      "summary": "{{done}} de {{total}} concluídos ({{percent}}%)",
+      "overall": "Progresso geral",
+      "tier": "Progresso em {{tier}}"
+    }
+  },
+  "about": {
+    "title": "Sobre o projeto",
+    "lead": "Um playground para jogar à mão os {{count}} desafios do Katamino e ver, passo a passo, como um algoritmo de otimização combinatória os resolve.",
+    "browse": "Ver os desafios",
+    "game": {
+      "title": "O jogo",
+      "body": "Katamino é um quebra-cabeça de pentaminós: peças formadas por 5 quadrados. Em cada desafio, um conjunto de peças precisa cobrir exatamente um tabuleiro de 5 linhas, sem sobras nem sobreposições. O tamanho do tabuleiro (o \"PENTA\") é o número de peças usadas — quanto maior, mais difícil."
+    },
+    "play": {
+      "title": "Como jogar",
+      "pick": "Clique em uma peça para pegá-la e clique no tabuleiro para soltá-la.",
+      "rotate": "Botão direito ou R gira a peça que está na mão.",
+      "mirror": "E, ou arrastar a peça, espelha.",
+      "progress": "Os desafios concluídos ficam salvos neste navegador e aparecem marcados na lista."
+    },
+    "solver": {
+      "title": "O solucionador",
+      "body": "Em qualquer desafio, \"Ver o solucionador\" mostra a busca acontecendo no tabuleiro. A base é sempre a mesma — tentar, desfazer, tentar de novo — e você monta a estratégia ligando critérios que mudam a ordem das tentativas ou percebem um beco sem saída mais cedo. Rode combinações diferentes no mesmo desafio e compare passos e recuos."
+    },
+    "tech": {
+      "title": "Como foi feito",
+      "body": "React, TypeScript e Vite, sem servidor: tudo roda no seu navegador, e o solucionador trabalha em um Web Worker para a tela não travar. Disponível em português e inglês.",
+      "source": "Código-fonte no GitHub"
+    },
+    "disclaimer": {
+      "title": "Aviso",
+      "body": "Projeto independente e educacional, sem vínculo com os criadores ou a editora do Katamino."
     }
   },
   "pieceTray": {
@@ -83,7 +118,9 @@
       "label": "Combinações possíveis",
       "hint_one": "Todas as formas de colocar a {{count}} peça no tabuleiro, em qualquer posição e orientação, sem checar sobreposição. É o palheiro em que o solucionador procura.",
       "hint_other": "Todas as formas de colocar as {{count}} peças no tabuleiro, em qualquer posição e orientação, sem checar sobreposição. É o palheiro em que o solucionador procura."
-    }
+    },
+    "showSettings": "Ajustes ▴",
+    "hideSettings": "Ocultar ▾"
   },
   "metrics": {
     "step": "Passos mostrados",

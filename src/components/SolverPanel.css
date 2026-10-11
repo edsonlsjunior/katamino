@@ -21,8 +21,14 @@
 }
 
 .solver-panel__header h2 {
+  flex: 1;
   margin: 0;
   font-size: var(--font-size-lg);
+}
+
+/* Only the narrow-screen drawer can be collapsed. */
+.solver-panel__toggle {
+  display: none;
 }
 
 .solver-panel__header button {
@@ -120,9 +126,31 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Narrow screens: a drawer under the board. Open, it takes up to 60% of the
+   height; collapsed, the settings fold away and the board gets the room. */
 @media (max-width: 720px) {
   .solver-panel {
     width: 100%;
-    max-height: 45%;
+    max-height: 60%;
+    padding: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .solver-panel__toggle {
+    display: inline-block;
+  }
+
+  .solver-panel--collapsed .solver-panel__scroll {
+    display: none;
+  }
+
+  .solver-panel--collapsed .solver-panel__footer {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  /* The step count is already in the playback bar above the drawer. */
+  .solver-panel--collapsed .solver-panel__metrics dl {
+    display: none;
   }
 }

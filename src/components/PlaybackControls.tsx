@@ -36,28 +36,49 @@ export function PlaybackControls({
   const isPlaying = status === 'playing';
   const canPlay = status === 'paused' || status === 'idle';
 
+  // The label is the accessible name; narrow screens hide its visible copy
+  // and keep the icon (PlaybackControls.css).
+  function content(icon: string, label: string) {
+    return (
+      <>
+        <span className="playback-controls__icon" aria-hidden="true">
+          {icon}
+        </span>
+        <span className="playback-controls__text">{label}</span>
+      </>
+    );
+  }
+  const labels = {
+    rewind: t('playback.rewind', 'Restart'),
+    stepBack: t('playback.stepBack', 'Step back'),
+    pause: t('playback.pause', 'Pause'),
+    play: t('playback.play', 'Play'),
+    stepForward: t('playback.stepForward', 'Step forward'),
+    skipToEnd: t('playback.skipToEnd', 'Jump to the end'),
+  };
+
   return (
     <div className="playback-controls" role="group" aria-label={t('playback.label', 'Playback controls')}>
-      <button type="button" onClick={onRewind} disabled={status === 'computing'}>
-        {t('playback.rewind', 'Restart')}
+      <button type="button" aria-label={labels.rewind} onClick={onRewind} disabled={status === 'computing'}>
+        {content('⏮', labels.rewind)}
       </button>
-      <button type="button" onClick={onStepBackward} disabled={!canStepBackward}>
-        {t('playback.stepBack', 'Step back')}
+      <button type="button" aria-label={labels.stepBack} onClick={onStepBackward} disabled={!canStepBackward}>
+        {content('❮', labels.stepBack)}
       </button>
       {isPlaying ? (
-        <button type="button" className="btn-primary" onClick={onPause}>
-          {t('playback.pause', 'Pause')}
+        <button type="button" aria-label={labels.pause} className="btn-primary" onClick={onPause}>
+          {content('⏸', labels.pause)}
         </button>
       ) : (
-        <button type="button" className="btn-primary" onClick={onPlay} disabled={!canPlay}>
-          {t('playback.play', 'Play')}
+        <button type="button" aria-label={labels.play} className="btn-primary" onClick={onPlay} disabled={!canPlay}>
+          {content('▶', labels.play)}
         </button>
       )}
-      <button type="button" onClick={onStepForward} disabled={!canStepForward}>
-        {t('playback.stepForward', 'Step forward')}
+      <button type="button" aria-label={labels.stepForward} onClick={onStepForward} disabled={!canStepForward}>
+        {content('❯', labels.stepForward)}
       </button>
-      <button type="button" onClick={onSkipToEnd} disabled={!canStepForward}>
-        {t('playback.skipToEnd', 'Jump to the end')}
+      <button type="button" aria-label={labels.skipToEnd} onClick={onSkipToEnd} disabled={!canStepForward}>
+        {content('⏭', labels.skipToEnd)}
       </button>
       <label>
         {t('playback.speed', 'Speed')}

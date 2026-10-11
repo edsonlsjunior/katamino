@@ -5,7 +5,8 @@
   "nav": {
     "challenges": "Challenges",
     "manualPlay": "Play",
-    "autoSolve": "Watch the solver"
+    "autoSolve": "Watch the solver",
+    "about": "About"
   },
   "language": {
     "label": "Language",
@@ -29,10 +30,44 @@
       "challenge": "Challenge",
       "bonus": "Bonus (12 pieces)"
     },
-    "pagination": {
-      "prev": "Previous",
-      "next": "Next",
-      "pageIndicator": "Page {{current}} of {{total}}"
+    "play": "Play {{challenge}}",
+    "playCompleted": "Play {{challenge}} (completed)",
+    "start": "Start",
+    "continue": "Continue where I left off",
+    "hint": "Each column is a challenge set from the booklet and each row a letter. The numbers are the board size (PENTA): click one to play.",
+    "progress": {
+      "summary": "{{done}} of {{total}} completed ({{percent}}%)",
+      "overall": "Overall progress",
+      "tier": "Progress in {{tier}}"
+    }
+  },
+  "about": {
+    "title": "About the project",
+    "lead": "A playground for playing all {{count}} Katamino challenges by hand and watching, step by step, how a combinatorial optimization algorithm solves them.",
+    "browse": "Browse the challenges",
+    "game": {
+      "title": "The game",
+      "body": "Katamino is a pentomino puzzle: pieces made of 5 squares. In each challenge a set of pieces has to cover a 5-row board exactly, with no gaps and no overlaps. The board size (the \"PENTA\") is the number of pieces used — the bigger, the harder."
+    },
+    "play": {
+      "title": "How to play",
+      "pick": "Click a piece to pick it up and click the board to drop it.",
+      "rotate": "Right-click or R rotates the piece in hand.",
+      "mirror": "E, or dragging the piece, mirrors it.",
+      "progress": "Completed challenges are saved in this browser and show up marked in the list."
+    },
+    "solver": {
+      "title": "The solver",
+      "body": "On any challenge, \"Watch the solver\" shows the search happening on the board. The base is always the same — try, undo, try again — and you build the strategy by switching on criteria that change the order things are tried in or spot a dead end earlier. Run different combinations on the same challenge and compare steps and backtracks."
+    },
+    "tech": {
+      "title": "How it was built",
+      "body": "React, TypeScript and Vite, with no server: everything runs in your browser, and the solver works in a Web Worker so the screen never freezes. Available in Portuguese and English.",
+      "source": "Source code on GitHub"
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "body": "An independent, educational project, not affiliated with the creators or publisher of Katamino."
     }
   },
   "pieceTray": {
@@ -83,7 +118,9 @@
       "label": "Possible combinations",
       "hint_one": "Every way of putting the {{count}} piece on the board, in any position and orientation, without checking for overlaps. This is the haystack the solver searches.",
       "hint_other": "Every way of putting the {{count}} pieces on the board, in any position and orientation, without checking for overlaps. This is the haystack the solver searches."
-    }
+    },
+    "showSettings": "Settings ▴",
+    "hideSettings": "Hide ▾"
   },
   "metrics": {
     "step": "Steps shown",

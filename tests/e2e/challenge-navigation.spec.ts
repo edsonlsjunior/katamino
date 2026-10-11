@@ -28,10 +28,8 @@ test.describe('Challenge page — navigation and completion', () => {
 
   test('the arrows keep solver mode when it is open', async ({ page }) => {
     await page.goto('/');
-    await page
-      .getByTestId('challenge-card-1')
-      .getByRole('button', { name: /watch the solver/i })
-      .click();
+    await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
+    await page.getByRole('button', { name: /watch the solver/i }).click();
     await page.getByTestId('start-solve').click();
     await expect(page.getByTestId('solver-complete')).toBeVisible({ timeout: 30_000 });
 

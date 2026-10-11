@@ -43,11 +43,14 @@ interface ManualAttemptState {
   loadChallenge: (challenge: Challenge) => void;
   pickUp: (instanceId: string) => void;
   cancelHold: () => void;
-  rotateSelected: () => void;
+  /** Quarter turns clockwise (default 1). */
+  rotateSelected: (turns?: number) => void;
   flipSelected: (axis?: FlipAxis) => void;
   setSelectedOrientation: (orientationIndex: number) => void;
   placeSelectedAt: (row: number, col: number) => boolean;
   dropSelectedAt: (x: number, y: number) => void;
+  /** Puts the held piece back among the unplaced ones, keeping its orientation. */
+  returnSelectedHome: () => void;
   reset: () => void;
 }
 
@@ -164,15 +167,16 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     });
   },
 
-  rotateSelected: () => {
+  rotateSelected: (turns = 1) => {
     const { selectedInstanceId, pieces } = get();
     if (!selectedInstanceId) return;
     set({
-      pieces: pieces.map((p) =>
-        p.instanceId === selectedInstanceId
-          ? { ...p, orientationIndex: rotateOrientation(p.typeId, p.orientationIndex) }
-          : p,
-      ),
+      pieces: pieces.map((p) => {
+        if (p.instanceId !== selectedInstanceId) return p;
+        let orientationIndex = p.orientationIndex;
+        for (let i = 0; i < turns; i++) orientationIndex = rotateOrientation(p.typeId, orientationIndex);
+        return { ...p, orientationIndex };
+      }),
     });
   },
 
@@ -229,6 +233,12 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
       selectedInstanceId: null,
       heldOrigin: null,
     });
+  },
+
+  returnSelectedHome: () => {
+    if (!get().selectedInstanceId) return;
+    // Picking it up already took it off the board / out of the loose pieces.
+    set({ selectedInstanceId: null, heldOrigin: null });
   },
 
   reset: () => {

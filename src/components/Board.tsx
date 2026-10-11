@@ -16,9 +16,13 @@ interface BoardProps {
   /** Cell side in px (manual play sizes the board to its arena). Without
    * it, cells keep the fixed size from Board.css. */
   cellSize?: number;
+  /** Draw the board mirrored along its diagonal: model rows run across the
+   * screen and model columns down it. Everything else (test ids, labels,
+   * callbacks, ghost and conflict keys) stays in model coordinates. */
+  transposed?: boolean;
 }
 
-export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSize }: BoardProps) {
+export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSize, transposed = false }: BoardProps) {
   const typeByInstance = new Map<string, PieceTypeId>(pieces.map((p) => [p.instanceId, p.typeId]));
   const ghostKeys = ghost ? new Set(ghost.cells.map(([r, c]) => `${r},${c}`)) : null;
   const sizeStyle =
@@ -26,14 +30,24 @@ export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSiz
       ? { width: cellSize, height: cellSize, fontSize: Math.max(10, Math.round(cellSize * 0.3)) }
       : undefined;
 
+  const shownCols = transposed ? board.rows : board.cols;
+  const shownRows = transposed ? board.cols : board.rows;
+  // Model coordinates of each cell, in the order they are drawn (screen rows, left to right).
+  const drawOrder = Array.from({ length: shownRows * shownCols }, (_, i) => {
+    const shownRow = Math.floor(i / shownCols);
+    const shownCol = i % shownCols;
+    return transposed ? ([shownCol, shownRow] as const) : ([shownRow, shownCol] as const);
+  });
+
   return (
     <div
       data-testid="board"
+      data-transposed={transposed}
       className="board"
-      style={{ gridTemplateColumns: `repeat(${board.cols}, ${cellSize !== undefined ? `${cellSize}px` : 'auto'})` }}
+      style={{ gridTemplateColumns: `repeat(${shownCols}, ${cellSize !== undefined ? `${cellSize}px` : 'auto'})` }}
     >
-      {board.cells.map((rowCells, row) =>
-        rowCells.map((cellValue, col) => {
+      {drawOrder.map(([row, col]) => {
+          const cellValue = board.cells[row][col];
           const typeId = cellValue ? typeByInstance.get(cellValue) : undefined;
           const color = typeId ? PIECE_TYPES[typeId].color : undefined;
           const key = `${row},${col}`;
@@ -64,8 +78,7 @@ export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSiz
               {typeId ?? ''}
             </button>
           );
-        }),
-      )}
+      })}
     </div>
   );
 }

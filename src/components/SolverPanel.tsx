@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Challenge, PlaybackStatus, SolveOutcome } from '../domain/types';
 import { countArrangements } from '../solvers/configurableSolver';
@@ -63,6 +63,16 @@ export function SolverPanel({
   const count = new Intl.NumberFormat(i18n.language);
   const arrangements = useMemo(() => countArrangements(challenge), [challenge]);
   const hasRun = status !== 'idle';
+  // On narrow screens the panel is a drawer under the board: collapsed, only
+  // its header and the run status stay visible (see SolverPanel.css). Wide
+  // screens ignore this and always show everything.
+  const [collapsed, setCollapsed] = useState(false);
+
+  function handleStart() {
+    // Get out of the way so the playback can be watched.
+    setCollapsed(true);
+    onStart();
+  }
 
   function describeCriteria(ids: readonly CriterionId[]) {
     const names = CRITERIA.filter((c) => ids.includes(c.id)).map((c) => t(`${c.i18nKey}.name`));
@@ -70,9 +80,22 @@ export function SolverPanel({
   }
 
   return (
-    <aside className="solver-panel" data-testid="solver-panel" aria-label={t('solver.title')}>
+    <aside
+      className={`solver-panel${collapsed ? ' solver-panel--collapsed' : ''}`}
+      data-testid="solver-panel"
+      aria-label={t('solver.title')}
+    >
       <header className="solver-panel__header">
         <h2>{t('solver.title')}</h2>
+        <button
+          type="button"
+          className="solver-panel__toggle"
+          data-testid="solver-panel-toggle"
+          aria-expanded={!collapsed}
+          onClick={() => setCollapsed((value) => !value)}
+        >
+          {t(collapsed ? 'solver.showSettings' : 'solver.hideSettings')}
+        </button>
         <button type="button" onClick={onClose} aria-label={t('solver.close')}>
           ✕
         </button>
@@ -145,7 +168,7 @@ export function SolverPanel({
             />
           </section>
         )}
-        <button type="button" className="btn-primary" onClick={onStart} data-testid="start-solve">
+        <button type="button" className="btn-primary" onClick={handleStart} data-testid="start-solve">
           {t(hasRun ? 'solver.restart' : 'solver.start')}
         </button>
       </footer>
