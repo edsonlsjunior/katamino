@@ -71,6 +71,22 @@ test.describe('How it works page', () => {
     await expect(lab.locator('.tree-node')).toHaveCount(32);
   });
 
+  test('the solver panel and the about page link to it', async ({ page }) => {
+    await page.goto('/#/challenge/1/solver');
+    // Pruning criteria come first in the solver panel.
+    await expect(page.locator('[data-testid^="criteria-group-"]').first()).toHaveAttribute(
+      'data-testid',
+      'criteria-group-prune',
+    );
+    await page.getByTestId('solver-learn-more').click();
+    await expect(page).toHaveURL(/#\/learn$/);
+    await expect(page.getByRole('heading', { name: 'How the solver thinks' })).toBeVisible();
+
+    await page.goto('/#/about');
+    await page.getByTestId('about-learn-link').click();
+    await expect(page.getByRole('heading', { name: 'How the solver thinks' })).toBeVisible();
+  });
+
   test('the closing button opens a challenge in the real solver', async ({ page }) => {
     await page.goto('/#/learn');
     await page.getByTestId('learn-open-solver').click();

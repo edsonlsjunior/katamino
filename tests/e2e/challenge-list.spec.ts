@@ -72,7 +72,7 @@ test.describe('Challenge list', () => {
     await expect(page).toHaveURL(/#\/about$/);
     await expect(page.getByRole('heading', { name: 'About the project' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'Back to challenges' }).click();
+    await page.getByRole('button', { name: 'Challenges', exact: true }).click();
     await expect(page.getByTestId('challenge-tier-small-slam')).toBeVisible();
   });
 });

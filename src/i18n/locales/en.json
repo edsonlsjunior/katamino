@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Katamino — Combinatorial Search Playground"
+    "title": "Katamino: Combinatorial Search Playground"
   },
   "nav": {
     "challenges": "Challenges",
@@ -16,7 +16,7 @@
   "common": {
     "loading": "Loading…",
     "error": "Something went wrong.",
-    "back": "Back to challenges"
+    "back": "Challenges"
   },
   "challenges": {
     "difficulty": "Difficulty {{difficulty}}",
@@ -47,7 +47,7 @@
     "browse": "Browse the challenges",
     "game": {
       "title": "The game",
-      "body": "Katamino is a pentomino puzzle: pieces made of 5 squares. In each challenge a set of pieces has to cover a 5-row board exactly, with no gaps and no overlaps. The board size (the \"PENTA\") is the number of pieces used — the bigger, the harder."
+      "body": "Katamino is a pentomino puzzle: pieces made of 5 squares. In each challenge a set of pieces has to cover a 5-row board exactly, with no gaps and no overlaps. The board size (the \"PENTA\") is the number of pieces used: the bigger, the harder."
     },
     "play": {
       "title": "How to play",
@@ -58,7 +58,8 @@
     },
     "solver": {
       "title": "The solver",
-      "body": "On any challenge, \"Watch the solver\" shows the search happening on the board. The base is always the same — try, undo, try again — and you build the strategy by switching on criteria that change the order things are tried in or spot a dead end earlier. Run different combinations on the same challenge and compare steps and backtracks."
+      "body": "On any challenge, \"Watch the solver\" shows a search solving the board step by step, with the strategy you put together.",
+      "link": "See how the solver works"
     },
     "tech": {
       "title": "How it was built",
@@ -96,11 +97,11 @@
   },
   "learn": {
     "title": "How the solver thinks",
-    "lead": "Solving a Katamino looks simple — until you count how many ways there are to get it wrong. This page shows why the problem is hard, which algorithm the solver uses, and how each criterion helps it reach a solution with fewer attempts.",
+    "lead": "Solving a Katamino looks simple, until you count how many ways there are to get it wrong. This page shows why the problem is hard, which algorithm the solver uses, and how each criterion helps it reach a solution with fewer attempts.",
     "boardLabel": "Example board",
     "problem": {
       "title": "What kind of problem is this?",
-      "body": "Katamino has only rules: either the pieces cover the whole board or they don't. Any arrangement that obeys all of them is a solution, and none is worth more than another. This kind of problem is called constraint satisfaction — more precisely, exact cover.",
+      "body": "Katamino has only rules: either the pieces cover the whole board or they don't. Any arrangement that obeys all of them is a solution, and none is worth more than another. This kind of problem is called constraint satisfaction or, more precisely, exact cover.",
       "rulesTitle": "The rules (the \"constraints\")",
       "rule1": "Every square of the board is covered.",
       "rule2": "No square is covered twice.",
@@ -109,7 +110,7 @@
     },
     "pieces": {
       "title": "The pieces",
-      "body": "They are the 12 pentominoes: every possible way of joining 5 squares edge to edge. Each one is named after the letter it resembles. By rotating and mirroring, a piece can show up in 1 to 8 different ways — and each way is one more option for the solver to test. Click a piece to see its ways.",
+      "body": "They are the 12 pentominoes: every possible way of joining 5 squares edge to edge. Each one is named after the letter it resembles. By rotating and mirroring, a piece can show up in 1 to 8 different ways, and each way is one more option for the solver to test. Click a piece to see its ways.",
       "galleryLabel": "The 12 pentominoes",
       "pieceLabel_one": "Piece {{piece}}: {{count}} way",
       "pieceLabel_other": "Piece {{piece}}: {{count}} ways",
@@ -127,7 +128,7 @@
       "chartTitle": "The haystack grows with every piece",
       "chartRow": "{{count}} pieces",
       "chartNote": "One example challenge for each board size. The scale is logarithmic: a slightly longer bar stands for a number thousands of times bigger.",
-      "time": "Testing a million combinations per second, the 12-piece challenge would take about {{years}} years — some {{times}} times the age of the universe. Brute force is not an option: the search needs method."
+      "time": "Testing a million combinations per second, the 12-piece challenge would take about {{years}} years, some {{times}} times the age of the universe. Brute force is not an option: the search needs method."
     },
     "algorithm": {
       "title": "The algorithm: depth-first search with backtracking",
@@ -161,13 +162,13 @@
         "deadEnds": "Dead ends",
         "cuts": "Cuts",
         "fewer": "{{percent}}% fewer attempts than the plain search ({{base}})",
-        "more": "{{percent}}% more attempts than the plain search ({{base}}) — not every criterion helps on every challenge",
+        "more": "{{percent}}% more attempts than the plain search ({{base}}): not every criterion helps on every challenge",
         "same": "The same number of attempts as the plain search on this challenge",
         "baseline": "This is the plain search, with no criteria. Switch criteria on above and watch the tree shrink."
       },
       "node": {
         "root": "Empty board (start)",
-        "label": "Attempt {{n}}: piece {{piece}} — {{status}}"
+        "label": "Attempt {{n}}: piece {{piece}} ({{status}})"
       },
       "detail": {
         "root": "Starting point: the empty board.",
@@ -221,7 +222,6 @@
     "label": "Available pieces",
     "rotate": "Rotate",
     "flip": "Flip",
-    "rotateHint": "Right-click or R: rotate · E or drag: flip",
     "position": {
       "top": "above the board",
       "right": "right of the board",
@@ -230,10 +230,10 @@
     }
   },
   "manualPlay": {
-    "solved": "Solved! Every piece fits — well done.",
+    "solved": "Solved! Every piece fits. Well done.",
     "reset": "Reset",
     "next": "Next challenge",
-    "overlap": "Pieces overlap — move the ones marked in red to continue.",
+    "overlap": "Pieces overlap: move the ones marked in red to continue.",
     "navLabel": "Challenge navigation",
     "previous": "Previous challenge",
     "following": "Following challenge"
@@ -267,7 +267,8 @@
       "hint_other": "Every way of putting the {{count}} pieces on the board, in any position and orientation, without checking for overlaps. This is the haystack the solver searches."
     },
     "showSettings": "Settings ▴",
-    "hideSettings": "Hide ▾"
+    "hideSettings": "Hide ▾",
+    "learnMore": "Learn more"
   },
   "metrics": {
     "step": "Steps shown",
@@ -313,7 +314,7 @@
     "deadRegions": {
       "name": "Rule out impossible holes",
       "summary": "Backs off when an empty area’s size is not a multiple of 5.",
-      "details": "Every piece covers exactly 5 squares. If a placement walls off an empty area of 3, 7 or 11 squares, no combination of pieces can fill it exactly — so that placement is undone right away instead of being explored."
+      "details": "Every piece covers exactly 5 squares. If a placement walls off an empty area of 3, 7 or 11 squares, no combination of pieces can fill it exactly, so that placement is undone right away instead of being explored."
     },
     "strandedCells": {
       "name": "No square left without a way out",

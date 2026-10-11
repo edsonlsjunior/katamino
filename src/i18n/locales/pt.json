@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Katamino — Playground de Busca Combinatória"
+    "title": "Katamino: Playground de Busca Combinatória"
   },
   "nav": {
     "challenges": "Desafios",
@@ -16,7 +16,7 @@
   "common": {
     "loading": "Carregando…",
     "error": "Algo deu errado.",
-    "back": "Voltar aos desafios"
+    "back": "Desafios"
   },
   "challenges": {
     "difficulty": "Dificuldade {{difficulty}}",
@@ -47,7 +47,7 @@
     "browse": "Ver os desafios",
     "game": {
       "title": "O jogo",
-      "body": "Katamino é um quebra-cabeça de pentaminós: peças formadas por 5 quadrados. Em cada desafio, um conjunto de peças precisa cobrir exatamente um tabuleiro de 5 linhas, sem sobras nem sobreposições. O tamanho do tabuleiro (o \"PENTA\") é o número de peças usadas — quanto maior, mais difícil."
+      "body": "Katamino é um quebra-cabeça de pentaminós: peças formadas por 5 quadrados. Em cada desafio, um conjunto de peças precisa cobrir exatamente um tabuleiro de 5 linhas, sem sobras nem sobreposições. O tamanho do tabuleiro (o \"PENTA\") é o número de peças usadas: quanto maior, mais difícil."
     },
     "play": {
       "title": "Como jogar",
@@ -58,7 +58,8 @@
     },
     "solver": {
       "title": "O solucionador",
-      "body": "Em qualquer desafio, \"Ver o solucionador\" mostra a busca acontecendo no tabuleiro. A base é sempre a mesma — tentar, desfazer, tentar de novo — e você monta a estratégia ligando critérios que mudam a ordem das tentativas ou percebem um beco sem saída mais cedo. Rode combinações diferentes no mesmo desafio e compare passos e recuos."
+      "body": "Em qualquer desafio, \"Ver o solucionador\" mostra uma busca resolvendo o tabuleiro passo a passo, com a estratégia que você montar.",
+      "link": "Veja como o solucionador funciona"
     },
     "tech": {
       "title": "Como foi feito",
@@ -96,11 +97,11 @@
   },
   "learn": {
     "title": "Como o solucionador pensa",
-    "lead": "Resolver um Katamino parece simples — até você contar quantas maneiras existem de errar. Esta página mostra por que o problema é difícil, qual algoritmo o solucionador usa e como cada critério o ajuda a chegar a uma solução tentando menos.",
+    "lead": "Resolver um Katamino parece simples, até você contar quantas maneiras existem de errar. Esta página mostra por que o problema é difícil, qual algoritmo o solucionador usa e como cada critério o ajuda a chegar a uma solução tentando menos.",
     "boardLabel": "Tabuleiro de exemplo",
     "problem": {
       "title": "Que tipo de problema é esse?",
-      "body": "No Katamino só existem regras: ou as peças cobrem o tabuleiro inteiro, ou não cobrem. Qualquer arrumação que obedeça a todas elas é uma solução, e nenhuma vale mais que outra. Esse tipo de problema se chama satisfação de restrições — mais precisamente, cobertura exata.",
+      "body": "No Katamino só existem regras: ou as peças cobrem o tabuleiro inteiro, ou não cobrem. Qualquer arrumação que obedeça a todas elas é uma solução, e nenhuma vale mais que outra. Esse tipo de problema se chama satisfação de restrições ou, mais precisamente, cobertura exata.",
       "rulesTitle": "As regras (as \"restrições\")",
       "rule1": "Toda casa do tabuleiro é coberta.",
       "rule2": "Nenhuma casa é coberta duas vezes.",
@@ -109,7 +110,7 @@
     },
     "pieces": {
       "title": "As peças",
-      "body": "São os 12 pentaminós: todas as formas possíveis de juntar 5 quadrados pelos lados. Cada um leva o nome da letra com que se parece. Girando e espelhando, uma peça pode aparecer de 1 a 8 jeitos diferentes — e cada jeito é uma opção a mais para o solucionador testar. Clique em uma peça para ver os jeitos dela.",
+      "body": "São os 12 pentaminós: todas as formas possíveis de juntar 5 quadrados pelos lados. Cada um leva o nome da letra com que se parece. Girando e espelhando, uma peça pode aparecer de 1 a 8 jeitos diferentes, e cada jeito é uma opção a mais para o solucionador testar. Clique em uma peça para ver os jeitos dela.",
       "galleryLabel": "Os 12 pentaminós",
       "pieceLabel_one": "Peça {{piece}}: {{count}} jeito",
       "pieceLabel_other": "Peça {{piece}}: {{count}} jeitos",
@@ -127,7 +128,7 @@
       "chartTitle": "O palheiro cresce a cada peça",
       "chartRow": "{{count}} peças",
       "chartNote": "Um desafio de exemplo para cada tamanho de tabuleiro. A escala é logarítmica: uma barra um pouco mais comprida representa um número milhares de vezes maior.",
-      "time": "Testando um milhão de combinações por segundo, o desafio de 12 peças levaria cerca de {{years}} de anos — umas {{times}} vezes a idade do universo. Força bruta não é opção: é preciso procurar com método."
+      "time": "Testando um milhão de combinações por segundo, o desafio de 12 peças levaria cerca de {{years}} de anos, umas {{times}} vezes a idade do universo. Força bruta não é opção: é preciso procurar com método."
     },
     "algorithm": {
       "title": "O algoritmo: busca em profundidade com retrocesso",
@@ -161,13 +162,13 @@
         "deadEnds": "Becos sem saída",
         "cuts": "Cortes",
         "fewer": "{{percent}}% menos tentativas que a busca simples ({{base}})",
-        "more": "{{percent}}% mais tentativas que a busca simples ({{base}}) — nem todo critério ajuda em todo desafio",
+        "more": "{{percent}}% mais tentativas que a busca simples ({{base}}): nem todo critério ajuda em todo desafio",
         "same": "O mesmo número de tentativas da busca simples neste desafio",
         "baseline": "Esta é a busca simples, sem nenhum critério. Ligue critérios acima e veja a árvore encolher."
       },
       "node": {
         "root": "Tabuleiro vazio (início)",
-        "label": "Tentativa {{n}}: peça {{piece}} — {{status}}"
+        "label": "Tentativa {{n}}: peça {{piece}} ({{status}})"
       },
       "detail": {
         "root": "Ponto de partida: o tabuleiro vazio.",
@@ -221,7 +222,6 @@
     "label": "Peças disponíveis",
     "rotate": "Girar",
     "flip": "Espelhar",
-    "rotateHint": "Botão direito ou R: girar · E ou arrastar: espelhar",
     "position": {
       "top": "acima do tabuleiro",
       "right": "à direita do tabuleiro",
@@ -230,10 +230,10 @@
     }
   },
   "manualPlay": {
-    "solved": "Resolvido! Todas as peças encaixam — muito bem.",
+    "solved": "Resolvido! Todas as peças encaixam, muito bem.",
     "reset": "Reiniciar",
     "next": "Próximo desafio",
-    "overlap": "Há peças sobrepostas — mova as marcadas em vermelho para continuar.",
+    "overlap": "Há peças sobrepostas: mova as marcadas em vermelho para continuar.",
     "navLabel": "Navegação entre desafios",
     "previous": "Desafio anterior",
     "following": "Desafio seguinte"
@@ -267,7 +267,8 @@
       "hint_other": "Todas as formas de colocar as {{count}} peças no tabuleiro, em qualquer posição e orientação, sem checar sobreposição. É o palheiro em que o solucionador procura."
     },
     "showSettings": "Ajustes ▴",
-    "hideSettings": "Ocultar ▾"
+    "hideSettings": "Ocultar ▾",
+    "learnMore": "Aprenda mais"
   },
   "metrics": {
     "step": "Passos mostrados",
@@ -313,7 +314,7 @@
     "deadRegions": {
       "name": "Descartar buracos impossíveis",
       "summary": "Recua quando uma área vazia tem tamanho que não é múltiplo de 5.",
-      "details": "Toda peça cobre exatamente 5 casas. Se um encaixe isola uma área vazia de 3, 7 ou 11 casas, nenhuma combinação de peças consegue preenchê-la exatamente — então o encaixe é desfeito na hora, em vez de ser explorado."
+      "details": "Toda peça cobre exatamente 5 casas. Se um encaixe isola uma área vazia de 3, 7 ou 11 casas, nenhuma combinação de peças consegue preenchê-la exatamente; por isso o encaixe é desfeito na hora, em vez de ser explorado."
     },
     "strandedCells": {
       "name": "Nenhuma casa sem saída",

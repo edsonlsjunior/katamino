@@ -121,6 +121,9 @@ export function SolverPanel({
           onToggle={onToggleCriterion}
           cuts={hasRun ? prunesSoFar : undefined}
         />
+        <a className="text-link" href="#/learn" data-testid="solver-learn-more">
+          {t('solver.learnMore')} →
+        </a>
 
         {runs.length > 0 && (
           <table className="solver-panel__runs" data-testid="comparison-panel">

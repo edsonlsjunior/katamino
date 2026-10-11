@@ -71,7 +71,7 @@ export function PieceTray({
     <div
       className={`piece-tray__list${isVertical ? ' piece-tray__list--column' : ''}`}
       role={onPick ? 'listbox' : 'group'}
-      aria-label={`${t('pieceTray.label', 'Available pieces')} — ${t(POSITION_LABEL_KEYS[position])}`}
+      aria-label={`${t('pieceTray.label', 'Available pieces')} (${t(POSITION_LABEL_KEYS[position])})`}
     >
       {pieces.map((piece) => {
         const slotStyle = { '--span': slotSpan(piece) } as CSSProperties;

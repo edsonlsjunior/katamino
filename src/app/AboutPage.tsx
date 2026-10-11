@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { loadChallenges } from '../data/loadChallenges';
-import { CRITERIA } from '../solvers/criteria';
 import './AboutPage.css';
 
 const REPOSITORY_URL = 'https://github.com/edsonlsjunior/katamino';
@@ -42,14 +41,11 @@ export function AboutPage({ onBrowseChallenges }: AboutPageProps) {
         <section className="about-card about-card--wide">
           <h3>{t('about.solver.title')}</h3>
           <p>{t('about.solver.body')}</p>
-          <dl className="about-criteria">
-            {CRITERIA.map((criterion) => (
-              <div key={criterion.id}>
-                <dt>{t(`${criterion.i18nKey}.name`)}</dt>
-                <dd>{t(`${criterion.i18nKey}.summary`)}</dd>
-              </div>
-            ))}
-          </dl>
+          <p>
+            <a href="#/learn" data-testid="about-learn-link">
+              {t('about.solver.link')} →
+            </a>
+          </p>
         </section>
 
         <section className="about-card">

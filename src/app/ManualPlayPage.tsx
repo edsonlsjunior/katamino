@@ -583,62 +583,73 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   return (
     <div className="manual-play-page">
       <div className="manual-play-page__toolbar">
-        <nav className="challenge-nav" aria-label={t('manualPlay.navLabel')}>
-          <button
-            type="button"
-            aria-label={t('manualPlay.previous')}
-            disabled={!previousChallenge}
-            onClick={() => previousChallenge && goToChallenge(previousChallenge.id)}
-          >
-            ‹
-          </button>
-          <span
-            className="challenge-nav__title"
-            data-testid="challenge-title"
-            data-completed={isCompleted}
-          >
-            {challenge &&
-              // The bonus tier has no line label: drop the separator it would leave behind.
-              t('challenges.cardLabel', {
-                line: challenge.line,
-                boardCols: challenge.boardCols,
-                id: challenge.id,
-              }).replace(/^s*·s*/, '')}
-            {isCompleted && (
-              <span className="challenge-nav__badge" data-testid="challenge-completed">
-                ✓ {t('challenges.completed', 'Completed')}
-              </span>
-            )}
-          </span>
-          <button
-            type="button"
-            aria-label={t('manualPlay.following')}
-            disabled={!nextChallenge}
-            onClick={() => nextChallenge && goToChallenge(nextChallenge.id)}
-          >
-            ›
-          </button>
-        </nav>
+        <div className="manual-play-page__tools">
+          <nav className="challenge-nav" aria-label={t('manualPlay.navLabel')}>
+            <button
+              type="button"
+              aria-label={t('manualPlay.previous')}
+              disabled={!previousChallenge}
+              onClick={() => previousChallenge && goToChallenge(previousChallenge.id)}
+            >
+              ‹
+            </button>
+            <span
+              className="challenge-nav__title"
+              data-testid="challenge-title"
+              data-completed={isCompleted}
+            >
+              {challenge &&
+                // The bonus tier has no line label: drop the separator it would leave behind.
+                t('challenges.cardLabel', {
+                  line: challenge.line,
+                  boardCols: challenge.boardCols,
+                  id: challenge.id,
+                }).replace(/^s*·s*/, '')}
+              {isCompleted && (
+                <span className="challenge-nav__badge" data-testid="challenge-completed">
+                  ✓ {t('challenges.completed', 'Completed')}
+                </span>
+              )}
+            </span>
+            <button
+              type="button"
+              aria-label={t('manualPlay.following')}
+              disabled={!nextChallenge}
+              onClick={() => nextChallenge && goToChallenge(nextChallenge.id)}
+            >
+              ›
+            </button>
+          </nav>
 
-        {solverOpen ? (
-          <button type="button" onClick={closeSolver} data-testid="close-solver">
-            {t('solver.backToPlay')}
-          </button>
-        ) : (
-          <>
-            <button type="button" onClick={openSolver}>
-              {t('nav.autoSolve')}
+          {solverOpen ? (
+            <button type="button" onClick={closeSolver} data-testid="close-solver">
+              {t('solver.backToPlay')}
             </button>
-            <button type="button" onClick={reset}>
-              {t('manualPlay.reset', 'Reset')}
-            </button>
-          </>
+          ) : (
+            <>
+              <button type="button" onClick={openSolver}>
+                {t('nav.autoSolve')}
+              </button>
+              <button type="button" onClick={reset}>
+                {t('manualPlay.reset', 'Reset')}
+              </button>
+            </>
+          )}
+
+        </div>
+
+        {!solverOpen && (
+          <PieceControls
+            hasSelection={!!selectedInstanceId}
+            onRotate={() => rotateSelected(turnsForScreenRotation(transposed))}
+            onFlip={() => flipSelected(modelFlipAxis('horizontal', transposed))}
+          />
         )}
 
         <div className="manual-play-page__status">
           {!solverOpen && conflictKeys.length > 0 && (
             <p data-testid="invalid-feedback" role="alert" className="manual-play-page__warning">
-              {t('manualPlay.overlap', 'Pieces overlap — move the ones marked in red to continue.')}
+              {t('manualPlay.overlap', 'Pieces overlap: move the ones marked in red to continue.')}
             </p>
           )}
           {!solverOpen && isSolved && (
@@ -656,14 +667,6 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
             </>
           )}
         </div>
-
-        {!solverOpen && (
-          <PieceControls
-            hasSelection={!!selectedInstanceId}
-            onRotate={() => rotateSelected(turnsForScreenRotation(transposed))}
-            onFlip={() => flipSelected(modelFlipAxis('horizontal', transposed))}
-          />
-        )}
       </div>
 
       <div className="manual-play-page__body">

@@ -66,12 +66,13 @@ function CriterionItem({ id, i18nKey, checked, onToggle, disabled, cuts }: ItemP
   );
 }
 
-const KINDS: readonly Criterion['kind'][] = ['order', 'prune'];
+/** Pruning first: those are the safe ones to switch on (they never add steps). */
+const KINDS: readonly Criterion['kind'][] = ['prune', 'order'];
 
 /**
  * The strategy, as a list of criteria added on top of the base search, split
- * the way the "how it works" page explains them: the ones that change what is
- * tried first, and the ones that give up on a branch early. Each can be
+ * the way the "how it works" page explains them: the ones that give up on a
+ * branch early, and the ones that change what is tried first. Each can be
  * switched on independently and expanded for an explanation of what it
  * changes; new criteria show up here by being added to CRITERIA.
  */

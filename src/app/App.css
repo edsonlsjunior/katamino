@@ -132,12 +132,25 @@ main > * {
   min-height: 0;
 }
 
+/* Three zones: challenge navigation and mode buttons on the left, rotate and
+   flip in the middle of the screen, messages on the right. */
 .manual-play-page__toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.manual-play-page__tools {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   flex-wrap: wrap;
-  flex-shrink: 0;
+}
+
+.manual-play-page__toolbar .piece-controls {
+  grid-column: 2;
 }
 
 /* Which challenge this is, whether it has been completed, and arrows to the
@@ -174,12 +187,12 @@ main > * {
 /* Warnings and the solved state live inside the toolbar row, so showing
    them never changes the arena's height (which would resize the board). */
 .manual-play-page__status {
-  flex: 1;
+  grid-column: 3;
   min-width: 0;
   min-height: 2.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: var(--space-3);
   flex-wrap: wrap;
 }
@@ -455,8 +468,20 @@ main > * {
     white-space: nowrap;
   }
 
+  /* One wrapping row instead of three zones. */
+  .manual-play-page__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .manual-play-page__tools {
+    display: contents;
+  }
+
   /* Nothing to report most of the time: don't hold a row for it. */
   .manual-play-page__status {
+    flex: 1;
     min-height: 0;
+    justify-content: center;
   }
 }

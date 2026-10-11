@@ -69,23 +69,6 @@
   font-weight: 600;
 }
 
-.about-criteria {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: var(--space-3);
-  margin: var(--space-3) 0 0;
-}
-
-.about-criteria dt {
-  font-weight: 600;
-}
-
-.about-criteria dd {
-  margin: 0;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-}
-
 @media (max-width: 720px) {
   .about-page__grid {
     grid-template-columns: minmax(0, 1fr);

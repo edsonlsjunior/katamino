@@ -1,26 +1,14 @@
 .piece-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
   justify-content: center;
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
-.piece-controls__buttons {
-  display: flex;
-  gap: var(--space-2);
-}
-
-.piece-controls__hint {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
-/* Right-click / "R" don't exist on touch-sized screens. */
+/* There is no keyboard to press on touch-sized screens. */
 @media (max-width: 720px) {
-  .piece-controls__hint {
+  .piece-controls kbd {
     display: none;
   }
 }

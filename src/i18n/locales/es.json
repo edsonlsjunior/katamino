@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Katamino — Playground de Búsqueda Combinatoria"
+    "title": "Katamino: Playground de Búsqueda Combinatoria"
   },
   "nav": {
     "challenges": "Desafíos",
@@ -16,7 +16,7 @@
   "common": {
     "loading": "Cargando…",
     "error": "Algo salió mal.",
-    "back": "Volver a los desafíos"
+    "back": "Desafíos"
   },
   "challenges": {
     "difficulty": "Dificultad {{difficulty}}",
@@ -58,7 +58,8 @@
     },
     "solver": {
       "title": "El solucionador",
-      "body": "En cualquier desafío, \"Ver el solucionador\" muestra la búsqueda ocurriendo en el tablero. La base es siempre la misma —probar, deshacer, volver a probar— y tú montas la estrategia activando criterios que cambian el orden de los intentos o detectan antes un callejón sin salida. Ejecuta combinaciones distintas en el mismo desafío y compara pasos y retrocesos."
+      "body": "En cualquier desafío, \"Ver el solucionador\" muestra una búsqueda resolviendo el tablero paso a paso, con la estrategia que tú montes.",
+      "link": "Mira cómo funciona el solucionador"
     },
     "tech": {
       "title": "Cómo se hizo",
@@ -167,7 +168,7 @@
       },
       "node": {
         "root": "Tablero vacío (inicio)",
-        "label": "Intento {{n}}: pieza {{piece}} — {{status}}"
+        "label": "Intento {{n}}: pieza {{piece}} ({{status}})"
       },
       "detail": {
         "root": "Punto de partida: el tablero vacío.",
@@ -221,7 +222,6 @@
     "label": "Piezas disponibles",
     "rotate": "Girar",
     "flip": "Reflejar",
-    "rotateHint": "Botón derecho o R: girar · E o arrastrar: reflejar",
     "position": {
       "top": "encima del tablero",
       "right": "a la derecha del tablero",
@@ -267,7 +267,8 @@
       "hint_other": "Todas las maneras de poner las {{count}} piezas en el tablero, en cualquier posición y orientación, sin comprobar solapamientos. Es el pajar en el que busca el solucionador."
     },
     "showSettings": "Ajustes ▴",
-    "hideSettings": "Ocultar ▾"
+    "hideSettings": "Ocultar ▾",
+    "learnMore": "Aprende más"
   },
   "metrics": {
     "step": "Pasos mostrados",

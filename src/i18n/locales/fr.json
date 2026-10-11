@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Katamino — Bac à sable de recherche combinatoire"
+    "title": "Katamino : bac à sable de recherche combinatoire"
   },
   "nav": {
     "challenges": "Défis",
@@ -16,7 +16,7 @@
   "common": {
     "loading": "Chargement…",
     "error": "Une erreur s'est produite.",
-    "back": "Retour aux défis"
+    "back": "Défis"
   },
   "challenges": {
     "difficulty": "Difficulté {{difficulty}}",
@@ -58,7 +58,8 @@
     },
     "solver": {
       "title": "Le solveur",
-      "body": "Dans n'importe quel défi, « Voir le solveur » montre la recherche en train de se dérouler sur le plateau. La base est toujours la même — essayer, défaire, réessayer — et vous composez la stratégie en activant des critères qui changent l'ordre des essais ou repèrent plus tôt une impasse. Lancez différentes combinaisons sur le même défi et comparez les pas et les retours en arrière."
+      "body": "Dans n'importe quel défi, « Voir le solveur » montre une recherche qui résout le plateau pas à pas, avec la stratégie que vous composez.",
+      "link": "Voir comment fonctionne le solveur"
     },
     "tech": {
       "title": "Comment c'est fait",
@@ -100,7 +101,7 @@
     "boardLabel": "Plateau d'exemple",
     "problem": {
       "title": "De quel type de problème s'agit-il ?",
-      "body": "Au Katamino, il n'y a que des règles : soit les pièces couvrent tout le plateau, soit elles ne le couvrent pas. Toute disposition qui les respecte toutes est une solution, et aucune ne vaut plus qu'une autre. Ce type de problème s'appelle la satisfaction de contraintes — plus précisément, la couverture exacte.",
+      "body": "Au Katamino, il n'y a que des règles : soit les pièces couvrent tout le plateau, soit elles ne le couvrent pas. Toute disposition qui les respecte toutes est une solution, et aucune ne vaut plus qu'une autre. Ce type de problème s'appelle la satisfaction de contraintes ou, plus précisément, la couverture exacte.",
       "rulesTitle": "Les règles (les « contraintes »)",
       "rule1": "Chaque case du plateau est couverte.",
       "rule2": "Aucune case n'est couverte deux fois.",
@@ -109,7 +110,7 @@
     },
     "pieces": {
       "title": "Les pièces",
-      "body": "Ce sont les 12 pentominos : toutes les façons possibles d'assembler 5 carrés par leurs côtés. Chacun porte le nom de la lettre à laquelle il ressemble. En la tournant et en la retournant, une pièce peut se présenter de 1 à 8 façons différentes — et chaque façon est une option de plus à tester pour le solveur. Cliquez sur une pièce pour voir ses façons.",
+      "body": "Ce sont les 12 pentominos : toutes les façons possibles d'assembler 5 carrés par leurs côtés. Chacun porte le nom de la lettre à laquelle il ressemble. En la tournant et en la retournant, une pièce peut se présenter de 1 à 8 façons différentes, et chaque façon est une option de plus à tester pour le solveur. Cliquez sur une pièce pour voir ses façons.",
       "galleryLabel": "Les 12 pentominos",
       "pieceLabel_one": "Pièce {{piece}} : {{count}} façon",
       "pieceLabel_other": "Pièce {{piece}} : {{count}} façons",
@@ -127,7 +128,7 @@
       "chartTitle": "La botte de foin grossit à chaque pièce",
       "chartRow": "{{count}} pièces",
       "chartNote": "Un défi d'exemple pour chaque taille de plateau. L'échelle est logarithmique : une barre un peu plus longue représente un nombre des milliers de fois plus grand.",
-      "time": "En testant un million de combinaisons par seconde, le défi à 12 pièces prendrait environ {{years}} d'années — quelque {{times}} fois l'âge de l'univers. La force brute n'est pas une option : il faut chercher avec méthode."
+      "time": "En testant un million de combinaisons par seconde, le défi à 12 pièces prendrait environ {{years}} d'années, soit quelque {{times}} fois l'âge de l'univers. La force brute n'est pas une option : il faut chercher avec méthode."
     },
     "algorithm": {
       "title": "L'algorithme : recherche en profondeur avec retour arrière",
@@ -161,13 +162,13 @@
         "deadEnds": "Impasses",
         "cuts": "Coupes",
         "fewer": "{{percent}} % d'essais en moins que la recherche simple ({{base}})",
-        "more": "{{percent}} % d'essais en plus que la recherche simple ({{base}}) — tous les critères n'aident pas sur tous les défis",
+        "more": "{{percent}} % d'essais en plus que la recherche simple ({{base}}) : tous les critères n'aident pas sur tous les défis",
         "same": "Le même nombre d'essais que la recherche simple sur ce défi",
         "baseline": "Voici la recherche simple, sans aucun critère. Activez des critères ci-dessus et regardez l'arbre rétrécir."
       },
       "node": {
         "root": "Plateau vide (départ)",
-        "label": "Essai {{n}} : pièce {{piece}} — {{status}}"
+        "label": "Essai {{n}} : pièce {{piece}} ({{status}})"
       },
       "detail": {
         "root": "Point de départ : le plateau vide.",
@@ -221,7 +222,6 @@
     "label": "Pièces disponibles",
     "rotate": "Tourner",
     "flip": "Retourner",
-    "rotateHint": "Clic droit ou R : tourner · E ou glisser : retourner",
     "position": {
       "top": "au-dessus du plateau",
       "right": "à droite du plateau",
@@ -230,10 +230,10 @@
     }
   },
   "manualPlay": {
-    "solved": "Résolu ! Toutes les pièces s'emboîtent — bravo.",
+    "solved": "Résolu ! Toutes les pièces s'emboîtent, bravo.",
     "reset": "Réinitialiser",
     "next": "Défi suivant",
-    "overlap": "Des pièces se chevauchent — déplacez celles marquées en rouge pour continuer.",
+    "overlap": "Des pièces se chevauchent : déplacez celles marquées en rouge pour continuer.",
     "navLabel": "Navigation entre les défis",
     "previous": "Défi précédent",
     "following": "Défi suivant"
@@ -267,7 +267,8 @@
       "hint_other": "Toutes les façons de poser les {{count}} pièces sur le plateau, dans n'importe quelle position et orientation, sans vérifier les chevauchements. C'est la botte de foin dans laquelle cherche le solveur."
     },
     "showSettings": "Réglages ▴",
-    "hideSettings": "Masquer ▾"
+    "hideSettings": "Masquer ▾",
+    "learnMore": "En savoir plus"
   },
   "metrics": {
     "step": "Pas affichés",
@@ -313,7 +314,7 @@
     "deadRegions": {
       "name": "Écarter les trous impossibles",
       "summary": "Recule quand la taille d'une zone vide n'est pas un multiple de 5.",
-      "details": "Chaque pièce couvre exactement 5 cases. Si un placement isole une zone vide de 3, 7 ou 11 cases, aucune combinaison de pièces ne peut la remplir exactement — le placement est donc défait aussitôt au lieu d'être exploré."
+      "details": "Chaque pièce couvre exactement 5 cases. Si un placement isole une zone vide de 3, 7 ou 11 cases, aucune combinaison de pièces ne peut la remplir exactement ; le placement est donc défait aussitôt au lieu d'être exploré."
     },
     "strandedCells": {
       "name": "Aucune case sans issue",
