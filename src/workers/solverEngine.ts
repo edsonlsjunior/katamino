@@ -10,7 +10,7 @@ import { isCriterionId } from '../solvers/criteria';
 import type { SolveRequest, SolveResponse } from './protocol';
 
 export function* runSolve(request: SolveRequest): Generator<SolveResponse, void, void> {
-  const { requestId, challenge, criteria, maxSteps } = request;
+  const { requestId, challenge, criteria, maxSteps, start } = request;
   const unknown = criteria.find((id) => !isCriterionId(id));
   if (unknown !== undefined) {
     yield { type: 'error', requestId, message: `Unknown solving criterion: ${unknown}` };
@@ -21,7 +21,7 @@ export function* runSolve(request: SolveRequest): Generator<SolveResponse, void,
 
   try {
     let totalSteps = 0;
-    const gen = solve(challenge, criteria, maxSteps === undefined ? undefined : { maxSteps });
+    const gen = solve(challenge, criteria, { start, ...(maxSteps === undefined ? {} : { maxSteps }) });
     let result = gen.next();
     while (!result.done) {
       totalSteps++;

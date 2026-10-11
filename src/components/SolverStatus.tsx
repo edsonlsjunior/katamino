@@ -7,9 +7,11 @@ interface SolverStatusProps {
   outcome: SolveOutcome | null;
   errorMessage: string | null;
   totalSteps: number;
+  /** Whether the run started from the player's own pieces. */
+  fromAttempt?: boolean;
 }
 
-export function SolverStatus({ status, outcome, errorMessage, totalSteps }: SolverStatusProps) {
+export function SolverStatus({ status, outcome, errorMessage, totalSteps, fromAttempt }: SolverStatusProps) {
   const { t, i18n } = useTranslation();
 
   if (status === 'computing') {
@@ -37,7 +39,7 @@ export function SolverStatus({ status, outcome, errorMessage, totalSteps }: Solv
     if (outcome === 'exhausted') {
       return (
         <p data-testid="solver-exhausted" role="status">
-          {t('solver.exhausted')}
+          {t(fromAttempt ? 'solver.exhaustedFromAttempt' : 'solver.exhausted')}
         </p>
       );
     }

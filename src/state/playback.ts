@@ -1,10 +1,17 @@
 import { create } from 'zustand';
 import type { Board } from '../domain/board';
-import type { Challenge, PieceInstance, PlaybackStatus, SolveOutcome, SolveStep } from '../domain/types';
+import type {
+  Challenge,
+  PieceInstance,
+  PlaybackStatus,
+  SolveOutcome,
+  SolveStep,
+  StartPlacement,
+} from '../domain/types';
 import { CRITERION_IDS, DEFAULT_CRITERIA, criteriaKey, type CriterionId } from '../solvers/criteria';
 import type { SolveRequest, WorkerMessage, WorkerRequest } from '../workers/protocol';
 import SolverWorker from '../workers/solver.worker?worker';
-import { applyStep, emptyFrame, undoStep, type PlaybackFrame } from './playbackFrame';
+import { applyStep, emptyFrame, startFrame, undoStep, type PlaybackFrame } from './playbackFrame';
 
 export interface RunSummary {
   challengeId: number;
@@ -12,7 +19,12 @@ export interface RunSummary {
   totalSteps: number;
   backtrackCount: number;
   outcome: SolveOutcome;
+  /** How many of the player's pieces the run started from (0: empty board). */
+  startPieces: number;
 }
+
+/** Where the next run begins: the empty board, or the pieces the player has placed. */
+export type StartFrom = 'empty' | 'attempt';
 
 const RUN_HISTORY_SIZE = 8;
 
@@ -20,6 +32,8 @@ interface PlaybackState {
   challengeId: number | null;
   /** The criteria of the run being shown; null before the first run. */
   criteria: CriterionId[] | null;
+  /** The pieces the run being shown started with. */
+  start: StartPlacement[];
   status: PlaybackStatus;
   /** Steps received from the solver so far (all of them once `isSolving` is false). */
   steps: SolveStep[];
@@ -42,9 +56,16 @@ interface PlaybackState {
   runHistory: RunSummary[];
   /** The criteria ticked for the next run. */
   selectedCriteria: CriterionId[];
+  /** Where the next run should begin. */
+  startFrom: StartFrom;
 
   toggleCriterion: (id: CriterionId) => void;
-  startSolve: (challenge: Challenge, criteria: readonly CriterionId[]) => void;
+  setStartFrom: (startFrom: StartFrom) => void;
+  startSolve: (
+    challenge: Challenge,
+    criteria: readonly CriterionId[],
+    start?: readonly StartPlacement[],
+  ) => void;
   play: () => void;
   pause: () => void;
   stepForward: (count?: number) => void;
@@ -89,6 +110,7 @@ function frameFields(frame: PlaybackFrame) {
 const IDLE = {
   challengeId: null,
   criteria: null,
+  start: [] as StartPlacement[],
   status: 'idle' as PlaybackStatus,
   steps: [] as SolveStep[],
   currentStepIndex: -1,
@@ -106,6 +128,9 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
   speed: 3,
   runHistory: [],
   selectedCriteria: [...DEFAULT_CRITERIA],
+  startFrom: 'empty',
+
+  setStartFrom: (startFrom) => set({ startFrom }),
 
   toggleCriterion: (id) => {
     const current = new Set(get().selectedCriteria);
@@ -114,7 +139,7 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
     set({ selectedCriteria: CRITERION_IDS.filter((c) => current.has(c)) });
   },
 
-  startSolve: (challenge, criteria) => {
+  startSolve: (challenge, criteria, start = []) => {
     const requestId = `${challenge.id}-${criteriaKey(criteria)}-${++requestCounter}`;
     currentRequestId = requestId;
 
@@ -122,9 +147,10 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
       ...IDLE,
       challengeId: challenge.id,
       criteria: [...criteria],
+      start: [...start],
       status: 'computing',
       isSolving: true,
-      ...frameFields(emptyFrame(challenge.boardRows, challenge.boardCols)),
+      ...frameFields(startFrame(challenge.boardRows, challenge.boardCols, start)),
     });
 
     const w = getWorker();
@@ -143,13 +169,22 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
         return;
       }
       if (message.type === 'done') {
-        const { challengeId, criteria: runCriteria, runHistory, currentStepIndex, steps, status } = get();
+        const {
+          challengeId,
+          criteria: runCriteria,
+          start: runStart,
+          runHistory,
+          currentStepIndex,
+          steps,
+          status,
+        } = get();
         const summary: RunSummary = {
           challengeId: challengeId!,
           criteria: runCriteria ?? [],
           totalSteps: message.totalSteps,
           backtrackCount: message.backtrackCount,
           outcome: message.outcome,
+          startPieces: runStart.length,
         };
         const atEnd = currentStepIndex >= steps.length - 1;
         set({
@@ -168,7 +203,13 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
       }
     };
 
-    const request: SolveRequest = { type: 'solve', requestId, challenge, criteria: [...criteria] };
+    const request: SolveRequest = {
+      type: 'solve',
+      requestId,
+      challenge,
+      criteria: [...criteria],
+      start: [...start],
+    };
     w.postMessage(request);
   },
 
@@ -211,8 +252,12 @@ export const usePlaybackStore = create<PlaybackState>((set, get) => ({
   },
 
   rewind: () => {
-    const { board } = get();
-    set({ currentStepIndex: -1, ...frameFields(emptyFrame(board.rows, board.cols)), status: 'paused' });
+    const { board, start } = get();
+    set({
+      currentStepIndex: -1,
+      ...frameFields(startFrame(board.rows, board.cols, start)),
+      status: 'paused',
+    });
   },
 
   setSpeed: (stepsPerSecond) => set({ speed: Math.max(0.5, stepsPerSecond) }),

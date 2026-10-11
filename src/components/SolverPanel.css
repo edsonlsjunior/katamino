@@ -59,6 +59,44 @@
   margin: 0;
 }
 
+.solver-panel__start {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.solver-panel__start legend {
+  padding: 0;
+  margin-bottom: var(--space-1);
+  font-weight: 700;
+}
+
+.solver-panel__start label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.solver-panel__start label:has(input:disabled) {
+  cursor: default;
+  color: var(--color-text-muted);
+}
+
+.solver-panel__start p {
+  margin: 0;
+}
+
+.solver-panel__run-tag {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
 .solver-panel__space-label {
   font-weight: 700;
 }

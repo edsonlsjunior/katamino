@@ -62,6 +62,13 @@ export interface SolveStep {
   prunedBy?: CriterionId;
 }
 
+/** A piece already on the board when a solver run starts (the run never moves it). */
+export interface StartPlacement {
+  typeId: PieceTypeId;
+  orientationIndex: number;
+  position: { row: number; col: number };
+}
+
 export interface SolveRun {
   challengeId: number;
   /** The criteria the strategy was built from (see solvers/criteria.ts). */

@@ -1,5 +1,5 @@
 /** UI thread <-> solver Web Worker message contract. See contracts/solver-worker-protocol.md. */
-import type { Challenge, SolveOutcome, SolveStep } from '../domain/types';
+import type { Challenge, SolveOutcome, SolveStep, StartPlacement } from '../domain/types';
 import type { CriterionId } from '../solvers/criteria';
 
 export interface SolveRequest {
@@ -10,6 +10,8 @@ export interface SolveRequest {
   criteria: CriterionId[];
   /** Overrides the solver's default step limit. */
   maxSteps?: number;
+  /** Pieces already on the board, which the run keeps in place. */
+  start?: StartPlacement[];
 }
 
 /** Abandons whatever run is in progress. */

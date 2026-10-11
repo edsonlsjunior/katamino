@@ -254,12 +254,14 @@
     "restart": "Resolver de novo",
     "close": "Fechar o solucionador",
     "backToPlay": "← Voltar a jogar",
+    "locked": "Tabuleiro bloqueado enquanto o solucionador está aberto. Para jogar, clique em \"Voltar a jogar\" ou no ✕.",
     "baseOnly": "Só a busca simples",
     "computing": "Calculando…",
     "error": "O solucionador encontrou um problema: {{message}}",
     "complete": "Resolvido! Todas as peças encaixam.",
     "limit": "Desistiu depois de {{steps}} passos sem achar uma solução. Adicione mais critérios e tente de novo.",
     "exhausted": "Tentou tudo: não há solução.",
+    "exhaustedFromAttempt": "Tentou tudo: com as suas peças nessas posições não há solução.",
     "stepCounter": "Passo {{current}} de {{total}}",
     "arrangements": {
       "label": "Combinações possíveis",
@@ -268,7 +270,18 @@
     },
     "showSettings": "Ajustes ▴",
     "hideSettings": "Ocultar ▾",
-    "learnMore": "Aprenda mais"
+    "learnMore": "Aprenda mais",
+    "startFrom": {
+      "label": "Ponto de partida",
+      "empty": "Tabuleiro vazio",
+      "attempt": "Minhas peças",
+      "attemptHint_one": "Começando das suas peças, o solucionador mantém a {{count}} peça que você colocou onde está e busca só com as restantes.",
+      "attemptHint_other": "Começando das suas peças, o solucionador mantém as {{count}} peças que você colocou onde estão e busca só com as restantes.",
+      "needPieces": "Coloque peças no tabuleiro para poder começar delas.",
+      "overlap": "Há peças sobrepostas: arrume-as para poder começar delas.",
+      "runTag_one": "a partir de {{count}} peça sua",
+      "runTag_other": "a partir de {{count}} peças suas"
+    }
   },
   "metrics": {
     "step": "Passos mostrados",

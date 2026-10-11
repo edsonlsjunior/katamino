@@ -76,7 +76,11 @@ export function App() {
             aria-pressed={screen === 'about'}
             onClick={goToAbout}
           >
-            <span aria-hidden="true">ⓘ</span>{' '}
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.75" stroke="currentColor" strokeWidth="1.5" fill="none" />
+              <circle cx="8" cy="4.9" r="1" fill="currentColor" />
+              <path d="M8 7.4v4.1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>{' '}
             <span className="app-header__nav-text">{t('nav.about')}</span>
           </button>
           <button

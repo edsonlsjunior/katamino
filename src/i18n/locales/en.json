@@ -254,12 +254,14 @@
     "restart": "Solve again",
     "close": "Close the solver",
     "backToPlay": "← Back to playing",
+    "locked": "The board is locked while the solver is open. To play, click \"Back to playing\" or the ✕.",
     "baseOnly": "Plain search only",
     "computing": "Working it out…",
     "error": "The solver ran into a problem: {{message}}",
     "complete": "Solved! Every piece fits.",
     "limit": "Gave up after {{steps}} steps without finding a solution. Add more criteria and try again.",
     "exhausted": "Tried everything: no solution.",
+    "exhaustedFromAttempt": "Tried everything: with your pieces in those positions there is no solution.",
     "stepCounter": "Step {{current}} of {{total}}",
     "arrangements": {
       "label": "Possible combinations",
@@ -268,7 +270,18 @@
     },
     "showSettings": "Settings ▴",
     "hideSettings": "Hide ▾",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "startFrom": {
+      "label": "Starting point",
+      "empty": "Empty board",
+      "attempt": "My pieces",
+      "attemptHint_one": "Starting from your pieces, the solver keeps the {{count}} piece you placed where it is and searches only with the others.",
+      "attemptHint_other": "Starting from your pieces, the solver keeps the {{count}} pieces you placed where they are and searches only with the others.",
+      "needPieces": "Place pieces on the board to be able to start from them.",
+      "overlap": "Some pieces overlap: fix them to be able to start from them.",
+      "runTag_one": "from {{count}} piece of yours",
+      "runTag_other": "from {{count}} pieces of yours"
+    }
   },
   "metrics": {
     "step": "Steps shown",

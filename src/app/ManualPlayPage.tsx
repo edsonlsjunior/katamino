@@ -15,13 +15,15 @@ import { PlaybackControls } from '../components/PlaybackControls';
 import { SolverPanel } from '../components/SolverPanel';
 import { SolvedBanner } from '../components/SolvedBanner';
 import { getChallengeById } from '../data/loadChallenges';
-import { createEmptyBoard, isInBounds, isOverlapping } from '../domain/board';
+import { isInBounds, isOverlapping } from '../domain/board';
 import { cellsAt, flipOrientation, PIECE_TYPES, type FlipAxis } from '../domain/pentomino';
 import { useManualAttemptStore } from '../state/manualAttempt';
 import { useNavigationStore } from '../state/navigation';
 import { isChallengeCompleted } from '../state/persistence';
 import { usePlaybackStore } from '../state/playback';
-import type { PieceInstance } from '../domain/types';
+import { startFrame } from '../state/playbackFrame';
+import { remainingPieces } from '../solvers/configurableSolver';
+import type { PieceInstance, StartPlacement } from '../domain/types';
 import { BOARD_PADDING_PX, CELL_GAP_PX, planArena, pieceSpan } from './arenaLayout';
 
 const FALLBACK_CELL_PX = 40;
@@ -29,6 +31,8 @@ const FALLBACK_CELL_PX = 40;
 const DRAG_THRESHOLD_PX = 24;
 /** Autoplay never ticks faster than this; higher speeds advance several steps per tick. */
 const MIN_AUTOPLAY_TICK_MS = 16;
+/** How long the "board is locked" notice stays up in solver mode. */
+const LOCKED_NOTICE_MS = 4000;
 
 interface ManualPlayPageProps {
   challengeId: number;
@@ -145,7 +149,10 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   useEffect(() => {
     if (!solverOpen) return;
     cancelHold();
-    return () => resetPlayback();
+    return () => {
+      resetPlayback();
+      setLockedNotice(0);
+    };
   }, [solverOpen, challengeId, cancelHold, resetPlayback]);
 
   // Autoplay: while playing, advance at the chosen speed.
@@ -449,7 +456,24 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     pickUp(instanceId);
   }
 
+  // Solver mode: a click on the board or on a piece is an attempt to play,
+  // so say why nothing happens and point at the way back. The number counts
+  // the attempts, which restarts the notice's animation on each one.
+  const [lockedNotice, setLockedNotice] = useState(0);
+  useEffect(() => {
+    if (lockedNotice === 0) return;
+    const id = setTimeout(() => setLockedNotice(0), LOCKED_NOTICE_MS);
+    return () => clearTimeout(id);
+  }, [lockedNotice]);
+  const showLockedNotice = solverOpen && lockedNotice > 0;
+
   function handleArenaClick(event: ReactMouseEvent<HTMLDivElement>) {
+    if (solverOpen) {
+      if ((event.target as Element).closest('.board, .piece-tray__item')) {
+        setLockedNotice((count) => count + 1);
+      }
+      return;
+    }
     if (!heldPiece || event.detail === 0) return;
     const drop = dropTargetAt({ x: event.clientX, y: event.clientY }, heldPiece);
     if (drop.kind === 'board') placeSelectedAt(drop.row, drop.col);
@@ -481,17 +505,38 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     );
   }
 
+  // A solver run can begin from the pieces the player has on the board, as
+  // long as they don't overlap; pieces left loose around it don't count.
+  const attemptStart = useMemo<StartPlacement[]>(
+    () =>
+      pieces.flatMap((piece) =>
+        piece.position
+          ? [{ typeId: piece.typeId, orientationIndex: piece.orientationIndex, position: piece.position }]
+          : [],
+      ),
+    [pieces],
+  );
+  const attemptOverlaps = conflictKeys.length > 0;
+  const solverStart = useMemo(
+    () =>
+      playback.startFrom === 'attempt' && attemptStart.length > 0 && !attemptOverlaps ? attemptStart : [],
+    [playback.startFrom, attemptStart, attemptOverlaps],
+  );
+  const piecesToPlace = useMemo(
+    () => (challenge ? remainingPieces(challenge, solverStart) : []),
+    [challenge, solverStart],
+  );
+  // Before a run, the board already shows where it will begin.
+  const idleFrame = useMemo(
+    () => startFrame(board.rows, board.cols, solverStart),
+    [board.rows, board.cols, solverStart],
+  );
+  const solverIdle = playback.status === 'idle';
+  const solverBoard = solverIdle ? idleFrame.board : playback.board;
+  const solverPieces = solverIdle ? idleFrame.pieces : playback.pieces;
   // In solver mode the rings show the challenge's pieces as dealt, minus the
-  // ones the solver currently has on the board.
-  const solverPlacedTypes = useMemo(
-    () => new Set(playback.pieces.map((p) => p.typeId)),
-    [playback.pieces],
-  );
-  const emptyBoard = useMemo(
-    () => createEmptyBoard(board.rows, board.cols),
-    [board.rows, board.cols],
-  );
-  const solverBoard = playback.status === 'idle' ? emptyBoard : playback.board;
+  // ones currently on the board.
+  const solverPlacedTypes = useMemo(() => new Set(solverPieces.map((p) => p.typeId)), [solverPieces]);
 
   // Narrow screens: every unplaced piece in one scrolling strip.
   function renderStrip() {
@@ -574,6 +619,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const arenaClasses = [
     'board-arena',
     heldPiece ? 'board-arena--holding' : '',
+    solverOpen ? 'board-arena--locked' : '',
     plan?.mode === 'strip' ? `board-arena--strip board-arena--strip-${plan.side}` : '',
   ]
     .filter(Boolean)
@@ -622,7 +668,12 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
           </nav>
 
           {solverOpen ? (
-            <button type="button" onClick={closeSolver} data-testid="close-solver">
+            <button
+              type="button"
+              className={showLockedNotice ? 'btn-attention' : undefined}
+              onClick={closeSolver}
+              data-testid="close-solver"
+            >
               {t('solver.backToPlay')}
             </button>
           ) : (
@@ -685,7 +736,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
                   {solverOpen ? (
                     <Board
                       board={solverBoard}
-                      pieces={playback.pieces}
+                      pieces={solverPieces}
                       cellSize={cellSize}
                       transposed={transposed}
                     />
@@ -699,6 +750,25 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
                       cellSize={cellSize}
                       transposed={transposed}
                     />
+                  )}
+                  {showLockedNotice && (
+                    <p
+                      key={lockedNotice}
+                      className="board-arena__locked"
+                      data-testid="solver-locked"
+                      role="status"
+                    >
+                      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                        <rect x="3" y="7" width="10" height="7" rx="1.5" fill="currentColor" />
+                        <path
+                          d="M5.25 7V5a2.75 2.75 0 0 1 5.5 0v2"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          fill="none"
+                        />
+                      </svg>
+                      {t('solver.locked')}
+                    </p>
                   )}
                 </div>
                 {renderRing('right', ringLayout?.sideSpan ?? 0)}
@@ -763,7 +833,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
                 // Before the first run, Play starts one with the ticked criteria.
                 onPlay={
                   playback.status === 'idle' && challenge
-                    ? () => playback.startSolve(challenge, playback.selectedCriteria)
+                    ? () => playback.startSolve(challenge, playback.selectedCriteria, solverStart)
                     : playback.play
                 }
                 onPause={playback.pause}
@@ -782,8 +852,9 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
             challenge={challenge}
             selectedCriteria={selectedCriteria}
             onToggleCriterion={playback.toggleCriterion}
-            onStart={() => playback.startSolve(challenge, playback.selectedCriteria)}
+            onStart={() => playback.startSolve(challenge, playback.selectedCriteria, solverStart)}
             onClose={closeSolver}
+            highlightClose={showLockedNotice}
             status={playback.status}
             isSolving={playback.isSolving}
             outcome={playback.outcome}
@@ -793,6 +864,16 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
             backtracksSoFar={playback.backtracksSoFar}
             prunesSoFar={playback.prunesSoFar}
             runs={challengeRuns}
+            startFrom={playback.startFrom}
+            onStartFromChange={(startFrom) => {
+              // The board on screen should show the new starting point.
+              resetPlayback();
+              playback.setStartFrom(startFrom);
+            }}
+            attemptPieces={attemptStart.length}
+            attemptOverlaps={attemptOverlaps}
+            piecesToPlace={piecesToPlace}
+            runFromAttempt={playback.start.length > 0}
           />
         )}
       </div>

@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { Challenge, PlaybackStatus, SolveOutcome } from '../domain/types';
+import type { Challenge, PieceTypeId, PlaybackStatus, SolveOutcome } from '../domain/types';
 import { countArrangements } from '../solvers/configurableSolver';
 import { CRITERIA, type CriterionId } from '../solvers/criteria';
-import type { RunSummary } from '../state/playback';
+import type { RunSummary, StartFrom } from '../state/playback';
 import { CriteriaList } from './CriteriaList';
 import { SolverStatus } from './SolverStatus';
 import './SolverPanel.css';
@@ -14,6 +14,8 @@ interface SolverPanelProps {
   onToggleCriterion: (id: CriterionId) => void;
   onStart: () => void;
   onClose: () => void;
+  /** Draw attention to the close button (the player tried to use the locked board). */
+  highlightClose?: boolean;
   status: PlaybackStatus;
   /** Whether the solver is still searching (the total isn't known yet). */
   isSolving: boolean;
@@ -26,6 +28,17 @@ interface SolverPanelProps {
   prunesSoFar: Partial<Record<CriterionId, number>>;
   /** Finished runs of this challenge, most recent first. */
   runs: readonly RunSummary[];
+  /** Where the next run begins, as chosen by the player. */
+  startFrom: StartFrom;
+  onStartFromChange: (startFrom: StartFrom) => void;
+  /** How many pieces the player has on the board. */
+  attemptPieces: number;
+  /** Whether some of those overlap (a run can't start from that). */
+  attemptOverlaps: boolean;
+  /** The pieces the next run still has to place. */
+  piecesToPlace: readonly PieceTypeId[];
+  /** Whether the run on screen started from the player's pieces. */
+  runFromAttempt: boolean;
 }
 
 const SUPERSCRIPT_DIGITS = '⁰¹²³⁴⁵⁶⁷⁸⁹';
@@ -49,6 +62,7 @@ export function SolverPanel({
   onToggleCriterion,
   onStart,
   onClose,
+  highlightClose = false,
   status,
   isSolving,
   outcome,
@@ -58,10 +72,20 @@ export function SolverPanel({
   backtracksSoFar,
   prunesSoFar,
   runs,
+  startFrom,
+  onStartFromChange,
+  attemptPieces,
+  attemptOverlaps,
+  piecesToPlace,
+  runFromAttempt,
 }: SolverPanelProps) {
   const { t, i18n } = useTranslation();
   const count = new Intl.NumberFormat(i18n.language);
-  const arrangements = useMemo(() => countArrangements(challenge), [challenge]);
+  const arrangements = useMemo(
+    () => countArrangements(challenge, piecesToPlace),
+    [challenge, piecesToPlace],
+  );
+  const attemptUsable = attemptPieces > 0 && !attemptOverlaps;
   const hasRun = status !== 'idle';
   // On narrow screens the panel is a drawer under the board: collapsed, only
   // its header and the run status stay visible (see SolverPanel.css). Wide
@@ -96,12 +120,51 @@ export function SolverPanel({
         >
           {t(collapsed ? 'solver.showSettings' : 'solver.hideSettings')}
         </button>
-        <button type="button" onClick={onClose} aria-label={t('solver.close')}>
+        <button
+          type="button"
+          className={highlightClose ? 'btn-attention' : undefined}
+          onClick={onClose}
+          aria-label={t('solver.close')}
+        >
           ✕
         </button>
       </header>
 
       <div className="solver-panel__scroll">
+        <a className="text-link" href="#/learn" data-testid="solver-learn-more">
+          {t('solver.learnMore')} →
+        </a>
+        <fieldset className="solver-panel__start" data-testid="solver-start">
+          <legend>{t('solver.startFrom.label')}</legend>
+          <label>
+            <input
+              type="radio"
+              name="solver-start"
+              data-testid="solver-start-empty"
+              checked={startFrom === 'empty' || !attemptUsable}
+              onChange={() => onStartFromChange('empty')}
+            />
+            {t('solver.startFrom.empty')}
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="solver-start"
+              data-testid="solver-start-attempt"
+              checked={startFrom === 'attempt' && attemptUsable}
+              disabled={!attemptUsable}
+              onChange={() => onStartFromChange('attempt')}
+            />
+            {t('solver.startFrom.attempt')}
+          </label>
+          <p className="solver-panel__hint" data-testid="solver-start-hint">
+            {attemptOverlaps
+              ? t('solver.startFrom.overlap')
+              : attemptPieces === 0
+                ? t('solver.startFrom.needPieces')
+                : t('solver.startFrom.attemptHint', { count: attemptPieces })}
+          </p>
+        </fieldset>
         <section className="solver-panel__space">
           <p className="solver-panel__space-label">{t('solver.arrangements.label')}</p>
           <p
@@ -112,7 +175,7 @@ export function SolverPanel({
             {formatHuge(arrangements, i18n.language)}
           </p>
           <p className="solver-panel__hint">
-            {t('solver.arrangements.hint', { count: challenge.requiredPieces.length })}
+            {t('solver.arrangements.hint', { count: piecesToPlace.length })}
           </p>
         </section>
 
@@ -121,9 +184,6 @@ export function SolverPanel({
           onToggle={onToggleCriterion}
           cuts={hasRun ? prunesSoFar : undefined}
         />
-        <a className="text-link" href="#/learn" data-testid="solver-learn-more">
-          {t('solver.learnMore')} →
-        </a>
 
         {runs.length > 0 && (
           <table className="solver-panel__runs" data-testid="comparison-panel">
@@ -138,7 +198,14 @@ export function SolverPanel({
             <tbody>
               {runs.map((run, i) => (
                 <tr key={i} data-outcome={run.outcome}>
-                  <td>{describeCriteria(run.criteria)}</td>
+                  <td>
+                    {describeCriteria(run.criteria)}
+                    {run.startPieces > 0 && (
+                      <span className="solver-panel__run-tag">
+                        {t('solver.startFrom.runTag', { count: run.startPieces })}
+                      </span>
+                    )}
+                  </td>
                   <td>
                     {run.outcome === 'solved' ? '' : '> '}
                     {count.format(run.totalSteps)}
@@ -168,6 +235,7 @@ export function SolverPanel({
               outcome={outcome}
               errorMessage={errorMessage}
               totalSteps={stepsKnown}
+              fromAttempt={runFromAttempt}
             />
           </section>
         )}

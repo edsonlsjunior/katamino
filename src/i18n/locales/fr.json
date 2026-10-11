@@ -254,12 +254,14 @@
     "restart": "Résoudre à nouveau",
     "close": "Fermer le solveur",
     "backToPlay": "← Retour au jeu",
+    "locked": "Le plateau est verrouillé tant que le solveur est ouvert. Pour jouer, cliquez sur « Retour au jeu » ou sur le ✕.",
     "baseOnly": "Recherche simple seulement",
     "computing": "Calcul en cours…",
     "error": "Le solveur a rencontré un problème : {{message}}",
     "complete": "Résolu ! Toutes les pièces s'emboîtent.",
     "limit": "A abandonné après {{steps}} pas sans trouver de solution. Ajoutez des critères et réessayez.",
     "exhausted": "Tout a été essayé : il n'y a pas de solution.",
+    "exhaustedFromAttempt": "Tout a été essayé : avec vos pièces à ces positions, il n'y a pas de solution.",
     "stepCounter": "Pas {{current}} sur {{total}}",
     "arrangements": {
       "label": "Combinaisons possibles",
@@ -268,7 +270,18 @@
     },
     "showSettings": "Réglages ▴",
     "hideSettings": "Masquer ▾",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "startFrom": {
+      "label": "Point de départ",
+      "empty": "Plateau vide",
+      "attempt": "Mes pièces",
+      "attemptHint_one": "En partant de vos pièces, le solveur garde la {{count}} pièce que vous avez posée là où elle est et ne cherche qu'avec les autres.",
+      "attemptHint_other": "En partant de vos pièces, le solveur garde les {{count}} pièces que vous avez posées là où elles sont et ne cherche qu'avec les autres.",
+      "needPieces": "Posez des pièces sur le plateau pour pouvoir partir d'elles.",
+      "overlap": "Des pièces se chevauchent : corrigez-les pour pouvoir partir d'elles.",
+      "runTag_one": "à partir de {{count}} de vos pièces",
+      "runTag_other": "à partir de {{count}} de vos pièces"
+    }
   },
   "metrics": {
     "step": "Pas affichés",

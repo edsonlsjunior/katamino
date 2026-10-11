@@ -5,7 +5,8 @@
  */
 import { createEmptyBoard, placeCells, removeInstance, type Board } from '../domain/board';
 import { cellsAt } from '../domain/pentomino';
-import type { PieceInstance, SolveStep } from '../domain/types';
+import type { PieceInstance, SolveStep, StartPlacement } from '../domain/types';
+import { instanceIdFor } from '../solvers/configurableSolver';
 import type { CriterionId } from '../solvers/criteria';
 
 export interface PlaybackFrame {
@@ -19,6 +20,21 @@ export interface PlaybackFrame {
 
 export function emptyFrame(rows: number, cols: number): PlaybackFrame {
   return { board: createEmptyBoard(rows, cols), pieces: [], backtracks: 0, prunes: {} };
+}
+
+/** The frame a run begins on: the board with the pieces it was told to keep. */
+export function startFrame(rows: number, cols: number, start: readonly StartPlacement[]): PlaybackFrame {
+  let frame = emptyFrame(rows, cols);
+  for (const { typeId, orientationIndex, position } of start) {
+    const instanceId = instanceIdFor(typeId);
+    const cells = cellsAt(typeId, orientationIndex, [position.row, position.col]);
+    frame = {
+      ...frame,
+      board: placeCells(frame.board, instanceId, cells),
+      pieces: [...frame.pieces, { instanceId, typeId, orientationIndex, position }],
+    };
+  }
+  return frame;
 }
 
 function withPiece(frame: PlaybackFrame, step: SolveStep): Pick<PlaybackFrame, 'board' | 'pieces'> {

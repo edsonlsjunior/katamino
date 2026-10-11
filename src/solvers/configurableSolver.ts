@@ -22,7 +22,7 @@
  */
 import { PIECE_TYPES, cellsAt, type Cell, type PieceTypeId } from '../domain/pentomino';
 import { canPlace, createEmptyBoard, isFull, placeCells, type Board } from '../domain/board';
-import type { Challenge, SolveOutcome, SolveStep } from '../domain/types';
+import type { Challenge, SolveOutcome, SolveStep, StartPlacement } from '../domain/types';
 import { PRUNE_CRITERION_IDS, type CriterionId } from './criteria';
 
 export interface SolveSummary {
@@ -36,6 +36,12 @@ export interface SolveSummary {
 export interface SolveOptions {
   /** Give up (outcome 'limit') once this many steps have been produced. */
   maxSteps?: number;
+  /**
+   * Pieces already on the board. The search keeps them where they are and
+   * only places the others; if they can't be completed, the outcome is
+   * 'exhausted'. They must not overlap each other.
+   */
+  start?: readonly StartPlacement[];
 }
 
 /** Few criteria on a big board can mean billions of steps; nobody watches that many. */
@@ -202,7 +208,7 @@ function byFewestOrientationsFirst(pieces: readonly PieceTypeId[]): PieceTypeId[
 export function* solve(
   challenge: Challenge,
   criteria: Iterable<CriterionId>,
-  { maxSteps = DEFAULT_MAX_STEPS }: SolveOptions = {},
+  { maxSteps = DEFAULT_MAX_STEPS, start = [] }: SolveOptions = {},
 ): Generator<SolveStep, SolveSummary, void> {
   const enabled = new Set(criteria);
   const state = { stepIndex: 0, backtrackCount: 0, solvedAtStepIndex: -1 };
@@ -263,13 +269,17 @@ export function* solve(
     return false;
   }
 
-  const pieces = enabled.has('scarce-pieces-first')
-    ? byFewestOrientationsFirst(challenge.requiredPieces)
-    : challenge.requiredPieces;
+  let startBoard = createEmptyBoard(challenge.boardRows, challenge.boardCols);
+  for (const { typeId, orientationIndex, position } of start) {
+    const cells = cellsAt(typeId, orientationIndex, [position.row, position.col]);
+    startBoard = placeCells(startBoard, instanceIdFor(typeId), cells);
+  }
+  const toPlace = remainingPieces(challenge, start);
+  const pieces = enabled.has('scarce-pieces-first') ? byFewestOrientationsFirst(toPlace) : toPlace;
 
   let outcome: SolveOutcome;
   try {
-    const solved = yield* search(createEmptyBoard(challenge.boardRows, challenge.boardCols), pieces);
+    const solved = yield* search(startBoard, pieces);
     outcome = solved ? 'solved' : 'exhausted';
   } catch (error) {
     if (!(error instanceof StepLimitReached)) throw error;
@@ -283,15 +293,25 @@ export function* solve(
   };
 }
 
+/** The challenge's pieces that a run starting from `start` still has to place. */
+export function remainingPieces(challenge: Challenge, start: readonly StartPlacement[]): PieceTypeId[] {
+  const placed = new Set(start.map((placement) => placement.typeId));
+  return challenge.requiredPieces.filter((typeId) => !placed.has(typeId));
+}
+
 /**
- * How many ways there are to put every piece of the challenge somewhere on the
- * board (any orientation, any position that keeps it inside) when overlaps are
- * not checked: the size of the haystack a search with no cleverness at all
- * would have to go through.
+ * How many ways there are to put every piece of the challenge (or just
+ * `pieces`, when some are already placed) somewhere on the board (any
+ * orientation, any position that keeps it inside) when overlaps are not
+ * checked: the size of the haystack a search with no cleverness at all would
+ * have to go through.
  */
-export function countArrangements(challenge: Challenge): bigint {
+export function countArrangements(
+  challenge: Challenge,
+  pieces: readonly PieceTypeId[] = challenge.requiredPieces,
+): bigint {
   let total = 1n;
-  for (const typeId of challenge.requiredPieces) {
+  for (const typeId of pieces) {
     let placements = 0;
     for (const orientation of PIECE_TYPES[typeId].orientations) {
       const height = Math.max(...orientation.map(([r]) => r)) + 1;
