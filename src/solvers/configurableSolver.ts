@@ -92,7 +92,7 @@ function optionsAnchoredAt(board: Board, remaining: readonly PieceTypeId[], row:
 }
 
 /** Every placement of a remaining piece that covers (row, col) with any of its cells. */
-function optionsCovering(board: Board, remaining: readonly PieceTypeId[], row: number, col: number): Option[] {
+export function optionsCovering(board: Board, remaining: readonly PieceTypeId[], row: number, col: number): Option[] {
   const options: Option[] = [];
   for (const typeId of remaining) {
     const orientations = PIECE_TYPES[typeId].orientations;
@@ -181,7 +181,7 @@ function everyEmptyCellCanBeCovered(board: Board, remaining: readonly PieceTypeI
   return true;
 }
 
-function fitsSomewhere(board: Board, typeId: PieceTypeId): boolean {
+export function fitsSomewhere(board: Board, typeId: PieceTypeId): boolean {
   const orientations = PIECE_TYPES[typeId].orientations;
   for (let orientationIndex = 0; orientationIndex < orientations.length; orientationIndex++) {
     for (let r = 0; r < board.rows; r++) {

@@ -29,6 +29,19 @@ test.describe('Strategy criteria', () => {
     await expect(cells.getByText(/has no candidate left/i)).toHaveCount(0);
   });
 
+  test('criteria are grouped into ordering and pruning ones', async ({ page }) => {
+    await page.goto('/#/challenge/1/solver');
+
+    const order = page.getByTestId('criteria-group-order');
+    const prune = page.getByTestId('criteria-group-prune');
+    await expect(order.getByRole('heading')).toHaveText('Ordering criteria');
+    await expect(prune.getByRole('heading')).toHaveText('Pruning criteria');
+    await expect(order.locator('[data-testid^="criterion-"]')).toHaveCount(2);
+    await expect(order.getByTestId('criterion-most-constrained-cell')).toBeVisible();
+    await expect(prune.locator('li[data-testid^="criterion-"]')).toHaveCount(3);
+    await expect(prune.getByTestId('criterion-dead-regions')).toBeVisible();
+  });
+
   test('the panel says how many combinations the challenge has', async ({ page }) => {
     await page.goto('/');
     await page.getByTestId('challenge-card-1').getByRole('button', { name: /play/i }).click();
@@ -77,7 +90,8 @@ test.describe('Strategy criteria', () => {
     await page.getByRole('button', { name: /watch the solver/i }).click();
 
     await expect(page.getByText('Try, undo, try again')).toBeVisible();
-    await page.getByRole('button', { name: 'Português' }).click();
+    await page.locator('.app-header').getByTestId('language-menu').click();
+    await page.getByRole('option', { name: 'Português' }).click();
     await expect(page.getByText('Tentar, desfazer, tentar de novo')).toBeVisible();
     await expect(page.getByText('Casa mais difícil primeiro')).toBeVisible();
   });

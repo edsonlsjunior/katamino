@@ -1,17 +1,17 @@
 {
   "app": {
-    "title": "Katamino — Playground de Otimização Combinatória"
+    "title": "Katamino — Playground de Busca Combinatória"
   },
   "nav": {
     "challenges": "Desafios",
     "manualPlay": "Jogar",
     "autoSolve": "Ver o solucionador",
-    "about": "Sobre"
+    "about": "Sobre",
+    "learn": "Como funciona",
+    "settings": "Configurações"
   },
   "language": {
-    "label": "Idioma",
-    "en": "English",
-    "pt": "Português"
+    "label": "Idioma"
   },
   "common": {
     "loading": "Carregando…",
@@ -43,7 +43,7 @@
   },
   "about": {
     "title": "Sobre o projeto",
-    "lead": "Um playground para jogar à mão os {{count}} desafios do Katamino e ver, passo a passo, como um algoritmo de otimização combinatória os resolve.",
+    "lead": "Um playground para jogar à mão os {{count}} desafios do Katamino e ver, passo a passo, como um algoritmo de busca os resolve.",
     "browse": "Ver os desafios",
     "game": {
       "title": "O jogo",
@@ -62,12 +62,159 @@
     },
     "tech": {
       "title": "Como foi feito",
-      "body": "React, TypeScript e Vite, sem servidor: tudo roda no seu navegador, e o solucionador trabalha em um Web Worker para a tela não travar. Disponível em português e inglês.",
+      "body": "React, TypeScript e Vite, sem servidor: tudo roda no seu navegador, e o solucionador trabalha em um Web Worker para a tela não travar. Disponível em português, inglês, espanhol e francês.",
       "source": "Código-fonte no GitHub"
     },
     "disclaimer": {
       "title": "Aviso",
       "body": "Projeto independente e educacional, sem vínculo com os criadores ou a editora do Katamino."
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "theme": {
+      "title": "Aparência",
+      "body": "Escolha claro ou escuro, ou siga a configuração do seu aparelho.",
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Escuro"
+    },
+    "language": {
+      "title": "Idioma",
+      "body": "Começa no idioma do seu navegador, quando ele está disponível. A sua escolha fica guardada neste aparelho."
+    },
+    "progress": {
+      "title": "Progresso",
+      "body": "O progresso fica salvo só neste navegador. Exporte para um arquivo para ter uma cópia ou levar para outro aparelho; importar acrescenta os desafios concluídos do arquivo aos que você já tem.",
+      "export": "Exportar progresso",
+      "import": "Importar progresso",
+      "imported_zero": "Nada de novo: todos os desafios do arquivo já estavam concluídos aqui.",
+      "imported_one": "Importado: {{count}} novo desafio concluído.",
+      "imported_other": "Importado: {{count}} novos desafios concluídos.",
+      "importError": "Este arquivo não é um arquivo de progresso do Katamino."
+    }
+  },
+  "learn": {
+    "title": "Como o solucionador pensa",
+    "lead": "Resolver um Katamino parece simples — até você contar quantas maneiras existem de errar. Esta página mostra por que o problema é difícil, qual algoritmo o solucionador usa e como cada critério o ajuda a chegar a uma solução tentando menos.",
+    "boardLabel": "Tabuleiro de exemplo",
+    "problem": {
+      "title": "Que tipo de problema é esse?",
+      "body": "No Katamino só existem regras: ou as peças cobrem o tabuleiro inteiro, ou não cobrem. Qualquer arrumação que obedeça a todas elas é uma solução, e nenhuma vale mais que outra. Esse tipo de problema se chama satisfação de restrições — mais precisamente, cobertura exata.",
+      "rulesTitle": "As regras (as \"restrições\")",
+      "rule1": "Toda casa do tabuleiro é coberta.",
+      "rule2": "Nenhuma casa é coberta duas vezes.",
+      "rule3": "Cada peça é usada exatamente uma vez.",
+      "solutionsCaption": "Duas soluções do mesmo desafio ({{label}}). São diferentes, e as duas valem exatamente o mesmo."
+    },
+    "pieces": {
+      "title": "As peças",
+      "body": "São os 12 pentaminós: todas as formas possíveis de juntar 5 quadrados pelos lados. Cada um leva o nome da letra com que se parece. Girando e espelhando, uma peça pode aparecer de 1 a 8 jeitos diferentes — e cada jeito é uma opção a mais para o solucionador testar. Clique em uma peça para ver os jeitos dela.",
+      "galleryLabel": "Os 12 pentaminós",
+      "pieceLabel_one": "Peça {{piece}}: {{count}} jeito",
+      "pieceLabel_other": "Peça {{piece}}: {{count}} jeitos",
+      "orientations_one": "A peça {{piece}} só pode ser colocada de {{count}} jeito",
+      "orientations_other": "A peça {{piece}} pode ser colocada de {{count}} jeitos",
+      "hint": "Peças simétricas como X e I quase não dão escolha; peças tortas como F, L, N, P e Y dão oito."
+    },
+    "hard": {
+      "title": "Por que é difícil?",
+      "body": "Cada peça pode ir em muitos lugares do tabuleiro. E as escolhas se multiplicam: o número de combinações é o produto das opções de cada peça.",
+      "productCaption": "No desafio {{label}}, com apenas {{count}} peças:",
+      "productPositions": "posições",
+      "productTotal": "combinações",
+      "productNote": "Essa conta inclui todas as maneiras de pôr as peças no tabuleiro, até as que se sobrepõem. É o tamanho do palheiro onde a solução está escondida.",
+      "chartTitle": "O palheiro cresce a cada peça",
+      "chartRow": "{{count}} peças",
+      "chartNote": "Um desafio de exemplo para cada tamanho de tabuleiro. A escala é logarítmica: uma barra um pouco mais comprida representa um número milhares de vezes maior.",
+      "time": "Testando um milhão de combinações por segundo, o desafio de 12 peças levaria cerca de {{years}} de anos — umas {{times}} vezes a idade do universo. Força bruta não é opção: é preciso procurar com método."
+    },
+    "algorithm": {
+      "title": "O algoritmo: busca em profundidade com retrocesso",
+      "body": "O solucionador usa a busca em profundidade com retrocesso (em inglês, backtracking), a técnica clássica para problemas de satisfação de restrições. É o jeito de quem monta o quebra-cabeça à mão, só que sem nunca repetir uma tentativa:",
+      "step1": "Escolhe uma casa vazia do tabuleiro.",
+      "step2": "Coloca ali uma peça que caiba, sem sobrepor nenhuma outra.",
+      "step3": "Segue para a próxima casa vazia e repete.",
+      "step4": "Travou, nada cabe? Tira a última peça colocada e tenta a opção seguinte.",
+      "step5": "Para quando o tabuleiro fica cheio (achou!) ou quando as opções acabam (não há solução).",
+      "treeTitle": "A busca é uma árvore",
+      "treeBody": "Cada tabuleiro abaixo é um estado da busca. A raiz é o tabuleiro vazio; cada nível para baixo é mais uma peça colocada. O solucionador desce por um ramo até travar, volta e desce pelo seguinte. A solução é uma folha do último nível."
+    },
+    "lab": {
+      "title": "Laboratório: veja a árvore crescer",
+      "challenge": "Desafio",
+      "play": "▶ Reproduzir a busca",
+      "pause": "⏸ Pausar",
+      "showAll": "Mostrar tudo",
+      "slider": "Passo da busca",
+      "step": "Passo {{current}} de {{total}}",
+      "treeLabel": "Árvore de busca",
+      "scrollHint": "Role para os lados para ver a árvore inteira. Clique em um tabuleiro para saber o que aconteceu ali.",
+      "legend": {
+        "open": "No caminho atual",
+        "dead": "Beco sem saída (desfeito)",
+        "pruned": "Cortado por um critério",
+        "solution": "Solução"
+      },
+      "stats": {
+        "tried": "Tentativas",
+        "deadEnds": "Becos sem saída",
+        "cuts": "Cortes",
+        "fewer": "{{percent}}% menos tentativas que a busca simples ({{base}})",
+        "more": "{{percent}}% mais tentativas que a busca simples ({{base}}) — nem todo critério ajuda em todo desafio",
+        "same": "O mesmo número de tentativas da busca simples neste desafio",
+        "baseline": "Esta é a busca simples, sem nenhum critério. Ligue critérios acima e veja a árvore encolher."
+      },
+      "node": {
+        "root": "Tabuleiro vazio (início)",
+        "label": "Tentativa {{n}}: peça {{piece}} — {{status}}"
+      },
+      "detail": {
+        "root": "Ponto de partida: o tabuleiro vazio.",
+        "open": "Tentativa {{n}}: colocou a peça {{piece}}. Este estado está no caminho que a busca explora neste momento.",
+        "dead": "Tentativa {{n}}: colocou a peça {{piece}}, mas dali nenhuma continuação levou a uma solução. A peça foi retirada.",
+        "pruned": "Tentativa {{n}}: colocou a peça {{piece}}, e o critério \"{{criterion}}\" percebeu na hora que dali não sai solução. O ramo inteiro foi cortado sem ser explorado.",
+        "solution": "Tentativa {{n}}: peça {{piece}}. Este estado faz parte da solução encontrada."
+      }
+    },
+    "criteria": {
+      "title": "Os critérios: procurar menos, achar igual",
+      "body": "Os critérios não mudam o que é uma solução. Eles mudam quanto da árvore precisa ser percorrido até chegar a uma. Existem dois tipos, e a diferença entre eles importa.",
+      "compare": {
+        "title": "A diferença entre os dois tipos",
+        "order": "Critérios de ordem",
+        "prune": "Critérios de corte",
+        "does": "O que fazem",
+        "doesOrder": "Mudam a ordem em que as opções são tentadas. Nada é descartado, só adiado.",
+        "doesPrune": "Descartam ramos em que comprovadamente não existe solução.",
+        "effect": "Efeito nas tentativas",
+        "effectOrder": "Podem diminuir ou aumentar: depende do desafio.",
+        "effectPrune": "Nunca aumentam. No pior caso, não cortam nada.",
+        "price": "O preço",
+        "priceOrder": "Uma aposta errada leva a busca primeiro pelos ramos ruins.",
+        "pricePrune": "Cada verificação custa tempo a cada passo."
+      },
+      "orderTitle": "Critérios de ordem: por onde começar",
+      "orderBody": "Não eliminam nada: só decidem o que tentar primeiro. A aposta é enfrentar logo a parte mais difícil, para que os erros apareçam perto da raiz, onde desfazer custa pouco.",
+      "orderBooks": "Nos livros: heurísticas de ordenação, como a MRV (minimum remaining values).",
+      "orderCaveatTitle": "Ordem é aposta, não garantia",
+      "orderCaveatBody": "Um critério de ordem pode acertar num desafio e errar em outro: no laboratório acima há um desafio em que \"{{criterion}}\" piora a busca. Por isso o solucionador deixa você ligar e desligar cada critério e comparar os números.",
+      "pruneTitle": "Critérios de corte: quando desistir cedo",
+      "pruneBody": "Olham para o tabuleiro depois de cada peça e perguntam: ainda dá para terminar? Se a resposta é não, o ramo é abandonado ali mesmo, e todos os tabuleiros que viriam abaixo dele nunca são visitados.",
+      "pruneBooks": "Nos livros: poda e verificação adiante (forward checking).",
+      "pruneCaveatTitle": "Corte é garantia, mas tem preço",
+      "pruneCaveatBody": "Um critério de corte só abandona ramos em que não existe solução, então nunca faz a busca visitar mais tabuleiros do que visitaria sem ele. O que ele cobra é tempo: a verificação é feita depois de cada peça colocada e, num desafio pequeno, pode custar mais do que economiza.",
+      "scarceCaption": "Quantos jeitos cada peça tem. As de número menor são tentadas primeiro.",
+      "mccCaption": "Cada número é a quantidade de encaixes que ainda cobrem aquela casa. Em ordem de leitura, a busca começaria pela primeira casa vazia, com {{first}} encaixes possíveis; este critério vai direto à casa que só tem {{min}}.",
+      "deadCaption": "A peça isolou {{size}} casas no alto. Nenhuma combinação de peças de 5 casas preenche {{size}}: fim do ramo.",
+      "strandedCellCaption": "A casa marcada ainda está ligada ao resto do tabuleiro, mas nenhuma das peças que sobraram ({{pieces}}) consegue cobri-la.",
+      "strandedPieceCaption": "Ainda há bastante espaço, mas a peça {{piece}} já não cabe em lugar nenhum. Como toda peça precisa ser usada, não adianta continuar.",
+      "doesNotFit": "não cabe"
+    },
+    "cta": {
+      "title": "Agora experimente",
+      "body": "Abra um desafio maior no solucionador, rode com conjuntos diferentes de critérios e compare passos e recuos.",
+      "button": "Abrir o solucionador em um desafio de {{count}} peças"
     }
   },
   "pieceTray": {
@@ -138,6 +285,16 @@
     "collapse": "Ocultar a explicação de \"{{name}}\"",
     "cuts_one": "{{count}} corte",
     "cuts_other": "{{count}} cortes",
+    "groups": {
+      "order": {
+        "title": "Critérios de ordem",
+        "summary": "Decidem o que tentar primeiro."
+      },
+      "prune": {
+        "title": "Critérios de corte",
+        "summary": "Desistem cedo de um ramo."
+      }
+    },
     "base": {
       "name": "Tentar, desfazer, tentar de novo",
       "summary": "Sempre ligado: a busca sobre a qual todo o resto se apoia.",

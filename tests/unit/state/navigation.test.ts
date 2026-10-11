@@ -21,6 +21,7 @@ describe('navigation routes', () => {
       solverOpen: true,
     });
     expect(parseRoute('#/about')).toEqual({ screen: 'about', challengeId: null, solverOpen: false });
+    expect(parseRoute('#/learn')).toEqual({ screen: 'learn', challengeId: null, solverOpen: false });
   });
 
   it('falls back to the list for anything it does not recognise', () => {
@@ -31,7 +32,7 @@ describe('navigation routes', () => {
   });
 
   it('formats every route back to the hash it was parsed from', () => {
-    for (const hash of ['#/', '#/challenge/12', '#/challenge/12/solver', '#/about']) {
+    for (const hash of ['#/', '#/challenge/12', '#/challenge/12/solver', '#/learn', '#/about']) {
       expect(formatRoute(parseRoute(hash))).toBe(hash);
     }
   });

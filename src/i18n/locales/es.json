@@ -1,0 +1,329 @@
+{
+  "app": {
+    "title": "Katamino — Playground de Búsqueda Combinatoria"
+  },
+  "nav": {
+    "challenges": "Desafíos",
+    "manualPlay": "Jugar",
+    "autoSolve": "Ver el solucionador",
+    "about": "Acerca de",
+    "learn": "Cómo funciona",
+    "settings": "Ajustes"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "common": {
+    "loading": "Cargando…",
+    "error": "Algo salió mal.",
+    "back": "Volver a los desafíos"
+  },
+  "challenges": {
+    "difficulty": "Dificultad {{difficulty}}",
+    "completed": "Completado",
+    "cardLabel": "{{line}} · PENTA {{boardCols}} · #{{id}}",
+    "tier": {
+      "smallSlam": "Small Slam",
+      "slam": "The Slam",
+      "grandSlam": "Grand Slam",
+      "superSlam": "Super Slam",
+      "challenge": "Challenge",
+      "bonus": "Bonus (12 piezas)"
+    },
+    "play": "Jugar {{challenge}}",
+    "playCompleted": "Jugar {{challenge}} (completado)",
+    "start": "Empezar",
+    "continue": "Continuar donde lo dejé",
+    "hint": "Cada columna es un desafío del librito y cada fila, una letra. Los números son el tamaño del tablero (PENTA): haz clic en uno para jugar.",
+    "progress": {
+      "summary": "{{done}} de {{total}} completados ({{percent}}%)",
+      "overall": "Progreso general",
+      "tier": "Progreso en {{tier}}"
+    }
+  },
+  "about": {
+    "title": "Acerca del proyecto",
+    "lead": "Un playground para jugar a mano los {{count}} desafíos de Katamino y ver, paso a paso, cómo los resuelve un algoritmo de búsqueda.",
+    "browse": "Ver los desafíos",
+    "game": {
+      "title": "El juego",
+      "body": "Katamino es un rompecabezas de pentominós: piezas formadas por 5 cuadrados. En cada desafío, un conjunto de piezas tiene que cubrir exactamente un tablero de 5 filas, sin huecos ni solapamientos. El tamaño del tablero (el \"PENTA\") es el número de piezas usadas: cuanto mayor, más difícil."
+    },
+    "play": {
+      "title": "Cómo jugar",
+      "pick": "Haz clic en una pieza para cogerla y haz clic en el tablero para soltarla.",
+      "rotate": "El botón derecho o la tecla R giran la pieza que tienes en la mano.",
+      "mirror": "La tecla E, o arrastrar la pieza, la refleja.",
+      "progress": "Los desafíos completados se guardan en este navegador y aparecen marcados en la lista."
+    },
+    "solver": {
+      "title": "El solucionador",
+      "body": "En cualquier desafío, \"Ver el solucionador\" muestra la búsqueda ocurriendo en el tablero. La base es siempre la misma —probar, deshacer, volver a probar— y tú montas la estrategia activando criterios que cambian el orden de los intentos o detectan antes un callejón sin salida. Ejecuta combinaciones distintas en el mismo desafío y compara pasos y retrocesos."
+    },
+    "tech": {
+      "title": "Cómo se hizo",
+      "body": "React, TypeScript y Vite, sin servidor: todo se ejecuta en tu navegador, y el solucionador trabaja en un Web Worker para que la pantalla no se congele. Disponible en español, inglés, portugués y francés.",
+      "source": "Código fuente en GitHub"
+    },
+    "disclaimer": {
+      "title": "Aviso",
+      "body": "Proyecto independiente y educativo, sin vínculo con los creadores ni con la editorial de Katamino."
+    }
+  },
+  "settings": {
+    "title": "Ajustes",
+    "theme": {
+      "title": "Apariencia",
+      "body": "Elige claro u oscuro, o sigue la configuración de tu dispositivo.",
+      "system": "Sistema",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "language": {
+      "title": "Idioma",
+      "body": "Empieza en el idioma de tu navegador, cuando está disponible. Tu elección se guarda en este dispositivo."
+    },
+    "progress": {
+      "title": "Progreso",
+      "body": "El progreso se guarda solo en este navegador. Expórtalo a un archivo para tener una copia o llevarlo a otro dispositivo; al importar, los desafíos completados del archivo se añaden a los que ya tienes.",
+      "export": "Exportar progreso",
+      "import": "Importar progreso",
+      "imported_zero": "Nada nuevo: todos los desafíos del archivo ya estaban completados aquí.",
+      "imported_one": "Importado: {{count}} nuevo desafío completado.",
+      "imported_other": "Importado: {{count}} nuevos desafíos completados.",
+      "importError": "Este archivo no es un archivo de progreso de Katamino."
+    }
+  },
+  "learn": {
+    "title": "Cómo piensa el solucionador",
+    "lead": "Resolver un Katamino parece sencillo… hasta que cuentas de cuántas maneras se puede fallar. Esta página muestra por qué el problema es difícil, qué algoritmo usa el solucionador y cómo cada criterio le ayuda a llegar a una solución con menos intentos.",
+    "boardLabel": "Tablero de ejemplo",
+    "problem": {
+      "title": "¿Qué tipo de problema es este?",
+      "body": "En Katamino solo existen reglas: o las piezas cubren todo el tablero, o no lo cubren. Cualquier disposición que las cumpla todas es una solución, y ninguna vale más que otra. Este tipo de problema se llama satisfacción de restricciones; más exactamente, cobertura exacta.",
+      "rulesTitle": "Las reglas (las \"restricciones\")",
+      "rule1": "Todas las casillas del tablero quedan cubiertas.",
+      "rule2": "Ninguna casilla se cubre dos veces.",
+      "rule3": "Cada pieza se usa exactamente una vez.",
+      "solutionsCaption": "Dos soluciones del mismo desafío ({{label}}). Son distintas, y las dos valen exactamente lo mismo."
+    },
+    "pieces": {
+      "title": "Las piezas",
+      "body": "Son los 12 pentominós: todas las formas posibles de unir 5 cuadrados por los lados. Cada uno lleva el nombre de la letra a la que se parece. Girándola y reflejándola, una pieza puede aparecer de 1 a 8 maneras distintas, y cada manera es una opción más que el solucionador tiene que probar. Haz clic en una pieza para ver sus maneras.",
+      "galleryLabel": "Los 12 pentominós",
+      "pieceLabel_one": "Pieza {{piece}}: {{count}} manera",
+      "pieceLabel_other": "Pieza {{piece}}: {{count}} maneras",
+      "orientations_one": "La pieza {{piece}} solo se puede colocar de {{count}} manera",
+      "orientations_other": "La pieza {{piece}} se puede colocar de {{count}} maneras",
+      "hint": "Las piezas simétricas como X e I casi no dejan elección; las piezas torcidas como F, L, N, P e Y tienen ocho."
+    },
+    "hard": {
+      "title": "¿Por qué es difícil?",
+      "body": "Cada pieza puede ir en muchos lugares del tablero. Y las opciones se multiplican: el número de combinaciones es el producto de las opciones de cada pieza.",
+      "productCaption": "En el desafío {{label}}, con solo {{count}} piezas:",
+      "productPositions": "posiciones",
+      "productTotal": "combinaciones",
+      "productNote": "Esta cuenta incluye todas las maneras de poner las piezas en el tablero, incluso las que se solapan. Es el tamaño del pajar donde está escondida la solución.",
+      "chartTitle": "El pajar crece con cada pieza",
+      "chartRow": "{{count}} piezas",
+      "chartNote": "Un desafío de ejemplo para cada tamaño de tablero. La escala es logarítmica: una barra un poco más larga representa un número miles de veces mayor.",
+      "time": "Probando un millón de combinaciones por segundo, el desafío de 12 piezas llevaría unos {{years}} de años, unas {{times}} veces la edad del universo. La fuerza bruta no es una opción: hay que buscar con método."
+    },
+    "algorithm": {
+      "title": "El algoritmo: búsqueda en profundidad con retroceso",
+      "body": "El solucionador usa la búsqueda en profundidad con retroceso (en inglés, backtracking), la técnica clásica para los problemas de satisfacción de restricciones. Es lo que harías montando el rompecabezas a mano, pero sin repetir nunca un intento:",
+      "step1": "Elige una casilla vacía del tablero.",
+      "step2": "Coloca ahí una pieza que quepa, sin solaparse con ninguna otra.",
+      "step3": "Pasa a la siguiente casilla vacía y repite.",
+      "step4": "¿Atascado, no cabe nada? Quita la última pieza colocada y prueba la opción siguiente.",
+      "step5": "Se detiene cuando el tablero está lleno (¡encontrada!) o cuando se acaban las opciones (no hay solución).",
+      "treeTitle": "La búsqueda es un árbol",
+      "treeBody": "Cada tablero de abajo es un estado de la búsqueda. La raíz es el tablero vacío; cada nivel hacia abajo es una pieza más colocada. El solucionador baja por una rama hasta atascarse, vuelve y baja por la siguiente. La solución es una hoja del último nivel."
+    },
+    "lab": {
+      "title": "Laboratorio: mira crecer el árbol",
+      "challenge": "Desafío",
+      "play": "▶ Reproducir la búsqueda",
+      "pause": "⏸ Pausar",
+      "showAll": "Mostrar todo",
+      "slider": "Paso de la búsqueda",
+      "step": "Paso {{current}} de {{total}}",
+      "treeLabel": "Árbol de búsqueda",
+      "scrollHint": "Desplázate hacia los lados para ver el árbol entero. Haz clic en un tablero para saber qué pasó ahí.",
+      "legend": {
+        "open": "En el camino actual",
+        "dead": "Callejón sin salida (deshecho)",
+        "pruned": "Cortado por un criterio",
+        "solution": "Solución"
+      },
+      "stats": {
+        "tried": "Intentos",
+        "deadEnds": "Callejones sin salida",
+        "cuts": "Cortes",
+        "fewer": "{{percent}}% menos intentos que la búsqueda simple ({{base}})",
+        "more": "{{percent}}% más intentos que la búsqueda simple ({{base}}): no todos los criterios ayudan en todos los desafíos",
+        "same": "El mismo número de intentos que la búsqueda simple en este desafío",
+        "baseline": "Esta es la búsqueda simple, sin ningún criterio. Activa criterios arriba y mira cómo se encoge el árbol."
+      },
+      "node": {
+        "root": "Tablero vacío (inicio)",
+        "label": "Intento {{n}}: pieza {{piece}} — {{status}}"
+      },
+      "detail": {
+        "root": "Punto de partida: el tablero vacío.",
+        "open": "Intento {{n}}: colocó la pieza {{piece}}. Este estado está en el camino que la búsqueda explora en este momento.",
+        "dead": "Intento {{n}}: colocó la pieza {{piece}}, pero desde ahí ninguna continuación llevó a una solución. La pieza se retiró.",
+        "pruned": "Intento {{n}}: colocó la pieza {{piece}}, y el criterio \"{{criterion}}\" vio al instante que de ahí no sale ninguna solución. La rama entera se cortó sin explorarla.",
+        "solution": "Intento {{n}}: pieza {{piece}}. Este estado forma parte de la solución encontrada."
+      }
+    },
+    "criteria": {
+      "title": "Los criterios: buscar menos, encontrar lo mismo",
+      "body": "Los criterios no cambian lo que es una solución. Cambian cuánto del árbol hay que recorrer hasta llegar a una. Hay dos tipos, y la diferencia entre ellos importa.",
+      "compare": {
+        "title": "La diferencia entre los dos tipos",
+        "order": "Criterios de orden",
+        "prune": "Criterios de corte",
+        "does": "Qué hacen",
+        "doesOrder": "Cambian el orden en que se prueban las opciones. Nada se descarta, solo se aplaza.",
+        "doesPrune": "Descartan ramas en las que está comprobado que no hay solución.",
+        "effect": "Efecto en los intentos",
+        "effectOrder": "Pueden reducirlos o aumentarlos: depende del desafío.",
+        "effectPrune": "Nunca los aumentan. En el peor caso, no cortan nada.",
+        "price": "El precio",
+        "priceOrder": "Una apuesta equivocada lleva la búsqueda primero por las ramas malas.",
+        "pricePrune": "Cada comprobación cuesta tiempo en cada paso."
+      },
+      "orderTitle": "Criterios de orden: por dónde empezar",
+      "orderBody": "No eliminan nada: solo deciden qué probar primero. La apuesta es enfrentarse cuanto antes a la parte más difícil, para que los errores aparezcan cerca de la raíz, donde deshacer cuesta poco.",
+      "orderBooks": "En los libros: heurísticas de ordenación, como la MRV (minimum remaining values).",
+      "orderCaveatTitle": "El orden es una apuesta, no una garantía",
+      "orderCaveatBody": "Un criterio de orden puede acertar en un desafío y fallar en otro: en el laboratorio de arriba hay un desafío en el que \"{{criterion}}\" empeora la búsqueda. Por eso el solucionador te deja activar y desactivar cada criterio y comparar los números.",
+      "pruneTitle": "Criterios de corte: cuándo rendirse pronto",
+      "pruneBody": "Miran el tablero después de cada pieza y preguntan: ¿todavía se puede terminar? Si la respuesta es no, la rama se abandona ahí mismo, y todos los tableros que vendrían por debajo nunca se visitan.",
+      "pruneBooks": "En los libros: poda y comprobación hacia delante (forward checking).",
+      "pruneCaveatTitle": "El corte es una garantía, pero tiene un precio",
+      "pruneCaveatBody": "Un criterio de corte solo abandona ramas en las que no hay solución, así que nunca hace que la búsqueda visite más tableros de los que visitaría sin él. Lo que cobra es tiempo: la comprobación se hace después de cada pieza colocada y, en un desafío pequeño, puede costar más de lo que ahorra.",
+      "scarceCaption": "Cuántas maneras tiene cada pieza. Las de número más bajo se prueban primero.",
+      "mccCaption": "Cada número es la cantidad de colocaciones que todavía cubren esa casilla. En orden de lectura, la búsqueda empezaría por la primera casilla vacía, con {{first}} colocaciones posibles; este criterio va directo a la casilla que solo tiene {{min}}.",
+      "deadCaption": "La pieza ha aislado {{size}} casillas arriba. Ninguna combinación de piezas de 5 casillas llena {{size}}: fin de la rama.",
+      "strandedCellCaption": "La casilla marcada sigue conectada con el resto del tablero, pero ninguna de las piezas que quedan ({{pieces}}) puede cubrirla.",
+      "strandedPieceCaption": "Todavía queda bastante espacio, pero la pieza {{piece}} ya no cabe en ningún sitio. Como hay que usar todas las piezas, no sirve de nada continuar.",
+      "doesNotFit": "no cabe"
+    },
+    "cta": {
+      "title": "Ahora pruébalo",
+      "body": "Abre un desafío más grande en el solucionador, ejecútalo con distintos conjuntos de criterios y compara pasos y retrocesos.",
+      "button": "Abrir el solucionador en un desafío de {{count}} piezas"
+    }
+  },
+  "pieceTray": {
+    "label": "Piezas disponibles",
+    "rotate": "Girar",
+    "flip": "Reflejar",
+    "rotateHint": "Botón derecho o R: girar · E o arrastrar: reflejar",
+    "position": {
+      "top": "encima del tablero",
+      "right": "a la derecha del tablero",
+      "bottom": "debajo del tablero",
+      "left": "a la izquierda del tablero"
+    }
+  },
+  "manualPlay": {
+    "solved": "¡Resuelto! Todas las piezas encajan: muy bien.",
+    "reset": "Reiniciar",
+    "next": "Siguiente desafío",
+    "overlap": "Hay piezas solapadas: mueve las marcadas en rojo para continuar.",
+    "navLabel": "Navegación entre desafíos",
+    "previous": "Desafío anterior",
+    "following": "Desafío siguiente"
+  },
+  "playback": {
+    "label": "Controles de reproducción",
+    "rewind": "Reiniciar",
+    "stepBack": "Paso anterior",
+    "pause": "Pausar",
+    "play": "Reproducir",
+    "stepForward": "Paso siguiente",
+    "speed": "Velocidad",
+    "skipToEnd": "Ir al final"
+  },
+  "solver": {
+    "title": "Solucionador",
+    "start": "Resolver",
+    "restart": "Resolver de nuevo",
+    "close": "Cerrar el solucionador",
+    "backToPlay": "← Volver a jugar",
+    "baseOnly": "Solo la búsqueda simple",
+    "computing": "Calculando…",
+    "error": "El solucionador encontró un problema: {{message}}",
+    "complete": "¡Resuelto! Todas las piezas encajan.",
+    "limit": "Se rindió tras {{steps}} pasos sin encontrar una solución. Añade más criterios e inténtalo de nuevo.",
+    "exhausted": "Lo probó todo: no hay solución.",
+    "stepCounter": "Paso {{current}} de {{total}}",
+    "arrangements": {
+      "label": "Combinaciones posibles",
+      "hint_one": "Todas las maneras de poner la {{count}} pieza en el tablero, en cualquier posición y orientación, sin comprobar solapamientos. Es el pajar en el que busca el solucionador.",
+      "hint_other": "Todas las maneras de poner las {{count}} piezas en el tablero, en cualquier posición y orientación, sin comprobar solapamientos. Es el pajar en el que busca el solucionador."
+    },
+    "showSettings": "Ajustes ▴",
+    "hideSettings": "Ocultar ▾"
+  },
+  "metrics": {
+    "step": "Pasos mostrados",
+    "backtracks": "Retrocesos hasta ahora"
+  },
+  "comparison": {
+    "title": "Ejecuciones en este desafío",
+    "strategy": "Criterios",
+    "steps": "Pasos",
+    "backtracks": "Retrocesos"
+  },
+  "criteria": {
+    "label": "Criterios de la estrategia",
+    "expand": "Explicar \"{{name}}\"",
+    "collapse": "Ocultar la explicación de \"{{name}}\"",
+    "cuts_one": "{{count}} corte",
+    "cuts_other": "{{count}} cortes",
+    "groups": {
+      "order": {
+        "title": "Criterios de orden",
+        "summary": "Deciden qué probar primero."
+      },
+      "prune": {
+        "title": "Criterios de corte",
+        "summary": "Abandonan pronto una rama."
+      }
+    },
+    "base": {
+      "name": "Probar, deshacer, volver a probar",
+      "summary": "Siempre activo: la búsqueda en la que se apoya todo lo demás.",
+      "details": "Toma la siguiente casilla vacía, prueba ahí una pieza y sigue adelante. Cuando se atasca, quita la última pieza y prueba la opción siguiente. Por sí sola acaba encontrando una solución, pero solo nota un error cuando ya no cabe nada."
+    },
+    "scarcePiecesFirst": {
+      "name": "Primero las piezas más rígidas",
+      "summary": "Prueba las piezas con menos orientaciones antes que las flexibles.",
+      "details": "Piezas como I y X solo se pueden colocar de una o dos maneras; piezas como F y L, de ocho. Colocar las rígidas mientras el tablero sigue abierto evita descubrir demasiado tarde que ya no caben en ningún sitio."
+    },
+    "mostConstrainedCell": {
+      "name": "Primero la casilla más difícil",
+      "summary": "Rellena la casilla vacía con menos colocaciones posibles.",
+      "details": "En lugar de seguir el orden de lectura, cuenta, para cada casilla vacía, cuántas colocaciones podrían cubrirla, y trabaja en la que tiene menos. Una casilla con una sola opción es una jugada forzada; una sin ninguna revela el callejón sin salida al instante."
+    },
+    "deadRegions": {
+      "name": "Descartar huecos imposibles",
+      "summary": "Retrocede cuando el tamaño de una zona vacía no es múltiplo de 5.",
+      "details": "Cada pieza cubre exactamente 5 casillas. Si una colocación aísla una zona vacía de 3, 7 u 11 casillas, ninguna combinación de piezas puede llenarla exactamente, así que la colocación se deshace al instante en vez de explorarse."
+    },
+    "strandedCells": {
+      "name": "Ninguna casilla sin salida",
+      "summary": "Retrocede cuando alguna casilla vacía ya no puede ser cubierta por ninguna pieza restante.",
+      "details": "Después de cada colocación comprueba todas las casillas vacías: ¿queda alguna pieza que quepa sobre ella? Si una casilla se ha quedado sin candidata, rellenar el resto es inútil, y la colocación se deshace."
+    },
+    "strandedPieces": {
+      "name": "Todas las piezas siguen cabiendo",
+      "summary": "Retrocede cuando alguna pieza restante ya no cabe en ningún sitio.",
+      "details": "Después de cada colocación comprueba todas las piezas aún sin usar: ¿sigue habiendo sitio para ella en algún lugar del tablero? Si alguna no cabe en ningún sitio, el tablero nunca se completará a partir de ahí."
+    }
+  }
+}

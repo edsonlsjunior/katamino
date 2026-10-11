@@ -1,17 +1,17 @@
 {
   "app": {
-    "title": "Katamino — Combinatorial Optimization Playground"
+    "title": "Katamino — Combinatorial Search Playground"
   },
   "nav": {
     "challenges": "Challenges",
     "manualPlay": "Play",
     "autoSolve": "Watch the solver",
-    "about": "About"
+    "about": "About",
+    "learn": "How it works",
+    "settings": "Settings"
   },
   "language": {
-    "label": "Language",
-    "en": "English",
-    "pt": "Português"
+    "label": "Language"
   },
   "common": {
     "loading": "Loading…",
@@ -43,7 +43,7 @@
   },
   "about": {
     "title": "About the project",
-    "lead": "A playground for playing all {{count}} Katamino challenges by hand and watching, step by step, how a combinatorial optimization algorithm solves them.",
+    "lead": "A playground for playing all {{count}} Katamino challenges by hand and watching, step by step, how a search algorithm solves them.",
     "browse": "Browse the challenges",
     "game": {
       "title": "The game",
@@ -62,12 +62,159 @@
     },
     "tech": {
       "title": "How it was built",
-      "body": "React, TypeScript and Vite, with no server: everything runs in your browser, and the solver works in a Web Worker so the screen never freezes. Available in Portuguese and English.",
+      "body": "React, TypeScript and Vite, with no server: everything runs in your browser, and the solver works in a Web Worker so the screen never freezes. Available in English, Portuguese, Spanish and French.",
       "source": "Source code on GitHub"
     },
     "disclaimer": {
       "title": "Disclaimer",
       "body": "An independent, educational project, not affiliated with the creators or publisher of Katamino."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": {
+      "title": "Appearance",
+      "body": "Choose light or dark, or follow your device's setting.",
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "language": {
+      "title": "Language",
+      "body": "Starts in your browser's language when it is available. Your choice is remembered on this device."
+    },
+    "progress": {
+      "title": "Progress",
+      "body": "Progress is saved only in this browser. Export it to a file to keep a backup or take it to another device; importing adds the file's completed challenges to the ones you already have.",
+      "export": "Export progress",
+      "import": "Import progress",
+      "imported_zero": "Nothing new: every challenge in the file was already completed here.",
+      "imported_one": "Imported: {{count}} new completed challenge.",
+      "imported_other": "Imported: {{count}} new completed challenges.",
+      "importError": "This file is not a Katamino progress file."
+    }
+  },
+  "learn": {
+    "title": "How the solver thinks",
+    "lead": "Solving a Katamino looks simple — until you count how many ways there are to get it wrong. This page shows why the problem is hard, which algorithm the solver uses, and how each criterion helps it reach a solution with fewer attempts.",
+    "boardLabel": "Example board",
+    "problem": {
+      "title": "What kind of problem is this?",
+      "body": "Katamino has only rules: either the pieces cover the whole board or they don't. Any arrangement that obeys all of them is a solution, and none is worth more than another. This kind of problem is called constraint satisfaction — more precisely, exact cover.",
+      "rulesTitle": "The rules (the \"constraints\")",
+      "rule1": "Every square of the board is covered.",
+      "rule2": "No square is covered twice.",
+      "rule3": "Every piece is used exactly once.",
+      "solutionsCaption": "Two solutions to the same challenge ({{label}}). They are different, and both are worth exactly the same."
+    },
+    "pieces": {
+      "title": "The pieces",
+      "body": "They are the 12 pentominoes: every possible way of joining 5 squares edge to edge. Each one is named after the letter it resembles. By rotating and mirroring, a piece can show up in 1 to 8 different ways — and each way is one more option for the solver to test. Click a piece to see its ways.",
+      "galleryLabel": "The 12 pentominoes",
+      "pieceLabel_one": "Piece {{piece}}: {{count}} way",
+      "pieceLabel_other": "Piece {{piece}}: {{count}} ways",
+      "orientations_one": "Piece {{piece}} can only be placed {{count}} way",
+      "orientations_other": "Piece {{piece}} can be placed {{count}} ways",
+      "hint": "Symmetric pieces like X and I leave almost no choice; crooked ones like F, L, N, P and Y have eight."
+    },
+    "hard": {
+      "title": "Why is it hard?",
+      "body": "Each piece can go in many places on the board. And the choices multiply: the number of combinations is the product of the options of each piece.",
+      "productCaption": "In challenge {{label}}, with just {{count}} pieces:",
+      "productPositions": "positions",
+      "productTotal": "combinations",
+      "productNote": "This counts every way of putting the pieces on the board, even the ones that overlap. It is the size of the haystack the solution is hidden in.",
+      "chartTitle": "The haystack grows with every piece",
+      "chartRow": "{{count}} pieces",
+      "chartNote": "One example challenge for each board size. The scale is logarithmic: a slightly longer bar stands for a number thousands of times bigger.",
+      "time": "Testing a million combinations per second, the 12-piece challenge would take about {{years}} years — some {{times}} times the age of the universe. Brute force is not an option: the search needs method."
+    },
+    "algorithm": {
+      "title": "The algorithm: depth-first search with backtracking",
+      "body": "The solver uses depth-first search with backtracking, the classic technique for constraint satisfaction problems. It is how you would do the puzzle by hand, only without ever repeating an attempt:",
+      "step1": "Pick an empty square of the board.",
+      "step2": "Put a piece there that fits, without overlapping any other.",
+      "step3": "Move on to the next empty square and repeat.",
+      "step4": "Stuck, nothing fits? Take the last piece back and try the next option.",
+      "step5": "Stop when the board is full (found it!) or when the options run out (there is no solution).",
+      "treeTitle": "The search is a tree",
+      "treeBody": "Each board below is a state of the search. The root is the empty board; each level down is one more piece placed. The solver goes down a branch until it gets stuck, comes back and goes down the next one. The solution is a leaf on the last level."
+    },
+    "lab": {
+      "title": "Lab: watch the tree grow",
+      "challenge": "Challenge",
+      "play": "▶ Replay the search",
+      "pause": "⏸ Pause",
+      "showAll": "Show everything",
+      "slider": "Search step",
+      "step": "Step {{current}} of {{total}}",
+      "treeLabel": "Search tree",
+      "scrollHint": "Scroll sideways to see the whole tree. Click a board to find out what happened there.",
+      "legend": {
+        "open": "On the current path",
+        "dead": "Dead end (undone)",
+        "pruned": "Cut by a criterion",
+        "solution": "Solution"
+      },
+      "stats": {
+        "tried": "Attempts",
+        "deadEnds": "Dead ends",
+        "cuts": "Cuts",
+        "fewer": "{{percent}}% fewer attempts than the plain search ({{base}})",
+        "more": "{{percent}}% more attempts than the plain search ({{base}}) — not every criterion helps on every challenge",
+        "same": "The same number of attempts as the plain search on this challenge",
+        "baseline": "This is the plain search, with no criteria. Switch criteria on above and watch the tree shrink."
+      },
+      "node": {
+        "root": "Empty board (start)",
+        "label": "Attempt {{n}}: piece {{piece}} — {{status}}"
+      },
+      "detail": {
+        "root": "Starting point: the empty board.",
+        "open": "Attempt {{n}}: placed piece {{piece}}. This state is on the path the search is exploring right now.",
+        "dead": "Attempt {{n}}: placed piece {{piece}}, but no continuation from there led to a solution. The piece was taken back.",
+        "pruned": "Attempt {{n}}: placed piece {{piece}}, and the criterion \"{{criterion}}\" saw at once that no solution comes out of it. The whole branch was cut without being explored.",
+        "solution": "Attempt {{n}}: piece {{piece}}. This state is part of the solution that was found."
+      }
+    },
+    "criteria": {
+      "title": "The criteria: search less, find the same",
+      "body": "The criteria do not change what a solution is. They change how much of the tree has to be walked before reaching one. There are two kinds, and the difference between them matters.",
+      "compare": {
+        "title": "The difference between the two kinds",
+        "order": "Ordering criteria",
+        "prune": "Pruning criteria",
+        "does": "What they do",
+        "doesOrder": "Change the order in which options are tried. Nothing is ruled out, only postponed.",
+        "doesPrune": "Rule out branches that provably hold no solution.",
+        "effect": "Effect on attempts",
+        "effectOrder": "Can lower or raise them: it depends on the challenge.",
+        "effectPrune": "Never raise them. At worst, they cut nothing.",
+        "price": "The price",
+        "priceOrder": "A wrong bet sends the search down the bad branches first.",
+        "pricePrune": "Every check costs time at every step."
+      },
+      "orderTitle": "Ordering criteria: where to start",
+      "orderBody": "They rule nothing out: they only decide what to try first. The bet is to face the hardest part early, so mistakes show up near the root, where undoing is cheap.",
+      "orderBooks": "In textbooks: ordering heuristics, such as MRV (minimum remaining values).",
+      "orderCaveatTitle": "Ordering is a bet, not a guarantee",
+      "orderCaveatBody": "An ordering criterion can be right on one challenge and wrong on another: the lab above has a challenge where \"{{criterion}}\" makes the search worse. That is why the solver lets you switch each criterion on and off and compare the numbers.",
+      "pruneTitle": "Pruning criteria: when to give up early",
+      "pruneBody": "They look at the board after each piece and ask: can this still be finished? If the answer is no, the branch is abandoned right there, and all the boards that would come below it are never visited.",
+      "pruneBooks": "In textbooks: pruning and forward checking.",
+      "pruneCaveatTitle": "Pruning is a guarantee, but it has a price",
+      "pruneCaveatBody": "A pruning criterion only abandons branches that hold no solution, so it never makes the search visit more boards than it would without it. What it charges is time: the check runs after every piece placed and, on a small challenge, can cost more than it saves.",
+      "scarceCaption": "How many ways each piece has. The ones with the smallest number are tried first.",
+      "mccCaption": "Each number is how many placements still cover that square. In reading order the search would start at the first empty square, with {{first}} possible placements; this criterion goes straight to the square that has only {{min}}.",
+      "deadCaption": "The piece walled off {{size}} squares at the top. No combination of 5-square pieces fills {{size}}: end of the branch.",
+      "strandedCellCaption": "The marked square is still connected to the rest of the board, but none of the pieces left ({{pieces}}) can cover it.",
+      "strandedPieceCaption": "There is plenty of room left, but piece {{piece}} no longer fits anywhere. Since every piece must be used, there is no point in going on.",
+      "doesNotFit": "does not fit"
+    },
+    "cta": {
+      "title": "Now try it",
+      "body": "Open a bigger challenge in the solver, run it with different sets of criteria and compare steps and backtracks.",
+      "button": "Open the solver on a {{count}}-piece challenge"
     }
   },
   "pieceTray": {
@@ -138,6 +285,16 @@
     "collapse": "Hide the explanation of \"{{name}}\"",
     "cuts_one": "{{count}} cut",
     "cuts_other": "{{count}} cuts",
+    "groups": {
+      "order": {
+        "title": "Ordering criteria",
+        "summary": "Decide what to try first."
+      },
+      "prune": {
+        "title": "Pruning criteria",
+        "summary": "Give up on a branch early."
+      }
+    },
     "base": {
       "name": "Try, undo, try again",
       "summary": "Always on: the search everything else builds on.",

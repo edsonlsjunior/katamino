@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CRITERIA, type CriterionId } from '../solvers/criteria';
+import { CRITERIA, type Criterion, type CriterionId } from '../solvers/criteria';
 import './CriteriaList.css';
 
 interface CriteriaListProps {
@@ -66,10 +66,14 @@ function CriterionItem({ id, i18nKey, checked, onToggle, disabled, cuts }: ItemP
   );
 }
 
+const KINDS: readonly Criterion['kind'][] = ['order', 'prune'];
+
 /**
- * The strategy, as a list of criteria added on top of the base search. Each
- * one can be switched on independently and expanded for an explanation of
- * what it changes; new criteria show up here by being added to CRITERIA.
+ * The strategy, as a list of criteria added on top of the base search, split
+ * the way the "how it works" page explains them: the ones that change what is
+ * tried first, and the ones that give up on a branch early. Each can be
+ * switched on independently and expanded for an explanation of what it
+ * changes; new criteria show up here by being added to CRITERIA.
  */
 export function CriteriaList({ selected, onToggle, disabled, cuts }: CriteriaListProps) {
   const { t } = useTranslation();
@@ -79,18 +83,26 @@ export function CriteriaList({ selected, onToggle, disabled, cuts }: CriteriaLis
       <legend>{t('criteria.label')}</legend>
       <ul>
         <CriterionItem id="base" i18nKey="criteria.base" checked />
-        {CRITERIA.map((criterion) => (
-          <CriterionItem
-            key={criterion.id}
-            id={criterion.id}
-            i18nKey={criterion.i18nKey}
-            checked={selected.has(criterion.id)}
-            onToggle={() => onToggle(criterion.id)}
-            disabled={disabled}
-            cuts={criterion.kind === 'prune' ? cuts?.[criterion.id] : undefined}
-          />
-        ))}
       </ul>
+      {KINDS.map((kind) => (
+        <div key={kind} className="criteria-list__group" data-testid={`criteria-group-${kind}`}>
+          <h4>{t(`criteria.groups.${kind}.title`)}</h4>
+          <p>{t(`criteria.groups.${kind}.summary`)}</p>
+          <ul>
+            {CRITERIA.filter((criterion) => criterion.kind === kind).map((criterion) => (
+              <CriterionItem
+                key={criterion.id}
+                id={criterion.id}
+                i18nKey={criterion.i18nKey}
+                checked={selected.has(criterion.id)}
+                onToggle={() => onToggle(criterion.id)}
+                disabled={disabled}
+                cuts={kind === 'prune' ? cuts?.[criterion.id] : undefined}
+              />
+            ))}
+          </ul>
+        </div>
+      ))}
     </fieldset>
   );
 }

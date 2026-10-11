@@ -20,6 +20,24 @@
   gap: var(--space-1);
 }
 
+.criteria-list__group {
+  margin-top: var(--space-3);
+}
+
+.criteria-list__group h4 {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.criteria-list__group p {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
 .criteria-list__item {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);

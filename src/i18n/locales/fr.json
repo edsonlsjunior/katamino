@@ -1,0 +1,329 @@
+{
+  "app": {
+    "title": "Katamino — Bac à sable de recherche combinatoire"
+  },
+  "nav": {
+    "challenges": "Défis",
+    "manualPlay": "Jouer",
+    "autoSolve": "Voir le solveur",
+    "about": "À propos",
+    "learn": "Comment ça marche",
+    "settings": "Paramètres"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "common": {
+    "loading": "Chargement…",
+    "error": "Une erreur s'est produite.",
+    "back": "Retour aux défis"
+  },
+  "challenges": {
+    "difficulty": "Difficulté {{difficulty}}",
+    "completed": "Terminé",
+    "cardLabel": "{{line}} · PENTA {{boardCols}} · #{{id}}",
+    "tier": {
+      "smallSlam": "Small Slam",
+      "slam": "The Slam",
+      "grandSlam": "Grand Slam",
+      "superSlam": "Super Slam",
+      "challenge": "Challenge",
+      "bonus": "Bonus (12 pièces)"
+    },
+    "play": "Jouer {{challenge}}",
+    "playCompleted": "Jouer {{challenge}} (terminé)",
+    "start": "Commencer",
+    "continue": "Reprendre où j'en étais",
+    "hint": "Chaque colonne est un défi du livret et chaque ligne, une lettre. Les nombres sont la taille du plateau (PENTA) : cliquez sur l'un d'eux pour jouer.",
+    "progress": {
+      "summary": "{{done}} sur {{total}} terminés ({{percent}} %)",
+      "overall": "Progression générale",
+      "tier": "Progression dans {{tier}}"
+    }
+  },
+  "about": {
+    "title": "À propos du projet",
+    "lead": "Un bac à sable pour jouer à la main les {{count}} défis du Katamino et voir, pas à pas, comment un algorithme de recherche les résout.",
+    "browse": "Voir les défis",
+    "game": {
+      "title": "Le jeu",
+      "body": "Katamino est un casse-tête de pentominos : des pièces formées de 5 carrés. Dans chaque défi, un ensemble de pièces doit couvrir exactement un plateau de 5 lignes, sans trou ni chevauchement. La taille du plateau (le « PENTA ») est le nombre de pièces utilisées : plus il est grand, plus c'est difficile."
+    },
+    "play": {
+      "title": "Comment jouer",
+      "pick": "Cliquez sur une pièce pour la prendre, puis sur le plateau pour la poser.",
+      "rotate": "Le clic droit ou la touche R fait tourner la pièce en main.",
+      "mirror": "La touche E, ou faire glisser la pièce, la retourne en miroir.",
+      "progress": "Les défis terminés sont enregistrés dans ce navigateur et apparaissent cochés dans la liste."
+    },
+    "solver": {
+      "title": "Le solveur",
+      "body": "Dans n'importe quel défi, « Voir le solveur » montre la recherche en train de se dérouler sur le plateau. La base est toujours la même — essayer, défaire, réessayer — et vous composez la stratégie en activant des critères qui changent l'ordre des essais ou repèrent plus tôt une impasse. Lancez différentes combinaisons sur le même défi et comparez les pas et les retours en arrière."
+    },
+    "tech": {
+      "title": "Comment c'est fait",
+      "body": "React, TypeScript et Vite, sans serveur : tout s'exécute dans votre navigateur, et le solveur travaille dans un Web Worker pour que l'écran ne se fige jamais. Disponible en français, anglais, portugais et espagnol.",
+      "source": "Code source sur GitHub"
+    },
+    "disclaimer": {
+      "title": "Avertissement",
+      "body": "Projet indépendant et éducatif, sans lien avec les créateurs ni l'éditeur du Katamino."
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "theme": {
+      "title": "Apparence",
+      "body": "Choisissez clair ou sombre, ou suivez le réglage de votre appareil.",
+      "system": "Système",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "language": {
+      "title": "Langue",
+      "body": "Démarre dans la langue de votre navigateur, lorsqu'elle est disponible. Votre choix est mémorisé sur cet appareil."
+    },
+    "progress": {
+      "title": "Progression",
+      "body": "La progression n'est enregistrée que dans ce navigateur. Exportez-la dans un fichier pour en garder une copie ou l'emporter sur un autre appareil ; l'importation ajoute les défis terminés du fichier à ceux que vous avez déjà.",
+      "export": "Exporter la progression",
+      "import": "Importer la progression",
+      "imported_zero": "Rien de nouveau : tous les défis du fichier étaient déjà terminés ici.",
+      "imported_one": "Importé : {{count}} nouveau défi terminé.",
+      "imported_other": "Importé : {{count}} nouveaux défis terminés.",
+      "importError": "Ce fichier n'est pas un fichier de progression Katamino."
+    }
+  },
+  "learn": {
+    "title": "Comment le solveur réfléchit",
+    "lead": "Résoudre un Katamino paraît simple… jusqu'à ce que l'on compte le nombre de façons de se tromper. Cette page montre pourquoi le problème est difficile, quel algorithme le solveur utilise et comment chaque critère l'aide à atteindre une solution en essayant moins.",
+    "boardLabel": "Plateau d'exemple",
+    "problem": {
+      "title": "De quel type de problème s'agit-il ?",
+      "body": "Au Katamino, il n'y a que des règles : soit les pièces couvrent tout le plateau, soit elles ne le couvrent pas. Toute disposition qui les respecte toutes est une solution, et aucune ne vaut plus qu'une autre. Ce type de problème s'appelle la satisfaction de contraintes — plus précisément, la couverture exacte.",
+      "rulesTitle": "Les règles (les « contraintes »)",
+      "rule1": "Chaque case du plateau est couverte.",
+      "rule2": "Aucune case n'est couverte deux fois.",
+      "rule3": "Chaque pièce est utilisée exactement une fois.",
+      "solutionsCaption": "Deux solutions du même défi ({{label}}). Elles sont différentes, et toutes deux valent exactement la même chose."
+    },
+    "pieces": {
+      "title": "Les pièces",
+      "body": "Ce sont les 12 pentominos : toutes les façons possibles d'assembler 5 carrés par leurs côtés. Chacun porte le nom de la lettre à laquelle il ressemble. En la tournant et en la retournant, une pièce peut se présenter de 1 à 8 façons différentes — et chaque façon est une option de plus à tester pour le solveur. Cliquez sur une pièce pour voir ses façons.",
+      "galleryLabel": "Les 12 pentominos",
+      "pieceLabel_one": "Pièce {{piece}} : {{count}} façon",
+      "pieceLabel_other": "Pièce {{piece}} : {{count}} façons",
+      "orientations_one": "La pièce {{piece}} ne peut être posée que de {{count}} façon",
+      "orientations_other": "La pièce {{piece}} peut être posée de {{count}} façons",
+      "hint": "Les pièces symétriques comme X et I ne laissent presque aucun choix ; les pièces tordues comme F, L, N, P et Y en offrent huit."
+    },
+    "hard": {
+      "title": "Pourquoi est-ce difficile ?",
+      "body": "Chaque pièce peut aller à de nombreux endroits du plateau. Et les choix se multiplient : le nombre de combinaisons est le produit des options de chaque pièce.",
+      "productCaption": "Dans le défi {{label}}, avec seulement {{count}} pièces :",
+      "productPositions": "positions",
+      "productTotal": "combinaisons",
+      "productNote": "Ce calcul compte toutes les façons de poser les pièces sur le plateau, même celles qui se chevauchent. C'est la taille de la botte de foin où se cache la solution.",
+      "chartTitle": "La botte de foin grossit à chaque pièce",
+      "chartRow": "{{count}} pièces",
+      "chartNote": "Un défi d'exemple pour chaque taille de plateau. L'échelle est logarithmique : une barre un peu plus longue représente un nombre des milliers de fois plus grand.",
+      "time": "En testant un million de combinaisons par seconde, le défi à 12 pièces prendrait environ {{years}} d'années — quelque {{times}} fois l'âge de l'univers. La force brute n'est pas une option : il faut chercher avec méthode."
+    },
+    "algorithm": {
+      "title": "L'algorithme : recherche en profondeur avec retour arrière",
+      "body": "Le solveur utilise la recherche en profondeur avec retour arrière (en anglais, backtracking), la technique classique pour les problèmes de satisfaction de contraintes. C'est ce que vous feriez en montant le casse-tête à la main, mais sans jamais répéter un essai :",
+      "step1": "Choisit une case vide du plateau.",
+      "step2": "Y pose une pièce qui rentre, sans en chevaucher une autre.",
+      "step3": "Passe à la case vide suivante et recommence.",
+      "step4": "Bloqué, rien ne rentre ? Retire la dernière pièce posée et essaie l'option suivante.",
+      "step5": "S'arrête quand le plateau est plein (trouvé !) ou quand les options sont épuisées (il n'y a pas de solution).",
+      "treeTitle": "La recherche est un arbre",
+      "treeBody": "Chaque plateau ci-dessous est un état de la recherche. La racine est le plateau vide ; chaque niveau vers le bas est une pièce de plus posée. Le solveur descend une branche jusqu'à être bloqué, remonte et descend la suivante. La solution est une feuille du dernier niveau."
+    },
+    "lab": {
+      "title": "Laboratoire : regardez l'arbre pousser",
+      "challenge": "Défi",
+      "play": "▶ Rejouer la recherche",
+      "pause": "⏸ Pause",
+      "showAll": "Tout afficher",
+      "slider": "Pas de la recherche",
+      "step": "Pas {{current}} sur {{total}}",
+      "treeLabel": "Arbre de recherche",
+      "scrollHint": "Faites défiler sur les côtés pour voir l'arbre entier. Cliquez sur un plateau pour savoir ce qui s'y est passé.",
+      "legend": {
+        "open": "Sur le chemin actuel",
+        "dead": "Impasse (défaite)",
+        "pruned": "Coupé par un critère",
+        "solution": "Solution"
+      },
+      "stats": {
+        "tried": "Essais",
+        "deadEnds": "Impasses",
+        "cuts": "Coupes",
+        "fewer": "{{percent}} % d'essais en moins que la recherche simple ({{base}})",
+        "more": "{{percent}} % d'essais en plus que la recherche simple ({{base}}) — tous les critères n'aident pas sur tous les défis",
+        "same": "Le même nombre d'essais que la recherche simple sur ce défi",
+        "baseline": "Voici la recherche simple, sans aucun critère. Activez des critères ci-dessus et regardez l'arbre rétrécir."
+      },
+      "node": {
+        "root": "Plateau vide (départ)",
+        "label": "Essai {{n}} : pièce {{piece}} — {{status}}"
+      },
+      "detail": {
+        "root": "Point de départ : le plateau vide.",
+        "open": "Essai {{n}} : a posé la pièce {{piece}}. Cet état est sur le chemin que la recherche explore en ce moment.",
+        "dead": "Essai {{n}} : a posé la pièce {{piece}}, mais aucune suite à partir de là n'a mené à une solution. La pièce a été retirée.",
+        "pruned": "Essai {{n}} : a posé la pièce {{piece}}, et le critère « {{criterion}} » a vu tout de suite qu'aucune solution n'en sortirait. La branche entière a été coupée sans être explorée.",
+        "solution": "Essai {{n}} : pièce {{piece}}. Cet état fait partie de la solution trouvée."
+      }
+    },
+    "criteria": {
+      "title": "Les critères : chercher moins, trouver autant",
+      "body": "Les critères ne changent pas ce qu'est une solution. Ils changent la part de l'arbre qu'il faut parcourir avant d'en atteindre une. Il en existe deux types, et la différence entre eux compte.",
+      "compare": {
+        "title": "La différence entre les deux types",
+        "order": "Critères d'ordre",
+        "prune": "Critères de coupe",
+        "does": "Ce qu'ils font",
+        "doesOrder": "Changent l'ordre dans lequel les options sont essayées. Rien n'est écarté, seulement remis à plus tard.",
+        "doesPrune": "Écartent les branches où il est prouvé qu'il n'y a pas de solution.",
+        "effect": "Effet sur les essais",
+        "effectOrder": "Peuvent les réduire ou les augmenter : cela dépend du défi.",
+        "effectPrune": "Ne les augmentent jamais. Au pire, ils ne coupent rien.",
+        "price": "Le prix",
+        "priceOrder": "Un mauvais pari envoie d'abord la recherche dans les mauvaises branches.",
+        "pricePrune": "Chaque vérification coûte du temps à chaque pas."
+      },
+      "orderTitle": "Critères d'ordre : par où commencer",
+      "orderBody": "Ils n'éliminent rien : ils décident seulement quoi essayer en premier. Le pari est d'affronter tout de suite la partie la plus difficile, pour que les erreurs apparaissent près de la racine, là où défaire coûte peu.",
+      "orderBooks": "Dans les manuels : heuristiques d'ordre, comme la MRV (minimum remaining values).",
+      "orderCaveatTitle": "L'ordre est un pari, pas une garantie",
+      "orderCaveatBody": "Un critère d'ordre peut tomber juste sur un défi et se tromper sur un autre : le laboratoire ci-dessus propose un défi où « {{criterion}} » aggrave la recherche. C'est pourquoi le solveur vous laisse activer et désactiver chaque critère et comparer les chiffres.",
+      "pruneTitle": "Critères de coupe : quand abandonner tôt",
+      "pruneBody": "Ils regardent le plateau après chaque pièce et demandent : peut-on encore terminer ? Si la réponse est non, la branche est abandonnée sur-le-champ, et tous les plateaux qui viendraient en dessous ne sont jamais visités.",
+      "pruneBooks": "Dans les manuels : élagage et vérification anticipée (forward checking).",
+      "pruneCaveatTitle": "La coupe est une garantie, mais elle a un prix",
+      "pruneCaveatBody": "Un critère de coupe n'abandonne que les branches sans solution : il ne fait donc jamais visiter à la recherche plus de plateaux qu'elle n'en visiterait sans lui. Ce qu'il coûte, c'est du temps : la vérification est faite après chaque pièce posée et, sur un petit défi, elle peut coûter plus qu'elle ne fait gagner.",
+      "scarceCaption": "Le nombre de façons de chaque pièce. Celles qui en ont le moins sont essayées en premier.",
+      "mccCaption": "Chaque nombre est la quantité de placements qui couvrent encore cette case. Dans l'ordre de lecture, la recherche commencerait par la première case vide, avec {{first}} placements possibles ; ce critère va droit à la case qui n'en a que {{min}}.",
+      "deadCaption": "La pièce a isolé {{size}} cases en haut. Aucune combinaison de pièces de 5 cases ne remplit {{size}} : fin de la branche.",
+      "strandedCellCaption": "La case marquée est toujours reliée au reste du plateau, mais aucune des pièces restantes ({{pieces}}) ne peut la couvrir.",
+      "strandedPieceCaption": "Il reste beaucoup de place, mais la pièce {{piece}} ne rentre plus nulle part. Comme toutes les pièces doivent être utilisées, inutile de continuer.",
+      "doesNotFit": "ne rentre pas"
+    },
+    "cta": {
+      "title": "À vous d'essayer",
+      "body": "Ouvrez un défi plus grand dans le solveur, lancez-le avec différents ensembles de critères et comparez les pas et les retours en arrière.",
+      "button": "Ouvrir le solveur sur un défi à {{count}} pièces"
+    }
+  },
+  "pieceTray": {
+    "label": "Pièces disponibles",
+    "rotate": "Tourner",
+    "flip": "Retourner",
+    "rotateHint": "Clic droit ou R : tourner · E ou glisser : retourner",
+    "position": {
+      "top": "au-dessus du plateau",
+      "right": "à droite du plateau",
+      "bottom": "sous le plateau",
+      "left": "à gauche du plateau"
+    }
+  },
+  "manualPlay": {
+    "solved": "Résolu ! Toutes les pièces s'emboîtent — bravo.",
+    "reset": "Réinitialiser",
+    "next": "Défi suivant",
+    "overlap": "Des pièces se chevauchent — déplacez celles marquées en rouge pour continuer.",
+    "navLabel": "Navigation entre les défis",
+    "previous": "Défi précédent",
+    "following": "Défi suivant"
+  },
+  "playback": {
+    "label": "Commandes de lecture",
+    "rewind": "Recommencer",
+    "stepBack": "Pas précédent",
+    "pause": "Pause",
+    "play": "Lecture",
+    "stepForward": "Pas suivant",
+    "speed": "Vitesse",
+    "skipToEnd": "Aller à la fin"
+  },
+  "solver": {
+    "title": "Solveur",
+    "start": "Résoudre",
+    "restart": "Résoudre à nouveau",
+    "close": "Fermer le solveur",
+    "backToPlay": "← Retour au jeu",
+    "baseOnly": "Recherche simple seulement",
+    "computing": "Calcul en cours…",
+    "error": "Le solveur a rencontré un problème : {{message}}",
+    "complete": "Résolu ! Toutes les pièces s'emboîtent.",
+    "limit": "A abandonné après {{steps}} pas sans trouver de solution. Ajoutez des critères et réessayez.",
+    "exhausted": "Tout a été essayé : il n'y a pas de solution.",
+    "stepCounter": "Pas {{current}} sur {{total}}",
+    "arrangements": {
+      "label": "Combinaisons possibles",
+      "hint_one": "Toutes les façons de poser la {{count}} pièce sur le plateau, dans n'importe quelle position et orientation, sans vérifier les chevauchements. C'est la botte de foin dans laquelle cherche le solveur.",
+      "hint_other": "Toutes les façons de poser les {{count}} pièces sur le plateau, dans n'importe quelle position et orientation, sans vérifier les chevauchements. C'est la botte de foin dans laquelle cherche le solveur."
+    },
+    "showSettings": "Réglages ▴",
+    "hideSettings": "Masquer ▾"
+  },
+  "metrics": {
+    "step": "Pas affichés",
+    "backtracks": "Retours en arrière jusqu'ici"
+  },
+  "comparison": {
+    "title": "Exécutions sur ce défi",
+    "strategy": "Critères",
+    "steps": "Pas",
+    "backtracks": "Retours"
+  },
+  "criteria": {
+    "label": "Critères de la stratégie",
+    "expand": "Expliquer « {{name}} »",
+    "collapse": "Masquer l'explication de « {{name}} »",
+    "cuts_one": "{{count}} coupe",
+    "cuts_other": "{{count}} coupes",
+    "groups": {
+      "order": {
+        "title": "Critères d'ordre",
+        "summary": "Décident quoi essayer en premier."
+      },
+      "prune": {
+        "title": "Critères de coupe",
+        "summary": "Abandonnent tôt une branche."
+      }
+    },
+    "base": {
+      "name": "Essayer, défaire, réessayer",
+      "summary": "Toujours actif : la recherche sur laquelle tout le reste s'appuie.",
+      "details": "Prend la prochaine case vide, y essaie une pièce et continue. Quand elle est bloquée, elle retire la dernière pièce et essaie l'option suivante. Seule, elle finit par trouver une solution, mais elle ne remarque une erreur que lorsque plus rien ne rentre."
+    },
+    "scarcePiecesFirst": {
+      "name": "Les pièces les plus rigides d'abord",
+      "summary": "Essaie les pièces qui ont le moins d'orientations avant les plus souples.",
+      "details": "Des pièces comme I et X ne peuvent être posées que d'une ou deux façons ; des pièces comme F et L, de huit. Poser les rigides tant que le plateau est encore ouvert évite de découvrir trop tard qu'elles ne rentrent plus nulle part."
+    },
+    "mostConstrainedCell": {
+      "name": "La case la plus difficile d'abord",
+      "summary": "Remplit la case vide qui a le moins de placements possibles.",
+      "details": "Au lieu de suivre l'ordre de lecture, il compte, pour chaque case vide, combien de placements pourraient la couvrir, et travaille sur celle qui en a le moins. Une case avec une seule option est un coup forcé ; une case sans aucune révèle l'impasse immédiatement."
+    },
+    "deadRegions": {
+      "name": "Écarter les trous impossibles",
+      "summary": "Recule quand la taille d'une zone vide n'est pas un multiple de 5.",
+      "details": "Chaque pièce couvre exactement 5 cases. Si un placement isole une zone vide de 3, 7 ou 11 cases, aucune combinaison de pièces ne peut la remplir exactement — le placement est donc défait aussitôt au lieu d'être exploré."
+    },
+    "strandedCells": {
+      "name": "Aucune case sans issue",
+      "summary": "Recule quand une case vide ne peut plus être couverte par aucune pièce restante.",
+      "details": "Après chaque placement, il vérifie toutes les cases vides : reste-t-il une pièce qui puisse la couvrir ? Si une case n'a plus de candidate, remplir le reste est inutile, et le placement est défait."
+    },
+    "strandedPieces": {
+      "name": "Chaque pièce rentre encore",
+      "summary": "Recule quand une pièce restante ne rentre plus nulle part.",
+      "details": "Après chaque placement, il vérifie toutes les pièces pas encore utilisées : y a-t-il encore de la place pour elle quelque part sur le plateau ? Si l'une d'elles ne rentre nulle part, le plateau ne sera jamais complété à partir de là."
+    }
+  }
+}

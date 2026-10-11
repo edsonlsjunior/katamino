@@ -1,0 +1,110 @@
+main > .settings-page {
+  max-width: 44rem;
+}
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  line-height: 1.55;
+}
+
+.settings-page h2 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.settings-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.settings-card h3,
+.settings-card p {
+  margin: 0;
+}
+
+.settings-card h3 {
+  font-size: var(--font-size-lg);
+}
+
+.settings-card p {
+  color: var(--color-text-muted);
+}
+
+.settings-card [data-testid='settings-progress'] {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Three options side by side; the chosen one is filled. */
+.settings-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.settings-choice__option {
+  cursor: pointer;
+}
+
+.settings-choice__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settings-choice__option span {
+  display: block;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.settings-choice__option input:checked + span {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: 600;
+}
+
+.settings-choice__option input:focus-visible + span {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Inside a card the language list opens to the right of its button. */
+.settings-card .language-menu__list {
+  left: 0;
+  right: auto;
+}
+
+.settings-card .settings-result {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.settings-card .settings-result--added {
+  background: var(--color-success-bg);
+  color: var(--color-text);
+}
+
+.settings-card .settings-result--error {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}

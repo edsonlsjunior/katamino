@@ -1,10 +1,10 @@
 # Katamino
 
 A static web app for playing all 500 Katamino pentomino challenges by hand, or
-watching two different combinatorial-optimization algorithms (exhaustive
-backtracking vs. constraint-guided search) solve them step by step. Built to
-teach combinatorial optimization concepts through visualization. Available in
-Portuguese and English.
+watching a backtracking search solve them step by step, with a strategy you
+build from optional criteria (ordering heuristics and pruning rules). Built to
+teach combinatorial search and constraint satisfaction through visualization.
+Available in English, Portuguese, Spanish and French.
 
 Runs entirely client-side (React + TypeScript + Vite), no backend — designed
 to be hosted on GitHub Pages.
@@ -38,7 +38,7 @@ npm run dev
 
 - React 18 + TypeScript (strict mode), Vite
 - Zustand for client state
-- react-i18next / i18next for PT/EN localization
+- react-i18next / i18next for localization (EN, PT, ES, FR)
 - Solvers run inside a Web Worker so the UI thread stays responsive
 - Vitest + Testing Library (unit/integration), Playwright (E2E)
 

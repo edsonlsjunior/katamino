@@ -1,11 +1,12 @@
 /*
  * Design tokens: single source of truth for color, spacing, radius, shadow,
- * type, and motion. Light palette on :root; dark overrides under
- * prefers-color-scheme (the app has no manual theme toggle, so it simply
- * follows the OS/browser setting, matching the `color-scheme: light dark`
- * declared below).
+ * type, and motion. Light palette on :root; the dark overrides further down
+ * apply when the player chose dark in the settings, or left the theme on
+ * "system" and the OS/browser asks for dark.
  */
 :root {
+  color-scheme: light;
+
   /* Color — surfaces & text */
   --color-bg: #f3f4f8;
   --color-surface: #ffffff;
@@ -25,6 +26,14 @@
   --color-accent-hover: #4338ca;
   --color-accent-contrast: #ffffff;
   --color-focus-ring: #6366f1;
+
+  /* Color — one hue per challenge tier (list columns, header gradient) */
+  --tier-small-slam: #0d9488;
+  --tier-slam: #2563eb;
+  --tier-grand-slam: #7c3aed;
+  --tier-super-slam: #c026d3;
+  --tier-challenge: #ea580c;
+  --tier-bonus: #ca8a04;
 
   /* Color — semantic feedback */
   --color-success: #2f9e58;
@@ -63,8 +72,41 @@
   --transition-snap: 80ms ease;
 }
 
+/* The dark palette, twice: when the player picked it in the settings
+   (data-theme on <html>, set by state/theme.ts), and when they left it on
+   "system" and the OS asks for dark. Keep the two blocks identical. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #15161f;
+  --color-surface: #1d1f2b;
+  --color-surface-raised: #262939;
+  --color-border: #333750;
+  --color-border-strong: #454a6b;
+  --color-text: #e7e9f2;
+  --color-text-muted: #9aa1bd;
+
+  --color-header-bg: #0d0e18;
+  --color-header-text: #f4f5fb;
+  --color-header-text-muted: #8d94b3;
+
+  --color-accent: #7c76f1;
+  --color-accent-hover: #6a63ee;
+  --color-accent-contrast: #0d0e18;
+  --color-focus-ring: #9b96f6;
+
+  --color-success: #3fcf78;
+  --color-success-bg: color-mix(in srgb, var(--color-success) 20%, transparent);
+  --color-danger: #f16c7f;
+  --color-danger-bg: color-mix(in srgb, var(--color-danger) 18%, transparent);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 20px rgb(0 0 0 / 0.5);
+  --shadow-header: 0 1px 0 rgb(0 0 0 / 0.5);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
     --color-bg: #15161f;
     --color-surface: #1d1f2b;
     --color-surface-raised: #262939;

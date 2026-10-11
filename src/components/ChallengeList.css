@@ -92,27 +92,27 @@
 }
 
 .tier-column[data-tier='small-slam'] {
-  --tier-color: #0d9488;
+  --tier-color: var(--tier-small-slam);
 }
 
 .tier-column[data-tier='slam'] {
-  --tier-color: #2563eb;
+  --tier-color: var(--tier-slam);
 }
 
 .tier-column[data-tier='grand-slam'] {
-  --tier-color: #7c3aed;
+  --tier-color: var(--tier-grand-slam);
 }
 
 .tier-column[data-tier='super-slam'] {
-  --tier-color: #c026d3;
+  --tier-color: var(--tier-super-slam);
 }
 
 .tier-column[data-tier='challenge'] {
-  --tier-color: #ea580c;
+  --tier-color: var(--tier-challenge);
 }
 
 .tier-column[data-tier='bonus'] {
-  --tier-color: #ca8a04;
+  --tier-color: var(--tier-bonus);
 }
 
 .tier-column__header {
