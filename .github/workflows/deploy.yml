@@ -30,6 +30,9 @@ jobs:
       - run: npm run lint
       - run: npm run test:unit
       - run: npm run build
+        env:
+          # The project site lives at https://<user>.github.io/<repo>/.
+          VITE_BASE: /${{ github.event.repository.name }}/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

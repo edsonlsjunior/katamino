@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Base path matches the GitHub Pages project-site URL (https://<user>.github.io/katamino/).
-// Override with the VITE_BASE env var if the repository is ever renamed/forked.
+// The app is served from the root (/). A deploy under a sub-path, such as a GitHub
+// Pages project site, sets the VITE_BASE env var (see .github/workflows/deploy.yml).
 export default defineConfig({
-  base: process.env.VITE_BASE ?? '/katamino/',
+  base: process.env.VITE_BASE ?? '/',
   plugins: [react()],
   build: {
     outDir: 'dist',
