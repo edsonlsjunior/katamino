@@ -145,4 +145,93 @@ describe('manual attempt store', () => {
       expect(store().isSolved).toBe(true);
     });
   });
+
+  // Touch: a piece is turned where it lies, without being picked up.
+  describe('turning a piece in place', () => {
+    const wide: Challenge = { ...challenge, id: 997, boardCols: 5, requiredPieces: ['L', 'I'] };
+    const dimsOf = (index: number) => {
+      const { board, pieces } = store();
+      const id = pieces[index].instanceId;
+      const cells = board.cells.flatMap((row, r) => row.flatMap((cell, c) => (cell === id ? [[r, c]] : [])));
+      return {
+        rows: new Set(cells.map(([r]) => r)).size,
+        cols: new Set(cells.map(([, c]) => c)).size,
+        count: cells.length,
+      };
+    };
+
+    beforeEach(() => {
+      store().loadChallenge(wide);
+    });
+
+    it('turns an unplaced piece and makes it the one the controls act on', () => {
+      const { instanceId, orientationIndex } = store().pieces[0];
+      store().rotateInPlace(instanceId);
+
+      expect(store().pieces[0].orientationIndex).not.toBe(orientationIndex);
+      expect(store().pieces[0].position).toBeNull();
+      expect(store().selectedInstanceId).toBeNull();
+      expect(store().focusedInstanceId).toBe(instanceId);
+    });
+
+    it('turns a piece on the board, which stays on it, and four turns bring it back', () => {
+      const id = store().pieces[0].instanceId;
+      store().pickUp(id);
+      expect(store().placeSelectedAt(1, 1)).toBe(true);
+      const start = { ...store().pieces[0] };
+      const before = dimsOf(0);
+
+      store().rotateInPlace(id);
+      expect(dimsOf(0)).toEqual({ rows: before.cols, cols: before.rows, count: 5 });
+
+      for (let i = 0; i < 3; i++) store().rotateInPlace(id);
+      expect(store().pieces[0].orientationIndex).toBe(start.orientationIndex);
+      expect(store().pieces[0].position).toEqual(start.position);
+    });
+
+    it('keeps a turned piece inside the board at its edge', () => {
+      const id = store().pieces[1].instanceId;
+      store().pickUp(id);
+      // I upright in the last column: lying down it has to slide back in.
+      for (let attempt = 0; attempt < 2 && !store().placeSelectedAt(0, 4); attempt++) store().rotateSelected();
+      expect(store().pieces[1].position).toEqual({ row: 0, col: 4 });
+
+      store().rotateInPlace(id);
+      expect(dimsOf(1)).toEqual({ rows: 1, cols: 5, count: 5 });
+    });
+
+    it('skips an orientation that cannot fit on the board', () => {
+      store().loadChallenge(twoPieceChallenge);
+      placePiece(0, 0, 0);
+      const { instanceId, orientationIndex } = store().pieces[0];
+
+      store().rotateInPlace(instanceId);
+      expect(store().pieces[0].orientationIndex).toBe(orientationIndex);
+      expect(store().pieces[0].position).toEqual({ row: 0, col: 0 });
+    });
+
+    it('mirrors a piece in place, flagging the overlap it may cause', () => {
+      const [l, i] = store().pieces.map((p) => p.instanceId);
+      store().pickUp(l);
+      store().placeSelectedAt(0, 0);
+      const before = store().pieces[0].orientationIndex;
+      store().flipInPlace(l);
+      expect(store().pieces[0].orientationIndex).not.toBe(before);
+      expect(store().pieces[0].position).toEqual({ row: 0, col: 0 });
+
+      store().pickUp(i);
+      for (let attempt = 0; attempt < 2 && !store().placeSelectedAt(0, 4); attempt++) store().rotateSelected();
+      expect(store().conflictKeys).toEqual([]);
+      store().rotateInPlace(i);
+      expect(store().conflictKeys.length).toBeGreaterThan(0);
+      expect(store().isSolved).toBe(false);
+    });
+
+    it('leaves a piece that is in hand alone', () => {
+      const { instanceId, orientationIndex } = store().pieces[0];
+      store().pickUp(instanceId);
+      store().rotateInPlace(instanceId);
+      expect(store().pieces[0].orientationIndex).toBe(orientationIndex);
+    });
+  });
 });

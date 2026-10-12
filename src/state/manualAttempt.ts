@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import {
   cellsAt,
   flipOrientation,
+  PIECE_TYPES,
   rotateOrientation,
   type FlipAxis,
   type PieceTypeId,
@@ -39,6 +40,8 @@ interface ManualAttemptState {
   /** The piece currently held (following the pointer), if any. */
   selectedInstanceId: string | null;
   heldOrigin: HeldOrigin | null;
+  /** The piece last handled by touch: what Rotate/Flip act on with nothing in hand. */
+  focusedInstanceId: string | null;
   isSolved: boolean;
   loadChallenge: (challenge: Challenge) => void;
   pickUp: (instanceId: string) => void;
@@ -47,6 +50,11 @@ interface ManualAttemptState {
   rotateSelected: (turns?: number) => void;
   flipSelected: (axis?: FlipAxis) => void;
   setSelectedOrientation: (orientationIndex: number) => void;
+  focusPiece: (instanceId: string | null) => void;
+  /** Turns a piece where it lies, without picking it up. On the board, an
+   * orientation that doesn't fit is skipped (the turn goes on to the next). */
+  rotateInPlace: (instanceId: string, turns?: number) => void;
+  flipInPlace: (instanceId: string, axis?: FlipAxis) => void;
   placeSelectedAt: (row: number, col: number) => boolean;
   dropSelectedAt: (x: number, y: number) => void;
   /** Puts the held piece back among the unplaced ones, keeping its orientation. */
@@ -89,6 +97,58 @@ function settle(pieces: readonly PieceInstance[], stack: readonly string[], rows
   };
 }
 
+function orientationDims(typeId: PieceTypeId, orientationIndex: number) {
+  const cells = PIECE_TYPES[typeId].orientations[orientationIndex];
+  return {
+    w: Math.max(...cells.map(([, c]) => c)) + 1,
+    h: Math.max(...cells.map(([r]) => r)) + 1,
+  };
+}
+
+/**
+ * A piece that isn't in hand given a new orientation, keeping it centred on
+ * the same spot (and inside the board, if that is where it is). Null when the
+ * new shape can't fit on the board.
+ */
+function reorientedInPlace(
+  state: ManualAttemptState,
+  instanceId: string,
+  orientationIndex: number,
+): Partial<ManualAttemptState> | null {
+  const { selectedInstanceId, pieces, freePositions, stack, board } = state;
+  const piece = pieces.find((p) => p.instanceId === instanceId);
+  if (!piece || selectedInstanceId) return null;
+
+  const before = orientationDims(piece.typeId, piece.orientationIndex);
+  const after = orientationDims(piece.typeId, orientationIndex);
+  // Truncating keeps a piece from creeping across the board as it is turned back and forth.
+  const shift = (from: number, to: number) => Math.trunc((from - to) / 2);
+  let position = piece.position;
+  if (position) {
+    if (after.w > board.cols || after.h > board.rows) return null;
+    position = {
+      row: Math.min(Math.max(position.row + shift(before.h, after.h), 0), board.rows - after.h),
+      col: Math.min(Math.max(position.col + shift(before.w, after.w), 0), board.cols - after.w),
+    };
+  }
+  const free = freePositions[instanceId];
+
+  const nextPieces = pieces.map((p) =>
+    p.instanceId === instanceId ? { ...p, orientationIndex, position } : p,
+  );
+  return {
+    pieces: nextPieces,
+    freePositions: free
+      ? {
+          ...freePositions,
+          [instanceId]: { x: free.x + (before.w - after.w) / 2, y: free.y + (before.h - after.h) / 2 },
+        }
+      : freePositions,
+    focusedInstanceId: instanceId,
+    ...settle(nextPieces, stack, board.rows, board.cols),
+  };
+}
+
 function without<T>(record: Record<string, T>, key: string): Record<string, T> {
   const next = { ...record };
   delete next[key];
@@ -104,6 +164,7 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
   stack: [],
   selectedInstanceId: null,
   heldOrigin: null,
+  focusedInstanceId: null,
   isSolved: false,
 
   loadChallenge: (challenge) => {
@@ -116,6 +177,7 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
       stack: [],
       selectedInstanceId: null,
       heldOrigin: null,
+      focusedInstanceId: null,
       isSolved: false,
     });
   },
@@ -134,6 +196,7 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
       stack: nextStack,
       freePositions: without(freePositions, instanceId),
       selectedInstanceId: instanceId,
+      focusedInstanceId: null,
       heldOrigin: {
         orientationIndex: piece.orientationIndex,
         position: piece.position,
@@ -200,6 +263,25 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
     });
   },
 
+  focusPiece: (instanceId) => set({ focusedInstanceId: instanceId }),
+
+  rotateInPlace: (instanceId, turns = 1) => {
+    const piece = get().pieces.find((p) => p.instanceId === instanceId);
+    if (!piece) return;
+    let orientationIndex = piece.orientationIndex;
+    // Four tries bring it back to where it started.
+    for (let attempt = 0; attempt < 4; attempt++) {
+      for (let i = 0; i < turns; i++) orientationIndex = rotateOrientation(piece.typeId, orientationIndex);
+      if (applyInPlace(instanceId, orientationIndex)) return;
+    }
+  },
+
+  flipInPlace: (instanceId, axis = 'horizontal') => {
+    const piece = get().pieces.find((p) => p.instanceId === instanceId);
+    if (!piece) return;
+    applyInPlace(instanceId, flipOrientation(piece.typeId, piece.orientationIndex, axis));
+  },
+
   // Puts the held piece on the board with its top-left at (row, col). Overlapping
   // other pieces is allowed (and flagged in `conflictKeys`); only a placement
   // that sticks out of the board is refused.
@@ -251,7 +333,17 @@ export const useManualAttemptStore = create<ManualAttemptState>((set, get) => ({
       stack: [],
       selectedInstanceId: null,
       heldOrigin: null,
+      focusedInstanceId: null,
       isSolved: false,
     });
   },
 }));
+
+function applyInPlace(instanceId: string, orientationIndex: number): boolean {
+  const next = reorientedInPlace(useManualAttemptStore.getState(), instanceId, orientationIndex);
+  if (!next) return false;
+  useManualAttemptStore.setState(next);
+  const { isSolved, challengeId } = useManualAttemptStore.getState();
+  if (isSolved && challengeId !== null) markChallengeCompleted(challengeId);
+  return true;
+}

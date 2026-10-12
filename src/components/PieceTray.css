@@ -46,6 +46,11 @@
   border-radius: 2px;
 }
 
+/* The piece Rotate/Flip act on after it was handled by touch. */
+.piece-tray__item--focused .piece-shape__cell {
+  box-shadow: inset 0 0 0 2px var(--color-text);
+}
+
 .piece-tray__item:not(.piece-tray__item--static):hover .piece-shape {
   transform: scale(1.04);
 }

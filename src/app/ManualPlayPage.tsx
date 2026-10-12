@@ -29,6 +29,10 @@ import { BOARD_PADDING_PX, CELL_GAP_PX, planArena, pieceSpan } from './arenaLayo
 const FALLBACK_CELL_PX = 40;
 /** How far the pointer must travel with the button down to count as a drag. */
 const DRAG_THRESHOLD_PX = 24;
+/** How far a finger must travel on a piece before it is being dragged rather than tapped. */
+const TOUCH_DRAG_THRESHOLD_PX = 12;
+/** A piece dragged by touch is drawn with its lower edge this far above the finger, so the finger doesn't hide it. */
+const TOUCH_LIFT_PX = 16;
 /** Autoplay never ticks faster than this; higher speeds advance several steps per tick. */
 const MIN_AUTOPLAY_TICK_MS = 16;
 /** How long the "board is locked" notice stays up in solver mode. */
@@ -130,6 +134,10 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   const placeSelectedAt = useManualAttemptStore((s) => s.placeSelectedAt);
   const dropSelectedAt = useManualAttemptStore((s) => s.dropSelectedAt);
   const returnSelectedHome = useManualAttemptStore((s) => s.returnSelectedHome);
+  const focusedInstanceId = useManualAttemptStore((s) => s.focusedInstanceId);
+  const focusPiece = useManualAttemptStore((s) => s.focusPiece);
+  const rotateInPlace = useManualAttemptStore((s) => s.rotateInPlace);
+  const flipInPlace = useManualAttemptStore((s) => s.flipInPlace);
   const reset = useManualAttemptStore((s) => s.reset);
 
   const playback = usePlaybackStore();
@@ -222,10 +230,11 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   useEffect(() => {
     if (!selectedInstanceId) return;
     function handlePointerMove(event: PointerEvent) {
-      if (event.buttons & 1) return;
+      if (event.pointerType !== 'mouse' || event.buttons & 1) return;
       setPointer({ x: event.clientX, y: event.clientY });
     }
     function handlePointerUp(event: PointerEvent) {
+      if (event.pointerType !== 'mouse') return;
       if (event.button === 0) setPointer({ x: event.clientX, y: event.clientY });
     }
     window.addEventListener('pointermove', handlePointerMove);
@@ -272,12 +281,16 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     return transposed ? { kind: 'free', x: down, y: across } : { kind: 'free', x: across, y: down };
   }
 
+  // Where the finger is while it drags a piece (the piece is drawn above it, see liftedPoint()).
+  const [finger, setFinger] = useState<Point | null>(null);
+
   const [target, setTarget] = useState<DropTarget | null>(null);
   useLayoutEffect(() => {
-    setTarget(heldPiece && pointer ? dropTargetAt(pointer, heldPiece) : null);
-    // dropTargetAt only reads layout that changes together with these deps.
+    if (!heldPiece || !pointer) setTarget(null);
+    else setTarget(finger ? touchDropTarget(finger, heldPiece) : dropTargetAt(pointer, heldPiece));
+    // Both only read layout that changes together with these deps.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [heldPiece, pointer, cellSize, board.cols, board.rows, plan]);
+  }, [heldPiece, pointer, finger, cellSize, board.cols, board.rows, plan]);
 
   const ghost = useMemo(() => {
     if (!heldPiece || target?.kind !== 'board') return null;
@@ -327,7 +340,8 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   // menu is suppressed app-wide, see App.tsx.)
   useEffect(() => {
     function handleContextMenu(event: MouseEvent) {
-      if (useNavigationStore.getState().solverOpen) return;
+      // A long press on a touch screen also asks for the context menu.
+      if (touchInputRef.current || useNavigationStore.getState().solverOpen) return;
       const store = useManualAttemptStore.getState();
       if (!store.selectedInstanceId) {
         const id = (event.target as Element | null)
@@ -364,6 +378,9 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
 
     function handlePointerDown(event: PointerEvent) {
       swallowClick = false;
+      drag = null;
+      // By touch, dragging moves the piece instead (see below).
+      if (event.pointerType !== 'mouse') return;
       if (event.button !== 0 || useNavigationStore.getState().solverOpen) return;
       const pieceId =
         (event.target as Element | null)
@@ -442,10 +459,171 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
     };
   }, []);
 
+  // Where a piece dragged by touch is drawn: above the finger. Everything
+  // else (the preview, where it lands) follows from that point, so the piece
+  // goes where it is seen, not where the finger is.
+  function liftedPoint(finger: Point, piece: PieceInstance): Point {
+    const { h } = shownDims(piece);
+    return { x: finger.x, y: finger.y - spanPx(h) / 2 - TOUCH_LIFT_PX };
+  }
+
+  // The strip is at the edge of the screen, where the lifted piece may not
+  // reach: a finger back on the strip returns the piece, wherever the piece
+  // is drawn.
+  function touchDropTarget(finger: Point, piece: PieceInstance): DropTarget {
+    const strip = stripRef.current?.getBoundingClientRect();
+    const onStrip =
+      strip &&
+      finger.x >= strip.left &&
+      finger.x <= strip.right &&
+      finger.y >= strip.top &&
+      finger.y <= strip.bottom;
+    return onStrip ? { kind: 'home' } : dropTargetAt(liftedPoint(finger, piece), piece);
+  }
+
+  // For the window-level touch listeners below, which outlive any one render.
+  const touchLayoutRef = useRef({ liftedPoint, touchDropTarget, stripScrolls: null as 'x' | 'y' | null });
+  useLayoutEffect(() => {
+    touchLayoutRef.current = {
+      liftedPoint,
+      touchDropTarget,
+      stripScrolls: plan?.mode === 'strip' ? (plan.side === 'below' ? 'x' : 'y') : null,
+    };
+  });
+
+  // Touch (and pen) has no pointer hovering around with a piece in hand, so
+  // there the piece is dragged: it is picked up once the finger moves on it,
+  // follows the finger and is dropped where the finger lifts. A tap, instead,
+  // turns the piece where it lies. The strip of unplaced pieces scrolls along
+  // its length, so only a drag across it takes a piece out.
+  const touchInputRef = useRef(false);
+  // Set once a touch has moved or turned a piece: the click the browser may
+  // send for that same touch is then not a tap on empty space.
+  const touchHandledRef = useRef(false);
+  useEffect(() => {
+    let gesture: {
+      pointerId: number;
+      x: number;
+      y: number;
+      pieceId: string;
+      inStrip: boolean;
+      dragging: boolean;
+    } | null = null;
+
+    function heldPieceNow() {
+      const { pieces, selectedInstanceId } = useManualAttemptStore.getState();
+      return pieces.find((p) => p.instanceId === selectedInstanceId) ?? null;
+    }
+    function handlePointerDown(event: PointerEvent) {
+      touchInputRef.current = event.pointerType !== 'mouse';
+      touchHandledRef.current = false;
+      if (!touchInputRef.current || !event.isPrimary) return;
+      gesture = null;
+      if (useNavigationStore.getState().solverOpen) return;
+      // A piece left in hand by the mouse stays the mouse's business.
+      if (useManualAttemptStore.getState().selectedInstanceId) return;
+      const target = event.target as Element | null;
+      const pieceId = target?.closest?.('[data-piece-id]')?.getAttribute('data-piece-id');
+      if (!pieceId) return;
+      gesture = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        pieceId,
+        inStrip: !!target?.closest?.('.board-arena__strip'),
+        dragging: false,
+      };
+    }
+    function handlePointerMove(event: PointerEvent) {
+      if (!gesture || event.pointerId !== gesture.pointerId) return;
+      const finger = { x: event.clientX, y: event.clientY };
+      if (!gesture.dragging) {
+        const dx = Math.abs(finger.x - gesture.x);
+        const dy = Math.abs(finger.y - gesture.y);
+        if (Math.max(dx, dy) < TOUCH_DRAG_THRESHOLD_PX) return;
+        const scrolls = gesture.inStrip ? touchLayoutRef.current.stripScrolls : null;
+        if ((scrolls === 'x' && dx > dy) || (scrolls === 'y' && dy > dx)) {
+          // Along the strip: the browser scrolls it.
+          gesture = null;
+          return;
+        }
+        useManualAttemptStore.getState().pickUp(gesture.pieceId);
+        if (useManualAttemptStore.getState().selectedInstanceId !== gesture.pieceId) {
+          gesture = null;
+          return;
+        }
+        gesture.dragging = true;
+        // The element the finger went down on may be gone now (the piece
+        // left its slot): keep the rest of the gesture coming here.
+        try {
+          arenaRef.current?.setPointerCapture(event.pointerId);
+        } catch {
+          // Not capturable (the pointer is already gone): the release still ends the drag.
+        }
+      }
+      const held = heldPieceNow();
+      if (!held) return;
+      setFinger(finger);
+      setPointer(touchLayoutRef.current.liftedPoint(finger, held));
+    }
+    function handlePointerUp(event: PointerEvent) {
+      if (!gesture || event.pointerId !== gesture.pointerId) return;
+      const { dragging, pieceId } = gesture;
+      gesture = null;
+      touchHandledRef.current = true;
+      if (!dragging) {
+        // A tap. Handled here rather than on the click that normally follows,
+        // which browsers may hold back (right after a drag, for one).
+        useManualAttemptStore
+          .getState()
+          .rotateInPlace(pieceId, turnsForScreenRotation(transposedRef.current));
+        return;
+      }
+      setFinger(null);
+      const held = heldPieceNow();
+      if (!held) return;
+      const store = useManualAttemptStore.getState();
+      const drop = touchLayoutRef.current.touchDropTarget({ x: event.clientX, y: event.clientY }, held);
+      if (drop.kind === 'board') store.placeSelectedAt(drop.row, drop.col);
+      else if (drop.kind === 'free') store.dropSelectedAt(drop.x, drop.y);
+      else if (drop.kind === 'home') store.returnSelectedHome();
+      // Nowhere to put it (it doesn't fit on the board): back where it came from.
+      useManualAttemptStore.getState().cancelHold();
+      store.focusPiece(pieceId);
+    }
+    function handlePointerCancel(event: PointerEvent) {
+      if (!gesture || event.pointerId !== gesture.pointerId) return;
+      if (gesture.dragging) {
+        setFinger(null);
+        useManualAttemptStore.getState().cancelHold();
+      }
+      gesture = null;
+    }
+
+    window.addEventListener('pointerdown', handlePointerDown, true);
+    window.addEventListener('pointermove', handlePointerMove);
+    window.addEventListener('pointerup', handlePointerUp);
+    window.addEventListener('pointercancel', handlePointerCancel);
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown, true);
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+      window.removeEventListener('pointercancel', handlePointerCancel);
+    };
+  }, []);
+
+  /** Whether a click came from a finger (or pen) rather than the mouse or the keyboard. */
+  function isTouchClick(event: ReactMouseEvent<HTMLElement>) {
+    return touchInputRef.current && event.detail !== 0;
+  }
+
   function pick(instanceId: string, event: ReactMouseEvent<HTMLElement>) {
     // With a piece already in hand this click is a drop — let it reach the arena.
     if (selectedInstanceId) return;
     event.stopPropagation();
+    // By touch a piece is moved by dragging it, and a tap has already turned
+    // it when the finger lifted (see above).
+    if (isTouchClick(event)) return;
     if (event.detail === 0) {
       // Keyboard activation has no pointer position: hold it over the element.
       const rect = event.currentTarget.getBoundingClientRect();
@@ -474,7 +652,12 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
       }
       return;
     }
-    if (!heldPiece || event.detail === 0) return;
+    if (!heldPiece) {
+      // A tap away from every piece lets go of the one Rotate/Flip act on.
+      if (isTouchClick(event) && !touchHandledRef.current) focusPiece(null);
+      return;
+    }
+    if (event.detail === 0) return;
     const drop = dropTargetAt({ x: event.clientX, y: event.clientY }, heldPiece);
     if (drop.kind === 'board') placeSelectedAt(drop.row, drop.col);
     else if (drop.kind === 'free') dropSelectedAt(drop.x, drop.y);
@@ -565,6 +748,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
             slotSpan={slotSpan}
             isAway={isAway}
             onPick={pick}
+            focusedInstanceId={focusedInstanceId}
             transposed={transposed}
             collapseAway
           />
@@ -607,6 +791,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
               transposed={transposed}
               isAway={isAway}
               onPick={pick}
+              focusedInstanceId={focusedInstanceId}
             />
           ),
         )}
@@ -615,6 +800,8 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
   }
 
   const heldDims = heldPiece ? shownDims(heldPiece) : null;
+  // The piece Rotate/Flip act on: the one in hand, else the one last touched.
+  const controlledInstanceId = selectedInstanceId ?? focusedInstanceId;
   const ringLayout = plan?.mode === 'rings' ? plan.layout : null;
   const arenaClasses = [
     'board-arena',
@@ -691,9 +878,17 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
 
         {!solverOpen && (
           <PieceControls
-            hasSelection={!!selectedInstanceId}
-            onRotate={() => rotateSelected(turnsForScreenRotation(transposed))}
-            onFlip={() => flipSelected(modelFlipAxis('horizontal', transposed))}
+            hasSelection={!!controlledInstanceId}
+            onRotate={() => {
+              const turns = turnsForScreenRotation(transposed);
+              if (selectedInstanceId) rotateSelected(turns);
+              else if (focusedInstanceId) rotateInPlace(focusedInstanceId, turns);
+            }}
+            onFlip={() => {
+              const axis = modelFlipAxis('horizontal', transposed);
+              if (selectedInstanceId) flipSelected(axis);
+              else if (focusedInstanceId) flipInPlace(focusedInstanceId, axis);
+            }}
           />
         )}
 
@@ -747,6 +942,7 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
                       onCellClick={handleCellClick}
                       ghost={ghost}
                       conflictKeys={conflictSet}
+                      focusedInstanceId={focusedInstanceId}
                       cellSize={cellSize}
                       transposed={transposed}
                     />
@@ -791,7 +987,9 @@ export function ManualPlayPage({ challengeId }: ManualPlayPageProps) {
                     data-testid={`free-piece-${instanceId}`}
                     data-piece-id={instanceId}
                     aria-label={piece.typeId}
-                    className="piece-tray__item board-arena__loose"
+                    className={`piece-tray__item board-arena__loose${
+                      instanceId === focusedInstanceId ? ' piece-tray__item--focused' : ''
+                    }`}
                     style={{
                       left: boardOrigin.x + (transposed ? free.y : free.x) * pitch,
                       top: boardOrigin.y + (transposed ? free.x : free.y) * pitch,

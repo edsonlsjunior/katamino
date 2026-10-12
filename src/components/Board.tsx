@@ -13,6 +13,8 @@ interface BoardProps {
   ghost?: { cells: readonly Cell[]; valid: boolean } | null;
   /** "row,col" keys of cells holding overlapping pieces. */
   conflictKeys?: ReadonlySet<string>;
+  /** The piece Rotate/Flip currently act on, drawn marked. */
+  focusedInstanceId?: string | null;
   /** Cell side in px (manual play sizes the board to its arena). Without
    * it, cells keep the fixed size from Board.css. */
   cellSize?: number;
@@ -22,7 +24,16 @@ interface BoardProps {
   transposed?: boolean;
 }
 
-export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSize, transposed = false }: BoardProps) {
+export function Board({
+  board,
+  pieces,
+  onCellClick,
+  ghost,
+  conflictKeys,
+  focusedInstanceId,
+  cellSize,
+  transposed = false,
+}: BoardProps) {
   const typeByInstance = new Map<string, PieceTypeId>(pieces.map((p) => [p.instanceId, p.typeId]));
   const ghostKeys = ghost ? new Set(ghost.cells.map(([r, c]) => `${r},${c}`)) : null;
   const sizeStyle =
@@ -52,6 +63,7 @@ export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSiz
           const color = typeId ? PIECE_TYPES[typeId].color : undefined;
           const key = `${row},${col}`;
           const isConflict = conflictKeys?.has(key) ?? false;
+          const focusClass = cellValue !== null && cellValue === focusedInstanceId ? ' board-cell--focused' : '';
           const ghostClass = ghostKeys?.has(key)
             ? ghost!.valid
               ? ' board-cell--ghost-valid'
@@ -65,7 +77,7 @@ export function Board({ board, pieces, onCellClick, ghost, conflictKeys, cellSiz
               data-occupied={cellValue !== null}
               data-conflict={isConflict}
               data-piece-id={cellValue ?? undefined}
-              className={`board-cell${isConflict ? ' board-cell--conflict' : ''}${ghostClass}`}
+              className={`board-cell${focusClass}${isConflict ? ' board-cell--conflict' : ''}${ghostClass}`}
               style={{
                 ...sizeStyle,
                 ...(color ? { backgroundColor: color, color: contrastTextColor(color) } : undefined),

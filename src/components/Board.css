@@ -39,6 +39,11 @@
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
 
+/* The piece Rotate/Flip act on after it was handled by touch. */
+.board-cell--focused {
+  box-shadow: inset 0 0 0 2px var(--color-text);
+}
+
 /* More than one piece on this cell: the player has to move one of them. */
 .board-cell--conflict {
   background-image: repeating-linear-gradient(

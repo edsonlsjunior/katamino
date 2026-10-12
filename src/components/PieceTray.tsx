@@ -13,6 +13,8 @@ interface PieceTrayProps {
   isAway: (piece: PieceInstance) => boolean;
   /** Without it the pieces are only shown, not pickable (solver mode). */
   onPick?: (instanceId: string, event: MouseEvent<HTMLElement>) => void;
+  /** The piece Rotate/Flip currently act on, if it is one of these. */
+  focusedInstanceId?: string | null;
   /** Which ring around the board this group renders in — only affects
    * layout direction (row vs. column) and the listbox's aria-label. */
   position: PieceTrayPosition;
@@ -57,6 +59,7 @@ export function PieceTray({
   pieces,
   isAway,
   onPick,
+  focusedInstanceId,
   position,
   slotSpan,
   transposed = false,
@@ -101,9 +104,11 @@ export function PieceTray({
             data-testid={`tray-piece-${piece.instanceId}`}
             data-piece-id={piece.instanceId}
             role="option"
-            aria-selected={false}
+            aria-selected={piece.instanceId === focusedInstanceId}
             aria-label={piece.typeId}
-            className="piece-tray__slot piece-tray__item"
+            className={`piece-tray__slot piece-tray__item${
+              piece.instanceId === focusedInstanceId ? ' piece-tray__item--focused' : ''
+            }`}
             style={slotStyle}
             onClick={(event) => onPick(piece.instanceId, event)}
           >
